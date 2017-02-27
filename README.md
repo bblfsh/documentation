@@ -1,4 +1,4 @@
-<img src="https://avatars2.githubusercontent.com/u/25795418?v=3&s=200f" align="right" width="200px" height="200px" vspace="20" />
+<img src="https://avatars2.githubusercontent.com/u/25795418?v=3&s=200f" align="right" width="200px" height="200px" />
 
 # Babefish - universal code parser
 
