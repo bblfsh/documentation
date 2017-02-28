@@ -18,7 +18,7 @@ not start until response to request N-1 has finished.
 
 The workflow of the protocol is as follows:
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Server
     participant Driver
@@ -26,7 +26,7 @@ sequenceDiagram
         Server->>Driver: Request
         Driver-->>Server: Response
     end
-{% endmermaid %}
+```
 
 ## Encoding
 
