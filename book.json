@@ -1,3 +1,3 @@
 {
-  "plugins" : [ "anchors" ]
+  "plugins" : [ "anchors", "mermaid-gb3" ]
 }

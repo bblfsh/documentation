@@ -18,21 +18,14 @@ not start until response to request N-1 has finished.
 
 The workflow of the protocol is as follows:
 
-
-```
-    Server                   Driver
-      |                        |
-      |\        Req 1          |
-      | \--------------------->|
-      |                        |
-      |         Resp 1        /|
-      |<---------------------/ |
-      |                        |
-      |\        Req 2          |
-      | \--------------------->|
-      |                        |
-      |         Resp 2        /|
-      |<---------------------/ |
+```mermaid
+sequenceDiagram
+    participant Server
+    participant Driver
+    loop MainLoop
+        Server->>Driver: Request
+        Driver-->>Server: Response
+    end
 ```
 
 ## Encoding

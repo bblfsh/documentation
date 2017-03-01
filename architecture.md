@@ -8,14 +8,13 @@ parsing services for one or more languages. It can be written in any language an
 is packaged as a Docker container. These containers are executed by the babelfish
 **server** in a very specific runtime.
 
-```
- ________          ________                _________________________
-|        |  grpc  |        | stdin/stdout |                         |
-| Client | <----> | Server | <----------> |     Language Driver     |
-|________|        |________|   protobuf   |_________________________|
-                                          |                         |
-                                          |         Container       |
-                                          |_________________________|
+```mermaid
+graph LR
+    Client-- tcp<br/>grpc -->Server
+    Server-- stdin/stdout<br/>grpc -->Driver
+    subgraph Container
+        Driver
+    end
 ```
 
 ## Language Drivers
@@ -36,16 +35,12 @@ combined in a single executable.
 The entry point of the container is the Go UAST converter, which wraps the
 language-specific AST parser. This is how the Python driver looks like:
 
-```
-                 _________________________________________
-                |                     |                   |
-  stdin/stdout  |                 stdin/stdout            |
-  <---------->  | UAST converter <-----------> AST parser |
-    protobuf    |     (Go)           JSON        (Python) |
-                |_____________________|___________________|
-                |                                         |
-                |                 Container               |
-                |_________________________________________|
+```mermaid
+graph LR
+    Server-- tcp<br/>grpc -->UAST
+    subgraph Container
+        UAST["UAST Converter<br/>(Go)"]-- stdin/stdout<br/>JSON -->AST["AST Parser<br/>(Python)"]
+    end
 ```
 
 ## Server
