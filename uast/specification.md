@@ -20,7 +20,7 @@ conversion. So we currently aim to preserve as much information as possible.
 We define different levels of information loss in terms of which kind of code
 generation would they allow.
 
-* **No information loss:** Converting code to AST and then back to code would.
+* **Lossless:** Converting code to AST and then back to code would.
   ` code == codegen(AST(code))`.
 * **Formatting information loss:** Only superfluous formatting information is lost
   (e.g. whitespace, indentation). Code generated from the AST could be the same
@@ -28,7 +28,7 @@ generation would they allow.
 * **Syntactic sugar information loss:** There is information loss about syntactic
   sugar. Code generated from the AST could be the same as the original code after
   desugaring it. `desugar(code) == codegen(AST(code))`.
-* **Comment loss:** Comments are not present in the AST.  
+* **Comment loss:** Comments are not present in the AST.
 
 Drivers MUST NOT loss data beyond the previous cases.
 

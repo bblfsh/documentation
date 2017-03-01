@@ -41,9 +41,7 @@ babelfish SDK.
 ### Info
 
 Info returns information about the driver. There is a general implementation in
-the babelfish SDK that uses a manifest to provide this information.
-
-* **TODO: Add proto**
+the babelfish SDK that uses a [manifest](https://godoc.org/github.com/bblfsh/sdk/manifest#Manifest) to provide this information.
 
 **Request** message has the following structure:
 
@@ -53,28 +51,11 @@ the babelfish SDK that uses a manifest to provide this information.
 }
 ```
 
-Language is optional, and only used for drivers that support multiple languages.
-If language is not given, a driver default is assumed. If language is given and
-not supported by the driver, an error is returned.
-
 **Response** structure is:
 
 ```
-{
-    "driver" <driver name and version> (string)
-    "supports": [
-        {
-            "language": <language> (string)
-            "language_version": <version range> (version range)
-            "metadata": <metadata> (string to string map)
-        }
-        ...
-    ]
-}
+TODO: fill this whit .proto
 ```
-
-Metadata is a key-value map of metadata values such as compiler or runtime
-versions.
 
 * **TODO: add version range definition**
 
@@ -89,18 +70,14 @@ It must be implemented by the AST parser.
 
 ```
 {
-    "action": "ParseAST"
-    "language": <language> (string, optional)
-    "language_version": <language version> (string, optional)
+    "action": "parse-ast"
     "content": <content> (string)
 }
 ```
 
-Language is optional, and only used for drivers that support multiple languages.
-If language is not given, a driver default is assumed. If language is given and
-not supported by the driver, an error is returned.
-
 **Response** structure is:
+
+TODO: replace this with .proto
 
 ```
 {
@@ -161,7 +138,7 @@ UAST converter.
 
 ```
 {
-    "action": "ParseUAST"
+    "action": "parse-uast"
     "language": <language> (string, optional)
     "language_version": <language version> (string, optional)
     "content": <content> (string)
