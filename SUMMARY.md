@@ -9,6 +9,7 @@
 
 ## UAST
 
+* [Code to AST](uast/code-to-ast.md)
 * [UAST Specification](uast/specification.md)
 
 ## Writing a Driver
