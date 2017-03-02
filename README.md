@@ -1,6 +1,6 @@
 <img src="https://avatars2.githubusercontent.com/u/25795418?v=3&s=200f" align="right" width="200px" height="200px" />
 
-# Babefish - universal code parser
+# Babelfish - universal code parser
 
 **Babelfish is a self-hosted server for source code parsing.** Babelfish can parse any file, in any language, extract an ASTs (Abstract Syntax Tree) from it, and convert it to a [**UAST**](./uast/specification.md) (Universal Abstract Syntax Tree).
 
