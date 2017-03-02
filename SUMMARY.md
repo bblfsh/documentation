@@ -6,6 +6,7 @@
 ## Using Babelfish
 
 * [Getting Started](user/getting-started.md)
+* [Babelfish Protocl](user/server-protocol.md)
 
 ## UAST
 
