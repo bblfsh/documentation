@@ -18,7 +18,7 @@ type Node struct {
 }
 ```
 
-Check out the godoc for the SDK [UAST package](https://godoc.org/github.com/bblfsh/sdk/uast)
+**Check out the godoc for the SDK [UAST package](https://godoc.org/github.com/bblfsh/sdk/uast)**
 for the full documentation of the UAST structure and annotations.
 
 ## Roles
@@ -82,3 +82,5 @@ under the `ImportPath` role in pre-order.
 As it is clear from this example, extracting meaningful information from UAST
 requires different tree operations for each role. The documentation and reference
 implementation of these operations are defined in the `uast` package of the SDK.
+
+* **TODO:** add more examples
