@@ -94,15 +94,18 @@ Note that **binary files are not supported** by this process at the moment. If w
 want to add support for [Piet](http://www.dangermouse.net/esoteric/piet.html) in
 the future, we will add a binary content field.
 
+Check the [protocol package](https://godoc.org/github.com/bblfsh/sdk/protocol)
+godoc for further details.
+
 #### Example
 
 ```
-[request]
+[request (pretty printed)]
 {
     "action": "parse-ast",
     "content": "#!/bin/bash\nexec foo\n"
 }
-[response]
+[response (pretty printed)]
 {
     "driver": "bash:1.0",
     "ast": {
@@ -140,5 +143,8 @@ UAST converter.
     "uast": <UAST> (object)
 }
 ```
+
+Check the [protocol package](https://godoc.org/github.com/bblfsh/sdk/protocol)
+godoc for further details.
 
 * **TODO: Add proto**
