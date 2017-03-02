@@ -53,11 +53,7 @@ the babelfish SDK that uses a [manifest](https://godoc.org/github.com/bblfsh/sdk
 
 **Response** structure is:
 
-```
-TODO: fill this whit .proto
-```
-
-* **TODO: add version range definition**
+* **TODO: Add proto**
 
 ### Parse AST
 
@@ -77,23 +73,15 @@ It must be implemented by the AST parser.
 
 **Response** structure is:
 
-TODO: replace this with .proto
-
 ```
 {
     "status": <status> ("ok", "error", "fatal")
     "errors": [ <error message>, <error message>, ... ]
-    "driver" <driver name and version> (string)
-    "language": <language> (string)
-    "language_version": <language version> (string)
     "ast": <AST> (object)
 }
 ```
 
-`driver` corresponds to the Docker container image and version. For example:
-`parser-java:1.0`.
-
-`language` should be specified in `CamelCase`.
+* **TODO: Add proto**
 
 If the parsing is successful, `status` is `ok`. If the file could be parsed
 (AST was generated) but had parsing errors, `status` is `error`. If the file
@@ -106,12 +94,12 @@ Note that **binary files are not supported** by this process at the moment. If w
 want to add support for [Piet](http://www.dangermouse.net/esoteric/piet.html) in
 the future, we will add a binary content field.
 
-**Example:**
+#### Example
 
 ```
 [request]
 {
-    "action": "ParseAST",
+    "action": "parse-ast",
     "content": "#!/bin/bash\nexec foo\n"
 }
 [response]
@@ -139,8 +127,6 @@ UAST converter.
 ```
 {
     "action": "parse-uast"
-    "language": <language> (string, optional)
-    "language_version": <language version> (string, optional)
     "content": <content> (string)
 }
 ```
@@ -151,9 +137,6 @@ UAST converter.
 {
     "status": <status> ("ok", "error", "fatal")
     "errors": [ <error message>, <error message>, ... ]
-    "driver" <driver name and version> (string)
-    "language": <language> (string)
-    "language_version": <language version> (string)
     "uast": <UAST> (object)
 }
 ```
