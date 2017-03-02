@@ -24,7 +24,8 @@ for the full documentation of the UAST structure and annotations.
 ## Roles
 
 UAST is annotated with **roles**. Roles are language-independent annotations that
-describe what nodes in the UAST do.
+describe what nodes in the UAST do. You can check the
+[list of all roles in the godoc](http://godoc.org/github.com/bblfsh/sdk/uast/#Role).
 
 UAST from different languages have different structures, but role annotations
 allow to interpret some aspects uniformly.
@@ -81,6 +82,8 @@ under the `ImportPath` role in pre-order.
 
 As it is clear from this example, extracting meaningful information from UAST
 requires different tree operations for each role. The documentation and reference
-implementation of these operations are defined in the `uast` package of the SDK.
+implementation of these operations are defined in the
+[uast](http://godoc.org/github.com/bblfsh/sdk/uast/)
+package of the SDK.
 
 * **TODO:** add more examples
