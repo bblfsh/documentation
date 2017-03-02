@@ -7,7 +7,7 @@ parser and the UAST converter inside a driver.
 ## Transport
 
 The internal driver protocol uses standard input and standard output as transport.
-It follows the same rules as the [driver protocol](driver/protocol.md#transport).
+It follows the same rules as the [driver protocol](/driver/protocol.md#transport).
 
 ## Encoding
 
@@ -20,4 +20,4 @@ JSON, ending with a new line.
 ### Parse AST
 
 The Parse AST process is the same as its external interface in the
-[driver protocol](driver/protocol.md#parse-ast).
+[driver protocol](/driver/protocol.md#parse-ast).
