@@ -26,4 +26,4 @@ generation would they allow.
   desugaring it. `desugar(code) == codegen(AST(code))`.
 * **Comment loss:** Comments are not present in the AST.
 
-Drivers MUST NOT loss data beyond the previous cases.
+Drivers MUST NOT lose any data beyond the previous cases.
