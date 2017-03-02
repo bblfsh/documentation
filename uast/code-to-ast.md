@@ -4,9 +4,8 @@ For each language, we generate a language-specific AST. This AST is as close as
 possible to what we get from the standard or common implementation of the AST in
 each language.
 
-Drivers MUST guarantee that given the same
-`(blob, driver, driver version, language, language version)`, the generated AST
-is always the same.
+Drivers MUST guarantee that given the same `(blob, driver, driver version)`, the
+generated AST is always the same.
 
 Drivers SHOULD generate an AST without any information loss from the source code.
 That is, it should be possible to write a function that given a AST, generates
