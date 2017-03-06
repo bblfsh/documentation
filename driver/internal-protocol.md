@@ -37,6 +37,7 @@ of the file being analyzed as a string.
 {
     "status": <status> ("ok", "error", "fatal")
     "errors": [ <error message>, <error message>, ... ]
+    "metadata": <metadata> (string dict)
     "ast": <AST> (object)
 }
 ```
@@ -47,6 +48,9 @@ could not be parsed at all (no AST), `status` is `fatal`.
 
 `errors` might contain any parsing errors found. If `status` is `ok`, then
 `errors` should be not set.
+
+`metadata` is an optional string map containing arbitrary metadata, such as
+ language version or dialect if it had to be detected before parsing.
 
 Note that **binary files are not supported** by this process at the moment. If we
 want to add support for [Piet](http://www.dangermouse.net/esoteric/piet.html) in
@@ -63,6 +67,10 @@ the future, we will add a binary content field.
 }
 [response (pretty printed)]
 {
+    "status": "ok",
+    "metadata": {
+        "dialect": "bash"
+    },
     "ast": {
         "name": "script",
         "children": [
