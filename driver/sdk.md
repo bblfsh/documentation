@@ -36,7 +36,9 @@ $ git add README.md
 $ git commit -m 'initialize repository'
 ```
 
-Now the driver should be bootstrapped with `bblfsh-sdk`:
+Now the driver should be bootstrapped with `bblfsh-sdk`. This will create some
+directories and files required by every driver. They will be overwritten if they
+exist, like the README.md file in the example below.
 
 ```bash
 $ bblfsh-sdk init mylang alpine
@@ -54,6 +56,10 @@ creating file "Dockerfile.tpl"
 creating file "LICENSE"
 managed file "README.md" has changed, discarding changes
 ```
+
+Note that this adds a pre-commit [git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks),
+which will verify these files are up to date before every commit. You can
+by-pass this with `git commit --no-verify`.
 
 ## Creating the native AST parser
 
