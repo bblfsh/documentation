@@ -64,23 +64,55 @@ by-pass this with `git commit --no-verify`.
 ## Creating the native AST parser
 
 The native AST parser should be in the directory `native` in the top level of the
-driver repository.
-
-TODO
+driver repository. This directory should contain all source code and support
+files (e.g. build system manifests) required to build it.
 
 ### AST parser
 
-TODO
-
-### Main loop
-
-TODO
+The core functionality to be implemented in the native side is the AST parser.
+This should get the contents of a file and return an AST representation. This
+AST representation should be what the AST parser outputs as is. The parser might
+be from the standard library of the language, a third party library, or a custom
+one (in that order of preference).
 
 ### JSON serialization
 
-TODO
+The driver should contain a JSON serializer which is able to serialize requests
+and responses (including the AST) into a single-line JSON.
+
+### Main loop
+
+When the native parser is executed, its entry point should execute this main loop.
+It should read requests from standard input, process them and write responses to
+standard output. A response for a request should always be written, even if
+processing fails.
+
+If the standard input stream is closed, the program should exit with code 0.
+If write to standard output fails, the program should exit with code 1.
+Here we illustrate its behaviour in Python-like syntax:
+
+```python
+while True:
+    line = read_line_from_stdin()
+    if stdin_is_closed():
+        exit(0)
+    try:
+        request = parse_json_request(line)
+        ast = parse_ast(request)
+        response = serialize_json_response(ast)
+    except:
+        write_to_stdout(fatal_response)
+        continue
+    try:
+        write_to_stdout(response)
+    except:
+        exit(1)
+```
 
 ## Creating the UAST conversion
+
+The conversion from AST to UAST is written in Go. The main file to be edited is
+`driver/normalizer/normalizer.go`.
 
 TODO
 
