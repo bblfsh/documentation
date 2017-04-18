@@ -18,6 +18,7 @@ go get -u github.com/bblfsh/sdk/...
 
 # build a driver + container
 git clone https://github.com/bblfsh/java-driver.git
+go get -v -t ./...
 make build
 ```
 
