@@ -22,7 +22,7 @@ $ go get github.com/bblfsh/sdk/...
 This will fetch the sdk repository to `$GOPATH/src/github.com/bblfsh/sdk` and
 will install the `bblfsh-sdk` CLI to `$GOPATH/bin/bblfsh-sdk`.
 
-## Bootstrapping a new driver
+## Creating a driver for a new language
 
 Let's say we're creating a driver for `mylang`. First step is initializing a git
 repository for the driver:
@@ -60,6 +60,21 @@ managed file "README.md" has changed, discarding changes
 Note that this adds a pre-commit [git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks),
 which will verify these files are up to date before every commit. You can
 by-pass this with `git commit --no-verify`.
+
+You can find the driver skeleton used here in the SDK source code:
+[`etc/sekeleton`](https://github.com/bblfsh/sdk/tree/master/etc/skeleton).
+
+## Updating SDK version
+
+Whenever a new version of the SDK is released, drivers might need updates.
+`bblfsh-sdk` can be used to perform some of this updates in managed files.
+For example, if a new SDK version is released with a new version of the README
+template, running `bblfsh-sdk update` will overwrite it.
+
+```bash
+$ bblfsh-sdk update
+managed file "README.md" has changed, discarding changes
+```
 
 ## Creating the native AST parser
 
