@@ -116,7 +116,10 @@ while True:
         ast = parse_ast(request)
         response = serialize_json_response(ast)
     except:
-        write_to_stdout(fatal_response)
+        try:
+            write_to_stdout(fatal_response)
+        except:
+            exit(1)
         continue
     try:
         write_to_stdout(response)

@@ -25,8 +25,8 @@ for the full documentation of the UAST structure and annotations.
 
 The **internal type** is the original node type. It is an arbitrary string and
 is language-dependent. For example, in Java it is the class of each node. It is
-meant to be used by annotation rules (e.g. *annotate nodes with internal type
-`*ast.File` with the role `PackageDeclaration`*).
+meant to be used by annotation rules (e.g. *annotate nodes with internal type*
+`*ast.File` *with the role* `PackageDeclaration`).
 
 ## Properties
 
