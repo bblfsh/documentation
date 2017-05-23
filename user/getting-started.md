@@ -30,7 +30,7 @@ In future, this will be replaced by `docker fetch` for the pre-build language dr
 Get latest commit hash and run
 
 ```
-cat 'native/src/main/java/bblfsh/Request.java' | docker run -it bblfsh/java-driver:dev-<commit[:6]> parse-native
+cat 'native/src/main/java/bblfsh/Request.java' | docker run -it bblfsh/java-driver:dev-<commit[:7]> parse-native
 ```
 
 to get UAST for the given `.java` file.
