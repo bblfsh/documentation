@@ -55,75 +55,10 @@ the babelfish SDK that uses a [manifest](https://godoc.org/github.com/bblfsh/sdk
 
 * **TODO: Add proto**
 
-### Parse AST
-
-This process **parses a file and returns its AST**. A request contains the content
-of the file being analyzed as a string.
-
-It must be implemented by the AST parser.
-
-**Request** message has the following structure:
-
-```
-{
-    "action": "parse-ast"
-    "content": <content> (string)
-}
-```
-
-**Response** structure is:
-
-```
-{
-    "status": <status> ("ok", "error", "fatal")
-    "errors": [ <error message>, <error message>, ... ]
-    "ast": <AST> (object)
-}
-```
-
-* **TODO: Add proto**
-
-If the parsing is successful, `status` is `ok`. If the file could be parsed
-(AST was generated) but had parsing errors, `status` is `error`. If the file
-could not be parsed at all (no AST), `status` is `fatal`.
-
-`errors` might contain any parsing errors found. If `status` is `ok`, then
-`errors` should be not set.
-
-Note that **binary files are not supported** by this process at the moment. If we
-want to add support for [Piet](http://www.dangermouse.net/esoteric/piet.html) in
-the future, we will add a binary content field.
-
-Check the [protocol package](https://godoc.org/github.com/bblfsh/sdk/protocol)
-godoc for further details.
-
-#### Example
-
-```
-[request (pretty printed)]
-{
-    "action": "parse-ast",
-    "content": "#!/bin/bash\nexec foo\n"
-}
-[response (pretty printed)]
-{
-    "driver": "bash:1.0",
-    "ast": {
-        "name": "script",
-        "children": [
-            { "name": "shebang", "bin": "/bin/bash" },
-            { "name": "statement", "bin": "exec",
-              "args": [ { "name": "string", "content": "foo" } ]
-              }
-        ]
-    }
-}
-```
-
 ### Parse UAST
 
-Equal to the *parse AST* process, but for UAST. It must be implemented by the
-UAST converter.
+This process **parses a file and returns its UAST**. A request contains the content
+of the file being analyzed as a string.
 
 **Request:**
 
@@ -144,7 +79,41 @@ UAST converter.
 }
 ```
 
+If the parsing is successful, `status` is `ok`. If the file could be parsed
+(AST was generated) but had parsing errors, `status` is `error`. If the file
+could not be parsed at all (no AST), `status` is `fatal`.
+
+`errors` might contain any parsing errors found. If `status` is `ok`, then
+`errors` should be not set.
+
+Note that **binary files are not supported** by this process at the moment. If we
+want to add support for [Piet](http://www.dangermouse.net/esoteric/piet.html) in
+the future, we will add a binary content field.
+
 Check the [protocol package](https://godoc.org/github.com/bblfsh/sdk/protocol)
 godoc for further details.
 
 * **TODO: Add proto**
+
+#### Example
+
+```
+[request (pretty printed)]
+{
+    "action": "parse-uast",
+    "content": "#!/bin/bash\nexec foo\n"
+}
+[response (pretty printed)]
+{
+    "status": "ok",
+    "uast": {
+        "InternalType": "script",
+        "Children": [
+            { "InternalType": "shebang", "Token": "/bin/bash" },
+            { "InternalType": "statement", "Token": "exec",
+              "Children": [ { "InternalType": "string", "Token": "foo" } ]
+            }
+        ]
+    }
+}
+```
