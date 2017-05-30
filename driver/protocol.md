@@ -5,7 +5,7 @@
 
 Standard input and output is used as transport. This applies both to the
 communication between **server and driver** as well as the internal communication
-in the driver **UAST converter and AST parser**.
+in the driver between **UAST normalizer and AST parser**.
 
 The server can terminate the process cleanly by closing the standard input pipe.
 Closing the pipe while there is a pending response not read from standard output
@@ -31,7 +31,7 @@ sequenceDiagram
 ## Encoding
 
 Server-driver communication uses **protobuf 3** for message encoding. In the
-driver side, this is implemented in the UAST converter in Go, using the
+driver side, this is implemented in the UAST normalizer in Go, using the
 babelfish SDK.
 
 * **TODO: Add proto**
