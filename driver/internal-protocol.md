@@ -2,7 +2,7 @@
 # Internal Driver Protocol
 
 The **internal driver protocol** is used to communicate between the native AST
-parser and the UAST converter inside a driver.
+parser and the UAST normalizer inside a driver.
 
 ## Transport
 
@@ -11,7 +11,7 @@ It follows the same rules as the [driver protocol](../driver/protocol.md#transpo
 
 ## Encoding
 
-Inside the driver, internal communication between the UAST converter (Go) and
+Inside the driver, internal communication between the UAST normalizer (Go) and
 the AST parser (native) uses JSON. Each message is encoded as a single-line
 JSON, ending with a new line.
 

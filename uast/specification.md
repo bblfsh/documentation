@@ -67,10 +67,10 @@ It is a 0-based index.
 **Col** is the column number in the original source code, relative to a line.
 It is a 1-based index.
 
-A position `(0, 0, 0)` means that position is not available. Native AST parsers
+A position `(0, 0, 0)` means that position is not available. AST parsers
 MUST provide, at least, offset or line+col for positions. The UAST normalization
 process includes computing offset from line+col or line+col from offset, in cases
-where native AST parser does not provide both. So it is guaranteed that nodes in
+where AST parser does not provide both. So it is guaranteed that nodes in
 a UAST either have no position attached or they have a position with valid
 offset, line and col.
 
@@ -159,7 +159,7 @@ or the `Expression` role for others (e.g. Scala).
 
 ## Annotation Rules
 
-Each driver normalized defines a set of **annotation rules**. These rules define
+Each driver normalizer defines a set of **annotation rules**. These rules define
 how to add roles to nodes.
 
 For example, in the Java normalizer, `ImportPath` role is added to nodes that

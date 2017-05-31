@@ -1,7 +1,7 @@
 
 # Getting Started
 
-Right now, 2017Q2 the easiest way to get started is to use local driver development environment: manually clone and build a container for a language driver with an SDK, then run it through Docker in order to get source -> UAST.
+Right now (2017Q2) the easiest way to get started is to use local driver development environment: manually clone and build a container for a language driver with an SDK, then run it through Docker in order to get source -> UAST.
 
 i.e for a [Python driver](https://github.com/bblfsh/python-driver) :
 

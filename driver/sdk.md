@@ -76,9 +76,9 @@ $ bblfsh-sdk update
 managed file "README.md" has changed, discarding changes
 ```
 
-## Creating the native AST parser
+## Creating the AST parser
 
-The native AST parser should be in the directory `native` in the top level of the
+The AST parser should be in the directory `native` in the top level of the
 driver repository. This directory should contain all source code and support
 files (e.g. build system manifests) required to build it.
 
@@ -97,7 +97,7 @@ and responses (including the AST) into a single-line JSON.
 
 ### Main loop
 
-When the native parser is executed, its entry point should execute this main loop.
+When the parser is executed, its entry point should execute this main loop.
 It should read requests from standard input, process them and write responses to
 standard output. A response for a request should always be written, even if
 processing fails.
@@ -127,9 +127,9 @@ while True:
         exit(1)
 ```
 
-## Creating the UAST conversion
+## Normalizing the AST
 
-The conversion from AST to UAST is written in Go. The main file to be edited is
+The AST to UAST normalization is written in Go. The main file to be edited is
 `driver/normalizer/normalizer.go`.
 
 TODO
