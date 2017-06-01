@@ -19,7 +19,10 @@ type Node struct {
 ```
 
 **Check out the godoc for the SDK [UAST package](https://godoc.org/github.com/bblfsh/sdk/uast)**
-for the full documentation of the UAST structure and annotations.
+for the full documentation of the UAST structure and annotations in Go.
+
+**For other languages, check the [UAST protobuf definition](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto).**
+
 
 ## Internal Type
 
