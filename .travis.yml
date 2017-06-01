@@ -1,4 +1,7 @@
 language: node_js
+cache:
+  directories:
+  - $HOME/.gitbook
 install:
   - npm install -g gitbook-cli
 script:
