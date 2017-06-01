@@ -3,6 +3,7 @@
 
 * [Architecture](architecture.md)
 * [Roadmap](roadmap.md)
+* [Join the Community](community.md)
 
 ## Using Babelfish
 
