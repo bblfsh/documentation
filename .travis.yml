@@ -1,4 +1,6 @@
 language: node_js
+services:
+  - docker
 cache:
   directories:
   - $HOME/.gitbook
@@ -6,3 +8,4 @@ install:
   - npm install -g gitbook-cli
 script:
   - make build
+  - docker run -t -v $(pwd)/_book:/site 18fgsa/html-proofer /site
