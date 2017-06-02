@@ -1,4 +1,4 @@
-<img src="https://avatars2.githubusercontent.com/u/25795418?v=3&s=200f" align="right" width="200px" height="200px" />
+<img src="https://avatars2.githubusercontent.com/u/25795418?v=3&s=200f" align="right" width="200px" height="200px" alt="Babelfish logo" />
 
 # Babelfish - universal code parser
 
