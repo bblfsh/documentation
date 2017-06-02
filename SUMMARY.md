@@ -2,6 +2,7 @@
 # Summary
 
 * [Architecture](architecture.md)
+* [Roadmap](roadmap.md)
 
 ## Using Babelfish
 
