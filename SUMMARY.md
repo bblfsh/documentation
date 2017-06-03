@@ -2,6 +2,7 @@
 # Summary
 
 * [Architecture](architecture.md)
+* [Languages](languages.md)
 * [Roadmap](roadmap.md)
 * [Join the Community](community.md)
 
