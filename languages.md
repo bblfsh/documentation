@@ -1,8 +1,8 @@
 
 # Supported Languages
 
-| Language    | Key        | Status | Version | GitHub    | Docker |
-|-------------|------------|--------|---------|-----------|--------|
+| Language    | Key        | Status | Version | GitHub    | Container |
+|-------------|------------|--------|---------|-----------|-----------|
 | Python      | python     | beta   | v0.1.0  |[✓](https://github.com/bblfsh/python-driver) | [✓](https://hub.docker.com/r/bblfsh/python-driver/) |
 | Java        | java       | alpha  | v0.1.0  |[✓](https://github.com/bblfsh/java-driver) | [✓](https://hub.docker.com/r/bblfsh/python-driver/) |
 | Bash        | bash       | early  | ✖       | [✓](https://github.com/bblfsh/java-driver) | ✖ |
