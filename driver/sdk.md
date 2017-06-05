@@ -1,8 +1,7 @@
 # Babelfish SDK
 
-The [Babelfish SDK](https://github.com/bblfsh/sdk/) contains tools and libraries
-required to create a Babelfish driver and some APIs to analyze or transform
-the generated UAST.
+The [Babelfish SDK](https://github.com/bblfsh/sdk/) contains the tools and libraries
+required to create a Babelfish driver for a programming language.
 
 ## Preparations
 
