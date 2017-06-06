@@ -148,8 +148,6 @@ for real world examples of this API in action.
 [//]: # If you find a node in the native AST that you're unsure how to map into the UAST
 [//]: # the first step is to check how other languages map the same or similar nodes.  For
 [//]: # this you can check this Annotation table FIXME link when available that show how
->>>>>>> a4012cd... General fixes and improvements, server protocol page
->>>>>>> General fixes and improvements, server protocol page
 [//]: # different languages have mapped their internal roles to the UAST ones.
 
 You can also ask any doubt on the project's public [Babelfish Slack
