@@ -208,8 +208,7 @@ to have any needed dependency installed on your environment to run the tests.
 
 The conversion from AST to UAST is written in Go. The main files to be edited are
 `driver/normalizer/normalizer.go` and `driver/normalizer/parser.go`. The details
-are explained in the [annotations
-section](annotations.md).
+are explained in the [annotations section](annotations.md).
 
 ### Updating the Makefile with the build instructions
 
