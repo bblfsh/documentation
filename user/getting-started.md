@@ -48,16 +48,16 @@ $ docker run -v $(pwd):/work --link bblfsh bblfsh/server bblfsh client --address
 First request might timeout, since the server has to fetch the required driver
 before responding. If it does, just retry.
 
-#### Running standalone
+### Running standalone
 
-> **[warning] Server only runs on Linux!**
+> **[warning] Standalone server only runs on Linux!**
 >
 > Babelfish Server relies on Linux containers to run language drivers. Windows
 > and macOS users are advised to [use Docker](#running-with-docker-recommended).
 
 Running Babelfish standalone requires getting the `bblfsh` binary. Currently
-this requires a working setup of [Go](https://golang.org/). You can get it with
-the following command:
+this requires a working setup of [Go](https://golang.org/doc/install). You can
+get it with the following command:
 
 ```bash
 $ go get -u github.com/bblfsh/server/...
@@ -95,13 +95,13 @@ use them for various purposes:
 
 Running Babelfish Tools standalone requires getting the `bblfsh-tools`
 binary. Currently this requires a working setup of
-[Go](https://golang.org/). You can get it with the following command:
+[Go](https://golang.org/doc/install). You can get it with the following command:
 
 ```bash
 $ go get -u github.com/bblfsh/tools/...
 ```
 
-## Usage
+### Usage
 
 Babelfish Tools provides a set of tools built on top of Babelfish, to
 see which tools are supported, run:
