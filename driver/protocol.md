@@ -34,14 +34,19 @@ Server-driver communication uses **protobuf 3** for message encoding. In the
 driver side, this is implemented in the UAST normalizer in Go, using the
 babelfish SDK.
 
-* **TODO: Add proto**
+You can see the messages used for the **protobuf 3** exchange on the [proto file
+for the SDK](https://github.com/bblfsh/sdk/blob/master/protocol/generated.proto).
+It uses some types that are defined in [this other proto file from the UAST
+submodule](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto).
 
 ## Processes
 
 ### Info
 
 Info returns information about the driver. There is a general implementation in
-the babelfish SDK that uses a [manifest](https://godoc.org/github.com/bblfsh/sdk/manifest#Manifest) to provide this information.
+the babelfish SDK that uses a
+[manifest](https://godoc.org/github.com/bblfsh/sdk/manifest#Manifest) to provide
+this information.
 
 **Request** message has the following structure:
 
@@ -92,8 +97,6 @@ the future, we will add a binary content field.
 
 Check the [protocol package](https://godoc.org/github.com/bblfsh/sdk/protocol)
 godoc for further details.
-
-* **TODO: Add proto**
 
 #### Example
 

@@ -9,7 +9,7 @@
 ## Using Babelfish
 
 * [Getting Started](user/getting-started.md)
-* [Babelfish Protocol](user/protocol.md)
+* [Babelfish Protocol](user/server-protocol.md)
 
 ## UAST
 
