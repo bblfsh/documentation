@@ -46,12 +46,12 @@ graph LR
 
 The server is the higher level component of the architecture managing
 client requests (done via [gRPC](http://www.grpc.io) using [a simple 
-protocol](https://doc.bblf.sh/driver/protocol.html)) with the containerized
+protocol](driver/protocol.md)) with the containerized
 language drivers which it orchestate to keep warm instances, pools and handing
 any other orchestation needs.
 
 The server itself it's also designer to run inside a container allowing an [easy
-deployment](https://doc.bblf.sh/user/getting-started.html#running-with-docker-recommended)
+deployment](user/getting-started.html#running-with-docker-recommended)
 and operation.
 
 ### Driver Runtime
