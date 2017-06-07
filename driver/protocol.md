@@ -30,11 +30,11 @@ sequenceDiagram
 
 ## Encoding
 
-Server-driver communication uses **protobuf 3** for message encoding. In the
+Server-driver communication uses `JSON` representation for message encoding. In the
 driver side, this is implemented in the UAST normalizer in Go, using the
 babelfish SDK.
 
-You can see the messages used for the **protobuf 3** exchange on the [proto file
+You can see the messages used for the exchange on the [proto file
 for the SDK](https://github.com/bblfsh/sdk/blob/master/protocol/generated.proto).
 It uses some types that are defined in [this other proto file from the UAST
 submodule](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto).
