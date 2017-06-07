@@ -20,7 +20,7 @@ graph LR
 ## Language Drivers
 
 A language driver is a program, containerized with Docker, that takes file parsing
-requests with source code and reply with an [UAST](./uast/specification.md)
+requests with source code and replies with an [UAST](./uast/specification.md)
 representation of the provided source code or an error message.
 
 Our implementations of language drivers are composed of two pieces: an AST parser,
