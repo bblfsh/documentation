@@ -23,22 +23,22 @@ A language driver is a program, containerized with Docker, that takes file parsi
 requests with source code and replies with an [UAST](./uast/specification.md)
 representation of the provided source code or an error message.
 
-Our implementations of language drivers are composed of two pieces: an AST parser,
+Our implementations of language drivers are composed of two pieces: a code parser,
 that can be written in any language (usually the source language) and an AST to
-UAST normalizer written in Go. In the case of AST parsers written in Go or other
-languages producing linkable object files or shared library, AST parser and UAST
+UAST normalizer written in Go. In the case of code parsers written in Go or other
+languages producing linkable object files or shared library, the code parser and UAST
 normalizer might be combined by dynamic or static linking without a separate
 runnable component.
 
 The entry point of the container is the Go UAST normalizer, which communicates
-internally with the language-specific AST parser. This is how the Python driver
+internally with the language-specific code parser. This is how the Python driver
 looks like:
 
 ```mermaid
 graph LR
     Server-- stdin/stdout<br/>gRPC -->UAST
     subgraph Container
-        UAST["UAST Normalizer<br/>(Go)"]-- stdin/stdout<br/>JSON -->AST["AST Parser<br/>(Python)"]
+        UAST["UAST Normalizer<br/>(Go)"]-- stdin/stdout<br/>JSON -->AST["Code Parser<br/>(Python)"]
     end
 ```
 
