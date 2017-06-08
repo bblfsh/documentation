@@ -1,23 +1,18 @@
-
 # Getting Started
 
-First thing you need to use Babelfish is running the Babelfish Server.
+The first thing you need to use Babelfish is to setup and run the Babelfish
+Server. Once the server is running, you can use the Babelfish Tools to get some
+information from your code.
 
-## Prerequisites
+## Babelfish server
 
-### Linux
+### Prerequisites
 
-- [Docker](https://www.docker.com/community-edition) (optional)
+- Linux: [Docker](https://www.docker.com/community-edition) (optional)
+- macOS: [Docker for Mac](https://www.docker.com/docker-mac)
+- Windows: [Docker for Windows](https://www.docker.com/docker-windows)
 
-### macOS
-
-- [Docker for Mac](https://www.docker.com/docker-mac)
-
-### Windows
-
-- [Docker for Windows](https://www.docker.com/docker-windows)
-
-## Running with Docker (recommended)
+### Running with Docker (recommended)
 
 The easiest way to run the server is using Docker. You can start it with the
 following command:
@@ -55,14 +50,14 @@ before responding. If it does, just retry.
 
 ### Running standalone
 
-> **[warning] Server only runs on Linux!**
+> **[warning] Standalone server only runs on Linux!**
 >
 > Babelfish Server relies on Linux containers to run language drivers. Windows
 > and macOS users are advised to [use Docker](#running-with-docker-recommended).
 
 Running Babelfish standalone requires getting the `bblfsh` binary. Currently
-this requires a working setup of [Go](https://golang.org/). You can get it with
-the following command:
+this requires a working setup of [Go](https://golang.org/doc/install). You can
+get it with the following command:
 
 ```bash
 $ go get -u github.com/bblfsh/server/...
@@ -84,6 +79,46 @@ The client can be run on any OS:
 $ echo "import foo" > sample.py
 $ bblfsh client sample.py
 ```
+
+## Babelfish Tools
+
+Babelfish Tols provide some language analysis tools on top of Babelfish. You can
+use them for various purposes:
+
+- Check that the server is working properly
+- Get some data from the source code
+- See how a language analysis tool is implemented, as a basis for your own
+  tools.
+
+
+### Setup
+
+Running Babelfish Tools standalone requires getting the `bblfsh-tools`
+binary. Currently this requires a working setup of
+[Go](https://golang.org/doc/install). You can get it with the following command:
+
+```bash
+$ go get -u github.com/bblfsh/tools/...
+```
+
+### Usage
+
+Babelfish Tools provides a set of tools built on top of Babelfish, to
+see which tools are supported, run:
+
+`bblfsh-tools --help`
+
+There's an special tool, the `dummy` tool, which should let you know if the
+connection with the server succeeded:
+
+`bblfsh-tools dummy path/to/source/code`
+
+If the server is not in the default location, use the `address` parameter:
+
+`bblfsh-tools dummy --address location:port path/to/source/code`
+
+Once the connection with the server is working fine, you can use any other
+available tool in a similar way.
 
 ## FAQ
 
