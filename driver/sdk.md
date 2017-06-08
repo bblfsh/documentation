@@ -175,8 +175,7 @@ versus the development and maintainability effort.
 
 
 The fields in the JSON requests and responses are detailed on the [internal
-protocol](internal-protocol.md)
-page.
+protocol](internal-protocol.md) page.
 
 *Note:* When extracting the native AST you should try to keep as much information
 as possible following the guidelines explained in the ["From Code to

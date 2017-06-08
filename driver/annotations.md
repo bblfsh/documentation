@@ -89,7 +89,7 @@ Where uast.Node are the nodes that will be iterated during the annotation
 process. You could define your own predicate functions but the `ann.go` file
 has already defined the ones that you'll probably need most of the time:
 
-- `Any()`: always returns true. It's usually used to match the first node in 
+- `Any()`: Always returns true. It's usually used to match the first node in 
   the native AST and add rules from there.
 
 - `Not/And/Or(predicate)`: Applies the expected boolean operations to 
