@@ -10,6 +10,7 @@
 
 * [Getting Started](user/getting-started.md)
 * [Babelfish Protocol](user/server-protocol.md)
+* [gRPC usage example](user/server-grpc-example.md)
 
 ## UAST
 
