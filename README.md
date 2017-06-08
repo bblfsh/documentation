@@ -4,6 +4,18 @@
 
 **Babelfish is a self-hosted server for source code parsing.** Babelfish can parse any file, in any language, extract an ASTs (Abstract Syntax Tree) from it, and convert it to a [**UAST**](./uast/specification.md) (Universal Abstract Syntax Tree).
 
+## Motivation and Scope
+
+Babelfish was born as a solution for massive code analysis. The goal: analyzing
+all source code from every repository in the world, for every revision ever.
+
+Current **scope is parsing single files in any programming language**
+and producing a universal abstract syntax tree. This helps us to run it at scale.
+
+This scope might expand in the future to full project analysis, where source code
+can be analyzed with its full context, an not just per-file. Once we get closer to
+our current scope, we may consider starting such effort.
+
 ## Use Cases
 
 Some of the use cases that we want to support with AST are:
