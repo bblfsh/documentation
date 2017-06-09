@@ -1,8 +1,9 @@
 # Example usage of the gRPC interface
 
-On the [previous section](server-protocol.md) we checked
-the format of the messages exchanged using the gRPC protocol. Here, we're
-going to put that knowledge into practice with a simple example usage of the Babelfish server using that protocol.
+On the [previous section](server-protocol.md) we checked the format of the
+messages exchanged using the gRPC protocol. Here, we're going to put that
+knowledge into practice with a simple example usage of the Babelfish server using
+that protocol.
 
 This example is done in Go but you could use the gRPC interface using [any
 programming language that supports this protocol](http://www.grpc.io/about#osp).
@@ -15,10 +16,10 @@ format](https://developers.google.com/protocol-buffers/docs/proto) defines the
 structures and methods used for protocol buffer data. In the case of the Babelfish
 server protocol, you need to get [this `.proto`
 file](https://github.com/bblfsh/sdk/blob/master/protocol/generated.proto) from the
-SDK. Then you have to compile it to a source file with the required structures
-and methods. How you generate this module is language-dependent but usually it
-involves installing gRPC using your language package management tool (pip, cargo,
-npm, dub, etc) and then use one of the provided tools.
+SDK. Then you have to compile it to a source file with the required structures and
+methods. How you generate this module is language-dependent but usually it
+involves installing gRPC using your language package management tool (if it has a
+package for it) and then use one of the provided tools.
 
 For this example, we'll use the [GogoProtobuf
 implementation](https://github.com/gogo/protobuf) for the Go language. This
@@ -88,7 +89,7 @@ The most important member of the `ParseUASTResponse` object is undoubtly
 detailed in the previous page](server-protocol.md#Nodes). This first node
 returned would be the root node of the UAST, and you typically would iterate over
 the node children (contained in the aptly named `children` field) typically using
-the [visitor pattern](https://en.wikipedia.org/wiki/Visitor_pattern) and 
+[a visitor](https://en.wikipedia.org/wiki/Visitor_pattern) and 
 reading the `token`s and `roles` in the tree to do your tool.
 
 For demonstration purposes, we'll just write a simple function that iterates

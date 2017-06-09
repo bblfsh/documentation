@@ -1,9 +1,11 @@
 # Babelfish Protocol
 
 The Babelfish client-server protocol uses [gRPC](http://www.grpc.io) for method
-selection (with the inherent Protobuf3 used for message exchanges). You can read
-[the server](https://github.com/bblfsh/sdk/blob/master/protocol/generated.proto)
-and [SDK](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto) `.proto`
+selection (with the [Protocol
+Buffers](https://developers.google.com/protocol-buffers/) format used for message
+serialization). You can read [the
+server](https://github.com/bblfsh/sdk/blob/master/protocol/generated.proto) and
+[SDK](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto) `.proto`
 files to see the format description of the messages and types involved, but we'll
 provide here a simple definition in JSON-like format. On the [next
 page](server-grpc-example.md) we'll see a demo of how this comes together in
@@ -11,10 +13,10 @@ practice with some code.
 
 ## ParseUASTRequest
 
-Issued by the client to request that a source code file must be parsed to 
-an UAST tree. The client must provide the code in the `content` field, the
-programming language in the `language` field (which obviously must be one
-of the languages currently supported and the `filename`
+Issued by the client to request that a source code file must be parsed to an UAST
+tree. The client must provide the code in the `content` field, the programming
+language in the `language` field (which must be one of the [languages currently
+supported](../languages.md)) or empty to enable auto-detection) and the `filename`
 field with the name of the file containing the source code.
 
 Example:
