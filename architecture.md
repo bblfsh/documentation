@@ -8,14 +8,7 @@ parsing services for one language. It can be written in any language and is
 packaged as a standard Docker container. These containers are executed by the
 babelfish **server** in a very specific runtime.
 
-```mermaid
-graph LR
-    Client-- TCP<br/>gRPC -->Server
-    Server-- stdin/stdout<br/>gRPC -->Driver
-    subgraph Container
-        Driver
-    end
-```
+![Architecture Overview](./images/architecture-overview.png)
 
 ## Language Drivers
 
@@ -31,16 +24,7 @@ normalizer might be combined by dynamic or static linking without a separate
 runnable component.
 
 The entry point of the container is the Go UAST normalizer, which communicates
-internally with the language-specific code parser. This is how the Python driver
-looks like:
-
-```mermaid
-graph LR
-    Server-- stdin/stdout<br/>gRPC -->UAST
-    subgraph Container
-        UAST["UAST Normalizer<br/>(Go)"]-- stdin/stdout<br/>JSON -->AST["Code Parser<br/>(Python)"]
-    end
-```
+internally with the language-specific code parser.
 
 ## Server
 
