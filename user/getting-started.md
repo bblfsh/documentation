@@ -55,15 +55,7 @@ before responding. If it does, just retry.
 > Babelfish Server relies on Linux containers to run language drivers. Windows
 > and macOS users are advised to [use Docker](#running-with-docker-recommended).
 
-Running Babelfish standalone requires getting the `bblfsh` binary. Currently
-this requires a working setup of [Go](https://golang.org/doc/install). You can
-get it with the following command:
-
-```bash
-$ go get -u github.com/bblfsh/server/...
-```
-
-This will install the `bblfsh` binary into `$GOPATH/bin`.
+[Download the bblfsh binary](https://github.com/bblfsh/server/releases).
 
 Run the server:
 
