@@ -28,3 +28,9 @@ to the repository of the relevant component at the [bblfsh organization](https:/
 
 If you want to request a new feature, feel free to open it as an issue at the
 relevant GitHub repository.
+
+For deeper changes we use the [Babelfish Improvement Proposals](proposals/README.md).
+If the feature you want to request is quite complex
+and could benefit from some deeper discussion,
+consider initiating a BIP procedure,
+as described in [BIP1](proposals/bip-001.md#workflow).

@@ -5,6 +5,7 @@
 * [Languages](languages.md)
 * [Roadmap](roadmap.md)
 * [Join the Community](community.md)
+* [Babelfish Improvement Proposals](proposals/README.md)
 
 ## Using Babelfish
 
