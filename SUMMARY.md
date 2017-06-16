@@ -24,3 +24,10 @@
 * [Adding UAST Annotations](driver/annotations.md)
 * [Driver Protocol](driver/protocol.md)
 * [Internal Protocol](driver/internal-protocol.md)
+
+## BIP Index
+
+* [Babelfish Improvement Proposals](proposals/README.md)
+
+* [BIP0: Template](proposals/bip-000.md)
+* [BIP1: Purpose and Guidelines](proposals/bip-001.md)
