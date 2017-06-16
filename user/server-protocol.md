@@ -66,3 +66,4 @@ the next section.
     "end_position": 20,
     "roles": ["role1", "role2", ...]
 }
+```
