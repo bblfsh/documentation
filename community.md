@@ -22,7 +22,11 @@ You can start contributing in many ways
 ## Reporting bugs
 
 Bugs should be reported through GitHub Issues. When you find a bug, report it
-to the repository of the relevant component at the [bblfsh organization](https://github.com/bblfsh/)
+to the repository of the relevant component at the [bblfsh organization](https://github.com/bblfsh/).
+If in doubt, report the bug to the [sdk repo](https://github.com/bblfsh/sdk)
+with as much information as you have
+(including the languages of the code you're parsing),
+we can move it to whatever repo is more appropriate after reviewing it.
 
 ## Feature requests
 
