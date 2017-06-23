@@ -3,8 +3,8 @@
 
 | Language    | Key        | Status | Version | GitHub    | Container |
 |-------------|------------|--------|---------|-----------|-----------|
-| Python      | python     | beta   | v0.1.0  |[✓](https://github.com/bblfsh/python-driver) | [✓](https://hub.docker.com/r/bblfsh/python-driver/) |
-| Java        | java       | alpha  | v0.1.0  |[✓](https://github.com/bblfsh/java-driver) | [✓](https://hub.docker.com/r/bblfsh/python-driver/) |
+| Python      | python     | beta   | v0.3.0  |[✓](https://github.com/bblfsh/python-driver) | [✓](https://hub.docker.com/r/bblfsh/python-driver/) |
+| Java        | java       | alpha  | v0.2.0  |[✓](https://github.com/bblfsh/java-driver) | [✓](https://hub.docker.com/r/bblfsh/python-driver/) |
 | Bash        | bash       | early  | ✖       | [✓](https://github.com/bblfsh/bash-driver) | ✖ |
 | Clojure     | clojure    | early  | ✖       | [✓](https://github.com/bblfsh/clojure-driver) | ✖ |
 | Elixir      | elixir     | early  | ✖       | [✓](https://github.com/bblfsh/elixir-driver) | ✖ |
