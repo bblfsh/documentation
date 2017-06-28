@@ -121,6 +121,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/bblfsh/sdk/protocol"
@@ -135,6 +136,7 @@ func main() {
 	if err != nil {
 		os.Exit(1)
 	}
+
 	client := protocol.NewProtocolServiceClient(conn)
 	req := &protocol.ParseUASTRequest{Filename: "hello.py",
 		Content:  "print('hello world!')",
@@ -144,6 +146,12 @@ func main() {
 	if err != nil {
 		os.Exit(1)
 	}
+
+	if resp.Status != protocol.Ok {
+		fmt.Println("Parsing errors:", strings.Join(resp.Errors))
+		os.Exit(1)
+	}
+
 	printTokens(resp.UAST)
 }
 
