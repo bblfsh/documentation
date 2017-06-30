@@ -48,6 +48,23 @@ $ docker run -v $(pwd):/work --link bblfsh bblfsh/server bblfsh client --address
 First request might timeout, since the server has to fetch the required driver
 before responding. If it does, just retry.
 
+As you've probably already seen,
+the logging level is set to `debug` by default,
+which is a good default for current project status,
+but it may be cumbersome.
+If the output is too verbose,
+it can be adjusted with the `log-level` parameter:
+
+```bash
+$ docker run --privileged -p 9432:9432 --name bblfsh bblfsh/server bblfsh server --log-level info
+```
+
+Now you should only see log entries of `info` level and above:
+
+```
+time="2017-06-01T09:12:22Z" level=info msg="starting gRPC server"
+```
+
 ### Running standalone
 
 > **[warning] Standalone server only runs on Linux!**
