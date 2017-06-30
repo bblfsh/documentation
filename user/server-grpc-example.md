@@ -148,7 +148,7 @@ func main() {
 	}
 
 	if resp.Status != protocol.Ok {
-		fmt.Println("Parsing errors:", strings.Join(resp.Errors))
+		fmt.Println("Parsing errors:", strings.Join(resp.Errors, ", "))
 		os.Exit(1)
 	}
 
