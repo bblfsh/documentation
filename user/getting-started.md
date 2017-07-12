@@ -24,11 +24,11 @@ $ docker run --privileged -p 9432:9432 --name bblfsh bblfsh/server
 If everything worked, it should output something like this:
 
 ```
-time="2017-06-01T09:12:22Z" level=debug msg="binding to 0.0.0.0:9432" 
-time="2017-06-01T09:12:22Z" level=debug msg="initializing runtime at /tmp/bblfsh-runtime" 
-time="2017-06-01T09:12:22Z" level=debug msg="starting server" 
-time="2017-06-01T09:12:22Z" level=debug msg="registering gRPC service" 
-time="2017-06-01T09:12:22Z" level=info msg="starting gRPC server" 
+time="2017-06-01T09:12:22Z" level=debug msg="binding to 0.0.0.0:9432"
+time="2017-06-01T09:12:22Z" level=debug msg="initializing runtime at /tmp/bblfsh-runtime"
+time="2017-06-01T09:12:22Z" level=debug msg="starting server"
+time="2017-06-01T09:12:22Z" level=debug msg="registering gRPC service"
+time="2017-06-01T09:12:22Z" level=info msg="starting gRPC server"
 ```
 
 The only mandatory flag is [`--privileged`](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities).
@@ -39,7 +39,7 @@ Exposing the Babelfish port (`9432`) with `-p 9432:9432:` makes it easier to
 connect to it from outside the container.
 
 Now you can test that it works by submitting a file for parsing:
- 
+
 ```
 $ echo "import foo" > sample.py
 $ docker run -v $(pwd):/work --link bblfsh bblfsh/server bblfsh client --address=bblfsh:9432 /work/sample.py
@@ -89,6 +89,37 @@ $ echo "import foo" > sample.py
 $ bblfsh client sample.py
 ```
 
+### Overriding driver images
+
+In case you need that the Babelfish server to run different driver images than the default ones, you can configure what images it should use through the environment variable `BBLFSH_DRIVER_IMAGES`. The command `bblfsh server ` looks for this variable which must look like:
+
+    BBLFSH_DRIVER_IMAGES="language=docker-registry:namespace/repository:tag;language2=docker-registry:namespace/repository:tag"
+
+So if you are running the server with a Docker container you could do something similar to:
+
+```
+$ docker run -e 'BBLFSH_DRIVER_IMAGES="python=docker-daemon:bblfsh/python:dev-96b24d3;java=docker-daemon:bblfsh/java-driver:latest"' --privileged -p 9432:9432 --name bblfsh bblfsh/server
+time="2017-07-12T14:11:13Z" level=debug msg="binding to 0.0.0.0:9432"
+time="2017-07-12T14:11:13Z" level=debug msg="initializing runtime at /tmp/bblfsh-runtime"
+time="2017-07-12T14:11:13Z" level=debug msg="Overriding image for "python: docker-daemon:bblfsh/python:dev-96b24d3"
+time="2017-07-12T14:11:13Z" level=debug msg="Overriding image for java: docker-daemon:bblfsh/java-driver:latest""
+time="2017-07-12T14:11:13Z" level=debug msg="starting server"
+time="2017-07-12T14:11:13Z" level=debug msg="registering gRPC service"
+time="2017-07-12T14:11:13Z" level=info msg="starting gRPC server"
+```
+Or if you prefer running it in standalone mode:
+
+```
+$ BBLFSH_DRIVER_IMAGES="python=docker-daemon:bblfsh/python:dev-96b24d3;java=docker-daemon:bblfsh/java-driver:latest" bblfsh server
+DEBU[0000] binding to 0.0.0.0:9432                      
+DEBU[0000] initializing runtime at /tmp/bblfsh-runtime  
+DEBU[0000] Overriding image for python: docker-daemon:bblfsh/python:dev-96b24d3
+DEBU[0000] Overriding image for java: docker-daemon:bblfsh/java-driver:latest
+DEBU[0000] starting server                              
+DEBU[0000] registering gRPC service                     
+INFO[0000] starting gRPC server
+```
+
 ## Babelfish Tools
 
 Babelfish Tols provide some language analysis tools on top of Babelfish. You can
@@ -133,15 +164,14 @@ available tool in a similar way.
 
 **I am getting GOPATH errors or the binary isn't found, what do I do?**
 
-Bash shell: add this to your ~/.bashrc 
+Bash shell: add this to your ~/.bashrc
 ```
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 ```
 
-Fish shell: add this to your ~/.config/fish/config.fish 
+Fish shell: add this to your ~/.config/fish/config.fish
 ```
 set -gx GOPATH $HOME/go
 set -U fish_user_paths $fish_user_paths $GOPATH/bin
 ```
-
