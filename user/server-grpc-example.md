@@ -45,27 +45,28 @@ Now we'll write a simple program that sends a request to get UAST of a simple
 package main
 
 import (
-    "fmt"
-    "os"
-    "time"
-    "context"
+	"context"
+	"fmt"
+	"os"
+	"time"
 
-    "google.golang.org/grpc"
-    "github.com/bblfsh/sdk/protocol"
-    "github.com/bblfsh/sdk/uast"
+	"github.com/bblfsh/sdk/protocol"
+	"github.com/bblfsh/sdk/uast"
+	"google.golang.org/grpc"
 )
 
 func main() {
-    // Connect to the running server
-    conn, err:= grpc.Dial("0.0.0.0:9432", grpc.WithTimeout(time.Second*2), 
-        grpc.WithInsecure())
-    if (err != nil) {
-        os.Exit(1)
-    }
-    client := protocol.NewProtocolServiceClient(conn)
-    req := &protocol.ParseRequest{Filename: "hello.py",
-                                      Content:  "print('hello world!')",
-                                      Language: "python",}
+	// Connect to the running server
+	conn, err := grpc.Dial("0.0.0.0:9432", grpc.WithTimeout(time.Second*2),
+		grpc.WithInsecure())
+	if err != nil {
+		os.Exit(1)
+	}
+	client := protocol.NewProtocolServiceClient(conn)
+	req := &protocol.ParseRequest{
+		Filename: "hello.py",
+		Content:  "print('hello world!')",
+		Language: "python"}
 }
 ```
 
@@ -138,7 +139,8 @@ func main() {
 	}
 
 	client := protocol.NewProtocolServiceClient(conn)
-	req := &protocol.ParseRequest{Filename: "hello.py",
+	req := &protocol.ParseRequest{
+		Filename: "hello.py",
 		Content:  "print('hello world!')",
 		Language: "python"}
 
