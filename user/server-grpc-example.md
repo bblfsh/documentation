@@ -63,7 +63,7 @@ func main() {
         os.Exit(1)
     }
     client := protocol.NewProtocolServiceClient(conn)
-    req := &protocol.ParseUASTRequest{Filename: "hello.py",
+    req := &protocol.ParseRequest{Filename: "hello.py",
                                       Content:  "print('hello world!')",
                                       Language: "python",}
 }
@@ -72,19 +72,19 @@ func main() {
 Now that we've created a request, we need to send it (previous code omitted):
 
 ```go
-    resp, err := client.ParseUAST(context.TODO(), req)
+    resp, err := client.Parse(context.TODO(), req)
 ```
 
 
 ## Reading and interpreting the response
 
-The code in the previous section returned a `ParseUASTResponse` object that will
-have the format of the [ParseUASTResponse](server-protocol.md#ParseUASTResponse)
+The code in the previous section returned a `ParseResponse` object that will
+have the format of the [ParseResponse](server-protocol.md#ParseResponse)
 as seen on the [server protocol](server-protocol.md) page. You should check
 the `status` (`Status` in the case of Go, since public members start with
 uppercase); only a value of `protocol.Status.OK` will indicate sucess.
 
-The most important member of the `ParseUASTResponse` object is undoubtly
+The most important member of the `ParseResponse` object is undoubtly
 `uast` (`UAST` in Go). This will contain a `Node` object which the [structure
 detailed in the previous page](server-protocol.md#Nodes). This first node
 returned would be the root node of the UAST, and you typically would iterate over
@@ -138,11 +138,11 @@ func main() {
 	}
 
 	client := protocol.NewProtocolServiceClient(conn)
-	req := &protocol.ParseUASTRequest{Filename: "hello.py",
+	req := &protocol.ParseRequest{Filename: "hello.py",
 		Content:  "print('hello world!')",
 		Language: "python"}
 
-	resp, err := client.ParseUAST(context.TODO(), req)
+	resp, err := client.Parse(context.TODO(), req)
 	if err != nil {
 		os.Exit(1)
 	}

@@ -150,7 +150,7 @@ while True:
 
     try:
         request = parse_json_request(line)
-        ast = parse_ast(request["content"])
+        ast = parse_code(request["content"])
         response = serialize_json_response(ast)
     except Exception, e:
         try:
