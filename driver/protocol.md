@@ -5,7 +5,7 @@
 
 Standard input and output is used as transport. This applies both to the
 communication between **server and driver** as well as the internal communication
-in the driver between **UAST normalizer and AST parser**.
+in the driver between **UAST normalizer and native parser**.
 
 The server can terminate the process cleanly by closing the standard input pipe.
 Closing the pipe while there is a pending response not read from standard output
@@ -60,7 +60,7 @@ this information.
 
 * **TODO: Add proto**
 
-### Parse UAST
+### Parse
 
 This process **parses a file and returns its UAST**. A request contains the content
 of the file being analyzed as a string.
@@ -69,7 +69,7 @@ of the file being analyzed as a string.
 
 ```
 {
-    "action": "parse-uast"
+    "action": "parse"
     "content": <content> (string)
 }
 ```
@@ -103,7 +103,7 @@ godoc for further details.
 ```
 [request (pretty printed)]
 {
-    "action": "parse-uast",
+    "action": "parse",
     "content": "#!/bin/bash\nexec foo\n"
 }
 [response (pretty printed)]

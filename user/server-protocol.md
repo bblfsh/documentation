@@ -11,7 +11,7 @@ provide here a simple definition in JSON-like format. On the [next
 page](server-grpc-example.md) we'll see a demo of how this comes together in
 practice with some code.
 
-## ParseUASTRequest
+## ParseRequest
 
 Issued by the client to request that a source code file must be parsed to an UAST
 tree. The client must provide the code in the `content` field, the programming
@@ -33,10 +33,10 @@ Example:
 depending on the demand which could mean that the first request for a language
 could take some time while it retrieves and starts the parsers.
 
-## ParseUASTResponse
+## ParseResponse
 
 This is the reply produced by the server as response to the above
-ParseUASTRequest. Example:
+ParseRequest. Example:
 
 ```json
 {

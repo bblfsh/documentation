@@ -45,46 +45,47 @@ Now we'll write a simple program that sends a request to get UAST of a simple
 package main
 
 import (
-    "fmt"
-    "os"
-    "time"
-    "context"
+	"context"
+	"fmt"
+	"os"
+	"time"
 
-    "google.golang.org/grpc"
-    "github.com/bblfsh/sdk/protocol"
-    "github.com/bblfsh/sdk/uast"
+	"github.com/bblfsh/sdk/protocol"
+	"github.com/bblfsh/sdk/uast"
+	"google.golang.org/grpc"
 )
 
 func main() {
-    // Connect to the running server
-    conn, err:= grpc.Dial("0.0.0.0:9432", grpc.WithTimeout(time.Second*2), 
-        grpc.WithInsecure())
-    if (err != nil) {
-        os.Exit(1)
-    }
-    client := protocol.NewProtocolServiceClient(conn)
-    req := &protocol.ParseUASTRequest{Filename: "hello.py",
-                                      Content:  "print('hello world!')",
-                                      Language: "python",}
+	// Connect to the running server
+	conn, err := grpc.Dial("0.0.0.0:9432", grpc.WithTimeout(time.Second*2),
+		grpc.WithInsecure())
+	if err != nil {
+		os.Exit(1)
+	}
+	client := protocol.NewProtocolServiceClient(conn)
+	req := &protocol.ParseRequest{
+		Filename: "hello.py",
+		Content:  "print('hello world!')",
+		Language: "python"}
 }
 ```
 
 Now that we've created a request, we need to send it (previous code omitted):
 
 ```go
-    resp, err := client.ParseUAST(context.TODO(), req)
+    resp, err := client.Parse(context.TODO(), req)
 ```
 
 
 ## Reading and interpreting the response
 
-The code in the previous section returned a `ParseUASTResponse` object that will
-have the format of the [ParseUASTResponse](server-protocol.md#ParseUASTResponse)
+The code in the previous section returned a `ParseResponse` object that will
+have the format of the [ParseResponse](server-protocol.md#ParseResponse)
 as seen on the [server protocol](server-protocol.md) page. You should check
 the `status` (`Status` in the case of Go, since public members start with
 uppercase); only a value of `protocol.Status.OK` will indicate sucess.
 
-The most important member of the `ParseUASTResponse` object is undoubtly
+The most important member of the `ParseResponse` object is undoubtly
 `uast` (`UAST` in Go). This will contain a `Node` object which the [structure
 detailed in the previous page](server-protocol.md#Nodes). This first node
 returned would be the root node of the UAST, and you typically would iterate over
@@ -138,11 +139,12 @@ func main() {
 	}
 
 	client := protocol.NewProtocolServiceClient(conn)
-	req := &protocol.ParseUASTRequest{Filename: "hello.py",
+	req := &protocol.ParseRequest{
+		Filename: "hello.py",
 		Content:  "print('hello world!')",
 		Language: "python"}
 
-	resp, err := client.ParseUAST(context.TODO(), req)
+	resp, err := client.Parse(context.TODO(), req)
 	if err != nil {
 		os.Exit(1)
 	}
