@@ -125,7 +125,7 @@ INFO[0000] starting gRPC server
 
 If a customized [gRPC](https://grpc.io) message size is needed, you can use the command flag option `--max-message-size`. By default  [gRPC](https://grpc.io) uses 4MB as the upper limit, but you can override it:
 
-    docker run --privileged -p 9432:9432 --name bblfsh bblfsh/server:  --max-message-size=100
+    docker run --privileged -p 9432:9432 --name bblfsh bblfsh/server --max-message-size=100
 
 or running the Babelfish Server in local:
 
