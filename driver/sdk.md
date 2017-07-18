@@ -30,34 +30,28 @@ will install the `bblfsh-sdk` CLI to `$GOPATH/bin/bblfsh-sdk`.
 
 ### Creating the driver's initial structure
 
-Let's say we're creating a driver for `mylang`. The first step is initializing a git
-repository for the driver:
+Let's say we're creating a driver for `mylang`.
+The driver should be bootstrapped with `bblfsh-sdk`.
+This will create a new git repo with some content required by every driver.
 
 ```bash
 $ cd $GOPATH/src/github.com/bblfsh
-$ git init mylang-driver
-$ cd mylang-driver
-```
-
-Now the driver should be bootstrapped with `bblfsh-sdk`. This will create some
-directories and files required by every driver. They will be overwritten if they
-exist, like the README.md file in the example below.
-
-```bash
 $ bblfsh-sdk init mylang alpine
 initializing driver "mylang", creating new manifest
-creating file "manifest.toml"
-creating file "Makefile"
-creating file "driver/main.go"
-creating file "driver/normalizer/normalizer.go"
-creating file ".git/hooks/pre-commit"
-creating file ".gitignore"
-creating file ".travis.yml"
-creating file "Dockerfile.build.tpl"
-creating file "driver/normalizer/normalizer_test.go"
-creating file "Dockerfile.tpl"
-creating file "LICENSE"
-managed file "README.md" has changed, discarding changes
+initializing new repo "mylang-driver"
+creating file "mylang-driver/manifest.toml"
+creating file "mylang-driver/.travis.yml"
+creating file "mylang-driver/Dockerfile.tpl"
+creating file "mylang-driver/README.md"
+creating file "mylang-driver/.git/hooks/pre-commit"
+creating file "mylang-driver/.gitignore"
+creating file "mylang-driver/Dockerfile.build.tpl"
+creating file "mylang-driver/LICENSE"
+creating file "mylang-driver/Makefile"
+creating file "mylang-driver/driver/main.go"
+creating file "mylang-driver/driver/normalizer/annotation.go"
+creating file "mylang-driver/driver/normalizer/parser.go"
+$ cd mylang-driver
 $ git add -A
 $ git commit -m 'initialize repository'
 ```
