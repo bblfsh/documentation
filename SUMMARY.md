@@ -31,3 +31,4 @@
 
 * [BIP0: Template](proposals/bip-000.md)
 * [BIP1: Purpose and Guidelines](proposals/bip-001.md)
+* [BIP2: Explicit Annotated status and completeness information](proposals/bip-002.md)
