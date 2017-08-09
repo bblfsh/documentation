@@ -99,9 +99,9 @@ So to get a specific version of an image from
 [Dockerhub](https://hub.docker.com/u/bblfsh/) the line would be:
 
 ```bash
-$ BBLFSH_DRIVER_IMAGES="python=docker://bblfsh/python:v0.4.2" docker run \
-  -e BBLFSH_DRIVER_IMAGES -v /var/run/docker.sock:/var/run/docker.sock \
-  --privileged -p 9432:9432 --name bblfsh bblfsh/server
+$ BBLFSH_DRIVER_IMAGES="python=docker://bblfsh/python-driver:v0.4.2" docker run \
+  -e BBLFSH_DRIVER_IMAGES --privileged -p 9432:9432 \
+  --name bblfsh bblfsh/server
 ```
 
 Instead, if you want the server to retrieve specific driver images from a local Docker
@@ -109,7 +109,7 @@ daemon (e.g. when testing a driver that you're developing) you could do somethin
 
 ```bash
 $
-BBLFSH_DRIVER_IMAGES="python=docker-daemon:bblfsh/python:dev-96b24d3;java=docker-daemon:bblfsh/java-driver:latest"
+BBLFSH_DRIVER_IMAGES="python=docker-daemon:bblfsh/python-driver:dev-96b24d3;java=docker-daemon:bblfsh/java-driver:dev-45c12h5"
 docker run -e BBLFSH_DRIVER_IMAGES -v
 /var/run/docker.sock:/var/run/docker.sock --privileged -p 9432:9432 --name bblfsh bblfsh/server
 time="2017-07-12T14:11:13Z" level=debug msg="binding to 0.0.0.0:9432"
