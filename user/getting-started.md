@@ -95,9 +95,19 @@ In case you need that the Babelfish server to run different driver images than t
 
     BBLFSH_DRIVER_IMAGES="language=docker-registry:namespace/repository:tag;language2=docker-registry:namespace/repository:tag"
 
-So if you are running the server with a Docker container you could do something similar to:
+So to get a specific version of an image from
+[Dockerhub](https://hub.docker.com/u/bblfsh/) the line would be:
 
+```bash
+$ BBLFSH_DRIVER_IMAGES="python=docker://bblfsh/python:v0.4.2" docker run \
+  -e BBLFSH_DRIVER_IMAGES -v /var/run/docker.sock:/var/run/docker.sock \
+  --privileged -p 9432:9432 --name bblfsh bblfsh/server
 ```
+
+Instead, if you want the server to retrieve specific driver images from a local Docker
+daemon (e.g. when testing a driver that you're developing) you could do something similar to:
+
+```bash
 $
 BBLFSH_DRIVER_IMAGES="python=docker-daemon:bblfsh/python:dev-96b24d3;java=docker-daemon:bblfsh/java-driver:latest"
 docker run -e BBLFSH_DRIVER_IMAGES -v
