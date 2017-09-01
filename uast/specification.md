@@ -70,12 +70,12 @@ It is a 0-based index.
 **Col** is the column number in the original source code, relative to a line.
 It is a 1-based index.
 
-A position `(0, 0, 0)` means that position is not available. Native parsers
-MUST provide, at least, offset or line+col for positions. The UAST normalization
-process includes computing offset from line+col or line+col from offset, in cases
-where native parser does not provide both. So it is guaranteed that nodes in
-a UAST either have no position attached or they have a position with valid
-offset, line and col.
+A position `(0, 0, 0)` means that position is not available. Native parsers MUST
+provide, at least, offset or line+col for positions when the it provides a
+position for the specific node. The UAST normalization process includes computing
+offset from line+col or line+col from offset, in cases where native parser does
+not provide both. So it is guaranteed that nodes in a UAST either have no position
+attached or they have a position with valid offset, line and col.
 
 There are two possible positions on each node: **start position** and **end position**.
 Nodes with defined token SHOULD have, at least, start position, which correspond
