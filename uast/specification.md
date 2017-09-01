@@ -71,7 +71,7 @@ It is a 0-based index.
 It is a 1-based index.
 
 A position `(0, 0, 0)` means that position is not available. Native parsers MUST
-provide, at least, offset or line+col for positions when the native AST provides a
+provide, at least, offset or line+col for positions when the it provides a
 position for the specific node. The UAST normalization process includes computing
 offset from line+col or line+col from offset, in cases where native parser does
 not provide both. So it is guaranteed that nodes in a UAST either have no position
