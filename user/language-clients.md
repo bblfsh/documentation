@@ -1,7 +1,7 @@
 # Babelfish clients
 
 Over the network protocol and (soon) using
-[`libuast`](https://github.com/bblfsh/libuast) there are some clients that allows
+[`libuast`](https://github.com/bblfsh/libuast) there are some clients that allow
 you to use Babelfish with a higher level API, abstracting some of the complexities
 of [gRPC](https://grpc.io) communication, parsing, and the [base C `libuast`
 API](https://github.com/bblfsh/libuast/tree/master/src).
