@@ -10,6 +10,7 @@
 ## Using Babelfish
 
 * [Getting Started](user/getting-started.md)
+* [Language Clients](user/language-clients.md)
 * [Babelfish Protocol](user/server-protocol.md)
 * [gRPC usage example](user/server-grpc-example.md)
 
