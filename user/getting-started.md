@@ -42,7 +42,7 @@ Now you can test that it works by submitting a file for parsing:
 
 ```
 $ echo "import foo" > sample.py
-$ docker run -v $(pwd):/work --link bblfsh bblfsh/server bblfsh client --address=bblfsh:9432 /work/sample.py
+$ docker run -v $(pwd):/work --link bblfsh --entrypoint bblfsh bblfsh/server client --address=bblfsh:9432 /work/sample.py
 ```
 
 First request might timeout, since the server has to fetch the required driver
