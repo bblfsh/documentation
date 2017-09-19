@@ -3,8 +3,8 @@
 
 | Language    | Key        | Status | Version | GitHub    | Container | Annotations |
 |-------------|------------|--------|---------|-----------|-----------|-------------|
-| Python      | python     | beta   | v0.9.0  |[✓](https://github.com/bblfsh/python-driver) | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [✓](https://github.com/bblfsh/python-driver/blob/master/ANNOTATION.md) |
-| Java        | java       | beta   | v0.6.0  |[✓](https://github.com/bblfsh/java-driver) | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [✓](https://github.com/bblfsh/java-driver/blob/master/ANNOTATION.md) |
+| Python      | python     | beta   | v1.0.0  |[✓](https://github.com/bblfsh/python-driver) | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [✓](https://github.com/bblfsh/python-driver/blob/master/ANNOTATION.md) |
+| Java        | java       | beta   | v1.0.0  |[✓](https://github.com/bblfsh/java-driver) | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [✓](https://github.com/bblfsh/java-driver/blob/master/ANNOTATION.md) |
 | Bash        | bash       | early  | ✖       | [✓](https://github.com/bblfsh/bash-driver) | ✖ | ✖ |
 | Clojure     | clojure    | early  | ✖       | [✓](https://github.com/bblfsh/clojure-driver) | ✖ | ✖ |
 | Elixir      | elixir     | early  | ✖       | [✓](https://github.com/bblfsh/elixir-driver) | ✖ | ✖ |

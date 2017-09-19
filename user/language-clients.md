@@ -11,11 +11,12 @@ API](https://github.com/bblfsh/libuast/tree/master/src).
 Currently there are working or planned clients in different stages of development
 for these languages:
 
-|Language   | Status  | URL                                     | 
-|---------- |-------- |---------------------------------------- |
-| Python    | Alpha   | https://github.com/bblfsh/client-python | 
-| Go        | Alpha   | https://github.com/bblfsh/client-go     |
-| Java      | Planned | https://github.com/bblfsh/client-java   | 
+| Language | Status  | Libuast | URL                                    |
+| -------- | ------- | ------- | -------------------------------------- |
+| Python   | Beta    | ✓       | https://github.com/bblfsh/client-scala |
+| Go       | Alpha   | ✓       | https://github.com/bblfsh/client-scala |
+| Scala    | Alpha   | ✖        | https://github.com/bblfsh/client-scala |
+| Java     | Planned | ✖        | https://github.com/bblfsh/client-java  |
 
 ## Example
 
