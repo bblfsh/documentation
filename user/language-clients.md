@@ -22,25 +22,30 @@ for these languages:
 The client API's differ to adapt to their language specific idioms, the following
 code shows a simple example with the Python client:
 
-```python
-from bblfsh import BblfshClient
-# Protobuf definition file:
-from github.com.bblfsh.sdk.uast.generated_pb2 import Node
-from bblfsh.launcher import ensure_bblfsh_is_running
+```go
+package main
 
-if __name__ == "__main__":
-    # Create a Babelfish server instance if it's not already running:
-    ensure_bblfsh_is_running()
+import (
+	"fmt"
+	"reflect"
 
-    client = BblfshClient("0.0.0.0:9432")
+	"gopkg.in/bblfsh/client-go.v1"
+)
 
-    # Using language autodetection:
-    uast = client.parse("some_file.py")
-    # ...or manually specifying the language:
-    uast2 = client.parse("some_file.py", language="Python")
+func main() {
+	client, err := bblfsh.NewBblfshClient("localhost:9432")
+	if err != nil {
+		panic(err)
+	}
 
-    # Node is the root of the UAST tree:
-    assert(isinstance(uast.uast, Node))
+	res, err := client.NewParseRequest().ReadFile("some_file.py").Do()
+	if err != nil {
+		panic(err)
+	}
+	if reflect.TypeOf(res.UAST).Name() != "Node" {
+		fmt.Errorf("Node must be the root of a UAST")
+	}
+}
 ```
 
 Currently we're integrating [`libuast`](https://github.com/bblfsh/libuast) into

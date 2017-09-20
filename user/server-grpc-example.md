@@ -50,8 +50,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/bblfsh/sdk/protocol"
-	"github.com/bblfsh/sdk/uast"
+	"gopkg.in/bblfsh/sdk.v1/protocol"
+	"gopkg.in/bblfsh/sdk.v1/uast"
 	"google.golang.org/grpc"
 )
 
@@ -125,8 +125,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bblfsh/sdk/protocol"
-	"github.com/bblfsh/sdk/uast"
+	"gopkg.in/bblfsh/sdk.v1/protocol"
+	"gopkg.in/bblfsh/sdk.v1/uast"
 	"google.golang.org/grpc"
 )
 
