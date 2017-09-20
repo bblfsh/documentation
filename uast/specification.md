@@ -104,32 +104,40 @@ following:
 
 ```mermaid
 graph TD
-    ImportDeclaration-->ImportDeclarationToken["'Import'"]
-    ImportDeclaration-->ImportPath
-    ImportPath-->ImportPathToken["'github.com/bblfsh/sdk'"]
+
+    IQimportDeclaration["Import, Declaration"]
+    IQimportDeclarationToken["'Import'"]
+    IQimportPath["Import, Pathname"]
+    IQimportPathToken["'github.com/bblfsh/sdk'"]
+
+    IQimportDeclaration-->IQimportDeclarationToken
+    IQimportDeclaration-->IQimportPath
+    IQimportPath -->IQimportPathToken
 ```
 
 Or we might have the following for a different language:
 
 ```mermaid
 graph TD
-    ImportDeclarationToken["'Import'"]
-    IQcom["SimpleIdentifier"]
+    IQimportDeclaration["Import, Declaration"]
+    IQimportDeclarationToken["'Import'"]
+    IQimportPathname["Import, Pathname"]
+    IQcom["Identifier"]
     IQcomToken["'com'"]
-    IQgithub["QualifiedIdentifier"]
-    IQgithubName["SimpleIdentifier"]
+    IQgithub["Identifier, Qualified"]
+    IQgithubName["Identifier"]
     IQgithubToken["'github'"]
-    IQbblfsh["QualifiedIdentifier"]
-    IQbblfshName["SimpleIdentifier"]
+    IQbblfsh["Identifier, Qualified"]
+    IQbblfshName["Identifier"]
     IQbblfshToken["'bblfsh'"]
-    IQsdk["QualifiedIdentifier"]
-    IQsdkName["SimpleIdentifier"]
+    IQsdk["Identifier, Qualified"]
+    IQsdkName["Identifier"]
     IQsdkToken["'sdk'"]
 
-    ImportDeclaration-->ImportDeclarationToken
-    ImportDeclaration-->ImportPath
+    IQimportDeclaration-->IQimportDeclarationToken
+    IQimportDeclaration-->IQimportPathname
 
-    ImportPath-->IQsdk
+    IQimportPathname-->IQsdk
     IQsdk-->IQbblfsh
     IQsdk-->IQsdkName
     IQsdkName-->IQsdkToken
@@ -146,7 +154,7 @@ graph TD
 ```
 
 One way or the other, we can get the package identifier by retrieving all tokens
-under the `ImportPath` role in pre-order.
+under the `Import`, `Pathname` roles in pre-order.
 
 As it is clear from this example, extracting meaningful information from UAST
 requires different tree operations for each role. The documentation and reference
@@ -154,9 +162,12 @@ implementation of these operations are defined in the
 [uast](http://godoc.org/github.com/bblfsh/sdk/uast/)
 package of the SDK.
 
-Note that each node can have multiple roles. For example, a node with the
-`If` role will also have the `Statement` role for some languages (e.g. Go, Java)
-or the `Expression` role for others (e.g. Scala).
+Note that each node can (and most will) have multiple roles.
+For example, a typical `if` control flow construct will be represented by a node
+that will have both an `If` role and also either a `Statement` role for some languages (e.g. Go, Java)
+or a `Expression` role for others (e.g. Scala).
+The `If` role will also appear in its immediate children, with some additional roles like `Condition`
+for the if condition, `Then` for the then clause, `Else` for the else clause (if it exists), etc.
 
 * **TODO:** add more examples
 
@@ -165,7 +176,7 @@ or the `Expression` role for others (e.g. Scala).
 Each driver normalizer defines a set of **annotation rules**. These rules define
 how to add roles to nodes.
 
-For example, in the Java normalizer, `ImportPath` role is added to nodes that
+For example, in the Java normalizer, `Import` and `Pathname` roles are added to nodes that
 have the internal type `QualifiedName` (Java-specific) with a parent with internal
 type `ImportDeclaration` (Java-specific). For a full example, check the
 [annotation rules for the Java driver](https://godoc.org/github.com/bblfsh/java-driver/driver/normalizer#pkg-variables).
