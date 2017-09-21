@@ -20,7 +20,7 @@ for these languages:
 ## Example
 
 The client API's differ to adapt to their language specific idioms, the following
-code shows a simple example with the Python client:
+code shows a simple example with the Go client:
 
 ```go
 package main
