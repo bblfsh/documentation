@@ -22,10 +22,10 @@ in any programming language but the normalizer is developed using Go so you
 must get it as any other go package:
 
 ```bash
-$ go get github.com/bblfsh/sdk/...
+$ go get gopkg.in/bblfsh/sdk.v1/...
 ```
 
-This will fetch the SDK repository to `$GOPATH/src/github.com/bblfsh/sdk` and
+This will fetch the SDK repository to `$GOPATH/src/gopkg.in/bblfsh/sdk.v1` and
 will install the `bblfsh-sdk` CLI to `$GOPATH/bin/bblfsh-sdk`.
 
 ### Creating the driver's initial structure
@@ -81,11 +81,11 @@ managed file "README.md" has changed, discarding changes
 the SDK you'll also have to update the Go package **first** with:
 
 ```bash
-go get -u github.com/bblfsh/sdk/...
+go get -u gopkg.in/bblfsh/sdk.v1/...
 ```
 
 If the update gives you any problem you can try to delete the
-`$GOPATH/src/github.com/bblfsh/sdk` manually and run the go get command 
+`$GOPATH/src/gopkg.in/bblfsh/sdk.v1` manually and run the go get command
 again to get a fresh copy.
 
 ## Implementing the Driver
