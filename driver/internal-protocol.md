@@ -7,7 +7,6 @@ parser and the UAST normalizer inside a driver.
 ## Transport
 
 The internal driver protocol uses standard input and standard output as transport.
-It follows the same rules as the [driver protocol](protocol.html#transport).
 
 ## Encoding
 
