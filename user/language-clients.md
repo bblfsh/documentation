@@ -15,7 +15,7 @@ for these languages:
 | -------- | ------ | ------- | --------------------------------------- |
 | Python   | Beta   | ✓       | https://github.com/bblfsh/client-python |
 | Go       | Alpha  | ✓       | https://github.com/bblfsh/client-go     |
-| Scala    | Alpha  | ✖       | https://github.com/bblfsh/client-scala  |
+| Scala    | Alpha  | ✓       | https://github.com/bblfsh/client-scala  |
 
 ## Example
 
