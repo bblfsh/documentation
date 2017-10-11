@@ -1,10 +1,9 @@
 # Getting Started
 
-The first thing you need to use Babelfish is to setup and run the Babelfish
-Server. Once the server is running, you can use the Babelfish Tools to get some
-information from your code.
+The first thing you need to use Babelfish is to setup and run the [`bblfshd`](https://github.com/bblfsh/bblfshd)
+command. Once the server is running, you can connect to it using any of the available [clients](language-clients.md).
 
-## Babelfish server
+## Installing bblfshd
 
 ### Prerequisites
 
@@ -14,197 +13,130 @@ information from your code.
 
 ### Running with Docker (recommended)
 
-The easiest way to run the server is using Docker. You can start it with the
+The easiest way to run the *bblfshd* is using Docker. You can start it with the
 following command:
 
 ```bash
-$ docker run --privileged -p 9432:9432 --name bblfsh bblfsh/server
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
 ```
 
-If everything worked, it should output something like this:
+If everything worked, `docker logs bblfshd` should output something like this:
 
 ```
-time="2017-06-01T09:12:22Z" level=debug msg="binding to 0.0.0.0:9432"
-time="2017-06-01T09:12:22Z" level=debug msg="initializing runtime at /tmp/bblfsh-runtime"
-time="2017-06-01T09:12:22Z" level=debug msg="starting server"
-time="2017-06-01T09:12:22Z" level=debug msg="registering gRPC service"
-time="2017-06-01T09:12:22Z" level=info msg="starting gRPC server"
+time="2017-10-10T08:59:20Z" level=info msg="bblfshd version: v2.0.0 (build: 2017-10-09T21:18:54+0000)"
+time="2017-10-10T08:59:20Z" level=info msg="initializing runtime at /var/lib/bblfshd"
+time="2017-10-10T08:59:20Z" level=info msg="server listening in 0.0.0.0:9432 (tcp)"
+time="2017-10-10T08:59:20Z" level=info msg="control server listening in /var/run/bblfshctl.sock (unix)"
+
 ```
 
 The only mandatory flag is [`--privileged`](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities).
-Babelfish Server uses containers itself to run language drivers, which currently
+*bblfshd* uses containers itself to run language drivers, which currently
 requires it to run in privileged mode.
 
-Exposing the Babelfish port (`9432`) with `-p 9432:9432:` makes it easier to
-connect to it from outside the container.
+Exposing the port (`9432`) with `-p 9432:9432:` makes it easier connect to the
+gRPC server from outside the container.
 
-Now you can test that it works by submitting a file for parsing:
+Also the path `/var/lib/bblfshd` should be mounted in the volume in order to
+have stateful bblfshd instances between reboots.
 
-```
-$ echo "import foo" > sample.py
-$ docker run -v $(pwd):/work --link bblfsh --entrypoint bblfsh bblfsh/server client --address=bblfsh:9432 /work/sample.py
-```
 
-First request might timeout, since the server has to fetch the required driver
-before responding. If it does, just retry.
+#### Installing the drivers
 
-As you've probably already seen,
-the logging level is set to `debug` by default,
-which is a good default for current project status,
-but it may be cumbersome.
-If the output is too verbose,
-it can be adjusted with the `log-level` parameter:
+Now we need to install the driver images into the daemon, you can install
+the official images just running the command:
 
-```bash
-$ docker run --privileged -p 9432:9432 --name bblfsh bblfsh/server bblfsh server --log-level info
+```sh
+$ docker exec -it bblfshd bblfshctl driver install --all
 ```
 
-Now you should only see log entries of `info` level and above:
+You can check the installed versions executing:
 
+```sh
+$ docker exec -it bblfshd bblfshctl driver list
 ```
-time="2017-06-01T09:12:22Z" level=info msg="starting gRPC server"
+
+```sh
++----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
+| LANGUAGE |             IMAGE             | VERSION | STATUS | CREATED |   OS   | GO  |   NATIVE    |
++----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
+| python   | //bblfsh/python-driver:latest | v1.1.5  | beta   | 4 days  | alpine | 1.8 | 3.6.2       |
+| java     | //bblfsh/java-driver:latest   | v1.1.0  | alpha  | 6 days  | alpine | 1.8 | 8.131.11-r2 |
++----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
 ```
+
+To test the driver you can executed a parse request to the server with the `bblfshctl parse` command,
+and an example contained in the docker image:
+
+```sh
+$ docker exec -it bblfshd bblfshctl parse /opt/bblfsh/etc/examples/python.py
+```
+
 
 ### Running standalone
 
-> **[warning] Standalone server only runs on Linux!**
->
-> Babelfish Server relies on Linux containers to run language drivers. Windows
-> and macOS users are advised to [use Docker](#running-with-docker-recommended).
+A standalone distributions of `bblfshd` and `bblfshctl` can be found at the
+GitHub [release page](https://github.com/bblfsh/bblfshd/releases).
 
-[Download the bblfsh binary](https://github.com/bblfsh/server/releases).
+*bblfshd* is only provided for Linux distributions, since it relies on Linux
+containers to run language drivers. And *bblfshctl* can be found for Windows,
+macOS and Linux.
 
-Run the server:
 
-```bash
-$ sudo bblfsh server
+## Using bblfshctl
+
+The binary *bblfshd* is provided with a sister tool called *bblfshctl*, this
+command is used to monitor and manage the daemon.
+
+If you are using the docker image this binary is inside of the `bblfsh/bblfshd`
+image and can be using with a `docker exec`.
+
+```sh
+$ docker exec -it bblfshd bblfshctl --help
 ```
 
-Note that running as root user is currently a requirement of the server.
+```sh
+Usage:
+  bblfshctl [OPTIONS] <command>
 
-The client can be run on any OS:
+Help Options:
+  -h, --help  Show this help message
 
-```
-$ echo "import foo" > sample.py
-$ bblfsh client sample.py
-```
-
-### Overriding driver images
-
-In case you need that the Babelfish server to run different driver images than the default ones, you can configure what images it should use through the environment variable `BBLFSH_DRIVER_IMAGES`. The command `bblfsh server ` looks for this variable which must look like:
-
-    BBLFSH_DRIVER_IMAGES="language=docker-registry:namespace/repository:tag;language2=docker-registry:namespace/repository:tag"
-
-So to get a specific version of an image from
-[Dockerhub](https://hub.docker.com/u/bblfsh/) the line would be:
-
-```bash
-$ BBLFSH_DRIVER_IMAGES="python=docker://bblfsh/python-driver:v0.4.2" docker run \
-  -e BBLFSH_DRIVER_IMAGES --privileged -p 9432:9432 \
-  --name bblfsh bblfsh/server
+Available commands:
+  driver     Manage drivers: install, remove and list
+  instances  List the driver instances running on the daemon
+  parse      Parse a file and prints the UAST or AST
+  status     List all the pools of driver instances running
 ```
 
-Instead, if you want the server to retrieve specific driver images from a local Docker
-daemon (e.g. when testing a driver that you're developing) you could do something similar to:
+### Driver management
 
-```bash
-$
-BBLFSH_DRIVER_IMAGES="python=docker-daemon:bblfsh/python-driver:dev-96b24d3;java=docker-daemon:bblfsh/java-driver:dev-45c12h5"
-docker run -e BBLFSH_DRIVER_IMAGES -v
-/var/run/docker.sock:/var/run/docker.sock --privileged -p 9432:9432 --name bblfsh bblfsh/server
-time="2017-07-12T14:11:13Z" level=debug msg="binding to 0.0.0.0:9432"
-time="2017-07-12T14:11:13Z" level=debug msg="initializing runtime at /tmp/bblfsh-runtime"
-time="2017-07-12T14:11:13Z" level=debug msg="Overriding image for "python: docker-daemon:bblfsh/python:dev-96b24d3"
-time="2017-07-12T14:11:13Z" level=debug msg="Overriding image for java: docker-daemon:bblfsh/java-driver:latest""
-time="2017-07-12T14:11:13Z" level=debug msg="starting server"
-time="2017-07-12T14:11:13Z" level=debug msg="registering gRPC service"
-time="2017-07-12T14:11:13Z" level=info msg="starting gRPC server"
+The *bblfshd's* drivers can be installed, updated and remove with the `driver`
+command and his subcommands.
+
+Installing all the official driver:
+
+```sh
+$ bblfshctl driver install --all
 ```
 
-Notice how in this case we need to share the host Docker server's Unix socket with
-the container (`-v /var/run/docker.sock:/var/run/docker.sock`) so it can access it
-to retrieve the local images.
+Overriding a single driver and a specific version:
 
-Or if you prefer running it in standalone mode:
-
-```
-$ BBLFSH_DRIVER_IMAGES="python=docker-daemon:bblfsh/python:dev-96b24d3;java=docker-daemon:bblfsh/java-driver:latest" bblfsh server
-DEBU[0000] binding to 0.0.0.0:9432                      
-DEBU[0000] initializing runtime at /tmp/bblfsh-runtime  
-DEBU[0000] Overriding image for python: docker-daemon:bblfsh/python:dev-96b24d3
-DEBU[0000] Overriding image for java: docker-daemon:bblfsh/java-driver:latest
-DEBU[0000] starting server                              
-DEBU[0000] registering gRPC service                     
-INFO[0000] starting gRPC server
+```sh
+$ bblfshctl driver install python bblfsh/python-driver:v1.1.5 --update
 ```
 
+Listing all the available drivers
 
-### Setting maximum message size
-
-If a customized [gRPC](https://grpc.io) message size is needed, you can use the command flag option `--max-message-size`.
-By default 100MB is current upper limit, but you can override it:
-
-    docker run --privileged -p 9432:9432 --name bblfsh bblfsh/server --max-message-size=500
-
-or running the Babelfish Server in local:
-
-    sudo bblfsh server --max-message-size=500
-
-The number given to the `--max-message-size` option represents the size in MB, and it defines the limit for both directions: send and receive.
-
-
-## Babelfish Tools
-
-Babelfish Tols provide some language analysis tools on top of Babelfish. You can
-use them for various purposes:
-
-- Check that the server is working properly
-- Get some data from the source code
-- See how a language analysis tool is implemented, as a basis for your own
-  tools.
-
-
-### Setup
-
-Running Babelfish Tools standalone requires getting the `bblfsh-tools`
-binary. Currently this requires a working setup of
-[Go](https://golang.org/doc/install). You can get it with the following command:
-
-```bash
-$ go get -u github.com/bblfsh/tools/...
+```sh
+$ bblfshctl driver list
 ```
 
-### Usage
-
-Babelfish Tools provides a set of tools built on top of Babelfish, to
-see which tools are supported, run:
-
-`bblfsh-tools --help`
-
-There's an special tool, the `dummy` tool, which should let you know if the
-connection with the server succeeded:
-
-`bblfsh-tools dummy path/to/source/code`
-
-If the server is not in the default location, use the `address` parameter:
-
-`bblfsh-tools dummy --address location:port path/to/source/code`
-
-Once the connection with the server is working fine, you can use any other
-available tool in a similar way.
-
-## FAQ
-
-**I am getting GOPATH errors or the binary isn't found, what do I do?**
-
-Bash shell: add this to your ~/.bashrc
-```
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-```
-
-Fish shell: add this to your ~/.config/fish/config.fish
-```
-set -gx GOPATH $HOME/go
-set -U fish_user_paths $fish_user_paths $GOPATH/bin
+```sh
++----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
+| LANGUAGE |             IMAGE             | VERSION | STATUS | CREATED |   OS   | GO  |   NATIVE    |
++----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
+| python   | //bblfsh/python-driver:latest | v1.1.5  | beta   | 4 days  | alpine | 1.8 | 3.6.2       |
+| java     | //bblfsh/java-driver:latest   | v1.1.0  | alpha  | 6 days  | alpine | 1.8 | 8.131.11-r2 |
++----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
 ```
