@@ -18,6 +18,7 @@
 
 * [Code to AST](uast/code-to-ast.md)
 * [UAST Specification](uast/specification.md)
+* [Roles](uast/roles.md)
 
 ## Writing a Driver
 

@@ -17,6 +17,9 @@ build: node_modules
 serve: node_modules
 	$(GITBOOK_SERVE)
 
+roles:
+	go run _tools/roles/main.go > uast/roles.md
+
 clean:
 	rm -rf node_modules
 
