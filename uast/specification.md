@@ -93,7 +93,7 @@ of code covered by that node.
 
 UAST is annotated with **roles**. Roles are language-independent annotations that
 describe what nodes in the UAST do. You can check the
-[list of all roles in the godoc](http://godoc.org/github.com/bblfsh/sdk/uast/#Role).
+[list of all roles](roles.md).
 
 UAST from different languages have different structures, but role annotations
 allow to interpret some aspects independently of the language.
