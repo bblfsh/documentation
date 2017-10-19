@@ -17,7 +17,15 @@ The easiest way to run the *bblfshd* is using Docker. You can start it with the
 following command:
 
 ```bash
-$ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
+$ docker run -d --name bblfshd --privileged -p 9432:9432 bblfsh/bblfshd
+```
+
+This will run the image in a stateless mode, this meaning that any installed
+drivers will be lost when you stop the container. To avoid this from happening,
+add the `-v` parameter to keep the `/var/lib/bblfshd` directory in a volume:
+
+```bash
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -v /tmp/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
 ```
 
 If everything worked, `docker logs bblfshd` should output something like this:
