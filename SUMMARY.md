@@ -12,6 +12,7 @@
 * [Language Clients](user/language-clients.md)
 * [Babelfish Protocol](user/server-protocol.md)
 * [gRPC usage example](user/server-grpc-example.md)
+* [Babelfish Dashboard](http://dashboard.bblf.sh)
 
 ## UAST
 
