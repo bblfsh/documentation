@@ -8,7 +8,6 @@ Syntax Tree) from it, and convert it to a [**UAST**](./uast/specification.md)
 (Universal Abstract Syntax Tree) which can enable further analysis and
 transformation with the included or your own tools using an standard format.
 
-
 ## Motivation and Scope
 
 Babelfish was born as a solution for massive code analysis. The goal: analyzing
@@ -36,3 +35,8 @@ Some of the use cases that we want to support with AST are:
 * **Detecting similar coding patterns across languages.**
 * **Programmer-asisting tools** Improved linters, safety analysis, idiomatic
   usage, etc.
+
+## Further reading
+
+This repo contains the project documentation,
+which you can also see properly rendered at [https://doc.bblf.sh/](https://doc.bblf.sh/).
