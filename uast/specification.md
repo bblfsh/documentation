@@ -23,6 +23,18 @@ for the full documentation of the UAST structure and annotations in Go.
 
 **For other languages, check the [UAST protobuf definition](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto).**
 
+## Syntax Tree Structure
+
+As a combination of the native AST's tree structure with language-independent
+annotations, the underlying node, **tree structure** and properties such as native
+/ internal types are kept unchanged from what it is provided.  Thus, even though
+  there are some additions to the nodes such as the completion of offset or
+line numbers / columns, is not the responsibility of Babelfish's drivers to
+provide a language independent tree structure (even if that would be possible).
+
+Note that this conservation of the tree structure could be relaxed or changed in
+future versions of the UAST and native drivers' definitions to provide normalized
+tree structures for some really common subtree structures.
 
 ## Internal Type
 
@@ -71,7 +83,7 @@ It is a 0-based index.
 It is a 1-based index.
 
 A position `(0, 0, 0)` means that position is not available. Native parsers MUST
-provide, at least, offset or line+col for positions when the it provides a
+provide, at least, offset or line+col for positions when the native parser provides a
 position for the specific node. The UAST normalization process includes computing
 offset from line+col or line+col from offset, in cases where native parser does
 not provide both. So it is guaranteed that nodes in a UAST either have no position
