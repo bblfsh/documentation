@@ -311,24 +311,62 @@ change it since it'll execute the driver.
 
 The integration tests will test all the process of the driver from the request
 to the parser to the annotated UAST generation. They work by comparing the
-UAST output with the previously existing one, and will fail if any difference
-is found.
+UAST and native output with the previously existing one, and will fail if any 
+difference is found.
 
 For this to work, the driver developer will need to provide files with source
-code examples in the `tests/` directory. with the `.source` file extension.
-Once this is done, you need to run the integration-test Makefile's target for
-the first time to automatically generate  the `.native` and `.uast` files:
+code examples in the `tests/` directory with the `.source` file extension. It's
+recommended that you keep the original extension before the `.source` so the
+command below can autodetect the language.
 
-```bash
-$ make integration-test
+Once this is done, you need to generate the `.native` and `.uast` fixtures with 
+the command:
+
+```
+# Only if you didn't already had a bblfshd server running:
+docker run -d --name bblfshd -p 9432:9432 bblfsh/bblfshd
+# Only if you didn't already had the drivers installed:
+docker exec -it bblfsh bblfshctl driver install --all
+
+bblfsh-sdk-tool fixtures fixtures/*.source
 ```
 
-The first time (or every time you add a new `.source` file) you'll need to
-manually check carefully the `.uast` files because they'll be used as reference on
-next runs. Once you're happy with them, any subsequent executions of the
-`make integration-test` will actually compare them.
+If the command fails with the error `unexpected error: runtime failure: missing 
+driver for language "mylang"` it could be because the source files doesn't
+have the right extension (like when the only extension is `.source`). If you
+positively know that there is a driver installed for that language, add the
+`--language=mylang` to the command above to skip the autodetection.
 
-It's advisable to create very small `.source` files just testing the annotation of
+The first time (or every time you add a new `.source` file or regenerate the 
+native/uast files) you'll need to
+manually check carefully the `.uast` files because they'll be used as reference 
+on
+next runs. Once you're happy with them, you can run the integration tests with:
+
+```bash
+make integration-test
+```
+
+This will generate the `.native` and `.uast` files from the driver in the 
+current directory and compare them with the previously generated files, failing 
+and printing a diff if it detects any changes. 
+
+If you need to regenerate some of the files for a new version that changes the
+output of the native AST or the UAST, you'll need to regenerate the affected
+files **with the current version of the driver you're developing** installed on
+the server. This can be done with the commands:
+
+```
+make build # build the driver docker image
+bblfsh driver remove mylang
+docker images
+# (…check the output to get the tag of the just build driver)
+bblfsh driver install mylang 
+docker-daemon:bblfsh/mylang-driver:dev-12345abc-dirty
+```
+
+It's advisable to create very small `.source` files just testing the annotation 
+of
 one language feature, or even several if the feature is complex. This will make
 the tests more atomic and help immensely with your sanity when trying to debug
 failed integration tests.
