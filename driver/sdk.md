@@ -315,7 +315,7 @@ UAST and native output with the previously existing one, and will fail if any
 difference is found.
 
 For this to work, the driver developer will need to provide files with source
-code examples in the `tests/` directory. with the `.source` file extension. It's
+code examples in the `tests/` directory with the `.source` file extension. It's
 recommended that you keep the original extension before the `.source` so the
 command below can autodetect the language.
 
@@ -332,7 +332,10 @@ bblfsh-sdk-tool fixtures fixtures/*.source
 ```
 
 If the command fails with the error `unexpected error: runtime failure: missing 
-driver for language "mylang"` add a `language=mylang` to the command above.
+driver for language "mylang"` it could be because the source files doesn't
+have the right extension (like when the only extension is `.source`). If you
+positively know that there is a driver installed for that language, add the
+`--language=mylang` to the command above to skip the autodetection.
 
 The first time (or every time you add a new `.source` file or regenerate the 
 native/uast files) you'll need to
@@ -359,7 +362,7 @@ bblfsh driver remove mylang
 docker images
 # (…check the output to get the tag of the just build driver)
 bblfsh driver install mylang 
-docker-daemon=bblfsh/mylang-driver:dev-12345abc-dirty
+docker-daemon:bblfsh/mylang-driver:dev-12345abc-dirty
 ```
 
 It's advisable to create very small `.source` files just testing the annotation 
