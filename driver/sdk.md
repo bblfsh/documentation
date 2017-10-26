@@ -331,11 +331,11 @@ docker exec -it bblfsh bblfshctl driver install --all
 bblfsh-sdk-tool fixtures fixtures/*.source
 ```
 
-If the command fails with the error `unexpected error: runtime failure: missing 
-driver for language "mylang"` it could be because the source files doesn't
-have the right extension (like when the only extension is `.source`). If you
-positively know that there is a driver installed for that language, add the
-`--language=mylang` to the command above to skip the autodetection.
+If the command fails with the error `could not detect language` it could be
+because the source files doesn't have the right extension (like when the only
+extension is `.source`). If you positively know that there is a driver installed
+for that language, add the `--language=mylang` to the command above to skip the
+autodetection.
 
 The first time (or every time you add a new `.source` file or regenerate the 
 native/uast files) you'll need to
