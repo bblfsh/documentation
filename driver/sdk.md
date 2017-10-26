@@ -351,10 +351,10 @@ This will generate the `.native` and `.uast` files from the driver in the
 current directory and compare them with the previously generated files, failing 
 and printing a diff if it detects any changes. 
 
-If you need to regenerate some of the files for a new version that changes the 
-output of the native AST or the UAST, you'll need to regenerate the affected 
-files **with the current version installed on the server**. This can be done 
-with the commands:
+If you need to regenerate some of the files for a new version that changes the
+output of the native AST or the UAST, you'll need to regenerate the affected
+files **with the current version of the driver you're developing** installed on
+the server. This can be done with the commands:
 
 ```
 make build # build the driver docker image
