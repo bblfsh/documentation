@@ -316,7 +316,7 @@ difference is found.
 
 For this to work, the driver developer will need to provide files with source
 code examples in the `tests/` directory. with the `.source` file extension. It's
-recomended that you keep the original extension before the `.source` so the
+recommended that you keep the original extension before the `.source` so the
 command below can autodetect the language.
 
 Once this is done, you need to generate the `.native` and `.uast` fixtures with 
@@ -346,11 +346,11 @@ make integration-test
 
 This will generate the `.native` and `.uast` files from the driver in the 
 current directory and compare them with the previously generated files, failing 
-and printing a diff if it detect any changes. 
+and printing a diff if it detects any changes. 
 
 If you need to regenerate some of the files for a new version that changes the 
 output of the native AST or the UAST, you'll need to regenerate the affected 
-files **with the current version installed in the server**. This can be done 
+files **with the current version installed on the server**. This can be done 
 with the commands:
 
 ```
