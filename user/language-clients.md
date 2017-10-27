@@ -1,6 +1,6 @@
 # Babelfish clients
 
-There are some clients in different languages that provides a higher level API,
+There are some clients in different languages that provide a higher level API,
 built on top of [gRPC](https://grpc.io) and [`libuast`](https://github.com/bblfsh/libuast).
 
 These clients make it easier to both parse and analyze the resulting UAST,
@@ -57,7 +57,7 @@ func main() {
 
 ## Query language
 
-[`libuast`](https://github.com/bblfsh/libuast) provides a query language for UASTs.
+[`libuast`](https://github.com/bblfsh/libuast) provides a [xpath](https://www.w3.org/TR/xpath/) based query language for UASTs.
 
 Any of the [node](https://godoc.org/github.com/bblfsh/sdk/uast#Role) fields can be used for querying, which are mapped in the following way:
 
