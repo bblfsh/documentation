@@ -1,26 +1,27 @@
 # Babelfish clients
 
-Over the network protocol and (soon) using
-[`libuast`](https://github.com/bblfsh/libuast) there are some clients that allow
-you to use Babelfish with a higher level API, abstracting some of the complexities
-of [gRPC](https://grpc.io) communication, parsing, and the [base C `libuast`
-API](https://github.com/bblfsh/libuast/tree/master/src).
+There are some clients in different languages that provides a higher level API,
+built on top of [gRPC](https://grpc.io) and [`libuast`](https://github.com/bblfsh/libuast).
+
+These clients make it easier to both parse and analyze the resulting UAST,
+abstracting from network communication and providing a query language to
+filter UASTs.
 
 ## Existing clients
 
-Currently there are working or planned clients in different stages of development
-for these languages:
+There are clients for the following languages:
 
 | Language | Status | Libuast | URL                                     |
 | -------- | ------ | ------- | --------------------------------------- |
 | Python   | Beta   | ✓       | https://github.com/bblfsh/client-python |
-| Go       | Alpha  | ✓       | https://github.com/bblfsh/client-go     |
-| Scala    | Alpha  | ✓       | https://github.com/bblfsh/client-scala  |
+| Go       | Beta   | ✓       | https://github.com/bblfsh/client-go     |
+| Scala    | Beta   | ✓       | https://github.com/bblfsh/client-scala  |
 
 ## Example
 
 The client API's differ to adapt to their language specific idioms, the following
-code shows a simple example with the Go client:
+code shows a simple example with the Go client that parsers a Python file
+and applies a filter to return all the simple identifiers:
 
 ```go
 package main
@@ -45,9 +46,64 @@ func main() {
 	if reflect.TypeOf(res.UAST).Name() != "Node" {
 		fmt.Errorf("Node must be the root of a UAST")
 	}
+
+	query := "//*[@roleIdentifier and not(@roleQualified)]"
+	nodes, _ := tools.Filter(res.UAST, query)
+	for _, n := range nodes {
+		fmt.Println(n)
+	}
 }
 ```
 
-Currently we're integrating [`libuast`](https://github.com/bblfsh/libuast) into
-the clients which will greatly increase the capabilities of the clients adding
-[XPath](https://en.wikipedia.org/wiki/XPath)-like querying of the UAST tree.
+## Query language
+
+[`libuast`](https://github.com/bblfsh/libuast) provides a query language for UASTs.
+
+Any of the [node](https://godoc.org/github.com/bblfsh/sdk/uast#Role) fields can be used for querying, which are mapped in the following way:
+
+* `InternalType` is converted to the element name
+* `Token`, if available, is converted to an attribute with `token` as keyword and the actual token as value
+* Every `Role` is converted to an attribute concatenating a `role` prefix and the role name in CamelCase.
+* Every `Property` is converted to an attribute with the property keyword as keyword and the property value as value
+* `StartPosition`, if available, is mapped to three attributes:
+  * A `startOffset` attribute, with the offset as value
+  * A `startLine` attribute, with the line as value
+  * A `startCol` attribute, with the column as value
+* `EndPosition`, if available, is mapped to three attributes:
+  * A `endOffset` attribute, with the offset as value
+  * A `endLine` attribute, with the line as value
+  * A `endCol` attribute, with the column as value
+
+which are mapped in to XML in the following way:
+
+```xml
+<{{InternalType}}
+    token='{{Token}}'
+	{{for role in Roles}}
+	role{{role}}
+	{{for key, value in Properties}}
+	{{key}}='{{value}}
+	startOffset={{StartPosition.Offset}}
+	startLine={{StartPosition.Line}}
+	startCol={{StartPosition.Col}}
+	endOffset={{EndPosition.Offset}}
+	endLine={{EndPosition.Line}}
+	endCol={{EndPosition.Col}}>
+	{{Children}}
+</{{InternalType}}>
+```
+
+This means that both language specific queries (`InternalType`, `Properties`) and language agnostic queries (`Roles`) can be done.
+For example:
+
+- Return all the numeric literals in Python: `//NumLiteral`
+- Return all the numeric literals in ANY language: `//*[@roleNumber and @roleLiteral]`
+- Return all the integer literals in Python: `//*[@NumType='int']`
+
+The query language also allow some more complex queries:
+
+- All the elements in the tree that have either start or end offsets: `//*[@startOffset or @endOffset]`
+- All the simple identifiers: `//*[@roleIdentifier and not(@roleQualified)]`
+- All the simple identifiers that don't have any positioning: `//*[@roleIdentifier and not(@roleQualified) and not(@startOffset) and not(@endOffset)]`
+- All the arguments in function calls: `//*[@roleCall and @roleArgument]`
+- All the numeric literals in binary arithmetic operators: `//*[@roleBinary and @roleOperator and @roleArithmetic]//*[@roleNumber and @roleLiteral]`
