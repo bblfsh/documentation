@@ -82,7 +82,7 @@ which are mapped in to XML in the following way:
 	{{for role in Roles}}
 	role{{role}}
 	{{for key, value in Properties}}
-	{{key}}='{{value}}
+	{{key}}='{{value}}'
 	startOffset={{StartPosition.Offset}}
 	startLine={{StartPosition.Line}}
 	startCol={{StartPosition.Col}}
