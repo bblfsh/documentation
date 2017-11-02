@@ -54,6 +54,12 @@ gRPC server from outside the container.
 Also the path `/var/lib/bblfshd` should be mounted in the volume in order to
 have stateful bblfshd instances between reboots.
 
+If you are behind an HTTP or HTTPS proxy server, for example in corporate settings, you will need to add the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables in the docker run command to configure HTTP or HTTPS proxy behavior.
+
+```bash
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -e 
+HTTP_PROXY=http://proxy.example.com:80/" -v /tmp/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
+```
 
 #### Installing the drivers
 
