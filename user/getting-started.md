@@ -180,3 +180,25 @@ Now you can add drivers from the local Docker using `bblfshctl` like this:
 docker exec -it bblfshd bblfshctl driver install python docker-daemon:bblfsh/python-driver:dev-123321-dirty
 ```
 
+#### Running a driver without the server
+
+You can also directly run a driver's Docker image without a server. Like the
+bblfshd server, it will serve using the gRPC protocol on the 9432 port (trough 
+you can easily change it using the `-p` option to `docker run`). Running a
+driver this way means that requests will be processed serially so no more than
+one request at a time will be served and of course no more than the driver's 
+language can be parsed, trough it can be convenient for some quick UAST
+extraction of specific files or quick tests.
+
+To run a driver independently of the server run:
+
+```bash
+docker run --rm -p 9432:9432 bblfsh/python-driver
+```
+
+(change `python-driver` for the driver that you want to run). 
+
+Then you can send requests using any of the clients. Please note that bblfshd
+specific commands like `Version()` will not work in this mode.
+
+
