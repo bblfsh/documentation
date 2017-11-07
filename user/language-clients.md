@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	client, err := bblfsh.NewBblfshClient("localhost:9432")
+	client, err := bblfsh.NewClient("localhost:9432")
 	if err != nil {
 		panic(err)
 	}
