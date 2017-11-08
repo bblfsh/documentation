@@ -37,8 +37,8 @@ $ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/va
 On macOS, remove the parameter `-v /var/lib/bblfshd:/var/lib/bblfshd` since the
 default case insensitive filesystem could conflict with the internal drivers'
 case sensitive one. In that case remember that since this directory will then be
-ephemeral, you'll need to reinstall the drivers after restarting a server
-container or creating a new one.
+ephemeral, you'll need to reinstall the drivers after creating a new 
+server container.
 
 If everything worked, `docker logs bblfshd` should output something like this:
 
