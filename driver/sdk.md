@@ -319,15 +319,17 @@ code examples in the `tests/` directory with the `.source` file extension. It's
 recommended that you keep the original extension before the `.source` so the
 command below can autodetect the language.
 
-Once this is done, you need to generate the `.native` and `.uast` fixtures with 
-the command:
+Once this is done, you need to generate the `.native` and `.uast`, but first you
+should have either a [bblfshd server with
+your driver
+added](/user/advanced-usage.md#adding-drivers-from-the-local-docker-daemon) or a
+[single driver listening on the 9432
+port](/user/advanced-usage.md#running-a-driver-without-the-server), the latest option
+being probably the easiest.
+
+Once this is done, run the command from the driver top directory:
 
 ```
-# Only if you didn't already had a bblfshd server running:
-docker run -d --name bblfshd -p 9432:9432 bblfsh/bblfshd
-# Only if you didn't already had the drivers installed:
-docker exec -it bblfsh bblfshctl driver install --all
-
 bblfsh-sdk-tool fixtures fixtures/*.source
 ```
 

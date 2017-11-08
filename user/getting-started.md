@@ -160,23 +160,3 @@ $ bblfshctl driver list
 | java     | //bblfsh/java-driver:latest   | v1.1.0  | alpha  | 6 days  | alpine | 1.8 | 8.131.11-r2 |
 +----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
 ```
-
-#### Adding drivers from the local Docker daemon
-
-You can also add a driver using a local Docker daemon as source. This
-is specially useful when developing new drivers.
-
-If you want to be able to do this, the Unix socket that Docker used to communicate
-with the instance must be mounted in the bblfshd image, which you can do with the 
-`-v` parameter like in the next example:
-
-```bash
-$ docker run -d -v /var/run/docker.sock:/var/run/docker.sock --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
-```
-
-Now you can add drivers from the local Docker using `bblfshctl` like this:
-
-```bash
-docker exec -it bblfshd bblfshctl driver install python docker-daemon:bblfsh/python-driver:dev-123321-dirty
-```
-
