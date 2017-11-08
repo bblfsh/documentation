@@ -322,9 +322,9 @@ command below can autodetect the language.
 Once this is done, you need to generate the `.native` and `.uast`, but first you
 should have either a [bblfshd server with
 your driver
-added](advanced-usage.md#adding-drivers-from-the-local-docker-daemon) or a
+added](/user/advanced-usage.md#adding-drivers-from-the-local-docker-daemon) or a
 [single driver listening on the 9432
-port](advanced-usage.md#running-a-driver-without-the-server), the latest option
+port](/user/advanced-usage.md#running-a-driver-without-the-server), the latest option
 being probably the easiest.
 
 Once this is done, run the command from the driver top directory:
