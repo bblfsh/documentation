@@ -319,15 +319,14 @@ code examples in the `tests/` directory with the `.source` file extension. It's
 recommended that you keep the original extension before the `.source` so the
 command below can autodetect the language.
 
-Once this is done, you need to generate the `.native` and `.uast`, but first you
-should have either a [bblfshd server with
-your driver
+Once this is done, you need to generate the `.native` and `.uast` files, but
+first you should have either a [bblfshd server with your driver
 added](/user/advanced-usage.md#adding-drivers-from-the-local-docker-daemon) or a
 [single driver listening on the 9432
-port](/user/advanced-usage.md#running-a-driver-without-the-server), the latest option
-being probably the easiest.
+port](/user/advanced-usage.md#running-a-driver-without-the-server), the latest
+option being probably the easiest.
 
-Once this is done, run the command from the driver top directory:
+Then, run the command from the driver top directory:
 
 ```
 bblfsh-sdk-tool fixtures fixtures/*.source
@@ -339,11 +338,10 @@ extension is `.source`). If you positively know that there is a driver installed
 for that language, add the `--language=mylang` to the command above to skip the
 autodetection.
 
-The first time (or every time you add a new `.source` file or regenerate the 
-native/uast files) you'll need to
-manually check carefully the `.uast` files because they'll be used as reference 
-on
-next runs. Once you're happy with them, you can run the integration tests with:
+The first time (or every time you add a new `.source` file and regenerate the
+native/uast files) you'll need to manually check carefully the `.uast` files
+because they'll be used as reference on for the integration tests. Once you're
+happy with them, you can run the integration tests with:
 
 ```bash
 make integration-test
@@ -352,20 +350,6 @@ make integration-test
 This will generate the `.native` and `.uast` files from the driver in the 
 current directory and compare them with the previously generated files, failing 
 and printing a diff if it detects any changes. 
-
-If you need to regenerate some of the files for a new version that changes the
-output of the native AST or the UAST, you'll need to regenerate the affected
-files **with the current version of the driver you're developing** installed on
-the server. This can be done with the commands:
-
-```
-make build # build the driver docker image
-bblfsh driver remove mylang
-docker images
-# (…check the output to get the tag of the just build driver)
-bblfsh driver install mylang 
-docker-daemon:bblfsh/mylang-driver:dev-12345abc-dirty
-```
 
 It's advisable to create very small `.source` files just testing the annotation 
 of
