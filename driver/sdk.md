@@ -340,9 +340,7 @@ autodetection.
 
 The first time (or every time you add a new `.source` file and regenerate the
 native/uast files) you'll need to manually check carefully the `.uast` files
-because they'll be used as reference on for the integration tests. 
-
-Once you're
+because they'll be used as reference on for the integration tests. Once you're
 happy with them, you can run the integration tests with:
 
 ```bash
