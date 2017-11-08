@@ -34,7 +34,9 @@ add the `-v` parameter to keep the `/var/lib/bblfshd` directory in a volume:
 $ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
 ```
 
-(On macOS remove the parameter `-v /var/lib/bblfshd:/var/lib/bblfshd`.)
+(On macOS remove the parameter `-v /var/lib/bblfshd:/var/lib/bblfshd` since the
+default case insensitive filesystem could conflict with the internal drivers'
+case sensitive one.)
 
 If everything worked, `docker logs bblfshd` should output something like this:
 
