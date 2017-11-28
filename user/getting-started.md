@@ -64,7 +64,7 @@ If you are behind an HTTP or HTTPS proxy server, for example in corporate settin
 
 ```bash
 $ docker run -d --name bblfshd --privileged -p 9432:9432 -e 
-HTTP_PROXY=http://proxy.example.com:80/" -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
+HTTP_PROXY="http://proxy.example.com:80/" -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
 ```
 
 #### Installing the drivers
