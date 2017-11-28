@@ -54,7 +54,7 @@ The only mandatory flag is [`--privileged`](https://docs.docker.com/engine/refer
 *bblfshd* uses containers itself to run language drivers, which currently
 requires it to run in privileged mode.
 
-Exposing the port (`9432`) with `-p 9432:9432:` makes it easier connect to the
+Exposing the port (`9432`) with `-p 9432:9432` makes it easier connect to the
 gRPC server from outside the container.
 
 Also the path `/var/lib/bblfshd` should be mounted in the volume in order to
