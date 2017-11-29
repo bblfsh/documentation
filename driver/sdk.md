@@ -280,6 +280,14 @@ $ bblfsh-sdk prepare-build
 $ make build
 ```
 
+_Note_: if you are on macOS and you see an error `envsubst: command not found`
+try installing the `gettext` package with homebrew or similar.
+
+```bash
+$ brew install gettext
+$ brew link --force gettext
+```
+
 You'll see a sequence of `docker build` and `docker run` commands execute and any
 building error will show on the standard output.
 
