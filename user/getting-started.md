@@ -75,7 +75,7 @@ Now we need to install the driver images into the daemon, you can install
 the official images just running the command:
 
 ```sh
-$ docker exec -it bblfshd bblfshctl driver install --all
+$ docker exec -it bblfshd bblfshctl driver install --recommended
 ```
 
 You can check the installed versions executing:
@@ -145,7 +145,7 @@ command and his subcommands.
 Installing all the official driver:
 
 ```sh
-$ bblfshctl driver install --all
+$ bblfshctl driver install --recommended
 ```
 
 Overriding a single driver and a specific version:

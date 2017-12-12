@@ -1,9 +1,23 @@
 # Advanced Usage
 
+#### Adding all drivers
+
+In the [previous section](getting-started.md) the `bblfshctl` command to install
+the drivers was shown with the `--recommended` switch. This will install all the
+drivers in beta stage or better and annotated UAST support. But if you're
+interested in installing [all official language drivers](../languages.md), even the
+ones that have alpha status and only native AST support, you can use the `--all`
+switch instead:
+
+```sh
+$ docker exec -it bblfshd bblfshctl driver install --all
+```
+
+
 #### Adding drivers from the local Docker daemon
 
 You can add a driver to the server using one stored in the local Docker
-daemon instead of the offical ones at Dockerhub. This is specially useful when
+daemon instead of the official ones at Dockerhub. This is especially useful when
 developing new drivers as it allows you to test versions of your driver
 integrated into the server.
 
@@ -25,12 +39,12 @@ docker exec -it bblfshd bblfshctl driver install python docker-daemon:bblfsh/pyt
 #### Running a driver without the server
 
 You can also directly run a driver's Docker image without a server. Like the
-bblfshd server, it will serve using the gRPC protocol on the 9432 port (trough 
+bblfshd server, it will serve using the gRPC protocol on the 9432 port (through 
 you can easily change it using the `-p` option to `docker run`). 
 
 Running a driver this way means that requests will be processed serially so no
 more than one request at a time will be served and of course no more than the
-driver's language can be parsed, trough it can be convenient for some quick UAST
+driver's language can be parsed, through it can be convenient for some quick UAST
 extraction of specific files or quick tests since it skips the steps of running
 a server and managing its drivers.
 
