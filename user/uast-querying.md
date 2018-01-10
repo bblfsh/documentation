@@ -44,7 +44,7 @@ Internally, these are mapped in the XML node in the following way:
 
 This means that both language specific queries (InternalType, Properties) and language agnostic queries (Roles) can be done. For example:
 
-- All the numeric literals in Python: `//NumLiteral`
+- All the numeric literals in Python: `//Num`
 - All the numeric literals in ANY language: `//*[@roleNumber and @roleLiteral]`
 - All the integer literals in Python: `//*[@NumType='int']`
 
