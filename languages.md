@@ -10,7 +10,7 @@
 | Bash       | bash       | alpha   | ✓   | ✓      | ✓             | [✓](https://github.com/bblfsh/bash-driver)        | [✓](https://hub.docker.com/r/bblfsh/bash-driver/)       |
 | PHP        | php        | alpha   | ✓   | ✓      | ✗             | [✓](https://github.com/bblfsh/php-driver)         | [✓](https://hub.docker.com/r/bblfsh/php-driver/)        |
 | TypeScript | typescript | alpha   | ✓   | ✓      | ✗             | [✓](https://github.com/bblfsh/typescript-driver)  | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) |
-| Go | go | alpha   | ✓   | ✓      | ✗             | [✓](https://github.com/bblfsh/go-driver)  | ✗ |
+| Go | go | alpha   | ✓   | ✓      | ✗             | [✓](https://github.com/bblfsh/go-driver)  | [✓](https://hub.docker.com/r/bblfsh/go-driver/) |
 
 - \* The driver is able to return the native AST
 - \*\* The driver is able to return the UAST
