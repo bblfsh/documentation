@@ -8,7 +8,7 @@
 | JavaScript | javascript | beta    | ✓   | ✓      | ✓             | [✓](https://github.com/bblfsh/javascript-driver)  | [✓](https://hub.docker.com/r/bblfsh/javascript-driver/) |
 | Ruby       | ruby       | beta    | ✓   | ✓      | ✓             | [✓](https://github.com/bblfsh/ruby-driver)        | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/)       |
 | Bash       | bash       | alpha   | ✓   | ✓      | ✓             | [✓](https://github.com/bblfsh/bash-driver)        | [✓](https://hub.docker.com/r/bblfsh/bash-driver/)       |
-| PHP        | php        | alpha   | ✓   | ✓      | ✗             | [✓](https://github.com/bblfsh/php-driver)         | [✓](https://hub.docker.com/r/bblfsh/php-driver/)        |
+| PHP        | php        | alpha   | ✓   | ✓      | ✓             | [✓](https://github.com/bblfsh/php-driver)         | [✓](https://hub.docker.com/r/bblfsh/php-driver/)        |
 | TypeScript | typescript | alpha   | ✓   | ✓      | ✗             | [✓](https://github.com/bblfsh/typescript-driver)  | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) |
 | Go | go | alpha   | ✓   | ✓      | ✗             | [✓](https://github.com/bblfsh/go-driver)  | [✓](https://hub.docker.com/r/bblfsh/go-driver/) |
 
