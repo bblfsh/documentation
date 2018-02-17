@@ -20,6 +20,9 @@ serve: node_modules
 roles:
 	go run _tools/roles/main.go > uast/roles.md
 
+languages:
+	go run _tools/languages/main.go > languages.md
+
 clean:
 	rm -rf node_modules
 
