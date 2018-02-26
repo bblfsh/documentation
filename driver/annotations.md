@@ -138,7 +138,7 @@ for real world examples of this API in action.
 ### When in doubt...
 
 You can also ask any doubt on the project's public [Babelfish Slack
-channel](https://sourced-community.slack.com/join/shared_invite/MTkwNTM0ODEyODIzLTE0OTYxMzc5NTMtODRhMDYyNzAyYQ)
+channel](https://join.slack.com/t/sourced-community/shared_invite/enQtMjc4Njk5MzEyNzM2LTFjNzY4NjEwZGEwMzRiNTM4MzRlMzQ4MmIzZjkwZmZlM2NjODUxZmJjNDI1OTcxNDAyMmZlNmFjODZlNTg0YWM)
 which is very friendly to newcomers to the project.
 
 Finally, if you really think that there isn't a correspondence in the UAST roles
