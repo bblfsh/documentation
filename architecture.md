@@ -13,12 +13,12 @@ babelfish **server** in a very specific runtime.
 ## Language Drivers
 
 A language driver is a program, containerized with [Docker](https://www.docker.com/get-docker), that takes file parsing
-requests with source code and replies with an [UAST](./uast/specification.md)
+requests with source code and replies with a [UAST](./uast/specification.md)
 representation of the provided source code or an error message.
 
 Our implementations of language drivers are composed of two pieces: a *code parser*,
 that can be written in any language (usually the source language) and an
-*AST*to*UAST*normalizer* written in Go. In the case of code parsers written in Go or other
+*AST*to*UAST*normalizer written in Go. In the case of code parsers written in Go or other
 languages producing linkable object files or shared library, the code parser and
 UAST normalizer might be combined by dynamic or static linking without a separate
 runnable component.
@@ -31,10 +31,10 @@ internally with the language-specific code parser.
 *bblfshd* is the higher level component of the architecture managing
 client requests (done via [gRPC](http://www.grpc.io) using [a simple
 protocol](user/server-protocol.md)) with the containerized language drivers which it
-orchestrates to keep warm instances, pools and handing any other orchestration
+orchestrates to keep warm instances, pools and handling any other orchestration
 needs.
 
-The server itself it's also designer to run inside a container allowing an [easy
+The server itself is also designed to run inside a container allowing an [easy
 deployment](user/getting-started.html#running-with-docker-recommended)
 and operation.
 
