@@ -69,6 +69,10 @@ $ docker run -d --name bblfshd --privileged -p 9432:9432 -e
 HTTP_PROXY="http://proxy.example.com:80/" -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
 ```
 
+If your system uses SELinux (like Fedora, Red Hat or CentOS among other Linux
+distrubtions) you'll need to install a policy module. You can find instructions
+about it in the [bblfshd README](https://github.com/bblfsh/bblfshd#selinux).
+
 #### Installing the drivers
 
 Now we need to install the driver images into the daemon, you can install
