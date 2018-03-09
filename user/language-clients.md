@@ -30,7 +30,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"gopkg.in/bblfsh/client-go.v1"
+	"gopkg.in/bblfsh/client-go.v2"
 )
 
 func main() {
@@ -61,3 +61,27 @@ When using one of the clients that support libuast you can query the UAST result
 nodes using an [xpath-like](https://www.w3.org/TR/xpath/) query language. Check
 the [UAST querying page in this documentation](uast-querying.md) for the
 details.
+
+## Iterators
+
+The client also allow you to instance an Iterator object and iterate over the
+tree on several predefined orders:
+
+- [Pre-Order](https://en.wikipedia.org/wiki/Tree_traversal#Pre-order)
+- [Post-Order](https://en.wikipedia.org/wiki/Tree_traversal#Post-order)
+- [Level-Order / Breadth first](https://en.wikipedia.org/wiki/Tree_traversal#Breadth-first_search)
+- Position-Order (this will retrieve the nodes in the same order as their 
+  position in the source code).
+
+To check the exact way to use an iterator you must consult the readme of the 
+specific language client you're using, but they're generally easy to use as 
+this Python example shows:
+
+```python
+import bblfsh
+client = bblfsh.BblfshClient("0.0.0.0:9432")
+root = client.parse("/path/to/myfile.py")
+
+for node in bblfsh.iterator(root, bblfsh.TreeOrder.PRE_ORDER):
+	#... do stuff with the node
+```
