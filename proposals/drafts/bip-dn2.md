@@ -1,0 +1,479 @@
+# Shape-based AST transformations
+
+| Field | Value |
+| --- | --- |
+| BIP | ??? |
+| Title | Shape-based AST transformations |
+| Author | Denys Smirnov |
+| Status | Draft |
+| Created | 2018-02-23 |
+| Updated | 2018-03-12 |
+| Target version | 2.0 |
+
+## Abstract
+
+Currently an AST transformation code exists mostly in `ObjectToNode`
+class that applies some hand-written transformation over the tree, such
+as rewriting type fields, promoting nodes, etc. This approach is not
+scalable and does not allow to reuse the code of these transformations.
+Further, existing transformer implementations have repetitive code
+for walking the tree and applying transformations that is also not ideal.
+
+We propose to define a transformation DSL for Go similar to current
+annotation DSL. Existing transformers will be expressed using this
+library.
+
+It will be shown that this approach provides a solid base for planned
+high-level UAST transformations and will make the code more portable and
+easier to read. Also, having such declarative approach will eventually
+allow us to use indexes for the tree, that can be used to apply
+transformations faster for large code bases.
+
+## Rationale
+
+Currently we have this code as a part of `ObjectToNode` transformation:
+
+```golang
+case c.OffsetKey == k:
+    i, err := toUint32(o)
+    if err != nil {
+        return err
+    }
+
+    if n.StartPosition == nil {
+        n.StartPosition = &Position{}
+    }
+
+    n.StartPosition.Offset = i
+case c.EndOffsetKey == k:
+    i, err := toUint32(o)
+    if err != nil {
+        return err
+    }
+
+    if n.EndPosition == nil {
+        n.EndPosition = &Position{}
+    }
+
+    n.EndPosition.Offset = i
+// ...
+```
+
+This code applies similar transformation to different AST node keys.
+
+It's obvious that transformations cannot be reused easily because they
+are using different struct fields. Thus, approach described below will
+require [Schema-less internal representation for AST](bip-dn1.md).
+
+You may notice that the code in fact only needs to know the source and
+target fields to apply the transformation, plus a knowledge about
+the structure of input and output trees. We can a DSL that specifies
+an exact shape of both input and output trees with placeholders
+(or variables) in place of node values that needs to be moved.
+
+Here is an example of DSL for the source tree above:
+
+```golang
+Key(OffsetKey, Int2Str(Var("off")))
+OtherKeys()
+```
+
+It defines an operation that needs to find all nodes with a non optional
+key `OffsetKey`, store it into variable `off` and convert it to integer.
+
+Note that conversion is written as int-to-string, because this is easier
+to reason about the transformation in terms of writing nodes, as if
+function call is not describing the structure, but constructing it:
+get variable `off`, convert to string, store it as key `OffsetKey`.
+
+In the end you can see a `OtherKeys` helper that will save all other
+node keys that were not used in previous transformations.
+
+But this is only the part of transformation to read an input tree,
+we need to define the second one that will write an output tree:
+
+```golang
+Key("EndPosition",
+    Obj(
+        Type("Position"),
+        Key("Offset", Var("off"))
+    )
+)
+OtherKeys()
+```
+
+Or with some helpers:
+
+```golang
+Key("EndPosition",
+    TypedObj("Position",
+        Key("Offset", Var("off"))
+    )
+)
+OtherKeys()
+```
+
+It defines a shape of the tree in the same terms: the root object should
+have an `EndPosition` key, that has and object value of type `Position`
+and this new object should have a key `Offset` with our stored `off`
+variable.
+
+Note that this time str-to-int conversion is omitted - it only happens
+on one side of the transformation, because variable should store a
+"canonical" representation of that value, as defined by final tree shape.
+
+Here are both transformations again:
+
+```golang
+Key(OffsetKey, Int2Str(Var("off")))
+OtherKeys()
+
+// ->
+
+Key("EndPosition",
+    TypedObj("Position",
+        Key("Offset", Var("off"))
+    )
+)
+OtherKeys()
+```
+
+You may also notice that we can swap shapes and automatically
+reverse the transformation. This is the benefit of using declarative
+DSL approach. This DSL could also be used without changes to build
+queries for AST. In fact it already acts like query language to be able
+to find nodes with specific keys.
+
+Another benefit of this approach is that each transformation step is very
+simple: check a specific key and push value to stack, check that current
+value is an object (or create it if we are constructing output tree),
+convert value and store it as a variable. By combining these small
+steps we can express arbitrary complex transformations. Helpers that
+combine multiple transformations can be written to keep DSL high-level
+enough.
+
+## Specification
+
+Transformations will use schema-less representation, as described in
+[previous BIP](bip-dn1.md).
+
+All transformations will act on a shared state, represented by new
+`Transformer` object. It will store all variables that were encountered
+during transform nodes execution and will use Go call stack to store
+references to current nodes that are being processed.
+
+`Transformer` will accept two `Op` trees: one for read pass (check an
+input, verify that the tree shape is correct, store variables) and
+second one for write pass (create output shape, use variables and
+constraints to populate fields).
+
+`Op` interface will describe two methods: one for applying forward pass
+and one for reverse pass:
+
+```golang
+type Sel interface{
+    Check(t *Transformer, n *Node) (bool, error)
+}
+
+type Mod interface{
+    Apply(t *Transformer, n *Node) (*Node, error)
+}
+
+type Op interface{
+    Sel
+    Mod
+}
+```
+
+Each `Op` can manipulate `Transformer`'s state to store any information
+that is necessary.
+
+`Check` will examine the tree, save variables, and return if this node
+matches the shape or not. It may also return an error if shape matches,
+but there is a problem with converting values, checking enums, etc.
+`Check` should not modify the tree. Variable can be assigned only once -
+this ensures that code will not use same variable names in different
+transformation parts by mistake. If a variable is already assigned, but
+is being checked by other transformation node, the value of variable
+is compared. If the value is different, it's a runtime error.
+
+`Apply` will use variables to modify the tree to match the target shape.
+It will return a new node that should be used instead of old one.
+`Apply` should not change any variables in the `Transformer`'s state.
+
+`Op` should be strictly reversible: account for nil array vs empty arrays,
+nil, empty and missing fields, etc.
+
+If steps provided by SDK cannot express a desired transformation, driver
+can define it's own implementation of `Op` that follows the same rules.
+This will necessary for custom line number calculations, custom value
+convertion, etc.
+
+### Proposed transformation steps
+
+* `Is(val Value)` - checks if current node is a primitive and is equal to
+  a given value. Reversal changes the type of the node to primitive and
+  assigns given value to the node.
+
+* `Var(name string)` - stores current node as a value to a named variable
+  in the shared state. Reversal replaces current node with the one from
+  named variable. Variables are not primitives and can move subtrees.
+
+* `Any(apply Op)` - matches any node and throws it away. Reversal will
+  create a node with apply op.
+
+* `And(ops ...Op)` - checks current node with all ops and fails if any
+  of them fails. Reversal applies all modifications from ops to current
+  node. Typed ops should be in the beginning of the list to make sure
+  that `Apply` creates a correct node type before applying specific
+  changes to it.
+
+* `Not(s Sel)` - only implements `Sel` interface, and succeeds when it's
+  argument check fails. It should also check that no new variables were
+  assigned inside sub op, since it makes no sense to extract variables
+  from `Not` branch.
+
+* `Check(sel []Sel, op Op)` - checks all sel arguments before executing
+  op's check. Reversal only executes apply of op. Mostly used for `Not`.
+
+* `Object(op Op)` - verifies that current node is an object, and checks
+  it with provided op. Reversal changes node type to object and applies
+  a provided op to it. This operation will populate a list of unprocessed
+  keys for current object, so the transformation code can verify that
+  transform was complete.
+
+* `Out(key string, op Op)` - checks specific object field with an op.
+  Reversal creates a field in object using provided op. It will also
+  remove the key from the list of unprocessed keys for this specific node.
+
+* `Arr(elems ...Op)` - checks if current object is an array with a number
+  of elements matching ops number, and applies ops to corresponding
+  elements. Apply creates an array of size that matches the number of ops
+  and creates each element with corresponding op.
+
+* `OtherKeys(var string)` - stores all unprocessed fields to a shared
+  variable. Reversal will create the same fields in destination object.
+  This step will also clear a list of unprocessed fields for current node.
+
+* `Lookup(var string, m map[Value]Value)` - uses a value of current node
+  to find a replacement for it in the map and stores result as a variable.
+  Reverse will use reverse map to lookup value stored in variable and
+  will assign in to current node. Since reversal transformation needs to
+  build a reverse map, the mapping should not be ambiguous in reverse
+  direction.
+
+### Proposed helpers
+
+* `AnyVal(def Value)` = `Any(Is(def))` - accept any value, create with default
+
+* `One(op Op)` = `Arr(op)` - array with one element
+
+* `Key(key string, ops ...Op)` = `Out(key, And(ops...))` - a shorthand
+  for object field with multiple rules
+
+* `Has(key string, val Value)` = `Key(key, Is(val))` - field has specific value
+
+* `Save(key string, var string)` = `Key(key, Var(var))` - saves field to variable
+
+* `Obj(ops ...Op)` = `Obj(And(ops...))` - a shorthand for object with multiple rules
+
+* `HasType(typ string)` = `Has("@type", typ)` - a shorthand for checking type field
+
+* `TypedObj(typ string, ops ...Op)` = `Obj(HasType(typ), ops...)` -
+  a shorthand for object with a specific type
+
+### Examples
+
+We will describe a usage of proposed DSL for existing transformations.
+
+#### InternalTypeKey (`@type`)
+
+```golang
+Obj(
+    Save(InternalTypeKey, "typ"),
+    OtherKeys("other"),
+)
+
+// ->
+
+Obj(
+    Save("@type", "typ"),
+    OtherKeys("other"),
+)
+```
+
+#### Token (`@token`)
+
+Since the new transformation engine requires all fields to be described,
+user needs to explicitly define each AST type and it's corresponding
+token.
+
+Previously it was possible to specify two fields of one node that will
+become tokens, and it might become an error condition. With new approach
+this can be noticed earlier, because each type it defined separately.
+
+Here is a small example for transforming Go comment node tokens:
+
+```golang
+Obj(
+    Has("type", "go:Comment"),
+    Save("Text", "comment"),
+)
+
+// ->
+
+TypedObj("uast:Comment"
+    Save("@token", "comment"),
+)
+```
+
+#### OffsetKey
+
+`OffsetKey` is used to save start position of AST node. Previously
+transformation was only able to attach positional information to node
+that had this key in it.
+
+With a new approach it's possible to move this information to any field
+in resulting subtree.
+
+For example, we can use comment example and use it's slash position as
+offset, stored in `@start` field of `Pos` object, inside `@pos` field of
+current object.
+
+```golang
+Obj(
+    Has("type", "go:Comment"),
+    Save("Text", "comment"),
+    Save("Slash", "off"),
+)
+
+// ->
+
+TypedObj("uast:Comment"
+    Save("@token", "comment"),
+    Key("@pos", TypedObj("uast:Pos",
+        Key("@start",
+            // store offset as a start position
+            Save("@off", "off"),
+        ),
+        Key("@end",
+            // calculate as start+len(val) later
+            Has("@off", AnyVal(-1)),
+        ),
+    )),
+)
+```
+
+Note that there is no line/column information here. It can be computed
+later by applying custom transformation step.
+
+The same approach can be use to describe `EndOffsetKey`, `LineKey`, etc
+by providing a helper with source field name and destination field name.
+
+#### Annotation DSL
+
+Although annotation DSL is mostly similar to new DSL, it still has some
+distinction that will require drivers rewrite:
+
+* `Descendants` was used to traverse all nodes, but now `Transformer`
+  will walk all nodes by default.
+
+* `Descendants` was used to skip parts of AST structure to get to
+  internal children. This will not be supported in new DSL since it makes
+  it impossible to apply reverse transformation, nor to verify separate
+  transformation steps.
+
+* `HasInternalRole(k), ...` has used instead of `Has(k, ...)` - it was
+  listing children with specific field instead of listing children on
+  specific parent's field. This will not be supported in new DSL and
+  should already be solved in previous BIP.
+
+Mapping of old selectors to new DSL:
+
+* `Self` -> `And`.
+
+* `Children` -> Not supported directly, although `Children(HasInternalRole(k), ...)`
+  can be mapped to `Key(k, ...)`.
+
+* `Descendants` -> Not supported. Was used mostly for iterating over all
+  nodes, that will be done automatically now. Any other usages should
+  specify what fields to traverse explicitly.
+
+* `DescendantsOrSelf` -> Not supported, see `Descendants`.
+
+* `Roles(...)` -> `Has("@role", Arr(...))`.
+
+Mapping of old predicates to new DSL:
+
+* `HasInternalType(t)` -> `HasType(t)`.
+
+* `HasProperty(k, v)` -> `Has(k, v)`.
+
+* `HasInternalRole(t)` -> Not supported directly, see `Children` selector.
+
+* `HasChild(op)` -> Not supported directly, see `Children` selector.
+
+* `HasToken(v)` -> `Has("@token", v)`.
+
+* `And(ops)` -> `And(ops)`.
+
+* `Not(op), ...` -> `Pre(Not(op), ...)`.
+
+* `Or(ops)` -> Was used to tag multiple types with a single role. Should
+  be split into separate rules for each type to provide reversibility.
+
+## Alternatives
+
+*   Use current approach and refactor the code for reusability. This will
+    lead to splitting the code into small reusable parts, which will be
+    mostly similar to proposed DSL. The biggest disadvantage of old
+    approach is that it will require to hand-craft all value assignments
+    between old and new trees, creation of nodes, etc. Also, old approach
+    cannot provide reversibility (that is useful for verifying high-level
+    UAST), and cannot be used later as a form of query language.
+
+*   Proposed approach requires all fields to be either mentioned as a
+    constraint (`Key`, `Has`), or stored into a variable (`Var`, `Save`).
+    `OtherKeys` was proposed as a way to store all unused keys. It is
+    possible to do this automatically and preserve everything that was
+    not touched by transformations defined by the user. We think that
+    this approach will only lead to more programming errors. In proposed
+    solution user is forced to describe what exactly are the fields in
+    the object (assuming `OtherKeys` is not used). Thus, it will act like
+    a type-safe DSL, allowing to strictly check if user's expectations
+    of AST are correct or not.
+
+*   It is also possible to omit reversibility requirement for
+    transformation steps. Although it might sound like it will make code
+    simpler, in fact transformations like `Key` will just be split as
+    a source transformation `HasKey` and destination transformation
+    `PutKey`, since both are required to properly define a final
+    transformation. Thus, it's easier to make a single transform with
+    both forward and reverse steps. It's worth to note that sometimes it
+    might be necessary to define a non-reversible transformation that may
+    drop some data (thus making it non-reversible). Such transformations
+    can just set an error state on the transformer, or panic in case
+    they were called to make a reverse pass.
+
+
+## Impact
+
+The change requires SDK to switch to schema-less representation. This
+may cause severe changes in API surface, thus the proposal targets 2.0
+SDK release.
+
+It's still possible to preserve limited compatibility for `ObjectToNode`,
+but it may be better to split it into separate transforms that drivers
+will use. And since we are targeting high-level UAST, all drivers will
+need to be changed to use new transformations anyway.
+
+`Positioner` can be rewritten to new DSL, assuming that it will be able
+to access source code from transformation framework.
+
+Annotation DSL will require only minor changes to match new DSL
+requirements, assuming previous BIP is implemented. Although the change
+is minimal, drivers will be forced to use DSL differently - it was common
+to omit intermediate fields while annotating objects, and new DSL
+requires all fields to be defined explicitly. Again, since high-level
+UAST will require a driver rewrite, annotations will be added on top of
+new AST-to-UAST transformations.
