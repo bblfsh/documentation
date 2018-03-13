@@ -14,7 +14,7 @@ You can start contributing in many ways
 * [Reporting bugs.](#reporting-bugs)
 * [Request a feature.](#feature-requests)
 * Improve the [documentation](http://github.com/bblfsh/documentation).
-* Contribute code to the [server](http://github.com/bblfsh/server),
+* Contribute code to the [bblfshd](http://github.com/bblfsh/bblfshd),
   [SDK](http://github.com/bblfsh/sdk).
 * Contribute to [libuast](http://github.com/bblfsh/libuast),
   any of the [Python](http://github.com/bblfsh/client-python),
