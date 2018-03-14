@@ -12,6 +12,9 @@ The current **scope is to enable parsing of single files in any popular programm
 
 This current scope is expected to expand in the near future to full project analysis, where the source code can be analyzed with its full context, and not just per-file. 
 
+For more information about how Babelfish compares to other similar systems,
+see [this page](alternatives.md).
+
 ### Use Cases
 
 Some of the use cases that we aim to support with UAST are:
