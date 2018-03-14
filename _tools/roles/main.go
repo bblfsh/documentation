@@ -5,13 +5,15 @@ import (
 	"bytes"
 	"fmt"
 	"go/ast"
-	"go/importer"
 	"go/parser"
 	"go/token"
-	"go/types"
 	"strings"
+	"context"
+	"sort"
+	"log"
 
 	"golang.org/x/tools/go/loader"
+	"gopkg.in/bblfsh/sdk.v1/manifest/discovery"
 )
 
 const (
@@ -25,24 +27,50 @@ const (
 
 var (
 	// OfficialDriver list of official driver maintanained by bblfsh org.
-	OfficialDriver = map[string]string{
-		"python": "github.com/bblfsh/python-driver/driver/normalizer",
-		"java":   "github.com/bblfsh/java-driver/driver/normalizer",
-	}
+	OfficialDriver []discovery.Driver
 )
 
 func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func run() error {
 	roles, err := findRoles()
 	if err != nil {
-		panic(err)
+		return err
 	}
 
-	for l, pkg := range OfficialDriver {
-		findUsage(l, pkg, roles)
+	list, err := discovery.OfficialDrivers(context.TODO(), &discovery.Options{
+		NoMaintainers:true,
+	})
+	if err != nil {
+		return err
+	}
+	for i:=0; i < len(list); i++ {
+		if !list[i].IsRecommended() {
+			list = append(list[:i], list[i+1:]...)
+			i--
+		}
+	}
+	OfficialDriver = list
+
+	var last error
+	for _, d := range OfficialDriver {
+		if !d.IsRecommended() {
+			continue
+		}
+		pkg := strings.TrimPrefix(d.RepositoryURL(), "https://")
+		pkg += "/driver/normalizer"
+		if err := findUsage(d.Language, pkg, roles); err != nil {
+			log.Println(err)
+			last = err
+		}
 	}
 
 	fmt.Println(roles)
-
+	return last
 }
 
 // findRoles find the roles defined at the uast package.
@@ -91,24 +119,14 @@ func findDoc(prog *loader.Program, pos token.Pos) *ast.CommentGroup {
 // used.
 func findUsage(language, pkg string, roles Roles) error {
 	conf := loader.Config{ParserMode: parser.ParseComments}
-	conf.Import(pkg)
+	conf.Import(pkg) // TODO: clone it if not found
 	prog, err := conf.Load()
 	if err != nil {
 		return err
 	}
 
 	info := prog.Package(pkg)
-	result := &types.Info{
-		Uses: make(map[*ast.Ident]types.Object),
-	}
-
-	tconf := types.Config{Importer: importer.Default()}
-	_, err = tconf.Check("", prog.Fset, info.Files, result)
-	if err != nil {
-		return err
-	}
-
-	for id, obj := range result.Uses {
+	for id, obj := range info.Uses {
 		if obj.Type().String() != RoleType {
 			continue
 		}
@@ -170,30 +188,30 @@ func (r Roles) String() string {
 
 func writeTableHeader(w *bytes.Buffer) {
 	var list []string
-	for lang := range OfficialDriver {
-		list = append(list, strings.Title(lang))
+	for _, d := range OfficialDriver {
+		list = append(list, d.Name)
 	}
 
-	w.WriteString("Role|" + strings.Join(list, "|") + "\n")
-	w.WriteString(strings.Repeat("-|-", len(list)) + "\n")
+	w.WriteString("Role |" + strings.Join(list, " | ") + "\n")
+	w.WriteString("---"+strings.Repeat("|---", len(list)) + "\n")
 }
 
 func writeTableBody(w *bytes.Buffer, r Roles) {
 	for _, role := range r {
-		fmt.Fprintf(w, "[%s](#%s)", role.Name, strings.ToLower(role.Name))
-		for lang := range OfficialDriver {
+		fmt.Fprintf(w, "[%s](#%s) ", role.Name, strings.ToLower(role.Name))
+		for _, d := range OfficialDriver {
 			var used string
-			if role.IsUsedBy(lang) {
+			if role.IsUsedBy(d.Language) {
 				used = "✓"
 			}
 
-			fmt.Fprintf(w, "|%s", used)
+			fmt.Fprintf(w, " | %s", used)
 		}
 
-		fmt.Fprintf(w, "\n")
+		fmt.Fprint(w, "\n")
 	}
 
-	fmt.Fprintf(w, "\n\n")
+	fmt.Fprint(w, "\n\n")
 }
 
 func writeList(w *bytes.Buffer, r Roles) {
@@ -206,6 +224,7 @@ func writeList(w *bytes.Buffer, r Roles) {
 				fmt.Sprintf(GitHubFilePattern, language),
 			))
 		}
+		sort.Strings(l)
 
 		fmt.Fprintf(w, "## %s\n\n%s\n**Supported by**: %s\n\n",
 			role.Name, role.Doc, strings.Join(l, ", "),
