@@ -12,7 +12,7 @@ Babelfish and Kythe share a goal of defining a common representation
 for concepts from different programming languages and provide a way to query it.
 Both provide a unified data format. And both are language-independent.
 
-The main difference is that Babelfish preserve all AST nodes including
+The main difference is that Babelfish preserves all AST nodes including
 control flow and expressions, while Kythe focuses on class hierarchy,
 dependencies, etc.
 
@@ -53,7 +53,7 @@ structure will still allow querying for usages, etc.
 
 > Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. A tag signifies a language object for which an index entry is available (or, alternatively, the index entry created for that object).
 
-Both Babelfish and Ctags provides positional information for identifiers,
+Both Babelfish and Ctags provide positional information for identifiers,
 classes, directives, etc.
 
 The main difference is that Ctags does not provide any form of AST, while
@@ -88,7 +88,7 @@ it preserves all features of original AST.
 
 ## [srcML](https://www.srcml.org/)
 
-> The srcML format is an XML representation for source code, where the markup tags identify elements of the abstract syntax for the language. The srcml program is a command line application for the conversion source code to srcML, an interface for the exploration, analysis, and manipulation of source code in this form, and the conversion of srcML back to source code. The current parsing technologies supports C/C++, C#, and Java.
+> The srcML format is an XML representation for source code, where the markup tags identify elements of the abstract syntax for the language. The srcml program is a command line application for the conversion source code to srcML, an interface for the exploration, analysis, and manipulation of source code in this form, and the conversion of srcML back to source code. The current parsing technologies support C/C++, C#, and Java.
 
 srcML defines an XML schema to annotate source code files with AST structure.
 It also provides tools to query and analyze files in this format. An AST
