@@ -1,8 +1,20 @@
 # Babelfish vs Other Software
 
+Table of Contents
+=================
+
+* [Kythe](#kythe)
+* [Language Server Protocol](#language-server-protocol)
+* [srclib](#srclib)
+* [ctags](#ctags)
+* [ANTLR](#antlr)
+* [Tree\-sitter](#tree-sitter)
+* [srcML](#srcml)
+* [SmaCC](#smacc)
+
 <!-- TODO: https://github.com/oracle/opengrok/wiki/Comparison-with-Similar-Tools -->
 
-## [Kythe](https://kythe.io/)
+## [Kythe](http://kythe.io/)
 
 > The best way to view Kythe is as a “hub” for connecting tools for various languages, clients and build systems. By defining language-agnostic protocols and data formats for representing, accessing and querying source code information as data, Kythe allows language analysis and indexing to be run as services.
 
@@ -16,15 +28,19 @@ The main difference is that Babelfish preserves all AST nodes including
 control flow and expressions, while Kythe focuses on class hierarchy,
 dependencies, etc.
 
-Also, Babelfish provides a unified IR across languages, which is defined
+Babelfish provides a unified IR across languages, which is defined
 as a non-goal of Kythe.
 
-Kythe requires to instrument language compilers and build systems while
-Babelfish uses native language parsers to get an AST, allowing to develop
-a new language driver in less time.
+At the same time since Babelfish only processes one file at the time, it cannot
+resolve symbolic references in the code, while the goal on Kythe project is to
+provide this information with a very high accuracy.
 
-Kythe also provides a way to process the whole project, while for now
-Babelfish is focused on processing individual files.
+Kythe requires to instrument language compilers and build systems (by modifying
+the sources of compiler and build system), while Babelfish uses native language
+parsers to get an AST, allowing to develop a new language driver in less time.
+
+Kythe requires a project to be built to be processed because of integration with
+compilers and build systems, while Babelfish can process only individual files.
 
 ## [Language Server Protocol](https://microsoft.github.io/language-server-protocol/)
 
@@ -37,9 +53,9 @@ Usages, etc. But it does not define a common representation of AST because
 the goal of the project is to enable easy access to analysis that is done
 by compilers and language SDKs.
 
-Babelfish provides a common representation for ASTs allowing
-to use its output for static analysis by other tools. Queries over UAST
-structure will still allow querying for usages, etc.
+Babelfish provides a common representation for ASTs allowing to use its output
+for static analysis by other tools. Babelfish cannot resolve symbolic references,
+thus it cannot be used to query usages.
 
 ## [srclib](https://srclib.org/)
 
