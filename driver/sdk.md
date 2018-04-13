@@ -50,7 +50,6 @@ creating file "mylang-driver/LICENSE"
 creating file "mylang-driver/Makefile"
 creating file "mylang-driver/driver/main.go"
 creating file "mylang-driver/driver/normalizer/annotation.go"
-creating file "mylang-driver/driver/normalizer/tonode.go"
 $ cd mylang-driver
 $ git add -A
 $ git commit -m 'initialize repository'
@@ -199,9 +198,9 @@ to have any needed dependency installed on your environment to run the tests.
 
 ### Creating the Converter and Annotator
 
-The conversion from AST to UAST is written in Go. The main files to be edited are
-`driver/normalizer/annotation.go` and `driver/normalizer/tonode.go`. The details
-are explained in the [annotations section](annotations.html).
+The conversion from AST to UAST is written in Go. The main file to be edited is
+`driver/normalizer/annotation.go`. The details are explained in the
+[annotations section](annotations.html).
 
 ### Updating the Makefile with the build instructions
 
@@ -316,6 +315,8 @@ The final `CMD` command should remain at the end of the file and you should not
 change it since it'll execute the driver.
 
 ### Creating the integration tests
+
+<!-- TODO: mention Go integration tests in driver/fixtures/fixtures_test.go -->
 
 The integration tests will test all the process of the driver from the request
 to the parser to the annotated UAST generation. They work by comparing the
