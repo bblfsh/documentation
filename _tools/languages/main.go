@@ -11,8 +11,8 @@ import (
 	"sync"
 
 	"github.com/heroku/docker-registry-client/registry"
-	"gopkg.in/bblfsh/sdk.v1/manifest"
-	"gopkg.in/bblfsh/sdk.v1/manifest/discovery"
+	"gopkg.in/bblfsh/sdk.v2/manifest"
+	"gopkg.in/bblfsh/sdk.v2/manifest/discovery"
 )
 
 const (
