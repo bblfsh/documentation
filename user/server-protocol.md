@@ -47,7 +47,7 @@ ParseRequest. Example:
 ```
 
 The `uast` field would contain the UAST root node as an
-[`gopkg.in/bblfsh/sdk.v1/uast`
+[`gopkg.in/bblfsh/sdk.v2/uast`
 type](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto#L11) which as
 you can see in the linked definition includes the internal type (the type used by
 the native AST), a map with the properties, the UAST roles, the position of the

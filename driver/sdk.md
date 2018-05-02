@@ -1,6 +1,6 @@
 # Babelfish SDK
 
-The [Babelfish SDK](https://github.com/bblfsh/sdk/) contains the tools and libraries
+The [Babelfish SDK](https://gopkg.in/bblfsh/sdk.v2) contains the tools and libraries
 required to create a Babelfish driver for a programming language.
 
 ## Preparations
@@ -22,10 +22,10 @@ in any programming language but the normalizer is developed using Go so you
 must get it as any other go package:
 
 ```bash
-$ go get -u -v gopkg.in/bblfsh/sdk.v1/...
+$ go get -u -v gopkg.in/bblfsh/sdk.v2/...
 ```
 
-This will fetch the SDK repository to `$GOPATH/src/gopkg.in/bblfsh/sdk.v1` and
+This will fetch the SDK repository to `$GOPATH/src/gopkg.in/bblfsh/sdk.v2` and
 will install the `bblfsh-sdk` CLI to `$GOPATH/bin/bblfsh-sdk`.
 
 ### Creating the driver's initial structure
@@ -80,11 +80,11 @@ managed file "README.md" has changed, discarding changes
 the SDK you'll also have to update the Go package **first** with:
 
 ```bash
-go get -u gopkg.in/bblfsh/sdk.v1/...
+go get -u gopkg.in/bblfsh/sdk.v2/...
 ```
 
 If the update gives you any problem you can try to delete the
-`$GOPATH/src/gopkg.in/bblfsh/sdk.v1` manually and run the go get command
+`$GOPATH/src/gopkg.in/bblfsh/sdk.v2` manually and run the go get command
 again to get a fresh copy.
 
 ## Implementing the Driver
