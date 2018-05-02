@@ -147,7 +147,8 @@ Map("test",
 Note that `Part` operation should be paired inside `Map` because each of
 them produces state variables for other to consume.
 
-With `Part`, `Check` method will succeed and produce the following node state:
+With `Part`, the `Check` method will succeed and produce the following
+node state:
 
 ```json
 {
