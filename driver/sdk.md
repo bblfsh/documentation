@@ -63,7 +63,7 @@ of the managed files are changed. You can by-pass this with `git commit
 --no-verify`.
 
 You can find the driver skeleton used here in the SDK source code:
-[`etc/sekeleton`](https://github.com/bblfsh/sdk/tree/master/etc/skeleton).
+[`etc/skeleton`](https://github.com/bblfsh/sdk/tree/master/etc/skeleton).
 
 ### Updating SDK version
 
