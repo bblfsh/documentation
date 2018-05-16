@@ -482,14 +482,110 @@ field's checks, use `Fields`:
 ```golang
 Fields{
     {Name: "type", Op: String("If")},
+    {Name: "cond": Op: Var("x")},
     {Name: "then": Op: Var("then")},
-    {Name: "else": Op: Var("then"), Optional: "else_exists"},
+    {Name: "else": Op: Var("else"), Optional: "else_exists"},
 }
 ```
 
 For each optional field, a variable should be provided to store the state.
 Optional field means that they may not exist. For checking nil fields see
 `Opt` operation.
+
+##### Example
+
+Let's consider the following subtree:
+
+```json
+{
+    "type": "If",
+    "cond": {"type":"Ident", "name":"A"},
+    "then": {"type":"Block", "stmts":[]},
+    "else": null
+}
+```
+
+Since `Fields` honors an order of operations, it will check them exactly
+as written in the annotation code. This can be used to make sure that
+variables are defined before using any conditional operations like `Lookup`.
+
+First, the `type` field will be checked. The value in it matches the value
+in the subtree, so the transform will proceed to the next field.
+
+Both `cond` and `then` fields contains an object and it will be stored
+to the `x` and `then` state variables accordingly.
+
+At this point the variable state for the node will contain the following:
+
+```json
+{
+    "x": {"type":"Ident", "name":"A"},
+    "then": {"type":"Block", "stmts":[]},
+}
+```
+
+Next, the transformation will proceed to the `else` field. It is set to
+`null` in the subtree, but `null` is a valid node value, so it will be
+stored to `else` variable. Since the field exists in the subtree, optional
+state variable `else_exists` will be set to `true`:
+
+```json
+{
+    "x": {"type":"Ident", "name":"A"},
+    "then": {"type":"Block", "stmts":[]},
+    "else": null,
+    "else_exists": true
+}
+```
+
+If we try to reverse the transformation with `Construct`, it will also
+reverse an order in which fields are being created (`else` first).
+The operation will check that `else_exists` is set to `true`, will create
+this field, and will execute `Var("else")` to populate it. This will produce
+a `"else": null` field in the destination subtree. All other fields will be
+processed as usual.
+
+Let's consider another example (note that `else` does not exist):
+
+```json
+{
+    "type": "If",
+    "cond": {"type":"Ident", "name":"A"},
+    "then": {"type":"Block", "stmts":[]},
+}
+```
+
+The `Check` operation will proceed the same way as described above
+up until `else` field and produce the same variable state:
+
+```json
+{
+    "x": {"type":"Ident", "name":"A"},
+    "then": {"type":"Block", "stmts":[]},
+}
+```
+
+Next, it will check if `else` field exists in the subtree and since it's
+not, the `else_exists` state variable will be set to `false` and processing
+of this field will stop without passing any value to `Var("else")` operation.
+In this case `else` variable will not be set in the node state:
+
+```json
+{
+    "x": {"type":"Ident", "name":"A"},
+    "then": {"type":"Block", "stmts":[]},
+    "else_exists": false
+}
+```
+
+Reverse transformation will check `else_exists` variable first and since
+it's set to `false` the `else` field will not be created in the destination
+and `Construct` will proceed to the next field.
+
+Again, as seen by this example, the DSL distinguish between optional fields
+(field might not exist) and optional values (value may be nil). For the
+first case `Optional` should be set in `Fields`, while for the second case
+a different operation should be used (see `Opt()`).
 
 #### Skip unknown fields
 
