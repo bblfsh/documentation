@@ -105,7 +105,7 @@ ObjectToNode{
 ### Stage 4 and 5: Annotations and normalization
 
 Both annotation and normalization are handled with a transformation DSL,
-specifically - the helpers defined in [ast.go](https://github.com/bblfsh/sdk/blob/master/uast/transformer/ast.go).
+specifically - the helpers defined in [ast.go](https://github.com/bblfsh/sdk/blob/v2/uast/transformer/ast.go).
 
 You can read a short introduction to these helpers below.
 
