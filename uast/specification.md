@@ -3,7 +3,7 @@
 
 ## Overview
 
-A UAST is a normalized form of AST with language-independent annotations. Its
+A Universal Abstract Syntax Tree (UAST) is a normalized form of [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) with language-independent annotations. Its
 structure is as follows:
 
 ```go
