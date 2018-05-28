@@ -6,7 +6,7 @@
 service can parse any file, in any supported language, extracting an [Abstract
 Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) from it  
 and converting it into a [**Universal Abstract Syntax Tree (UAST)**](./uast/specification.md) 
-which enablee further analysis and transformation with either the included tools 
+which enables further analysis and transformation with either the included tools 
 or your own tools by using an standard format.
 
 ## Motivation and Scope
