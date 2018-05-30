@@ -7,7 +7,7 @@ The querying uses [xpath syntax](https://www.w3.org/TR/xpath/) and it can be
 really useful to extract features from the code and, thanks to the annotation
 system implemented by babelfish, it can be done in a universal way.
 
-Any of the [node](https://godoc.org/github.com/bblfsh/sdk/uast#Node) fields can
+Any of the [node](https://godoc.org/gopkg.in/bblfsh/sdk.v2/uast#Node) fields can
 be used for querying in the following way:
 
 - `InternalType` is converted to the element name

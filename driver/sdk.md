@@ -1,6 +1,6 @@
 # Babelfish SDK
 
-The [Babelfish SDK](https://github.com/bblfsh/sdk/) contains the tools and libraries
+The [Babelfish SDK](https://gopkg.in/bblfsh/sdk.v2) contains the tools and libraries
 required to create a Babelfish driver for a programming language.
 
 ## Preparations
@@ -22,10 +22,10 @@ in any programming language but the normalizer is developed using Go so you
 must get it as any other go package:
 
 ```bash
-$ go get -u -v gopkg.in/bblfsh/sdk.v1/...
+$ go get -u -v gopkg.in/bblfsh/sdk.v2/...
 ```
 
-This will fetch the SDK repository to `$GOPATH/src/gopkg.in/bblfsh/sdk.v1` and
+This will fetch the SDK repository to `$GOPATH/src/gopkg.in/bblfsh/sdk.v2` and
 will install the `bblfsh-sdk` CLI to `$GOPATH/bin/bblfsh-sdk`.
 
 ### Creating the driver's initial structure
@@ -50,7 +50,6 @@ creating file "mylang-driver/LICENSE"
 creating file "mylang-driver/Makefile"
 creating file "mylang-driver/driver/main.go"
 creating file "mylang-driver/driver/normalizer/annotation.go"
-creating file "mylang-driver/driver/normalizer/tonode.go"
 $ cd mylang-driver
 $ git add -A
 $ git commit -m 'initialize repository'
@@ -81,11 +80,11 @@ managed file "README.md" has changed, discarding changes
 the SDK you'll also have to update the Go package **first** with:
 
 ```bash
-go get -u gopkg.in/bblfsh/sdk.v1/...
+go get -u gopkg.in/bblfsh/sdk.v2/...
 ```
 
 If the update gives you any problem you can try to delete the
-`$GOPATH/src/gopkg.in/bblfsh/sdk.v1` manually and run the go get command
+`$GOPATH/src/gopkg.in/bblfsh/sdk.v2` manually and run the go get command
 again to get a fresh copy.
 
 ## Implementing the Driver
@@ -199,9 +198,9 @@ to have any needed dependency installed on your environment to run the tests.
 
 ### Creating the Converter and Annotator
 
-The conversion from AST to UAST is written in Go. The main files to be edited are
-`driver/normalizer/annotation.go` and `driver/normalizer/tonode.go`. The details
-are explained in the [annotations section](annotations.html).
+The conversion from AST to UAST is written in Go. The main file to be edited is
+`driver/normalizer/annotation.go`. The details are explained in the
+[annotations section](annotations.html).
 
 ### Updating the Makefile with the build instructions
 
@@ -316,6 +315,8 @@ The final `CMD` command should remain at the end of the file and you should not
 change it since it'll execute the driver.
 
 ### Creating the integration tests
+
+<!-- TODO: mention Go integration tests in driver/fixtures/fixtures_test.go -->
 
 The integration tests will test all the process of the driver from the request
 to the parser to the annotated UAST generation. They work by comparing the

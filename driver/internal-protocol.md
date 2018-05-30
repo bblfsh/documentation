@@ -4,6 +4,8 @@
 The **internal driver protocol** is used to communicate between the native AST
 parser and the UAST normalizer inside a driver.
 
+<!-- TODO: mention that native driver can be compiled into Go driver server -->
+
 ## Transport
 
 The internal driver protocol uses standard input and standard output as transport.

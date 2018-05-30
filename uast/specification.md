@@ -18,7 +18,7 @@ type Node struct {
 }
 ```
 
-**Check out the godoc for the SDK [UAST package](https://godoc.org/github.com/bblfsh/sdk/uast)**
+**Check out the godoc for the SDK [UAST package](https://godoc.org/gopkg.in/bblfsh/sdk.v2/uast)**
 for the full documentation of the UAST structure and annotations in Go.
 
 **For other languages, check the [UAST protobuf definition](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto).**
@@ -59,7 +59,7 @@ can be attached to any node.
 
 It is guaranteed that retrieving all tokens from a UAST by doing a pre-order
 traversal of the UAST, gives a list of tokens in the same order as in the original
-source code. The Go uast package provides the [Tokens](https://godoc.org/github.com/bblfsh/sdk/uast#Tokens)
+source code. The Go uast package provides the [Tokens](https://godoc.org/gopkg.in/bblfsh/sdk.v2/uast#Tokens)
 function to perform this operation.
 
 ## Positions
@@ -171,7 +171,7 @@ under the `Import`, `Pathname` roles in pre-order.
 As it is clear from this example, extracting meaningful information from UAST
 requires different tree operations for each role. The documentation and reference
 implementation of these operations are defined in the
-[uast](http://godoc.org/github.com/bblfsh/sdk/uast/)
+[uast](http://godoc.org/gopkg.in/bblfsh/sdk.v2/uast/)
 package of the SDK.
 
 Note that each node can (and most will) have multiple roles.

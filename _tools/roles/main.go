@@ -3,22 +3,22 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"go/ast"
 	"go/parser"
 	"go/token"
-	"strings"
-	"context"
-	"sort"
 	"log"
+	"sort"
+	"strings"
 
 	"golang.org/x/tools/go/loader"
-	"gopkg.in/bblfsh/sdk.v1/manifest/discovery"
+	"gopkg.in/bblfsh/sdk.v2/manifest/discovery"
 )
 
 const (
 	// UASTPackage  package containing the roles definition.
-	UASTPackage = "gopkg.in/bblfsh/sdk.v1/uast"
+	UASTPackage = "gopkg.in/bblfsh/sdk.v2/uast"
 	// RoleType go type name of the Role type
 	RoleType = UASTPackage + ".Role"
 	// GitHubFilePattern route to the annotation.go file at GitHub
@@ -43,12 +43,12 @@ func run() error {
 	}
 
 	list, err := discovery.OfficialDrivers(context.TODO(), &discovery.Options{
-		NoMaintainers:true,
+		NoMaintainers: true,
 	})
 	if err != nil {
 		return err
 	}
-	for i:=0; i < len(list); i++ {
+	for i := 0; i < len(list); i++ {
 		if !list[i].IsRecommended() {
 			list = append(list[:i], list[i+1:]...)
 			i--
@@ -193,7 +193,7 @@ func writeTableHeader(w *bytes.Buffer) {
 	}
 
 	w.WriteString("Role |" + strings.Join(list, " | ") + "\n")
-	w.WriteString("---"+strings.Repeat("|---", len(list)) + "\n")
+	w.WriteString("---" + strings.Repeat("|---", len(list)) + "\n")
 }
 
 func writeTableBody(w *bytes.Buffer, r Roles) {
