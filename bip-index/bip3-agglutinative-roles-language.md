@@ -1,4 +1,4 @@
-# Agglutinative Roles language
+# BIP3: Agglutinative Roles language
 
 | Field | Value |
 | --- | --- |
@@ -11,74 +11,59 @@
 
 ## Abstract
 
-Current Role set includes roles that contain multiple properties,
-instead of having a single Role per property.
+Current Role set includes roles that contain multiple properties, instead of having a single Role per property.
 
-We propose modifying current role set to include only roles that represent a single property
-and to consider the Role set an agglutinative language,
-annotating each node with a set of Roles to fully express node properties.
+We propose modifying current role set to include only roles that represent a single property and to consider the Role set an agglutinative language, annotating each node with a set of Roles to fully express node properties.
 
-We show how this can make the Role vocabulary more scalable, flexible and expressive,
-and how it can make the work of code analysts easier.
+We show how this can make the Role vocabulary more scalable, flexible and expressive, and how it can make the work of code analysts easier.
 
 ## Rationale
 
-In current Role set many roles contain multiple properties (i. e.: `OpPreIncrement` for `++i`).
+In current Role set many roles contain multiple properties \(i. e.: `OpPreIncrement` for `++i`\).
 
 This presents some issues:
+
 * It doesn't scale well.
+
   For a set of N properties, in the worst case, 2^N roles would be needed.
+
 * It makes code analysis hard.
+
   For example, to search for all the operators you need to search for the union of many roles.
+
 * There's hard to provide partial information for rare properties,
+
   if some property is not common enough as to deserve its own role.
 
-A more flexible and scalable way to define the role set would be to have one role per property
-and to allow to combine these roles/properties as needed.
-In the example above `OpPreIncrement` would become the union of 3 roles (`Operator`, `Increment`, `Prefix`).
+A more flexible and scalable way to define the role set would be to have one role per property and to allow to combine these roles/properties as needed. In the example above `OpPreIncrement` would become the union of 3 roles \(`Operator`, `Increment`, `Prefix`\).
 
-This combination of roles is already done to some extent,
-since a preincrement operator would actually be annotated with 2 roles: `Expression`, `OpPreIncrement`.
-The current proposal just deepens this property separation into roles.
+This combination of roles is already done to some extent, since a preincrement operator would actually be annotated with 2 roles: `Expression`, `OpPreIncrement`. The current proposal just deepens this property separation into roles.
 
-As a derivative advantage of this new role language and its scalability,
-new roles could be defined that better capture some additional property shared by different tokens
-that will make code analysis even easier.
+As a derivative advantage of this new role language and its scalability, new roles could be defined that better capture some additional property shared by different tokens that will make code analysis even easier.
 
-Following the previous example, we could use some additional roles, like `Arithmetic`, `Unary`, etc.
-to express additional properties of the role.
-So the final annotation could be something like: `Operator`, `Arithmetic`, `Unary`
+Following the previous example, we could use some additional roles, like `Arithmetic`, `Unary`, etc. to express additional properties of the role. So the final annotation could be something like: `Operator`, `Arithmetic`, `Unary`
 
-* `Expression` (or `Statement`, depending on the language)
+* `Expression` \(or `Statement`, depending on the language\)
 * `Operator`
 * `Arithmetic`
 * `Increment`
 * `Unary`
 * `Prefix`
 
-With this kind of classification a code analyst that may be interested in analysing the usage of, say,
-arithmetic operators, would have an easier way to filter the `UAST` to find the interesting nodes.
+With this kind of classification a code analyst that may be interested in analysing the usage of, say, arithmetic operators, would have an easier way to filter the `UAST` to find the interesting nodes.
 
-Additionally, this agglutination of roles makes unsupported node types degrade more gracefully.
-For example, a `**` (pow) operator, which currently lacks a specific role,
-would be just left as: `Expression`, `Incomplete`.
-With the new language, the node could still retain most of the information:
+Additionally, this agglutination of roles makes unsupported node types degrade more gracefully. For example, a `**` \(pow\) operator, which currently lacks a specific role, would be just left as: `Expression`, `Incomplete`. With the new language, the node could still retain most of the information:
 
 * `Expression`
 * `Operator`
 * `Arithmetic`
 * `Binary`
 
-So can extract that it's a binary arithmetic operator generically,
-restricting the need to directly access the token to only those analysis
-interested in this kind of tokens specifically.
+So can extract that it's a binary arithmetic operator generically, restricting the need to directly access the token to only those analysis interested in this kind of tokens specifically.
 
 ## Specification
 
-The set of Roles are changed by this proposal.
-It's limited to partition the multiple property roles currently defined,
-leaving the potential addition of new property roles
-(`Arithmetic`, `Comparison`, `Loop`, ...) to a future BIP.
+The set of Roles are changed by this proposal. It's limited to partition the multiple property roles currently defined, leaving the potential addition of new property roles \(`Arithmetic`, `Comparison`, `Loop`, ...\) to a future BIP.
 
 The following roles are proposed for removal:
 
@@ -284,31 +269,49 @@ The following roles are proposed for inclusion:
 ## Alternatives
 
 Two possible alternatives would be:
+
 * Use current language, that is, discard this proposal.
+
   This alternative would show the problems and limitations already commented in the _Rationale_ section.
+
 * Use some kind of Role categorization.
+
   With this proposal, the number of roles per node will increase,
+
   and not all properties may have the same importance,
+
   some of them may be more important than others.
+
   For example, in the preincrement operator example used above,
+
   `Operator` role may be more relevant than `Prefix`,
+
   we may consider the first role a `noun`
+
   and the second and `adjective`,
+
   which doesn't make sense by itself,
+
   but can only go with a `noun`.
+
   We consider that this may be a valid approach,
+
   but it can be left for consideration in the future,
+
   after more experimentation,
+
   since it'd make the proposal more complex while not having a clear gain
+
   and it's easy to extend in that direction in the future.
 
 ## Impact
 
-Incompatible changes to the Role set are proposed, in order to do that,
-the following changes would be needed:
+Incompatible changes to the Role set are proposed, in order to do that, the following changes would be needed:
 
 * Versioning should be added to the [SDK](https://github.com/bblfsh/sdk/),
+
   to allow existing server and drivers work with a previous version of the SDK.
+
 * Roles should be updated in the SDK.
 * Protobuf generated code should be updated for [server](https://github.com/bblfsh/server) and [Python](https://github.com/bblfsh/client-python) and [Go](https://github.com/bblfsh/client-go) clients
 * Update [libuast](https://github.com/bblfsh/libuast)'s role generator and role set.
@@ -449,7 +452,7 @@ For the last point, a proposal of how to map existing roles into the new set of 
 * `AssignmentVariable`: `Binary`, `Left`
 * `AssignmentValue`: `Binary`, `Right`
 * `AugmentedAssignment`: `Operator`, `Binary`, `Assignment`
-* `AugmentedAssignmentOperator`: `Operator`, `Binary`, [`OperatorRole`]
+* `AugmentedAssignmentOperator`: `Operator`, `Binary`, \[`OperatorRole`\]
 * `AugmentedAssignmentVariable`: `Left`
 * `AugmentedAssignmentValue`: `Right`
 * `This`: `This`
@@ -458,3 +461,4 @@ For the last point, a proposal of how to map existing roles into the new set of 
 * `Whitespace`: `Whitespace`
 * `Incomplete`: `Incomplete`
 * `Unannotated`: `Unannotated`
+
