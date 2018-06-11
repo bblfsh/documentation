@@ -1,4 +1,4 @@
-# BIP Template
+# BIP0: Template
 
 | Field | Value |
 | --- | --- |
@@ -33,3 +33,4 @@ How this change would impact code datasets: affected languages, frecuency of thi
 ## References
 
 Links to language specs describing related features or other kind of related information.
+

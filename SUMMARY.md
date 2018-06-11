@@ -1,40 +1,40 @@
+# Table of contents
 
-# Summary
-
+* [Babelfish - Universal Code Parser](README.md)
 * [Architecture](architecture.md)
 * [Languages](languages.md)
-* [Join the Community](community.md)
-* [Babelfish Improvement Proposals](proposals/README.md)
+* [Join the Community](join-the-community.md)
+* [Babelfish Improvement Proposals](babelfish-improvement-proposals.md)
 
 ## Using Babelfish
 
-* [Getting Started](user/getting-started.md)
-* [Advanced Usage](user/advanced-usage.md)
-* [UAST Querying](user/uast-querying.md)
-* [Language Clients](user/language-clients.md)
-* [Babelfish Protocol](user/server-protocol.md)
-* [gRPC usage example](user/server-grpc-example.md)
+* [Getting Started](using-babelfish/getting-started.md)
+* [Advanced Usage](using-babelfish/advanced-usage.md)
+* [UAST Querying](using-babelfish/uast-querying.md)
+* [Language Clients](using-babelfish/language-clients.md)
+* [Babelfish Protocol](using-babelfish/babelfish-protocol.md)
+* [gRPC usage example](using-babelfish/grpc-usage-example.md)
 * [Babelfish Dashboard](http://dashboard.bblf.sh)
 
 ## UAST
 
 * [Code to AST](uast/code-to-ast.md)
-* [UAST Specification](uast/specification.md)
+* [UAST Specification](uast/uast-specification.md)
 * [Roles](uast/roles.md)
 
 ## Writing a Driver
 
-* [Babelfish SDK](driver/sdk.md)
-* [Adding UAST Annotations](driver/annotations.md)
-* [Internal Protocol](driver/internal-protocol.md)
+* [Babelfish SDK](writing-a-driver/babelfish-sdk.md)
+* [Adding UAST Annotations](writing-a-driver/adding-uast-annotations.md)
+* [Internal Protocol](writing-a-driver/internal-protocol.md)
 
 ## BIP Index
 
-* [Babelfish Improvement Proposals](proposals/README.md)
+* [Babelfish Improvement Proposals](bip-index/babelfish-improvement-proposals.md)
+* [BIP0: Template](bip-index/bip0-template.md)
+* [BIP1: Purpose and Guidelines](bip-index/bip1-purpose-and-guidelines.md)
+* [BIP2: Explicit Annotated status and completeness information](bip-index/bip2-explicit-annotated-status-and-completeness-information.md)
+* [BIP3: Agglutinative Roles language](bip-index/bip3-agglutinative-roles-language.md)
+* [BIP4: Schema-less internal representation for AST](bip-index/bip4-schema-less-internal-representation-for-ast.md)
+* [BIP5: Shape-based AST transformations](bip-index/bip5-shape-based-ast-transformations.md)
 
-* [BIP0: Template](proposals/bip-000.md)
-* [BIP1: Purpose and Guidelines](proposals/bip-001.md)
-* [BIP2: Explicit Annotated status and completeness information](proposals/bip-002.md)
-* [BIP3: Agglutinative Roles language](proposals/bip-003.md)
-* [BIP4: Schema-less internal representation for AST](proposals/bip-004.md)
-* [BIP5: Shape-based AST transformations](proposals/bip-005.md)
