@@ -2,41 +2,32 @@
 
 ## Introduction
 
-**Babelfish is a self-hosted server for source code parsing.** The Babelfish service can parse any file, in any supported language, extracting an [Abstract Syntax Tree \(AST\)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) from it  
-and converting it into a [**Universal Abstract Syntax Tree \(UAST\)**](uast/uast-specification.md) which enables further analysis and transformation with either the included tools or your own tools by using an standard format.
+**Babelfish is a self-hosted server for source code parsing.** The Babelfish service can parse any file, in any supported language, extracting an [Abstract Syntax Tree \(AST\)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) from it and converting it into a [**Universal Abstract Syntax Tree \(UAST\)**](uast/uast-specification.md).
 
-### Motivation and Scope
+### Motivation
 
-Babelfish was born as a solution for massive code analysis. The goal: analyzing all source code from every repository in the world, for every revision ever.
+Babelfish was born as a solution for large scale code analysis. It was created to be able to analyze each revision of all of the world's public source code. 
 
-Current **scope is parsing single files in any programming language** and producing a universal abstract syntax tree. This helps us to run it at scale.
+### Analysis Scope
 
-This scope might expand in the future to full project analysis, where source code can be analyzed with its full context, and not just per-file. Once we get closer to our current scope, we may consider starting such effort.
+The current **scope is to parse single files in any programming language.**
+
+This scope might expand in the future to full project analysis, where source code can be analyzed with its full context, and not just per-file. Once we get closer to our current scope, we will consider starting such effort.
 
 ### Use Cases
 
 Some of the use cases that we want to support with AST are:
 
-* **AST-based diff'ing.** Understanding changes made to code with finer-grained
-
-  granularity. Is this commit changing variable names? Is it adding a loop?
-
-* **Import extraction.** Extracting all imports from every language in a uniform
-
-  way.
-
-* **Extract representation for Data Science experiments.** For example, extracting
-
-  a list of all tokens for every file, or a list of all function calls, etc.
-
-* **Making statistics of language features.** How many people use
-
-  for-comprehension in Python?
-
-* **Detecting similar coding patterns across languages.**
-* **Programmer-asisting tools** Improved linters, safety analysis, idiomatic
-
-  usage, etc.
+* **Extract features for machine learning on code \(MLonCode\) research.** 
+  * e.g. List of all identifiers for each file, or a list of all function calls, etc.
+* **AST-based diff'ing**
+  * e.g. Understanding changes made to code with finer-grained granularity. Is this commit changing variable names? Is it adding a loop?
+* **Import extraction**
+  * Extracting all imports from every language in a uniform way.
+* **Language feature analytics**
+  * e.g. How many people use for-comprehension in Python?
+* **Developer tooling** 
+  * Improved linters, safety analysis, idiomatic usage, etc.
 
 ### Further reading
 
