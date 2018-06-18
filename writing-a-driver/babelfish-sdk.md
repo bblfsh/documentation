@@ -140,7 +140,7 @@ Once you've done it, you can run your tests with `make test-parser-internal`. Pl
 
 ### Creating the Converter and Annotator
 
-The conversion from AST to UAST is written in Go. The main file to be edited is `driver/normalizer/annotation.go`. The details are explained in the [annotations section](https://github.com/bblfsh/documentation/tree/b3f99c3df4f31a5bd489ccd06226cc67d7c0ec16/driver/annotations.html).
+The conversion from AST to UAST is written in Go. The main file to be edited is `driver/normalizer/annotation.go`. The details are explained in the [annotations section](adding-uast-annotations.md).
 
 ### Updating the Makefile with the build instructions
 
