@@ -60,5 +60,5 @@ During the development of this BIP alternatives to the current implementation we
 
 ## References
 
-* [Specification of the Node struct with the properties already in use](https://doc.bblf.sh/uast/specification.html)
+* [Specification of the Node struct with the properties already in use](https://doc.bblf.sh/uast/uast-specification.html)
 
