@@ -22,31 +22,34 @@ The client API's differ to adapt to their language specific idioms, the followin
 package main
 
 import (
-    "fmt"
-    "reflect"
+	"fmt"
 
-    "gopkg.in/bblfsh/client-go.v2"
+	"gopkg.in/bblfsh/client-go.v2"
+	"gopkg.in/bblfsh/client-go.v2/tools"
+	"gopkg.in/bblfsh/sdk.v1/protocol"
 )
 
 func main() {
-    client, err := bblfsh.NewClient("localhost:9432")
-    if err != nil {
-        panic(err)
-    }
+	client, err := bblfsh.NewClient("localhost:9432")
+	if err != nil {
+		panic(err)
+	}
 
-    res, err := client.NewParseRequest().ReadFile("some_file.py").Do()
-    if err != nil {
-        panic(err)
-    }
-    if reflect.TypeOf(res.UAST).Name() != "Node" {
-        fmt.Errorf("Node must be the root of a UAST")
-    }
+	res, err := client.NewParseRequest().ReadFile("some_file.py").Do()
+	if err != nil {
+		panic(err)
+	}
 
-    query := "//*[@roleIdentifier and not(@roleQualified)]"
-    nodes, _ := tools.Filter(res.UAST, query)
-    for _, n := range nodes {
-        fmt.Println(n)
-    }
+	// Always check the Response.Status before further processing!
+	if res.Status != protocol.Ok {
+		panic("Parsing failed")
+	}
+
+	query := "//*[@roleIdentifier and not(@roleQualified)]"
+	nodes, _ := tools.Filter(res.UAST, query)
+	for _, n := range nodes {
+		fmt.Println(n)
+	}
 }
 ```
 
