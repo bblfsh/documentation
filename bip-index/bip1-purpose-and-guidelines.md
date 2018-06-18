@@ -13,8 +13,8 @@
 
 BIP stands for Babelfish Improvement Proposal. A BIP is a design document which describes a change proposal to Babelfish. It's informally defined. The scope of a BIP includes:
 
-* Changes to [UAST](https://doc.bblf.sh/uast/specification.html) components regarding code categorization through Roles or related entities.
-* Changes to Babelfish protocols \(i. e. the [server protocol](https://doc.bblf.sh/user/server-protocol.html), driver protocol, [internal driver protocol](https://doc.bblf.sh/driver/internal-protocol.html), etc.
+* Changes to [UAST](https://doc.bblf.sh/uast/uast-specification.html) components regarding code categorization through Roles or related entities.
+* Changes to Babelfish protocols \(i. e. the [server protocol](https://doc.bblf.sh/using-babelfish/babelfish-protocol.html), driver protocol, [internal driver protocol](https://doc.bblf.sh/writing-a-driver/internal-protocol.html), etc.
 
 Its scope may become broader in the future.
 
