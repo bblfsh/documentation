@@ -14,9 +14,14 @@ There are clients for the following languages:
 | Go | Beta | ✓ | [https://github.com/bblfsh/client-go](https://github.com/bblfsh/client-go) |
 | Scala | Beta | ✓ | [https://github.com/bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
 
-## Example
+## Examples
 
-The client API's differ to adapt to their language specific idioms, the following code shows a simple example with the Go client that parsers a Python file and applies a filter to return all the simple identifiers:
+The client API's differ to adapt to their language specific idioms, the
+following codes shows several simple examples with the Go, Python and Scala
+clients that parsers a file and applies a filter to return all the simple
+identifiers:
+
+### Go example
 
 ```go
 package main
@@ -50,6 +55,52 @@ func main() {
 	for _, n := range nodes {
 		fmt.Println(n)
 	}
+}
+```
+
+### Python example
+
+```python
+import bblfsh
+
+from bblfsh import filter as filter_uast
+
+if __name__ == "__main__":
+    client = bblfsh.BblfshClient("0.0.0.0:9432")
+    response = client.parse("some_file.py")
+
+    if response.status != 0:
+      raise Exception('Some error happened: ' + str(response.errors))
+  
+    query = "//*[@roleIdentifier and not(@roleQualified)]"
+    nodes = filter_uast(response.uast, query)
+    for n in nodes:
+      print(n)
+```
+
+### Scala example
+
+```scala
+import org.bblfsh.client.BblfshClient._
+
+import gopkg.in.bblfsh.sdk.v1.protocol.generated.ParseResponse
+import gopkg.in.bblfsh.sdk.v1.uast.generated.Node
+
+import scala.io.Source
+
+class BblfshClientParseTest {
+  val fileName = "src/test/resources/SampleJavaFile.java"
+  val fileContent = Source.fromFile(fileName) .getLines.mkString
+
+  val resp = client.parse(fileName, fileContent)
+
+  if (resp.uast.isDefined) {
+     rootNode = resp.uast.get
+     val filtered = client.filter(rootNode, "//*[@roleIdentifier and not(@roleQualified)]")
+     filtered.foreach{ println }
+  } else {
+    // ... handle resp.uast.errors
+  }
 }
 ```
 
