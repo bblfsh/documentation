@@ -83,7 +83,7 @@ $ docker exec -it bblfshd bblfshctl driver list
 +----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
 ```
 
-To test the driver you can executed a parse request to the server with the `bblfshctl parse` command, and an example contained in the docker image:
+To test the driver you can execute a parse request to the server with the `bblfshctl parse` command, and an example contained in the docker image:
 
 ```bash
 $ docker exec -it bblfshd bblfshctl parse /opt/bblfsh/etc/examples/python.py
