@@ -7,7 +7,7 @@
 | Author | Juanjo Álvarez |
 | Status | Accepted |
 | Created | 2017-06-01 |
-| Updated | 2017-08-02 |
+| Updated | 2018-07-08 |
 
 ## Abstract
 
@@ -31,14 +31,14 @@ The current UAST specification doesn't have a role for Python's list comprehensi
 
 This change will add two new roles the UAST definition:
 
-* `Incomplete`: For nodes that don't have their full semanting meaning annotated, including both partially annotated nodes and nodes without any other annotation.
+* `Incomplete`: For nodes that don't have their full semantic meaning annotated, including both partially annotated nodes and nodes without any other annotation.
 * `Unannotated`: For nodes that have received no other annotations. Automatically added by the SDK. Driver's developers should aim to have none of these.
 
 After this proposal have been fully implemented it'll be implicitly understood that nodes that have roles set and no `Incomplete` role are expressing full semantic information.
 
 ### Driver and SDK annotation
 
-The `Incomplete` roles will be set explicitly by the driver's programmer using the normal process in he driver's `annotation.go` file.
+The `Incomplete` roles will be set explicitly by the driver's programmer using the normal process in the driver's `annotation.go` file.
 
 The `Unannotated` role will be added automatically by the SDK to nodes that didn't get any other role.
 
@@ -55,7 +55,7 @@ The `Unannotated` role will be added automatically by the SDK to nodes that didn
 
 During the development of this BIP alternatives to the current implementation were discarded:
 
-* Using just an `Incomplete` role or using three roles \(current `Incomplete` and `Unannotated` roles plus an `Annotated` one\). It was decided that the choosen roles provided information but `Annotated` didn't.
+* Using just an `Incomplete` role or using three roles \(current `Incomplete` and `Unannotated` roles plus an `Annotated` one\). It was decided that the chosen roles provided information but `Annotated` didn't.
 * Using a node property with the completeness mark instead of new roles. It was discarded because roles will be easier to integrate into existing client workflows.
 
 ## References
