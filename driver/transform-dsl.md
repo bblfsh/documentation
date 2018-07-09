@@ -630,7 +630,7 @@ Each("elems",
 )
 ```
 
-Note that `Each` requires a named variable to store theelements.
+Note that `Each` requires a named variable to store the elements.
 This also means that `Each` should always be on both sides of a mapping.
 
 `Each` allows an array to be empty or nil.
@@ -654,7 +654,7 @@ Append(
 `Append` will verify that node is an array and will filter out "suffix"
 nodes before passing it to primary operation (`Var("x")` in this case).
 
-When used to costruct the tree, it will append "suffix" nodes to
+When used to construct the tree, it will append "suffix" nodes to
 the end of an array defined by sub-operation.
 
 As in Go, `Append` will not affect variable "x".
