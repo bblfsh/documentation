@@ -57,7 +57,7 @@ Now that we've created a request, we need to send it \(previous code omitted\):
 
 ## Reading and interpreting the response
 
-The code in the previous section returned a `ParseResponse` object that will have the format of the [ParseResponse](babelfish-protocol.md#ParseResponse) as seen on the [server protocol](babelfish-protocol.md) page. You should check the `status` \(`Status` in the case of Go, since public members start with uppercase\); only a value of `protocol.Status.OK` will indicate sucess.
+The code in the previous section returned a `ParseResponse` object that will have the format of the [ParseResponse](babelfish-protocol.md#ParseResponse) as seen on the [server protocol](babelfish-protocol.md) page. You should check the `status` \(`Status` in the case of Go, since public members start with uppercase\); only a value of `protocol.Status.OK` will indicate success.
 
 The most important member of the `ParseResponse` object is undoubtly `uast` \(`UAST` in Go\). This will contain a `Node` object which the [structure detailed in the previous page](babelfish-protocol.md#Nodes). This first node returned would be the root node of the UAST, and you typically would iterate over the node children \(contained in the aptly named `children` field\) typically using [a visitor](https://en.wikipedia.org/wiki/Visitor_pattern) and reading the `token`s and `roles` in the tree to do your tool.
 
