@@ -115,9 +115,7 @@ The client also allow you to instance an Iterator object and iterate over the tr
 * [Pre-Order](https://en.wikipedia.org/wiki/Tree_traversal#Pre-order)
 * [Post-Order](https://en.wikipedia.org/wiki/Tree_traversal#Post-order)
 * [Level-Order / Breadth first](https://en.wikipedia.org/wiki/Tree_traversal#Breadth-first_search)
-* Position-Order \(this will retrieve the nodes in the same order as their 
-
-  position in the source code\).
+* Position-Order \(this will retrieve the nodes in the same order as their position in the source code\).
 
 To check the exact way to use an iterator you must consult the readme of the specific language client you're using, but they're generally easy to use as this Python example shows:
 
