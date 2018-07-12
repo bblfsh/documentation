@@ -24,7 +24,7 @@ $ docker run -d --name bblfshd --privileged -p 9432:9432 bblfsh/bblfshd
 
 This will run the image in a stateless mode, meaning that any installed drivers will be lost when you stop the container. To avoid this from happening add the `-v` parameter to keep the container internal `/var/lib/bblfshd` directory in a volume.
 
-On macOS, you first need to create a new volume when the installed drivers will be kept. This is also an option on other operating systems but it's required for macOS.
+On macOS, you first need to create a new volume where the installed drivers will be kept. This is also an option on other operating systems but it's required for macOS.
 
 ```bash
 $ docker volume create bblfshd-cache
