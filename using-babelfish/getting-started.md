@@ -34,7 +34,7 @@ $ docker volume create bblfshd-cache
 Then you can run the daemon with this command:
 
 ```bash
-$ docker run -d --name bblfshd --privileged -p 9432:9432 -v bblfshd-cache:/var/lib/bblfshd
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -v bblfshd-cache:/var/lib/bblfshd bblfsh/bblfshd
 
 ```
 
