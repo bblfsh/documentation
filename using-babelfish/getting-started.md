@@ -22,19 +22,26 @@ The easiest way to run the _bblfshd_ daemon is using Docker. You can start it wi
 $ docker run -d --name bblfshd --privileged -p 9432:9432 bblfsh/bblfshd
 ```
 
-This will run the image in a stateless mode, meaning that any installed drivers will be lost when you stop the container. To avoid this from happening, add the `-v` parameter to keep the `/var/lib/bblfshd` directory in a volume:
+This will run the image in a stateless mode, meaning that any installed drivers will be lost when you stop the container. To avoid this from happening, add the -v parameter in the above command, to keep the container internal filesystem at a volume
 
-```bash
-$ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
-```
-
-On macOS, first create a new volume where the installed drivers will be kept:
+On macOS, you first need to create a new volume where the installed drivers will be kept. This is also an option on other operating systems but it's required for macOS.
 
 ```bash
 $ docker volume create bblfshd-cache
 ```
 
-Then map the freshly created volume into the container with `-v bblfshd-cache:/var/lib/bblfshd`.
+Then you can run the daemon with this command:
+
+```bash
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -v bblfshd-cache:/var/lib/bblfshd bblfsh/bblfshd
+
+```
+
+On Linux you could instead use a local directory as storage. In this case you could skip the `docker volume` command and run bblfshd with:
+
+```bash
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
+```
 
 If everything worked, `docker logs bblfshd` should output something like this:
 
@@ -49,13 +56,13 @@ The only mandatory flag is [`--privileged`](https://docs.docker.com/engine/refer
 
 Exposing the port \(`9432`\) with `-p 9432:9432` makes it easier to connect to the gRPC server from outside the container.
 
-Also, the path `/var/lib/bblfshd` should be mounted in the volume in order to keep bblfshd instances stateful between reboots.
+Also, if using a directory as persistent storage, the path `/var/lib/bblfshd` should be mounted in the volume in order to keep bblfshd instances stateful between reboots.
 
 If you are behind an HTTP or HTTPS proxy server, for example in corporate settings, you will need to add the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables in the docker run command to configure HTTP or HTTPS proxy behavior.
 
 ```bash
 $ docker run -d --name bblfshd --privileged -p 9432:9432 -e 
-HTTP_PROXY="http://proxy.example.com:80/" -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
+HTTP_PROXY="http://proxy.example.com:80/" -v bblfshd-cache:/var/lib/bblfshd bblfsh/bblfshd
 ```
 
 If your system uses SELinux \(like Fedora, Red Hat or CentOS among other Linux distributions\) you'll need to install a policy module. You can find instructions about it in the [bblfshd README](https://github.com/bblfsh/bblfshd#selinux).
