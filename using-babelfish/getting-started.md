@@ -128,7 +128,7 @@ Available commands:
 
 ### Driver management
 
-The _bblfshd's_ drivers can be installed, updated and removed with the `driver` command and its subcommands.
+The _bblfshd's_ drivers can be installed, updated and removed with the `driver` command and its subcommands. Remember to prefix all these commands with `docker exec -it bblfshd` if you are running bblfshd from a Docker image.
 
 Installing all official drivers:
 
