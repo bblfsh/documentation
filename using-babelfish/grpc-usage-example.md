@@ -6,7 +6,7 @@ This example is done in Go but you could use the gRPC interface using [any progr
 
 ## Getting and compiling the `.proto` file
 
-The first step involving gRPC communication is getting the `.proto` file that defines the types involved in the communication. The [`.proto` format](https://developers.google.com/protocol-buffers/docs/proto) defines the structures and methods used for protocol buffer data. In the case of the Babelfish server protocol, you need to get [this `.proto` file](https://github.com/bblfsh/sdk/blob/master/protocol/generated.proto) from the SDK. Then you have to compile it to a source file with the required structures and methods. How you generate this module is language-dependent but usually it involves installing gRPC using your language package management tool \(if it has a package for it\) and then use one of the provided tools.
+The first step involving gRPC communication is getting the `.proto` file that defines the types involved in the communication. The [`.proto` format](https://developers.google.com/protocol-buffers/docs/proto) defines the structures and methods used for protocol buffer data. In the case of the Babelfish server protocol, you need to get [this `.proto` file](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/protocol/generated.proto) from the SDK. Then you have to compile it to a source file with the required structures and methods. How you generate this module is language-dependent but usually it involves installing gRPC using your language package management tool \(if it has a package for it\) and then use one of the provided tools.
 
 For this example, we'll use the [GogoProtobuf implementation](https://github.com/gogo/protobuf) for the Go language. This provides the `protoc-gen-gogo` `.proto` compiler so we'll use it to generate the `.go` interface module:
 
@@ -14,7 +14,7 @@ For this example, we'll use the [GogoProtobuf implementation](https://github.com
 $ protoc-gen-gogo --go_out=. generated.proto
 ```
 
-This will create a generated.pb.go file that we could then directly import into out Go code. Since the SDK is also written in Go, you could skip this step and import the modules with the [already generated serializers](https://github.com/bblfsh/sdk/blob/master/protocol/generated.pb.go) in the Babelfish's SDK.
+This will create a generated.pb.go file that we could then directly import into out Go code. Since the SDK is also written in Go, you could skip this step and import the modules with the [already generated serializers](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/uast/generated.proto#L11) in the Babelfish's SDK.
 
 ## Making requests
 
