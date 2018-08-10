@@ -96,6 +96,12 @@ To test the driver you can execute a parse request to the server with the `bblfs
 $ docker exec -it bblfshd bblfshctl parse /opt/bblfsh/etc/examples/python.py
 ```
 
+If you want to parse instead one file in your local filesystem, mount the
+directory containing the files on the docker image with the `-v` option or
+creating a volume but the easiest way to do it would be to use one of
+the [clients](using-babelfish/language-clients.md) that would also allow you to
+do XPath queries over the results.
+
 ### Running standalone
 
 A standalone distribution of `bblfshd` and `bblfshctl` can be found at the GitHub [release page](https://github.com/bblfsh/bblfshd/releases).
