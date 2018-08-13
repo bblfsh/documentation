@@ -17,8 +17,8 @@ There are clients for the following languages:
 ## Examples
 
 The client API's differ to adapt to their language specific idioms, the
-following codes shows several simple examples with the Go, Python and Scala
-clients that parsers a file and applies a filter to return all the simple
+following code snippets show several simple examples with the Go, Python and Scala
+clients that parse a file and apply a filter to return all the simple
 identifiers:
 
 ### Go example
