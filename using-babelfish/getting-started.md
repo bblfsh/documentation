@@ -17,7 +17,7 @@ After playing with the dashboard, you will probably want to get Babelfish runnin
 ### Running with Docker \(recommended\)
 
 The easiest way to run the _bblfshd_ daemon is using Docker. You can do it in
-stateless mode, meaning that all installed drivers will be wiped once you remove
+stateless mode, meaning that all installed drivers will be wiped out once you remove
 the container, or using a Docker volume to store part of the container internal 
 filesystem and thus add persistence.
 
