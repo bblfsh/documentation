@@ -6,7 +6,7 @@ The easiest way to get started with Babelfish is to try the online [dashboard](h
 
 ## Installing bblfshd locally
 
-After playing with the dashboard, you will probably want to get Babelfish running locally. The first thing to do for that is to setup and run the [`bblfshd`](https://github.com/bblfsh/bblfshd) command. Once the server is running, you can connect to it using any of the available [clients](language-clients.md).
+After playing with the dashboard, you will probably want to get Babelfish running locally. The first thing to do for that is to setup and run the [`bblfshd`](https://github.com/bblfsh/bblfshd) command. Once the server is running, you can connect to it using any of the available [clients](clients.md).
 
 ### Prerequisites
 
@@ -114,7 +114,7 @@ $ docker exec -it bblfshd bblfshctl parse /opt/bblfsh/etc/examples/python.py
 
 Use this only for testing the installation; if you want to do any real parsing
 with files in your local filesystem you should use one of the
-[clients](language-clients.md) which would also allow you to run XPath queries
+[clients](clients.md) which would also allow you to run XPath queries
 over the results.
 
 ### Running standalone
