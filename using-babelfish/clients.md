@@ -1,4 +1,4 @@
-# Language Clients
+# Clients
 
 There are some clients in different languages that provide a higher level API, built on top of [gRPC](https://grpc.io) and [`libuast`](https://github.com/bblfsh/libuast).
 
@@ -117,7 +117,7 @@ The client also allow you to instance an Iterator object and iterate over the tr
 * [Level-Order / Breadth first](https://en.wikipedia.org/wiki/Tree_traversal#Breadth-first_search)
 * Position-Order \(this will retrieve the nodes in the same order as their position in the source code\).
 
-To check the exact way to use an iterator you must consult the readme of the specific language client you're using, but they're generally easy to use as this Python example shows:
+To check the exact way to use an iterator you must consult the readme of the specific client you're using, but they're generally easy to use as this Python example shows:
 
 ```python
 import bblfsh
