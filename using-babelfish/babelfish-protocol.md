@@ -32,9 +32,7 @@ This is the reply produced by the server as response to the above ParseRequest. 
 
 The `uast` field would contain the UAST root node as an [`gopkg.in/bblfsh/sdk.v2/uast` type](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/uast/generated.proto#L11) which as you can see in the linked definition includes the internal type \(the type used by the native AST\), a map with the properties, the UAST roles, the position of the source construct that generated the node and a list of children as we'll see in the next section.
 
-The status contains the return code of the Request. If it's != 0 (which will be
-mapped to "Ok" or "ok" in an enum in the clients) no further processing should
-be done for that request since it failed to parse the code.
+The status contains the return code of the Request. If it's != 0 \(which will be mapped to "Ok" or "ok" in an enum in the clients\) no further processing should be done for that request since it failed to parse the code.
 
 ## Nodes
 

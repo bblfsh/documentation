@@ -53,3 +53,4 @@ The query language also allows some more complex queries:
 * All the numeric literals in binary arithmetic operators: `//*[@roleBinary and @roleOperator and @roleArithmetic]//*[@roleNumber and @roleLiteral]`
 
 [XPath 1.0 functions](https://developer.mozilla.org/en-US/docs/Web/XPath/Functions) can also be used in the queries, but if the query returns a type different than the default node list you must use one of the specific typed functions: `filter_bool` \(or `filterBool` in some clients\), `filter_number` or `filter_string`. If you use the wrong type the error will tell you what is the type returned by the expression.
+

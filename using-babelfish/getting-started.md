@@ -16,10 +16,7 @@ After playing with the dashboard, you will probably want to get Babelfish runnin
 
 ### Running with Docker \(recommended\)
 
-The easiest way to run the _bblfshd_ daemon is using Docker. You can do it in
-stateless mode, meaning that all installed drivers will be wiped out once you remove
-the container, or using a Docker volume to store part of the container internal 
-filesystem and thus add persistence.
+The easiest way to run the _bblfshd_ daemon is using Docker. You can do it in stateless mode, meaning that all installed drivers will be wiped out once you remove the container, or using a Docker volume to store part of the container internal filesystem and thus add persistence.
 
 #### Stateless mode
 
@@ -31,10 +28,9 @@ $ docker run -d --name bblfshd --privileged -p 9432:9432 bblfsh/bblfshd
 
 #### Using a volume
 
-This is an alternative to stateless mode. Depending on your operating system, 
-you can use a Docker volume or a normal local filesystem directory.
+This is an alternative to stateless mode. Depending on your operating system, you can use a Docker volume or a normal local filesystem directory.
 
-##### Docker volume (Linux and macOS)
+**Docker volume \(Linux and macOS\)**
 
 First, create a volume with the command:
 
@@ -48,10 +44,9 @@ Then you can run the daemon with this command:
 $ docker run -d --name bblfshd --privileged -p 9432:9432 -v bblfshd-cache:/var/lib/bblfshd bblfsh/bblfshd
 ```
 
-#### Volume mapped to a local directory (Linux only)
+#### Volume mapped to a local directory \(Linux only\)
 
-In this case, just specify the local directory in the `-v` parameter when running 
-the daemon:
+In this case, just specify the local directory in the `-v` parameter when running the daemon:
 
 ```bash
 $ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
@@ -112,10 +107,7 @@ To test the driver you can execute a parse request to the server with the `bblfs
 $ docker exec -it bblfshd bblfshctl parse /opt/bblfsh/etc/examples/python.py
 ```
 
-Use this only for testing the installation; if you want to do any real parsing
-with files in your local filesystem you should use one of the
-[clients](clients.md) which would also allow you to run XPath queries
-over the results.
+Use this only for testing the installation; if you want to do any real parsing with files in your local filesystem you should use one of the [clients](clients.md) which would also allow you to run XPath queries over the results.
 
 ### Running standalone
 

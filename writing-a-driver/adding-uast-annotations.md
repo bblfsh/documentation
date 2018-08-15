@@ -6,7 +6,7 @@ Once you have written the [code to AST parser](babelfish-sdk.md#implementing-the
 
 ## Transformations
 
-To translate a native AST to UAST Babelfish defines a [transformation DSL](transform-dsl.md) in Go. It is recommended to read this document before proceeding with annotations.
+To translate a native AST to UAST Babelfish defines a [transformation DSL](https://github.com/bblfsh/documentation/tree/cc6e0ca879db87f0e3a5baea9f21e25345949fc9/writing-a-driver/transform-dsl.md) in Go. It is recommended to read this document before proceeding with annotations.
 
 The SDK will automatically generate `driver/normalizer/annotation.go` file with two global variables: `Native` and `Code`. Each of them represent a single transformation pass.
 

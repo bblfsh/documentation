@@ -1,7 +1,7 @@
 # BIP4: Schema-less internal representation for AST
 
 | Field | Value |
-| --- | --- |
+| :--- | :--- |
 | BIP | 4 |
 | Title | Schema-less internal representation for AST |
 | Author | Denys Smirnov |

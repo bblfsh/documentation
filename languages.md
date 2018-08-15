@@ -3,7 +3,7 @@
 ## Supported languages
 
 | Language | Key | Status | AST\* | UAST\*\* | Annotations\*\*\* | Container | Maintainer |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | [Bash](https://github.com/bblfsh/bash-driver) | bash | beta | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/bash-driver/) | [juanjux](https://github.com/juanjux) |
 | [Go](https://github.com/bblfsh/go-driver) | go | beta | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/go-driver/) | [dennwc](https://github.com/dennwc) |
 | [Java](https://github.com/bblfsh/java-driver) | java | beta | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [dennwc](https://github.com/dennwc) |
@@ -18,7 +18,7 @@
 ## In development
 
 | Language | Key | Status | AST\* | UAST\*\* | Annotations\*\*\* | Container | Maintainer |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | [C++](https://github.com/bblfsh/cpp-driver) | cpp | pre-alpha | ✗ | ✗ | ✗ | ✗ | - |
 | [clojure](https://github.com/bblfsh/clojure-driver) | clojure | planning | ✗ | ✗ | ✗ | ✗ | - |
 | [erlang](https://github.com/bblfsh/erlang-driver) | erlang | planning | ✗ | ✗ | ✗ | ✗ | - |

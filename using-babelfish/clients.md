@@ -9,17 +9,14 @@ These clients make it easier to both parse and analyze the resulting UAST, abstr
 There are clients for the following languages:
 
 | Language | Status | Libuast | URL |
-| --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- |
 | Python | Beta | ✓ | [https://github.com/bblfsh/client-python](https://github.com/bblfsh/client-python) |
 | Go | Beta | ✓ | [https://github.com/bblfsh/client-go](https://github.com/bblfsh/client-go) |
 | Scala | Beta | ✓ | [https://github.com/bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
 
 ## Examples
 
-The client API's differ to adapt to their language specific idioms, the
-following code snippets show several simple examples with the Go, Python and Scala
-clients that parse a file and apply a filter to return all the simple
-identifiers:
+The client API's differ to adapt to their language specific idioms, the following code snippets show several simple examples with the Go, Python and Scala clients that parse a file and apply a filter to return all the simple identifiers:
 
 ### Go example
 
@@ -27,34 +24,34 @@ identifiers:
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"gopkg.in/bblfsh/client-go.v2"
-	"gopkg.in/bblfsh/client-go.v2/tools"
-	"gopkg.in/bblfsh/sdk.v1/protocol"
+    "gopkg.in/bblfsh/client-go.v2"
+    "gopkg.in/bblfsh/client-go.v2/tools"
+    "gopkg.in/bblfsh/sdk.v1/protocol"
 )
 
 func main() {
-	client, err := bblfsh.NewClient("localhost:9432")
-	if err != nil {
-		panic(err)
-	}
+    client, err := bblfsh.NewClient("localhost:9432")
+    if err != nil {
+        panic(err)
+    }
 
-	res, err := client.NewParseRequest().ReadFile("some_file.py").Do()
-	if err != nil {
-		panic(err)
-	}
+    res, err := client.NewParseRequest().ReadFile("some_file.py").Do()
+    if err != nil {
+        panic(err)
+    }
 
-	// Always check the Response.Status before further processing!
-	if res.Status != protocol.Ok {
-		panic("Parsing failed")
-	}
+    // Always check the Response.Status before further processing!
+    if res.Status != protocol.Ok {
+        panic("Parsing failed")
+    }
 
-	query := "//*[@roleIdentifier and not(@roleQualified)]"
-	nodes, _ := tools.Filter(res.UAST, query)
-	for _, n := range nodes {
-		fmt.Println(n)
-	}
+    query := "//*[@roleIdentifier and not(@roleQualified)]"
+    nodes, _ := tools.Filter(res.UAST, query)
+    for _, n := range nodes {
+        fmt.Println(n)
+    }
 }
 ```
 
@@ -71,7 +68,7 @@ if __name__ == "__main__":
 
     if response.status != 0:
       raise Exception('Some error happened: ' + str(response.errors))
-  
+
     query = "//*[@roleIdentifier and not(@roleQualified)]"
     nodes = filter_uast(response.uast, query)
     for n in nodes:

@@ -1,7 +1,7 @@
 # BIP3: Agglutinative Roles language
 
 | Field | Value |
-| --- | --- |
+| :--- | :--- |
 | BIP | 3 |
 | Title | Agglutinative Roles language |
 | Author | Alfredo Beaumont |
@@ -263,7 +263,6 @@ The following roles are proposed for inclusion:
 Two possible alternatives would be:
 
 * Use the current language, that is, discard this proposal. This alternative would show the problems and limitations already commented in the _Rationale_ section.
-
 * Use some kind of Role categorization. With this proposal, the number of roles per node will increase, and not all properties may have the same importance, some of them may be more important than others.
 
   For example, in the preincrement operator example used above, `Operator` role may be more relevant than `Prefix`, we may consider the first role a `noun` and the second and `adjective`, which doesn't make sense by itself, but can only go with a `noun`.

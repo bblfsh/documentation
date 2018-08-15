@@ -1,7 +1,7 @@
 # BIP2: Explicit Annotated status and completeness information
 
 | Field | Value |
-| --- | --- |
+| :--- | :--- |
 | BIP | 2 |
 | Title | Explicit Annotated status and completeness information |
 | Author | Juanjo Álvarez |

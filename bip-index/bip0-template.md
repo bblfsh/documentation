@@ -1,7 +1,7 @@
 # BIP0: Template
 
 | Field | Value |
-| --- | --- |
+| :--- | :--- |
 | BIP | 0 |
 | Title | BIP Template |
 | Author | Alfredo Beaumont |

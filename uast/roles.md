@@ -3,7 +3,7 @@
 Role is the main UAST annotation. It indicates that a node in an AST can be interpreted as acting with certain language-independent role.
 
 | Role | Go | Java | JavaScript | PHP | Python | Ruby |
-| --- | --- | --- | --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | [Add](roles.md#add) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 | [Alias](roles.md#alias) | ✓ |  |  | ✓ | ✓ | ✓ |
 | [And](roles.md#and) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |

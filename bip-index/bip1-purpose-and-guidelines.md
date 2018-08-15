@@ -1,7 +1,7 @@
 # BIP1: Purpose and Guidelines
 
 | Field | Value |
-| --- | --- |
+| :--- | :--- |
 | BIP | 1 |
 | Title | BIP Purpose and Guidelines |
 | Author | Alfredo Beaumont |
@@ -33,9 +33,7 @@ A BIP process should begin with an author proposing an idea. This idea should be
 The author must:
 
 * Discuss the idea publicly, gather early feedback and make sure that the idea is not guaranteed to be rejected.
-
 * Present a draft. It should take the next available BIP number and its status should be **Draft**
-
 * Reach consensus. Feedback should be added back to the proposal. You should open a Pull Request with the proposal in the [babelfish documentation project](https://github.com/bblfsh/documentation/) for this process.
 
 Once the BIP has been completed and reviewed it may be **Accepted** or **Rejected** \(it may have not been a good idea after all\). In any case it's important to have a record of the discussion so the proposal will be archived. The final decision will be done by [mcuadros](https://github.com/mcuadros).
