@@ -10,8 +10,8 @@
 
 * [Getting Started](using-babelfish/getting-started.md)
 * [Advanced Usage](using-babelfish/advanced-usage.md)
+* [Clients](using-babelfish/clients.md)
 * [UAST Querying](using-babelfish/uast-querying.md)
-* [Language Clients](using-babelfish/language-clients.md)
 * [Babelfish Protocol](using-babelfish/babelfish-protocol.md)
 * [gRPC usage example](using-babelfish/grpc-usage-example.md)
 * [Babelfish Dashboard](http://dashboard.bblf.sh)

@@ -7,14 +7,14 @@
 | Author | Alfredo Beaumont |
 | Status | Accepted |
 | Created | 2017-05-26 |
-| Updated | 2017-09-13 |
+| Updated | 2018-07-08 |
 
 ## Abstract
 
 BIP stands for Babelfish Improvement Proposal. A BIP is a design document which describes a change proposal to Babelfish. It's informally defined. The scope of a BIP includes:
 
-* Changes to [UAST](https://doc.bblf.sh/uast/specification.html) components regarding code categorization through Roles or related entities.
-* Changes to Babelfish protocols \(i. e. the [server protocol](https://doc.bblf.sh/user/server-protocol.html), driver protocol, [internal driver protocol](https://doc.bblf.sh/driver/internal-protocol.html), etc.
+* Changes to [UAST](https://doc.bblf.sh/uast/uast-specification.html) components regarding code categorization through Roles or related entities.
+* Changes to Babelfish protocols \(i. e. the [server protocol](https://doc.bblf.sh/using-babelfish/babelfish-protocol.html), driver protocol, [internal driver protocol](https://doc.bblf.sh/writing-a-driver/internal-protocol.html), etc.
 
 Its scope may become broader in the future.
 
@@ -32,21 +32,11 @@ A BIP process should begin with an author proposing an idea. This idea should be
 
 The author must:
 
-* Discuss the idea publicly, gather early feedback and make sure that the idea
+* Discuss the idea publicly, gather early feedback and make sure that the idea is not guaranteed to be rejected.
 
-  is not guaranteed to be rejected.
+* Present a draft. It should take the next available BIP number and its status should be **Draft**
 
-* Present a draft. It should take the next available BIP number and its status
-
-  should be **Draft**
-
-* Reach consensus. Feedback should be added back to the proposal. You should
-
-  open a Pull Request with the proposal in the
-
-  [babelfish documentation project](https://github.com/bblfsh/documentation/)
-
-  for this process.
+* Reach consensus. Feedback should be added back to the proposal. You should open a Pull Request with the proposal in the [babelfish documentation project](https://github.com/bblfsh/documentation/) for this process.
 
 Once the BIP has been completed and reviewed it may be **Accepted** or **Rejected** \(it may have not been a good idea after all\). In any case it's important to have a record of the discussion so the proposal will be archived. The final decision will be done by [mcuadros](https://github.com/mcuadros).
 
@@ -77,9 +67,7 @@ Each BIP must begin with a header that includes the following information:
 * Status. One of Draft \| Accepted \| Rejected
 * Created. Date of creation
 * Updated. Date of last update
-* Target version. Target version for this feature to be implemented. It may not
-
-  appear if the BIP is not about a releaseable feature.
+* Target version. Target version for this feature to be implemented. It may not appear if the BIP is not about a releasable feature.
 
 ## References
 

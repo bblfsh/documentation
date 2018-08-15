@@ -14,9 +14,7 @@ You can start contributing in many ways
 * Contribute code to the [bblfshd](http://github.com/bblfsh/bblfshd) server or [SDK](http://github.com/bblfsh/sdk).
 * Contribute to [libuast](http://github.com/bblfsh/libuast), or any of the [Python](http://github.com/bblfsh/client-python), [Go](http://github.com/bblfsh/client-go) or [Scala](http://github.com/bblfsh/client-scala) clients.
 * Create a new client for your preferred language.
-* **Write a driver for a new language!** If you plan to do this, we recommend you
-
-  to talk to us first so we can coordinate efforts and assist you.
+* **Write a driver for a new language!** If you plan to do this, we recommend you to talk to us first so we can coordinate efforts and assist you.
 
 ## Reporting bugs
 
