@@ -18,7 +18,7 @@ type Node struct {
 
 **Check out the godoc for the SDK** [**UAST package**](https://godoc.org/gopkg.in/bblfsh/sdk.v2/uast) for the full documentation of the UAST structure and annotations in Go.
 
-**For other languages, check the** [**UAST protobuf definition**](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/uast/generated.proto)**.**
+**For other languages, check the** [**UAST protobuf definition**](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto)**.**
 
 ## Syntax Tree Structure
 

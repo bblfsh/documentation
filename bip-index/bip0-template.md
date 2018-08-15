@@ -1,13 +1,13 @@
 # BIP0: Template
 
 | Field | Value |
-| --- | --- |
+| :--- | :--- |
 | BIP | 0 |
 | Title | BIP Template |
 | Author | Alfredo Beaumont |
 | Status | Accepted |
 | Created | 2017-05-26 |
-| Updated | 2018-07-08 |
+| Updated | 2017-09-13 |
 | Target version | optional |
 
 ## Abstract
@@ -28,7 +28,7 @@ How the issue is currently solved or can be solved if this change is not accepte
 
 ## Impact
 
-How this change would impact code datasets: affected languages, frequency of this issue, etc.
+How this change would impact code datasets: affected languages, frecuency of this issue, etc.
 
 ## References
 

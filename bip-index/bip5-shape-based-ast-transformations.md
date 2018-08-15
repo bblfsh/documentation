@@ -1,7 +1,7 @@
 # BIP5: Shape-based AST transformations
 
 | Field | Value |
-| --- | --- |
+| :--- | :--- |
 | BIP | 5 |
 | Title | Shape-based AST transformations |
 | Author | Denys Smirnov |

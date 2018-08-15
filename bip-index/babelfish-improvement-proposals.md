@@ -7,7 +7,7 @@ This is the index of Babelfish Improvement Proposals, known as BIPs.
 ## All Proposals by Number
 
 | Number | Status | Title |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | 0 | Accepted | [BIP Template](bip0-template.md) |
 | 1 | Accepted | [BIP Purpose and Guidelines](bip1-purpose-and-guidelines.md) |
 | 2 | Accepted | [Explicit Annotated status and completeness information](bip2-explicit-annotated-status-and-completeness-information.md) |

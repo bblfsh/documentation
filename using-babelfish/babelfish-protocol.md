@@ -1,6 +1,6 @@
 # Babelfish Protocol
 
-The Babelfish client-server protocol uses [gRPC](http://www.grpc.io) for method selection \(with the [Protocol Buffers](https://developers.google.com/protocol-buffers/) format used for message serialization\). You can read [the server](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/protocol/generated.proto#L11) and [SDK](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/uast/generated.proto) `.proto` files to see the format description of the messages and types involved, but we'll provide here a simple definition in JSON-like format. On the [next page](grpc-usage-example.md) we'll see a demo of how this comes together in practice with some code.
+The Babelfish client-server protocol uses [gRPC](http://www.grpc.io) for method selection \(with the [Protocol Buffers](https://developers.google.com/protocol-buffers/) format used for message serialization\). You can read [the server](https://github.com/bblfsh/sdk/blob/master/protocol/generated.proto) and [SDK](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto) `.proto` files to see the format description of the messages and types involved, but we'll provide here a simple definition in JSON-like format. On the [next page](grpc-usage-example.md) we'll see a demo of how this comes together in practice with some code.
 
 ## ParseRequest
 
@@ -30,11 +30,7 @@ This is the reply produced by the server as response to the above ParseRequest. 
 }
 ```
 
-The `uast` field would contain the UAST root node as an [`gopkg.in/bblfsh/sdk.v2/uast` type](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/uast/generated.proto#L11) which as you can see in the linked definition includes the internal type \(the type used by the native AST\), a map with the properties, the UAST roles, the position of the source construct that generated the node and a list of children as we'll see in the next section.
-
-The status contains the return code of the Request. If it's != 0 (which will be
-mapped to "Ok" or "ok" in an enum in the clients) no further processing should
-be done for that request since it failed to parse the code.
+The `uast` field would contain the UAST root node as an [`gopkg.in/bblfsh/sdk.v2/uast` type](https://github.com/bblfsh/sdk/blob/master/uast/generated.proto#L11) which as you can see in the linked definition includes the internal type \(the type used by the native AST\), a map with the properties, the UAST roles, the position of the source construct that generated the node and a list of children as we'll see in the next section.
 
 ## Nodes
 

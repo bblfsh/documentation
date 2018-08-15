@@ -29,6 +29,7 @@ Some of the use cases that we want to support with AST are:
 * **Developer tooling** 
   * Improved linters, safety analysis, idiomatic usage, etc.
 
-### Further Reading
+### Further reading
 
 This repo contains the project documentation, which you can also see properly rendered at [https://doc.bblf.sh/](https://doc.bblf.sh/).
+
