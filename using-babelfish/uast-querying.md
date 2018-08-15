@@ -2,7 +2,7 @@
 
 The clients support querying over the returned UAST to filter for specific nodes using a client-specific `filter()` method.
 
-The querying uses [xpath syntax](https://www.w3.org/TR/xpath/) and it can be really useful to extract features from the code and, thanks to the annotation system implemented by babelfish, it can be done in a universal way.
+The querying uses [xpath syntax](https://www.w3.org/TR/xpath/) and it can be really useful to extract features from the code and, thanks to the annotation system implemented by Babelfish, it can be done in a universal way.
 
 Any of the [node](https://godoc.org/gopkg.in/bblfsh/sdk.v2/uast#Node) fields can be used for querying in the following way:
 
@@ -44,7 +44,7 @@ This means that both language specific queries \(InternalType, Properties\) and 
 * All the numeric literals in ANY language: `//*[@roleNumber and @roleLiteral]`
 * All the integer literals in Python: `//*[@NumType='int']`
 
-The query language also allows some more complex queries:
+The query language also allow some more complex queries:
 
 * All the elements in the tree that have either start or end offsets: `//*[@startOffset or @endOffset]`
 * All the simple identifiers: `//*[@roleIdentifier and not(@roleQualified)]`

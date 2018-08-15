@@ -354,7 +354,7 @@ Enumeration is a distinct type that represents a set of named constants
 
 ## Equal
 
-Equal is an equality predicate \(i.e. `=`, `==`, etc.\)
+Equal is an eaquality predicate \(i.e. `=`, `==`, etc.\)
 
 **Supported by**: [_Go_](https://github.com/bblfsh/go-driver/blob/master/driver/normalizer/annotation.go), [_Java_](https://github.com/bblfsh/java-driver/blob/master/driver/normalizer/annotation.go), [_Javascript_](https://github.com/bblfsh/javascript-driver/blob/master/driver/normalizer/annotation.go), [_Php_](https://github.com/bblfsh/php-driver/blob/master/driver/normalizer/annotation.go), [_Python_](https://github.com/bblfsh/python-driver/blob/master/driver/normalizer/annotation.go), [_Ruby_](https://github.com/bblfsh/ruby-driver/blob/master/driver/normalizer/annotation.go)
 
@@ -402,13 +402,13 @@ Goto is an unconditional transfer of control statement.
 
 ## GreaterThan
 
-GreaterThan is a comparison predicate that checks if the lhs value is greater than the rhs value \(i. e. `>`.\)
+GreaterThan is a comparison predicate that checks if the lhs value is greather than the rhs value \(i. e. `>`.\)
 
 **Supported by**: [_Go_](https://github.com/bblfsh/go-driver/blob/master/driver/normalizer/annotation.go), [_Java_](https://github.com/bblfsh/java-driver/blob/master/driver/normalizer/annotation.go), [_Javascript_](https://github.com/bblfsh/javascript-driver/blob/master/driver/normalizer/annotation.go), [_Php_](https://github.com/bblfsh/php-driver/blob/master/driver/normalizer/annotation.go), [_Python_](https://github.com/bblfsh/python-driver/blob/master/driver/normalizer/annotation.go)
 
 ## GreaterThanOrEqual
 
-GreaterThanOrEqual is a comparison predicate that checks if the lhs value is greater than or equal to the rhs value \(i.e. 1&gt;=\`.\)
+GreaterThanOrEqual is a comparison predicate that checks if the lhs value is greather than or equal to the rhs value \(i.e. 1&gt;=\`.\)
 
 **Supported by**: [_Go_](https://github.com/bblfsh/go-driver/blob/master/driver/normalizer/annotation.go), [_Java_](https://github.com/bblfsh/java-driver/blob/master/driver/normalizer/annotation.go), [_Javascript_](https://github.com/bblfsh/javascript-driver/blob/master/driver/normalizer/annotation.go), [_Php_](https://github.com/bblfsh/php-driver/blob/master/driver/normalizer/annotation.go), [_Python_](https://github.com/bblfsh/python-driver/blob/master/driver/normalizer/annotation.go), [_Ruby_](https://github.com/bblfsh/ruby-driver/blob/master/driver/normalizer/annotation.go)
 
@@ -556,7 +556,7 @@ Map is a collection of key, value pairs.
 
 ## Module
 
-Module is a set of functionality grouped.
+Module is a set of funcitonality grouped.
 
 **Supported by**: [_Javascript_](https://github.com/bblfsh/javascript-driver/blob/master/driver/normalizer/annotation.go), [_Php_](https://github.com/bblfsh/php-driver/blob/master/driver/normalizer/annotation.go), [_Python_](https://github.com/bblfsh/python-driver/blob/master/driver/normalizer/annotation.go), [_Ruby_](https://github.com/bblfsh/ruby-driver/blob/master/driver/normalizer/annotation.go)
 
@@ -824,7 +824,7 @@ Value is an expression that cannot be evaluated any further.
 
 ## Variable
 
-Variable is a symbolic name associated with a value
+Variable is a symbolic name associatend with a value
 
 **Supported by**: [_Go_](https://github.com/bblfsh/go-driver/blob/master/driver/normalizer/annotation.go), [_Java_](https://github.com/bblfsh/java-driver/blob/master/driver/normalizer/annotation.go), [_Javascript_](https://github.com/bblfsh/javascript-driver/blob/master/driver/normalizer/annotation.go), [_Php_](https://github.com/bblfsh/php-driver/blob/master/driver/normalizer/annotation.go)
 

@@ -23,9 +23,17 @@ In current Role set many roles contain multiple properties \(i. e.: `OpPreIncrem
 
 This presents some issues:
 
-* It doesn't scale well. For a set of N properties, in the worst case, 2^N roles would be needed.
-* It makes code analysis hard. For example, to search for all the operators you need to search for the union of many roles.
-* There's hard to provide partial information for rare properties, if some property is not common enough as to deserve its own role.
+* It doesn't scale well.
+
+  For a set of N properties, in the worst case, 2^N roles would be needed.
+
+* It makes code analysis hard.
+
+  For example, to search for all the operators you need to search for the union of many roles.
+
+* There's hard to provide partial information for rare properties,
+
+  if some property is not common enough as to deserve its own role.
 
 A more flexible and scalable way to define the role set would be to have one role per property and to allow to combine these roles/properties as needed. In the example above `OpPreIncrement` would become the union of 3 roles \(`Operator`, `Increment`, `Prefix`\).
 
@@ -265,17 +273,36 @@ Two possible alternatives would be:
 * Use the current language, that is, discard this proposal. This alternative would show the problems and limitations already commented in the _Rationale_ section.
 * Use some kind of Role categorization. With this proposal, the number of roles per node will increase, and not all properties may have the same importance, some of them may be more important than others.
 
-  For example, in the preincrement operator example used above, `Operator` role may be more relevant than `Prefix`, we may consider the first role a `noun` and the second and `adjective`, which doesn't make sense by itself, but can only go with a `noun`.
+  `Operator` role may be more relevant than `Prefix`,
 
-  We consider that this may be a valid approach, but it can be left for consideration in the future, after more experimentation, since it'd make the proposal more complex while not having a clear gain and it's easy to extend in that direction in the future.
+  we may consider the first role a `noun`
+
+  and the second and `adjective`,
+
+  which doesn't make sense by itself,
+
+  but can only go with a `noun`.
+
+  We consider that this may be a valid approach,
+
+  but it can be left for consideration in the future,
+
+  after more experimentation,
+
+  since it'd make the proposal more complex while not having a clear gain
+
+  and it's easy to extend in that direction in the future.
 
 ## Impact
 
 Incompatible changes to the Role set are proposed, in order to do that, the following changes would be needed:
 
-* Versioning should be added to the [SDK](https://github.com/bblfsh/sdk/), to allow existing server and drivers work with a previous version of the SDK.
+* Versioning should be added to the [SDK](https://github.com/bblfsh/sdk/),
+
+  to allow existing server and drivers work with a previous version of the SDK.
+
 * Roles should be updated in the SDK.
-* Protobuf generated code should be updated for [server](https://github.com/bblfsh/server) and [Python](https://github.com/bblfsh/client-python) and [Go](https://github.com/bblfsh/client-go) clients.
+* Protobuf generated code should be updated for [server](https://github.com/bblfsh/server) and [Python](https://github.com/bblfsh/client-python) and [Go](https://github.com/bblfsh/client-go) clients
 * Update [libuast](https://github.com/bblfsh/libuast)'s role generator and role set.
 * Existing drivers should be modified to support the new roles.
 
