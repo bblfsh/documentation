@@ -270,19 +270,8 @@ The following roles are proposed for inclusion:
 
 Two possible alternatives would be:
 
-* Use current language, that is, discard this proposal.
-
-  This alternative would show the problems and limitations already commented in the _Rationale_ section.
-
-* Use some kind of Role categorization.
-
-  With this proposal, the number of roles per node will increase,
-
-  and not all properties may have the same importance,
-
-  some of them may be more important than others.
-
-  For example, in the preincrement operator example used above,
+* Use the current language, that is, discard this proposal. This alternative would show the problems and limitations already commented in the _Rationale_ section.
+* Use some kind of Role categorization. With this proposal, the number of roles per node will increase, and not all properties may have the same importance, some of them may be more important than others.
 
   `Operator` role may be more relevant than `Prefix`,
 

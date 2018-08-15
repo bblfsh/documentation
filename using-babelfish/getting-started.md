@@ -16,13 +16,23 @@ After playing with the dashboard, you will probably want to get Babelfish runnin
 
 ### Running with Docker \(recommended\)
 
-The easiest way to run the _bblfshd_ is using Docker. You can start it with the following command:
+The easiest way to run the _bblfshd_ daemon is using Docker. You can do it in stateless mode, meaning that all installed drivers will be wiped out once you remove the container, or using a Docker volume to store part of the container internal filesystem and thus add persistence.
+
+#### Stateless mode
+
+For stateless mode, run the following command:
 
 ```bash
 $ docker run -d --name bblfshd --privileged -p 9432:9432 bblfsh/bblfshd
 ```
 
-This will run the image in a stateless mode, this meaning that any installed drivers will be lost when you stop the container. To avoid this from happening, add the `-v` parameter to keep the `/var/lib/bblfshd` directory in a volume:
+#### Using a volume
+
+This is an alternative to stateless mode. Depending on your operating system, you can use a Docker volume or a normal local filesystem directory.
+
+**Docker volume \(Linux and macOS\)**
+
+First, create a volume with the command:
 
 ```bash
 $ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
@@ -34,9 +44,9 @@ On macOS, first create a new volume where the installed drivers will be kept:
 $ docker volume create bblfshd-cache
 ```
 
-Then map the freshly created volume into the container with `-v bblfshd-cache:/var/lib/bblfshd`.
+#### Volume mapped to a local directory \(Linux only\)
 
-If everything worked, `docker logs bblfshd` should output something like this:
+In this case, just specify the local directory in the `-v` parameter when running the daemon:
 
 ```text
 time="2017-10-10T08:59:20Z" level=info msg="bblfshd version: v2.0.0 (build: 2017-10-09T21:18:54+0000)"

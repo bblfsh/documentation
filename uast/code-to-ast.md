@@ -8,22 +8,9 @@ Drivers SHOULD generate an AST without any information loss from the source code
 
 Most parsers available do not completely prevent information loss during the conversion. So we currently aim to preserve as much information as possible. We define different levels of information loss in terms of which kind of code generation would they allow.
 
-* **Lossless:** Converting code to AST and then back to code would.
-
-  `code == codegen(AST(code))`.
-
-* **Formatting information loss:** Only superfluous formatting information is lost
-
-  \(e.g. whitespace, indentation\). Code generated from the AST could be the same
-
-  as the original code after passing a code formatter. `fmt(code) == codegen(AST(code))`.
-
-* **Syntactic sugar information loss:** There is information loss about syntactic
-
-  sugar. Code generated from the AST could be the same as the original code after
-
-  desugaring it. `desugar(code) == codegen(AST(code))`.
-
+* **Lossless:** Converting code to AST and then back to code would. `code == codegen(AST(code))`.
+* **Formatting information loss:** Only superfluous formatting information is lost \(e.g. whitespace, indentation\). Code generated from the AST could be the same as the original code after passing a code formatter. `fmt(code) == codegen(AST(code))`.
+* **Syntactic sugar information loss:** There is information loss about syntactic sugar. Code generated from the AST could be the same as the original code after desugaring it. `desugar(code) == codegen(AST(code))`.
 * **Comment loss:** Comments are not present in the AST.
 
 Drivers MUST NOT lose any data beyond the previous cases.
