@@ -14,7 +14,7 @@
 * [UAST Querying](using-babelfish/uast-querying.md)
 * [Babelfish Protocol](using-babelfish/babelfish-protocol.md)
 * [gRPC usage example](using-babelfish/grpc-usage-example.md)
-* [Babelfish Dashboard](http://dashboard.bblf.sh)
+* [Babelfish web client](http://dashboard.bblf.sh)
 
 ## UAST
 

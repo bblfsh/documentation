@@ -1,12 +1,12 @@
 # Getting Started
 
-## Using the online dashboard
+## Using the online web client 
 
-The easiest way to get started with Babelfish is to try the online [dashboard](http://dashboard.bblf.sh/) where you can write or paste your code and run the parser to see the generated UAST.
+The easiest way to get started with Babelfish is to try the online [web client](http://dashboard.bblf.sh/) where you can write or paste your code and run the parser to see the generated UAST.
 
 ## Installing bblfshd locally
 
-After playing with the dashboard, you will probably want to get Babelfish running locally. The first thing to do for that is to setup and run the [`bblfshd`](https://github.com/bblfsh/bblfshd) command. Once the server is running, you can connect to it using any of the available [clients](clients.md).
+After playing with the web client, you will probably want to get Babelfish running locally. The first thing to do for that is to setup and run the [`bblfshd`](https://github.com/bblfsh/bblfshd) command. Once the server is running, you can connect to it using any of the available [clients](clients.md).
 
 ### Prerequisites
 
