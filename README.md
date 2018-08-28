@@ -22,6 +22,20 @@ Some of the use cases that we aim to support with UAST are:
 * **Uniform import extraction:** Extracting all imports from every language in a uniform way.
 * **Statistical analysis of language features:** How many people use for-comprehension in Python.
 
+### Current status
+
+Currently, Babelfish is in the process of transition to v2 protocol, new
+node representation and Semantic UAST.
+
+All the beta+ drivers support these new features in the latest version
+and requires bblfshd >= 2.6.1.
+
+The libuast was not yet updated to support the new node format, thus all
+the [clients](./using-babelfish/clients.md) still work in v1 compatibility mode
+to be able to execute XPath queries.
+
+See [v2 transition options](./using-babelfish/advanced-usage.md) for details.
+
 ### Further Reading
 
 This repository contains the project documentation, which you can also see properly rendered at [https://docs.sourced.tech/babelfish](https://docs.sourced.tech/babelfish).
