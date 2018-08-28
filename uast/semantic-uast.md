@@ -2,7 +2,7 @@
 
 ## Overview
 
-The goal of Semantic UAST is to provide a set of UAST node types with
+The goal of the Semantic UAST is to provide a set of UAST node types with
 a strictly defined semantic meaning that does not depend on the
 programming language.
 
@@ -38,7 +38,7 @@ As described in the [schema-less representation](./representation_v2.md)
 spec, object fields starting with `@` are considered internal and may be
 present on any object regardless of the type (schema).
 
-Semantic UAST defines few more special fields:
+This UAST specification defines few more special fields:
 
 * `@pos` - stores the positional information related to this UAST node.
   See `Positions` type for more details.

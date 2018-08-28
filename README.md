@@ -30,7 +30,7 @@ node representation and Semantic UAST.
 All the beta+ drivers support these new features in the latest version
 and requires bblfshd >= 2.6.1.
 
-The libuast was not yet updated to support the new node format, thus all
+Libuast was not yet updated to support the new node format, thus all
 the [clients](./using-babelfish/clients.md) still work in v1 compatibility mode
 to be able to execute XPath queries.
 

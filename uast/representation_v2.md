@@ -6,7 +6,7 @@
 similar to JSON, but that preserve all the primitive value types that
 AST can express.
 
-Babelfish parsers will provide an AST in this form, which allow to process
+Babelfish's parsers will provide an AST in this form, which allow to process
 them with the same transformation pipeline.
 
 For the specific list of UAST types, see [Semantic UAST](./semantic-uast.md).
