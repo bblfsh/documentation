@@ -1,5 +1,8 @@
 # UAST Specification
 
+This page describes the legacy UASTv1 representation that will be deprecated.
+See [UASTv2](./uast_v2.md) for the new version.
+
 ## Overview
 
 A Universal Abstract Syntax Tree \(UAST\) is a normalized form of [Abstract Syntax Tree \(AST\)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) with language-independent annotations. Its structure is as follows:

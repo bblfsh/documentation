@@ -1,5 +1,20 @@
 # Advanced Usage
 
+## Protocol v2 transition
+
+During the transition to Babelfish v2 protocol and Semantic UAST client may choose either:
+
+1) Use existing client (protocol v1) and XPath queries. This should only be a temporary solution, since v1 will be deprecated.
+
+2) Use the latest Go client, set `.Mode(Semantic)` and change XPath to use the new [Semantic UAST](../uast/semantic-uast.md) types. Requires v2 drivers (latest) and bblfshd >= 2.6.1.
+   Note that v1 version of libuast used in the client to provide XPath
+   does not support namespaces, as defined in the Semantic UAST spec.
+   Thus, to query `uast:Identifier` the client should omit the namespace: `//Identifier`.
+
+3) Try the new UASTv2 representation by using Go client and the `ParseRequestV2`.
+   There is no XPath query support at the moment, so this option should only
+   be considered if you want to access the new UAST directly.
+
 ## Adding all drivers
 
 In the [previous section](getting-started.md) the `bblfshctl` command to install the drivers was shown with the `--recommended` switch. This will install all the drivers in beta stage or better and annotated UAST support. But if you're interested in installing [all official language drivers](../languages.md), even the ones that have alpha status and only native AST support, you can use the `--all` switch instead:
