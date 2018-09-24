@@ -13,8 +13,6 @@
 | [Python](https://github.com/bblfsh/python-driver) | python | beta | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [juanjux](https://github.com/juanjux) |
 | [Ruby](https://github.com/bblfsh/ruby-driver) | ruby | beta | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/) | [juanjux](https://github.com/juanjux) |
 | [TypeScript](https://github.com/bblfsh/typescript-driver) | typescript | alpha | ✓ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) | [dennwc](https://github.com/dennwc) |
-| [ocaml](https://github.com/bblfsh/ocaml-driver) | ocaml | alpha | ✗ | ✗ | ✗ | ✗ | - |
-| [rust](https://github.com/bblfsh/rust-driver) | rust | alpha | ✗ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/rust-driver/) | - |
 
 ## In development
 
@@ -26,6 +24,8 @@
 | [erlang](https://github.com/bblfsh/erlang-driver) | erlang | planning | ✗ | ✗ | ✗ | ✗ | - |
 | [lua](https://github.com/bblfsh/lua-driver) | lua | planning | ✗ | ✗ | ✗ | ✗ | - |
 | [elixir](https://github.com/bblfsh/elixir-driver) | elixir | inactive | ✗ | ✗ | ✗ | ✗ | - |
+| [ocaml](https://github.com/bblfsh/ocaml-driver) | ocaml | pre-alpha | ✗ | ✗ | ✗ | ✗ | - |
+| [rust](https://github.com/bblfsh/rust-driver) | rust | pre-alpha | ✗ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/rust-driver/) | - |
 
 * \* The driver is able to return the native AST
 * \*\* The driver is able to return the UAST
