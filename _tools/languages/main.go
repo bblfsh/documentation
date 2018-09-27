@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io"
 	"log"
 	"os"
+	"path/filepath"
 	"sync"
 
 	"github.com/heroku/docker-registry-client/registry"
@@ -19,20 +19,18 @@ const (
 	org = discovery.GithubOrg
 )
 
-var (
-	outFormat = flag.String("o", "md", "output format (md or json)")
-)
-
 func main() {
 	flag.Parse()
-	if err := run(os.Stdout); err != nil {
+	if err := run(flag.Args()); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func run(w io.Writer) error {
+func run(outFiles []string) error {
 	ctx := context.TODO()
-	langs, err := discovery.OfficialDrivers(ctx, nil)
+	langs, err := discovery.OfficialDrivers(ctx, &discovery.Options{
+		NoStatic: true,
+	})
 	if err != nil {
 		return err
 	}
@@ -70,15 +68,30 @@ func run(w io.Writer) error {
 	}
 	wg.Wait()
 
-	switch *outFormat {
-	case "json":
-		enc := json.NewEncoder(w)
+	for _, fname := range outFiles {
+		if err := writeFile(fname, list); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func writeFile(fname string, list []Driver) error {
+	f, err := os.Create(fname)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	switch filepath.Ext(fname) {
+	case ".json":
+		enc := json.NewEncoder(f)
 		enc.SetIndent("", "\t")
 		return enc.Encode(list)
-	case "md":
+	case ".md":
 		fallthrough
 	default:
 	}
+	w := f
 
 	fmt.Fprint(w, header)
 	defer fmt.Fprint(w, footer)
