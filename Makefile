@@ -21,7 +21,7 @@ roles:
 	go run _tools/roles/main.go > uast/roles.md
 
 languages:
-	go run _tools/languages/main.go > languages.md
+	go run _tools/languages/main.go languages.md languages.json
 
 clean:
 	rm -rf node_modules
