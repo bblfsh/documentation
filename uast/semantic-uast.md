@@ -56,7 +56,7 @@ All other field are defined by the Semantic UAST schema.
 
 ### Types
 
-Types are defined in [the SDK](`https://github.com/bblfsh/sdk/blob/87d72062a52cbfe5b52a606f98ec53a29ac94e28/uast/uast.go`). In case of doubt use that source file as reference.
+Types are defined in [the SDK](https://github.com/bblfsh/sdk/blob/master/uast/uast.go). In case of doubt use that source file as reference.
 
 #### Positions
 
@@ -251,7 +251,7 @@ Group containing the nodes for a function definition.
 
 #### Function
 
-Node representing a function definition. Usually will be inside a [`uast:Alias`](./semantic-uast.md#alias) node which in turn will be inside a [`uast:FunctionGroup`](./semantic-uast.md#functiongroup).
+Node representing a function definition. Usually will be inside a [`uast:Alias`](./semantic-uast.md#alias) node holding the function's name. This in turn will be inside a [`uast:FunctionGroup`](./semantic-uast.md#functiongroup).
 
 **@type:** `uast:Function`
 
