@@ -2,7 +2,7 @@
 
 ## Introduction
 
-**Babelfish is a self-hosted server for source code parsing.** The Babelfish service can parse any file, in any supported language, extracting an [Abstract Syntax Tree \(AST\)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) from it and converting it into a [**Universal Abstract Syntax Tree \(UAST\)**](uast/uast-specification.md). The UAST enables further analysis and transformations with either the included tools or your own tools by providing a standard open format.
+**Babelfish is a self-hosted server for source code parsing.** The Babelfish service can parse any file, in any supported language, extracting an [Abstract Syntax Tree \(AST\)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) from it and converting it into a [**Universal Abstract Syntax Tree \(UAST\)**](uast/uast-specification.md). The UAST enables further analysis and transformations with either the included tools or your own tools by providing a standard open format. Jump to the [Getting Started](using-babelfish/getting-started.md) section to start using it!
 
 ### Motivation & Scope
 
