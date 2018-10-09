@@ -15,7 +15,7 @@ Any of the [Node](https://godoc.org/gopkg.in/bblfsh/sdk.v2/uast#Node) fields can
 Internally, these are mapped in the XML node in the following way:
 
 ```markup
-<{{InternalType}}
+<{{@type}}
     @token='{{Token}}'
     {{for role in Roles}}
     @role{{role}}
@@ -34,7 +34,7 @@ This means that both language specific queries \(InternalType, Properties\) and 
 
 The query language also allows some more complex queries:
 
-* All the simple identifiers: `//*[@role='Identifier' and not(@role='Qualified')]`
+* All the simple identifiers: `//*[@role='Identifier' and not(@role='Qualified')]` or, if you're getting the semantic UAST (which is the default): `//Identifier[not(@role='Qualified')]`.
 * All the simple identifiers that don't have any positioning: `//*[@role='Identifier' and not(@role='Qualified') and not(@startOffset) and not(@endOffset)]`
 * All the arguments in function calls: `//*[@role='Call' and @role='Argument']`
 * The parent node of a call argument: `//*@[role='Call' and @role='Argument']/parent::*` (you can also specify the type of the parent node instead of an `*` or use `ancestor::type` to get the first ancestor of a specified type).
