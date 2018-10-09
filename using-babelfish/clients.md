@@ -2,7 +2,7 @@
 
 There are some clients in different languages that provide a higher level API, built on top of [gRPC](https://grpc.io) and [`libuast`](https://github.com/bblfsh/libuast).
 
-These clients make it easier to both parse and analyze the resulting UAST, abstracting from network communication and providing a query language to filter UASTs.
+These clients make it easier to both parse and analyze the resulting UAST, abstracting from network communication and providing a query language to filter UASTs and can be used both as a library or as command line programs.
 
 ## Existing clients
 
@@ -19,6 +19,14 @@ There are clients for the following languages:
 The client API's differ to adapt to their language specific idioms, the following code snippets show several simple examples with the Go, Python and Scala clients that parse a file and apply a filter to return all the simple identifiers:
 
 ### Go example
+
+As a command:
+
+```bash
+bblfsh-cli -q [XPath query] -m semantic [file.ext]
+```
+
+As a library:
 
 ```go
 package main
@@ -47,7 +55,7 @@ func main() {
         panic("Parsing failed")
     }
 
-    query := "//*[@roleIdentifier and not(@roleQualified)]"
+    query := "//*[@role='Identifier' and not(@role='Qualified')]"
     nodes, _ := tools.Filter(res.UAST, query)
     for _, n := range nodes {
         fmt.Println(n)
@@ -56,6 +64,14 @@ func main() {
 ```
 
 ### Python example
+
+As a command:
+
+```bash
+python -m bblfsh -q [XPath query] -f [file.ext]
+```
+
+As a library:
 
 ```python
 import bblfsh
@@ -69,13 +85,21 @@ if __name__ == "__main__":
     if response.status != 0:
         raise Exception('Some error happened: ' + str(response.errors))
 
-    query = "//*[@roleIdentifier and not(@roleQualified)]"
+    query = "//*[@role='Identifier' and not(@role='Qualified')]"
     nodes = filter_uast(response.uast, query)
     for n in nodes:
         print(n)
 ```
 
 ### Scala example
+
+As a command:
+
+```bash
+java -jar bblfsh-client-assembly-1.0.1.jar -q [XPath query] -f file.py
+```
+
+As a library:
 
 ```scala
 import org.bblfsh.client.BblfshClient._
@@ -93,7 +117,7 @@ class BblfshClientParseTest {
 
   if (resp.uast.isDefined) {
      rootNode = resp.uast.get
-     val filtered = client.filter(rootNode, "//*[@roleIdentifier and not(@roleQualified)]")
+     val filtered = client.filter(rootNode, "//*[@role='Identifier' and not(@role='Qualified')]")
      filtered.foreach{ println }
   } else {
     // ... handle resp.uast.errors
