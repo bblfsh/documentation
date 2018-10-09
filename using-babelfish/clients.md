@@ -67,12 +67,12 @@ if __name__ == "__main__":
     response = client.parse("some_file.py")
 
     if response.status != 0:
-      raise Exception('Some error happened: ' + str(response.errors))
+        raise Exception('Some error happened: ' + str(response.errors))
 
     query = "//*[@roleIdentifier and not(@roleQualified)]"
     nodes = filter_uast(response.uast, query)
     for n in nodes:
-      print(n)
+        print(n)
 ```
 
 ### Scala example
