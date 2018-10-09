@@ -8,8 +8,8 @@ of the parser for source files.
 
 UAST is defined by two separate specifications:
 
-* [Node representation](./representation_v2.md) - defines a common transport
+* [Node representation](./representation-v2.md) - defines a common transport
   format for the UAST.
 
-* [Semantic UAST](./semantic_uast.md) - defines UAST node types that are
+* [Semantic UAST](./semantic-uast.md) - defines UAST node types that are
   independent of the programming language.
