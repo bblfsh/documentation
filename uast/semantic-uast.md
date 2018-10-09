@@ -41,8 +41,8 @@ present on any object regardless of the type (schema).
 This UAST specification defines few more special fields:
 
 * `@pos` - stores the positional information related to this UAST node with a
-  `Positions` node which in turn will have `start` and `end` nodes of type
-  `Position`.  See the `Positions` type below for more details.
+  [`Positions`](./semantic-uast.md#positions) node which in turn will have `start` and `end` nodes of type
+  `Position`.  See the [`Positions`](./semantic-uast.md#position) type below for more details.
 
 * `@token` - a text representation of this node in the source file.
   This field is only available for compatibility reasons. If available,
@@ -56,6 +56,8 @@ All other field are defined by the Semantic UAST schema.
 
 ### Types
 
+Types are defined in [the SDK](`https://github.com/bblfsh/sdk/blob/87d72062a52cbfe5b52a606f98ec53a29ac94e28/uast/uast.go`). In case of doubt use that source file as reference.
+
 #### Positions
 
 Object that stores all positional information for a node. This node kind
@@ -64,9 +66,9 @@ Object that stores all positional information for a node. This node kind
 
 Field | Type | Description
 ----- | ---- | -----------
-`start` | `uast:Position` | Start position of the node.
-`end` | `uast:Position` | End position of the node.
-`*` | `uast:Position` | Any number of custom positional fields.
+`start` | [`uast:Position`](./semantic-uast.md#position) | Start position of the node.
+`end` | [`uast:Position`](./semantic-uast.md#position) | End position of the node.
+`*` | [`uast:Position`](./semantic-uast.md#position) | Any number of custom positional fields.
 
 Keys of this object can be arbitrary names for positional fields of the
 UAST node. Only two fields are defined: `start` and `end` to allow users
@@ -74,13 +76,13 @@ to access source snippet related to the node.
 
 As an example of a custom positional information, a ternary operator
 `x ? y : z` node may store individual positions for `?` and `:` characters
-as a separate `then` and `else` fields in `Positions` node. This field will
+as a separate `then` and `else` fields in [`Positions`](./semantic-uast.md#positions) node. This field will
 always be in the parent node under the `@pos` property.
 
 #### Position
 
 Represents a position in a source code file. Cannot have any fields except
-ones defined below. Belong to a `Positions` parent node.
+ones defined below. Belong to a [`Positions`](./semantic-uast.md#positions) parent node.
 
 **@type:** `uast:Position`
 
@@ -122,7 +124,7 @@ The closest analogy is the filesystem path.
 
 Field | Type | Description
 ----- | ---- | -----------
-`Names` | `[]uast:Identifier` | A path elements starting from the root of the hierarchy to the leaf.
+`Names` | [`[]uast:Identifier`](./semantic-uast.md#identifier) | A path elements starting from the root of the hierarchy to the leaf.
 
 #### Comment
 
@@ -183,7 +185,7 @@ local names for imports, local names for imported symbols, etc.
 
 Field | Type | Description
 ----- | ---- | -----------
-`Name` | `uast:Identifier` | A name that is assigned to an entity.
+`Name` | [`uast:Identifier`](./semantic-uast.md#identifier) | A name that is assigned to an entity.
 `Node` | `Node` | An entity that will be aliased by a new name.
 
 #### Import
@@ -204,9 +206,9 @@ An `Import` can either:
 
 Field | Type | Description
 ----- | ---- | -----------
-`Path` | `uast:String | uast:Identifier | uast:QualifiedIdentifier | uast:Alias` | A name that is assigned to an entity.
+`Path` | [`uast:String`](./semantic-uast.md#string) OR [`uast:Identifier`](./semantic-uast.md#identifier) OR [`uast:QualifiedIdentifier`](./semantic-uast.md#qualifiedidentifier) OR [`uast:Alias`](./semantic-uast.md#alias) | A name that is assigned to an entity.
 `All` | `Bool` | Import all definitions from the modules into the scope.
-`Names` | `[](uast:Alias | uast:Identifier)` | Import specific names from the module. Can refer to an `uast:Alias` to rename imported entities.
+`Names` | `[]`([`uast:Alias`](./semantic-uast.md#alias) OR [`uast:Identifier`](./semantic-uast.md#identifier)) | Import specific names from the module. Can refer to an [`uast:Alias`](./semantic-uast.md#alias) to rename imported entities.
 
 #### RuntimeImport
 
@@ -216,7 +218,7 @@ the code, thus it may be affected by code execution.
 
 **@type:** `uast:RuntimeImport`
 
-**Inherits:** `uast:Import`
+**Inherits:** [`uast:Import`](./semantic-uast.md#import)
 
 #### RuntimeReImport
 
@@ -225,4 +227,61 @@ re-execute an initialization code when importing the same package the second tim
 
 **@type:** `uast:RuntimeReImport`
 
-**Inherits:** `uast:RuntimeImport`
+**Inherits:** [`uast:RuntimeImport`](./semantic-uast.md#runtimeimport)
+
+#### Group
+
+Generic grouping node containing other nodes, used as common ancestor for
+inheriting in other more specific types.
+
+**@type:** `uast:Group`
+
+
+Field | Type | Description
+----- | ---- | -----------
+`Nodes` | `[]Nodes` | Grouped nodes.
+
+#### FunctionGroup
+
+Group containing the nodes for a function definition.
+
+**@type:** `uast:FunctionGroup`
+
+**Inherits:** [`uast:Group`](./semantic-uast.md#group)
+
+#### Function
+
+Node representing a function definition. Usually will be inside a [`uast:Alias`](./semantic-uast.md#alias) node which in turn will be inside a [`uast:FunctionGroup`](./semantic-uast.md#functiongroup).
+
+**@type:** `uast:Function`
+
+
+Field | Type | Description
+----- | ---- | -----------
+`Type` | [`uast:FunctionType`](./semantic-uast.md#functiontype) | Function type definition including format arguments and return type.
+`Body` | [`uast:Block`](./semantic-uast.md#block) | Body of the function definition.
+
+#### FunctionType
+
+Node representing the type signature of a function definition.
+
+**type:** `uast:FunctionType`
+
+Field | Type | Description
+----- | ---- | -----------
+`Arguments` | [][`uast:Argument`](./semantic-uast.md#argument) | Format arguments.
+`Returns` | [][`uast:Argument`](./semantic-uast.md#argument) | Return type/s.
+
+### Argument
+
+Argument or return value, usually for a [`uast:FunctionType`](./semantic-uast.md#functiontype).
+
+**type:** `uast:Argument`
+
+Field | Type | Description
+----- | ---- | -----------
+`Name` | [`uast:Identifier`](./semantic-uast.md#identifier) | Argument name.
+`Type` | `Any` | Type specification (`int`, `string`, etc).
+`Init` | `Any` | Default value, if given.
+`Variadic` | `bool` | True if it takes a variable number of arguments in a list-like format.
+`MapVariadic` | `bool` | True if it takes a variable number of arguments in a map-like format.
