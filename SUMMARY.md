@@ -19,6 +19,8 @@
 ## UAST
 
 * [Code to AST](uast/code-to-ast.md)
+* [UAST v2 Overview](uast/uast-v2.md)
+* [Node Representation](uast/representation-v2.md)
 * [UAST Specification](uast/uast-specification.md)
 * [Roles](uast/roles.md)
 
