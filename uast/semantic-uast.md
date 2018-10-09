@@ -40,8 +40,9 @@ present on any object regardless of the type (schema).
 
 This UAST specification defines few more special fields:
 
-* `@pos` - stores the positional information related to this UAST node.
-  See `Positions` type for more details.
+* `@pos` - stores the positional information related to this UAST node with a
+  `Positions` node which in turn will have `start` and `end` nodes of type
+  `Position`.  See the `Positions` type below for more details.
 
 * `@token` - a text representation of this node in the source file.
   This field is only available for compatibility reasons. If available,
@@ -54,19 +55,6 @@ This UAST specification defines few more special fields:
 All other field are defined by the Semantic UAST schema.
 
 ### Types
-
-#### Position
-
-Represents a position in a source code file. Cannot have any fields except
-ones defined below.
-
-**@type:** `uast:Position`
-
-Field | Type | Description
------ | ---- | -----------
-`offset` | `Uint` | Position as an absolute byte offset (0-based index).
-`line` | `Uint` | Line number (1-based index).
-`col` | `Uint` | Column number (1-based index). The byte offset of the position relative to a line.
 
 #### Positions
 
@@ -86,7 +74,21 @@ to access source snippet related to the node.
 
 As an example of a custom positional information, a ternary operator
 `x ? y : z` node may store individual positions for `?` and `:` characters
-as a separate `then` and `else` fields in `Positions` node.
+as a separate `then` and `else` fields in `Positions` node. This field will
+always be in the parent node under the `@pos` property.
+
+#### Position
+
+Represents a position in a source code file. Cannot have any fields except
+ones defined below. Belong to a `Positions` parent node.
+
+**@type:** `uast:Position`
+
+Field | Type | Description
+----- | ---- | -----------
+`offset` | `Uint` | Position as an absolute byte offset (0-based index).
+`line` | `Uint` | Line number (1-based index).
+`col` | `Uint` | Column number (1-based index). The byte offset of the position relative to a line.
 
 #### Identifier
 
