@@ -1,7 +1,7 @@
 # UAST Specification
 
 This page describes the legacy UASTv1 representation that will be deprecated.
-See [UASTv2](./uast_v2.md) for the new version.
+See [UASTv2](./uast-v2.md) for the new version.
 
 ## Overview
 

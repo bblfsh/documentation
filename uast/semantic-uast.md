@@ -9,7 +9,7 @@ programming language.
 ## Type system
 
 Semantic UAST types are defined in the Babelfish SDK on top of the
-[schema-less representation](./representation_v2.md).
+[schema-less representation](./representation-v2.md).
 
 The `@type` field in Object nodes is used to determine an exact type in
 the Semantic UAST type system. Besides the Semantic UAST types, drivers
@@ -34,7 +34,7 @@ when adding namespaces:
 
 ### Common fields
 
-As described in the [schema-less representation](./representation_v2.md)
+As described in the [schema-less representation](./representation-v2.md)
 spec, object fields starting with `@` are considered internal and may be
 present on any object regardless of the type (schema).
 
