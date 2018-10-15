@@ -26,7 +26,9 @@ Internally, these are mapped in the XML node in the following way:
 </{{@type}}>
 ```
 
-This means that both language specific queries \(InternalType, Properties\) and language agnostic queries \(Roles\) can be done. For example:
+This means that both language specific queries \(InternalType, Properties\) and language agnostic queries \(Roles\) can be done.
+
+## Example Queries
 
 * All the numeric literals in Python: `//Num`
 * All the numeric literals in ANY language: `//*[@role='Number' and @role='Literal']`
