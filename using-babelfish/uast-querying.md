@@ -23,7 +23,7 @@ Internally, these are mapped in the XML node in the following way:
     {{key}}='{{value}}'
     @pos{{start, end}}
     {{Children}}
-</{{InternalType}}>
+</{{@type}}>
 ```
 
 This means that both language specific queries \(InternalType, Properties\) and language agnostic queries \(Roles\) can be done. For example:
