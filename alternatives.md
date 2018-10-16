@@ -127,9 +127,11 @@ From [project documentation](https://www.srcml.org/about.html):
 > The srcML format is an XML representation for source code, where the markup tags identify elements of the abstract syntax for the language. The srcml program is a command line application for the conversion source code to srcML, an interface for the exploration, analysis, and manipulation of source code in this form, and the conversion of srcML back to source code. Supports parsing C/C++, C#, and Java.
 
 srcML defines an [XML schema](https://www.srcml.org/doc/srcMLGrammar.html) to annotate
-source code files with it's syntactic structure: given the file with a source code, it
-converts it XML with that schema. It also provides tools written in C++ to [query](https://www.srcml.org/tutorials/xpath-query.html)
-and analyze files in this format using XPath. An AST structure is language-dependent.
+source code files with it's syntactic structure. Given a file with the source code, is
+converted to XML document, following that schema. srcML also provides tools in separate
+binaries written in C++ to [query](https://www.srcml.org/tutorials/xpath-query.html)
+and analyze files in this format using XPath. An AST structure is language-dependent
+and parsing itself is done using ANTLR.
 
 Babelfish provides a native language AST with positional information, that
 can be used to generate the same markup. Also, it provides a language-independent
