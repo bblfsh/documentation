@@ -3,6 +3,7 @@
 * [Babelfish - Universal Code Parser](README.md)
 * [Architecture](architecture.md)
 * [Languages](languages.md)
+* [Alternatives](alternatives.md)
 * [Join the Community](join-the-community.md)
 * [Babelfish Improvement Proposals](babelfish-improvement-proposals.md)
 
