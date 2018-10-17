@@ -111,7 +111,7 @@ Use this only for testing the installation; if you want to do any real parsing w
 
 ### Running standalone
 
-A standalone distribution of `bblfshd` and `bblfshctl` can be found at the GitHub [release page](https://github.com/bblfsh/bblfshd/releases).
+A standalone distribution of `bblfshd` and `bblfshctl` can be found at the GitHub [release page](https://github.com/bblfsh/bblfshd/releases). This will contain a single binary that can be run anywhere but it depends on the `ostree` library as explained in the [readme](https://github.com/bblfsh/bblfshd#dependencies).
 
 _bblfshd_ is only provided for Linux distributions, since it relies on Linux containers to run language drivers. And _bblfshctl_ can be found for Windows, macOS and Linux.
 
