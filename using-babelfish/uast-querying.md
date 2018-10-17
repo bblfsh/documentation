@@ -21,7 +21,7 @@ Internally, these are mapped in the XML node in the following way:
     @role{{role}}
     {{for key, value in Properties}}
     {{key}}='{{value}}'
-    @pos{{start-offset, start-line, start-col, end-offset, end-line, end-col}}
+    {{start-offset, start-line, start-col, end-offset, end-line, end-col}}
     {{Children}}
 </{{@type}}>
 ```
