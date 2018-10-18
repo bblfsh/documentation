@@ -2,20 +2,16 @@
 	{
 		"Name": "Bash",
 		"Language": "bash",
-		"Version": "",
-		"Build": null,
 		"Status": "beta",
-		"InformationLoss": null,
+		"SDKVersion": "2.1.0",
 		"Documentation": {
-			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n",
-			"Caveats": ""
+			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"8.131.11-r2"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.9"
 		},
 		"Features": [
@@ -36,20 +32,13 @@
 	{
 		"Name": "Go",
 		"Language": "go",
-		"Version": "",
-		"Build": null,
 		"Status": "beta",
-		"InformationLoss": null,
-		"Documentation": {
-			"Description": "",
-			"Caveats": ""
-		},
+		"SDKVersion": "2.1.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"1.10"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.10"
 		},
 		"Features": [
@@ -70,20 +59,13 @@
 	{
 		"Name": "Java",
 		"Language": "java",
-		"Version": "",
-		"Build": null,
 		"Status": "beta",
-		"InformationLoss": null,
-		"Documentation": {
-			"Description": "",
-			"Caveats": ""
-		},
+		"SDKVersion": "2.1.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"8.171.11-r0"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.9"
 		},
 		"Features": [
@@ -98,26 +80,21 @@
 				"Github": "dennwc"
 			}
 		],
-		"GithubURL": "https://github.com/bblfsh/java-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/java-driver/"
+		"GithubURL": "https://github.com/bblfsh/java-driver"
 	},
 	{
 		"Name": "JavaScript",
 		"Language": "javascript",
-		"Version": "",
-		"Build": null,
 		"Status": "beta",
-		"InformationLoss": null,
+		"SDKVersion": "2.1.0",
 		"Documentation": {
-			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n",
-			"Caveats": ""
+			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"8.9.3-r1"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.9"
 		},
 		"Features": [
@@ -138,20 +115,16 @@
 	{
 		"Name": "PHP",
 		"Language": "php",
-		"Version": "",
-		"Build": null,
 		"Status": "beta",
-		"InformationLoss": null,
+		"SDKVersion": "2.1.0",
 		"Documentation": {
-			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n",
-			"Caveats": ""
+			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"7.1.17-r0"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.9"
 		},
 		"Features": [
@@ -172,20 +145,13 @@
 	{
 		"Name": "Python",
 		"Language": "python",
-		"Version": "",
-		"Build": null,
 		"Status": "beta",
-		"InformationLoss": null,
-		"Documentation": {
-			"Description": "",
-			"Caveats": ""
-		},
+		"SDKVersion": "2.1.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"3.6.2"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.9"
 		},
 		"Features": [
@@ -206,20 +172,16 @@
 	{
 		"Name": "Ruby",
 		"Language": "ruby",
-		"Version": "",
-		"Build": null,
 		"Status": "beta",
-		"InformationLoss": null,
+		"SDKVersion": "2.1.0",
 		"Documentation": {
-			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n",
-			"Caveats": ""
+			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"2.4.4-r0"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.9"
 		},
 		"Features": [
@@ -240,20 +202,16 @@
 	{
 		"Name": "TypeScript",
 		"Language": "typescript",
-		"Version": "",
-		"Build": null,
 		"Status": "alpha",
-		"InformationLoss": null,
+		"SDKVersion": "2.1.0",
 		"Documentation": {
-			"Description": "typescript driver for [babelfish](https://github.com/bblfsh/server).\n",
-			"Caveats": ""
+			"Description": "typescript driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"2.2.1"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.10"
 		},
 		"Features": [
@@ -270,20 +228,26 @@
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/typescript-driver/"
 	},
 	{
+		"Name": "C++",
+		"Language": "cpp",
+		"Status": "alpha",
+		"SDKVersion": "2.1.0",
+		"Runtime": {
+			"OS": "alpine",
+			"NativeVersion": [
+				"8.121.13-r0"
+			],
+			"GoVersion": "1.8"
+		},
+		"GithubURL": "https://github.com/bblfsh/cpp-driver"
+	},
+	{
 		"Name": "C#",
 		"Language": "csharp",
-		"Version": "",
-		"Build": null,
 		"Status": "pre-alpha",
-		"InformationLoss": null,
-		"Documentation": {
-			"Description": "",
-			"Caveats": ""
-		},
+		"SDKVersion": "2.0.0",
+		"Documentation": {},
 		"Runtime": {
-			"OS": "",
-			"NativeVersion": [],
-			"NativeEncoding": "",
 			"GoVersion": "1.10"
 		},
 		"Features": [
@@ -292,156 +256,94 @@
 		"GithubURL": "https://github.com/bblfsh/csharp-driver"
 	},
 	{
-		"Name": "C++",
-		"Language": "cpp",
-		"Version": "",
-		"Build": null,
-		"Status": "pre-alpha",
-		"InformationLoss": null,
-		"Documentation": {
-			"Description": "",
-			"Caveats": ""
-		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"8.121.13-r0"
-			],
-			"NativeEncoding": "",
-			"GoVersion": "1.8"
-		},
-		"Features": null,
-		"GithubURL": "https://github.com/bblfsh/cpp-driver"
-	},
-	{
 		"Name": "ocaml",
 		"Language": "ocaml",
-		"Version": "",
-		"Build": null,
 		"Status": "pre-alpha",
-		"InformationLoss": null,
+		"SDKVersion": "1",
 		"Documentation": {
-			"Description": "ocaml driver for [babelfish](https://github.com/bblfsh/bblfshd).\n",
-			"Caveats": ""
+			"Description": "ocaml driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"4.04.1-r0"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.8"
 		},
-		"Features": null,
 		"GithubURL": "https://github.com/bblfsh/ocaml-driver"
 	},
 	{
 		"Name": "rust",
 		"Language": "rust",
-		"Version": "",
-		"Build": null,
 		"Status": "pre-alpha",
-		"InformationLoss": null,
-		"Documentation": {
-			"Description": "",
-			"Caveats": ""
-		},
+		"SDKVersion": "1",
 		"Runtime": {
 			"OS": "debian",
 			"NativeVersion": [
 				"nightly-2017-02-20"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.8"
 		},
-		"Features": null,
 		"GithubURL": "https://github.com/bblfsh/rust-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/rust-driver/"
 	},
 	{
 		"Name": "clojure",
 		"Language": "clojure",
-		"Version": "",
-		"Build": null,
 		"Status": "planning",
-		"InformationLoss": null,
+		"SDKVersion": "1",
 		"Documentation": {
-			"Description": "clojure driver for [babelfish](https://github.com/bblfsh/server).\n",
-			"Caveats": ""
+			"Description": "clojure driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"1.8.0"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.8"
 		},
-		"Features": null,
 		"GithubURL": "https://github.com/bblfsh/clojure-driver"
 	},
 	{
 		"Name": "erlang",
 		"Language": "erlang",
-		"Version": "",
-		"Build": null,
 		"Status": "planning",
-		"InformationLoss": null,
+		"SDKVersion": "1",
 		"Documentation": {
-			"Description": "erlang driver for [babelfish](https://github.com/bblfsh/server).\n",
-			"Caveats": ""
+			"Description": "erlang driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"erts-8.3"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.8"
 		},
-		"Features": null,
 		"GithubURL": "https://github.com/bblfsh/erlang-driver"
 	},
 	{
 		"Name": "lua",
 		"Language": "lua",
-		"Version": "",
-		"Build": null,
 		"Status": "planning",
-		"InformationLoss": null,
+		"SDKVersion": "1",
 		"Documentation": {
-			"Description": "lua driver for [babelfish](https://github.com/bblfsh/server).\n",
-			"Caveats": ""
+			"Description": "lua driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"5.3"
 			],
-			"NativeEncoding": "",
 			"GoVersion": "1.8"
 		},
-		"Features": null,
 		"GithubURL": "https://github.com/bblfsh/lua-driver"
 	},
 	{
 		"Name": "elixir",
 		"Language": "elixir",
-		"Version": "",
-		"Build": null,
 		"Status": "inactive",
-		"InformationLoss": null,
-		"Documentation": {
-			"Description": "",
-			"Caveats": ""
-		},
-		"Runtime": {
-			"OS": "",
-			"NativeVersion": null,
-			"NativeEncoding": "",
-			"GoVersion": ""
-		},
-		"Features": null,
+		"SDKVersion": "1",
+		"Runtime": {},
 		"GithubURL": "https://github.com/bblfsh/elixir-driver"
 	}
 ]
