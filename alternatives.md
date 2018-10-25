@@ -34,7 +34,7 @@ Babelfish provides a unified IR across languages, which is defined
 as a non-goal of Kythe.
 
 At the same time, since Babelfish only processes one file at a time, it cannot
-resolve symbolic references in the code, while the goal of Kythe project is to
+resolve symbolic references in the code, while the goal of the Kythe project is to
 provide that information with very high accuracy.
 
 Kythe requires:
