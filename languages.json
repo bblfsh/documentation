@@ -3,7 +3,7 @@
 		"Name": "Bash",
 		"Language": "bash",
 		"Status": "beta",
-		"SDKVersion": "2.1.0",
+		"SDKVersion": "2.4.1",
 		"Documentation": {
 			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -33,7 +33,7 @@
 		"Name": "Go",
 		"Language": "go",
 		"Status": "beta",
-		"SDKVersion": "2.1.0",
+		"SDKVersion": "2.6.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -60,7 +60,7 @@
 		"Name": "Java",
 		"Language": "java",
 		"Status": "beta",
-		"SDKVersion": "2.1.0",
+		"SDKVersion": "2.6.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -80,13 +80,14 @@
 				"Github": "dennwc"
 			}
 		],
-		"GithubURL": "https://github.com/bblfsh/java-driver"
+		"GithubURL": "https://github.com/bblfsh/java-driver",
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/java-driver/"
 	},
 	{
 		"Name": "JavaScript",
 		"Language": "javascript",
 		"Status": "beta",
-		"SDKVersion": "2.1.0",
+		"SDKVersion": "2.6.0",
 		"Documentation": {
 			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -116,7 +117,7 @@
 		"Name": "PHP",
 		"Language": "php",
 		"Status": "beta",
-		"SDKVersion": "2.1.0",
+		"SDKVersion": "2.6.0",
 		"Documentation": {
 			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -146,7 +147,7 @@
 		"Name": "Python",
 		"Language": "python",
 		"Status": "beta",
-		"SDKVersion": "2.1.0",
+		"SDKVersion": "2.6.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -173,7 +174,7 @@
 		"Name": "Ruby",
 		"Language": "ruby",
 		"Status": "beta",
-		"SDKVersion": "2.1.0",
+		"SDKVersion": "2.6.0",
 		"Documentation": {
 			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -200,10 +201,27 @@
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/ruby-driver/"
 	},
 	{
+		"Name": "C++",
+		"Language": "cpp",
+		"Status": "alpha",
+		"SDKVersion": "2.4.1",
+		"Runtime": {
+			"OS": "alpine",
+			"NativeVersion": [
+				"8.121.13-r0"
+			],
+			"GoVersion": "1.8"
+		},
+		"Features": [
+			"ast"
+		],
+		"GithubURL": "https://github.com/bblfsh/cpp-driver"
+	},
+	{
 		"Name": "TypeScript",
 		"Language": "typescript",
 		"Status": "alpha",
-		"SDKVersion": "2.1.0",
+		"SDKVersion": "2.6.0",
 		"Documentation": {
 			"Description": "typescript driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
@@ -226,20 +244,6 @@
 		],
 		"GithubURL": "https://github.com/bblfsh/typescript-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/typescript-driver/"
-	},
-	{
-		"Name": "C++",
-		"Language": "cpp",
-		"Status": "alpha",
-		"SDKVersion": "2.1.0",
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"8.121.13-r0"
-			],
-			"GoVersion": "1.8"
-		},
-		"GithubURL": "https://github.com/bblfsh/cpp-driver"
 	},
 	{
 		"Name": "C#",
