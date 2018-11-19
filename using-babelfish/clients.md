@@ -8,11 +8,11 @@ These clients make it easier to both parse and analyze the resulting UAST, abstr
 
 There are clients for the following languages:
 
-| Language | Status | Libuast | URL |
+| Language | Status | UAST.v2 / libuast.v3 | URL |
 | :--- | :--- | :--- | :--- |
-| Python | Beta | ✓ | [https://github.com/bblfsh/client-python](https://github.com/bblfsh/client-python) |
+| Python |  Alpha | [WIP](https://github.com/bblfsh/client-python/pull/128) | [https://github.com/bblfsh/client-python](https://github.com/bblfsh/client-python) |
 | Go | Beta | ✓ | [https://github.com/bblfsh/client-go](https://github.com/bblfsh/client-go) |
-| Scala | Beta | ✓ | [https://github.com/bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
+| Scala |  | [WIP](https://github.com/bblfsh/client-scala/pull/76)  | [https://github.com/bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
 
 ## Examples
 
