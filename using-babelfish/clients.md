@@ -20,7 +20,7 @@ The client API's differ to adapt to their language specific idioms, the followin
 
 ### Go example
 
-As a command:
+As a command, using [bblfsh-cli](https://github.com/bblfsh/client-go#cli):
 
 ```bash
 bblfsh-cli -q [XPath query] -m semantic [file.ext]
@@ -32,34 +32,28 @@ As a library:
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "gopkg.in/bblfsh/client-go.v2"
-    "gopkg.in/bblfsh/client-go.v2/tools"
-    "gopkg.in/bblfsh/sdk.v1/protocol"
+	"gopkg.in/bblfsh/client-go.v3"
+	"gopkg.in/bblfsh/client-go.v3/tools"
 )
 
 func main() {
-    client, err := bblfsh.NewClient("localhost:9432")
-    if err != nil {
-        panic(err)
-    }
+	client, err := bblfsh.NewClient("localhost:9432")
+	if err != nil {
+		panic(err)
+	}
 
-    res, err := client.NewParseRequest().ReadFile("some_file.py").Do()
-    if err != nil {
-        panic(err)
-    }
+	res, _, err := client.NewParseRequest().ReadFile("some_file.py").UAST()
+	if err != nil {
+		panic(err)
+	}
 
-    // Always check the Response.Status before further processing!
-    if res.Status != protocol.Ok {
-        panic("Parsing failed")
-    }
-
-    query := "//*[@role='Identifier' and not(@role='Qualified')]"
-    nodes, _ := tools.Filter(res.UAST, query)
-    for _, n := range nodes {
-        fmt.Println(n)
-    }
+	query := "//*[@role='Identifier' and not(@role='Qualified')]"
+	it, _ := tools.Filter(res, query)
+	for it.Next() {
+		fmt.Println(it.Node())
+	}
 }
 ```
 
