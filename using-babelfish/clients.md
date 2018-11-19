@@ -8,11 +8,11 @@ These clients make it easier to both parse and analyze the resulting UAST, abstr
 
 There are clients for the following languages:
 
-| Language | Status | Libuast | URL |
+| Language | Status | UAST.v2 / libuast.v3 | URL |
 | :--- | :--- | :--- | :--- |
-| Python | Beta | ✓ | [https://github.com/bblfsh/client-python](https://github.com/bblfsh/client-python) |
+| Python |  Alpha | [WIP](https://github.com/bblfsh/client-python/pull/128) | [https://github.com/bblfsh/client-python](https://github.com/bblfsh/client-python) |
 | Go | Beta | ✓ | [https://github.com/bblfsh/client-go](https://github.com/bblfsh/client-go) |
-| Scala | Beta | ✓ | [https://github.com/bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
+| Scala |  | [WIP](https://github.com/bblfsh/client-scala/pull/76)  | [https://github.com/bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
 
 ## Examples
 
@@ -20,7 +20,7 @@ The client API's differ to adapt to their language specific idioms, the followin
 
 ### Go example
 
-As a command:
+As a command, using [bblfsh-cli](https://github.com/bblfsh/client-go#cli):
 
 ```bash
 bblfsh-cli -q [XPath query] -m semantic [file.ext]
@@ -32,34 +32,28 @@ As a library:
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "gopkg.in/bblfsh/client-go.v2"
-    "gopkg.in/bblfsh/client-go.v2/tools"
-    "gopkg.in/bblfsh/sdk.v1/protocol"
+	"gopkg.in/bblfsh/client-go.v3"
+	"gopkg.in/bblfsh/client-go.v3/tools"
 )
 
 func main() {
-    client, err := bblfsh.NewClient("localhost:9432")
-    if err != nil {
-        panic(err)
-    }
+	client, err := bblfsh.NewClient("localhost:9432")
+	if err != nil {
+		panic(err)
+	}
 
-    res, err := client.NewParseRequest().ReadFile("some_file.py").Do()
-    if err != nil {
-        panic(err)
-    }
+	res, _, err := client.NewParseRequest().ReadFile("some_file.py").UAST()
+	if err != nil {
+		panic(err)
+	}
 
-    // Always check the Response.Status before further processing!
-    if res.Status != protocol.Ok {
-        panic("Parsing failed")
-    }
-
-    query := "//*[@role='Identifier' and not(@role='Qualified')]"
-    nodes, _ := tools.Filter(res.UAST, query)
-    for _, n := range nodes {
-        fmt.Println(n)
-    }
+	query := "//*[@role='Identifier' and not(@role='Qualified')]"
+	it, _ := tools.Filter(res, query)
+	for it.Next() {
+		fmt.Println(it.Node())
+	}
 }
 ```
 
