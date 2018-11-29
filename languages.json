@@ -3,7 +3,7 @@
 		"Name": "Bash",
 		"Language": "bash",
 		"Status": "beta",
-		"SDKVersion": "2.4.1",
+		"SDKVersion": "2.9.0",
 		"Documentation": {
 			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -33,7 +33,7 @@
 		"Name": "Go",
 		"Language": "go",
 		"Status": "beta",
-		"SDKVersion": "2.6.0",
+		"SDKVersion": "2.9.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -60,7 +60,7 @@
 		"Name": "Java",
 		"Language": "java",
 		"Status": "beta",
-		"SDKVersion": "2.6.0",
+		"SDKVersion": "2.9.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -87,7 +87,7 @@
 		"Name": "JavaScript",
 		"Language": "javascript",
 		"Status": "beta",
-		"SDKVersion": "2.6.0",
+		"SDKVersion": "2.9.0",
 		"Documentation": {
 			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -117,7 +117,7 @@
 		"Name": "PHP",
 		"Language": "php",
 		"Status": "beta",
-		"SDKVersion": "2.6.0",
+		"SDKVersion": "2.9.0",
 		"Documentation": {
 			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -147,7 +147,7 @@
 		"Name": "Python",
 		"Language": "python",
 		"Status": "beta",
-		"SDKVersion": "2.6.0",
+		"SDKVersion": "2.9.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -174,7 +174,7 @@
 		"Name": "Ruby",
 		"Language": "ruby",
 		"Status": "beta",
-		"SDKVersion": "2.6.0",
+		"SDKVersion": "2.9.0",
 		"Documentation": {
 			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -203,8 +203,8 @@
 	{
 		"Name": "C++",
 		"Language": "cpp",
-		"Status": "alpha",
-		"SDKVersion": "2.4.1",
+		"Status": "beta",
+		"SDKVersion": "2.9.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -213,15 +213,24 @@
 			"GoVersion": "1.8"
 		},
 		"Features": [
-			"ast"
+			"ast",
+			"roles"
 		],
-		"GithubURL": "https://github.com/bblfsh/cpp-driver"
+		"Maintainers": [
+			{
+				"Name": "Juanjo Álvarez",
+				"Email": "juanjo@sourced.tech",
+				"Github": "juanjux"
+			}
+		],
+		"GithubURL": "https://github.com/bblfsh/cpp-driver",
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/cpp-driver/"
 	},
 	{
 		"Name": "TypeScript",
 		"Language": "typescript",
 		"Status": "alpha",
-		"SDKVersion": "2.6.0",
+		"SDKVersion": "2.9.0",
 		"Documentation": {
 			"Description": "typescript driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
