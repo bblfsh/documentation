@@ -78,56 +78,12 @@ UAST from different languages have different structures, but role annotations al
 
 For example, let's take an import of a package. If we draw nodes with their role name and token \(those with simple quotes\), we might have something as the following:
 
-```text
-graph TD
+![simple import](../.gitbook/assets/import_diagram1.png)
 
-    IQimportDeclaration["Import, Declaration"]
-    IQimportDeclarationToken["'Import'"]
-    IQimportPath["Import, Pathname"]
-    IQimportPathToken["'github.com/bblfsh/sdk'"]
-
-    IQimportDeclaration-->IQimportDeclarationToken
-    IQimportDeclaration-->IQimportPath
-    IQimportPath -->IQimportPathToken
-```
 
 Or we might have the following for a different language:
 
-```text
-graph TD
-    IQimportDeclaration["Import, Declaration"]
-    IQimportDeclarationToken["'Import'"]
-    IQimportPathname["Import, Pathname"]
-    IQcom["Identifier"]
-    IQcomToken["'com'"]
-    IQgithub["Identifier, Qualified"]
-    IQgithubName["Identifier"]
-    IQgithubToken["'github'"]
-    IQbblfsh["Identifier, Qualified"]
-    IQbblfshName["Identifier"]
-    IQbblfshToken["'bblfsh'"]
-    IQsdk["Identifier, Qualified"]
-    IQsdkName["Identifier"]
-    IQsdkToken["'sdk'"]
-
-    IQimportDeclaration-->IQimportDeclarationToken
-    IQimportDeclaration-->IQimportPathname
-
-    IQimportPathname-->IQsdk
-    IQsdk-->IQbblfsh
-    IQsdk-->IQsdkName
-    IQsdkName-->IQsdkToken
-
-    IQbblfsh-->IQgithub
-    IQbblfsh-->IQbblfshName
-    IQbblfshName-->IQbblfshToken
-
-    IQgithub-->IQcom
-    IQgithub-->IQgithubName
-    IQgithubName-->IQgithubToken
-
-    IQcom-->IQcomToken
-```
+![complex import](../.gitbook/assets/import_diagram2.png)
 
 One way or the other, we can get the package identifier by retrieving all tokens under the `Import`, `Pathname` roles in pre-order.
 
