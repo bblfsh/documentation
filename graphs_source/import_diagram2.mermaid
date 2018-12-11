@@ -1,0 +1,34 @@
+graph TD
+    IQimportDeclaration["Import, Declaration"]
+    IQimportDeclarationToken["'Import'"]
+    IQimportPathname["Import, Pathname"]
+    IQcom["Identifier"]
+    IQcomToken["'com'"]
+    IQgithub["Identifier, Qualified"]
+    IQgithubName["Identifier"]
+    IQgithubToken["'github'"]
+    IQbblfsh["Identifier, Qualified"]
+    IQbblfshName["Identifier"]
+    IQbblfshToken["'bblfsh'"]
+    IQsdk["Identifier, Qualified"]
+    IQsdkName["Identifier"]
+    IQsdkToken["'sdk'"]
+
+    IQimportDeclaration-->IQimportDeclarationToken
+    IQimportDeclaration-->IQimportPathname
+
+    IQimportPathname-->IQsdk
+    IQsdk-->IQbblfsh
+    IQsdk-->IQsdkName
+    IQsdkName-->IQsdkToken
+
+    IQbblfsh-->IQgithub
+    IQbblfsh-->IQbblfshName
+    IQbblfshName-->IQbblfshToken
+
+    IQgithub-->IQcom
+    IQgithub-->IQgithubName
+    IQgithubName-->IQgithubToken
+
+    IQcom-->IQcomToken
+
