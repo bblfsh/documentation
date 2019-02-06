@@ -3,7 +3,7 @@
 		"Name": "Bash",
 		"Language": "bash",
 		"Status": "beta",
-		"SDKVersion": "2.9.0",
+		"SDKVersion": "2.13.4",
 		"Documentation": {
 			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -28,6 +28,57 @@
 		],
 		"GithubURL": "https://github.com/bblfsh/bash-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/bash-driver/"
+	},
+	{
+		"Name": "C++",
+		"Language": "cpp",
+		"Status": "beta",
+		"SDKVersion": "2.13.0",
+		"Runtime": {
+			"OS": "alpine",
+			"NativeVersion": [
+				"8.121.13-r0"
+			],
+			"GoVersion": "1.9"
+		},
+		"Features": [
+			"ast",
+			"uast",
+			"roles"
+		],
+		"Maintainers": [
+			{
+				"Name": "Juanjo Álvarez",
+				"Email": "juanjo@sourced.tech",
+				"Github": "juanjux"
+			}
+		],
+		"GithubURL": "https://github.com/bblfsh/cpp-driver",
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/cpp-driver/"
+	},
+	{
+		"Name": "C#",
+		"Language": "csharp",
+		"Status": "beta",
+		"SDKVersion": "2.13.3",
+		"Documentation": {},
+		"Runtime": {
+			"GoVersion": "1.10"
+		},
+		"Features": [
+			"ast",
+			"uast",
+			"roles"
+		],
+		"Maintainers": [
+			{
+				"Name": "Denys Smirnov",
+				"Email": "denys@sourced.tech",
+				"Github": "dennwc"
+			}
+		],
+		"GithubURL": "https://github.com/bblfsh/csharp-driver",
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/csharp-driver/"
 	},
 	{
 		"Name": "Go",
@@ -60,7 +111,7 @@
 		"Name": "Java",
 		"Language": "java",
 		"Status": "beta",
-		"SDKVersion": "2.9.0",
+		"SDKVersion": "2.13.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -87,7 +138,7 @@
 		"Name": "JavaScript",
 		"Language": "javascript",
 		"Status": "beta",
-		"SDKVersion": "2.9.0",
+		"SDKVersion": "2.13.2",
 		"Documentation": {
 			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -117,7 +168,7 @@
 		"Name": "PHP",
 		"Language": "php",
 		"Status": "beta",
-		"SDKVersion": "2.9.0",
+		"SDKVersion": "2.13.4",
 		"Documentation": {
 			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -147,7 +198,7 @@
 		"Name": "Python",
 		"Language": "python",
 		"Status": "beta",
-		"SDKVersion": "2.9.0",
+		"SDKVersion": "2.13.4",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -174,7 +225,7 @@
 		"Name": "Ruby",
 		"Language": "ruby",
 		"Status": "beta",
-		"SDKVersion": "2.9.0",
+		"SDKVersion": "2.13.4",
 		"Documentation": {
 			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -199,32 +250,6 @@
 		],
 		"GithubURL": "https://github.com/bblfsh/ruby-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/ruby-driver/"
-	},
-	{
-		"Name": "C++",
-		"Language": "cpp",
-		"Status": "beta",
-		"SDKVersion": "2.9.0",
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"8.121.13-r0"
-			],
-			"GoVersion": "1.8"
-		},
-		"Features": [
-			"ast",
-			"roles"
-		],
-		"Maintainers": [
-			{
-				"Name": "Juanjo Álvarez",
-				"Email": "juanjo@sourced.tech",
-				"Github": "juanjux"
-			}
-		],
-		"GithubURL": "https://github.com/bblfsh/cpp-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/cpp-driver/"
 	},
 	{
 		"Name": "TypeScript",
@@ -253,20 +278,6 @@
 		],
 		"GithubURL": "https://github.com/bblfsh/typescript-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/typescript-driver/"
-	},
-	{
-		"Name": "C#",
-		"Language": "csharp",
-		"Status": "pre-alpha",
-		"SDKVersion": "2.0.0",
-		"Documentation": {},
-		"Runtime": {
-			"GoVersion": "1.10"
-		},
-		"Features": [
-			"ast"
-		],
-		"GithubURL": "https://github.com/bblfsh/csharp-driver"
 	},
 	{
 		"Name": "ocaml",
