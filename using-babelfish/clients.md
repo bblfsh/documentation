@@ -36,6 +36,8 @@ import (
 
 	"gopkg.in/bblfsh/client-go.v3"
 	"gopkg.in/bblfsh/client-go.v3/tools"
+	"gopkg.in/bblfsh/sdk.v2/uast"
+	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
 )
 
 func main() {
@@ -49,10 +51,39 @@ func main() {
 		panic(err)
 	}
 
-	query := "//*[@role='Identifier' and not(@role='Qualified')]"
+	query := "//*[not(@token = '') and not(@role='Qualified')]"
 	it, _ := tools.Filter(res, query)
 	for it.Next() {
-		fmt.Println(it.Node())
+		// Print the internal type
+		n := it.Node()
+		tp := uast.TypeOf(n)
+		fmt.Printf("Type: %s (%T)\n", tp, n)
+
+		node, ok := n.(nodes.Object)
+		if !ok {
+			continue
+		}
+
+		// Print the positions
+		pos := uast.PositionsOf(node)
+		start := pos.Start()
+		end := pos.End()
+		fmt.Println("StartPos:", start, " EndPos:", end)
+
+		// Print the token
+		token := uast.TokenOf(node)
+		fmt.Println("Token:", token)
+	}
+
+	// Get the normalized identifiers
+	query = "//uast:Identifier"
+	it, _ = tools.Filter(res, query)
+	for it.Next() {
+		node, ok := it.Node().(nodes.Object)
+		if !ok {
+			continue
+		}
+		fmt.Println(node["Name"])
 	}
 }
 ```
