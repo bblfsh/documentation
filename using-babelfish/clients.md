@@ -58,11 +58,10 @@ func main() {
 		if !ok {
 			continue
 		}
-		fmt.Println(node)
 
 		// Print the internal type
 		tp := uast.TypeOf(node)
-		fmt.Println("Type:", tp)
+		fmt.Printf("Type: %s (%T)\n", tp, node)
 
 		// Print the positions
 		pos := uast.PositionsOf(node)
