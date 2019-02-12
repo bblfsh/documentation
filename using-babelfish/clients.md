@@ -54,14 +54,15 @@ func main() {
 	query := "//*[not(@token = '') and not(@role='Qualified')]"
 	it, _ := tools.Filter(res, query)
 	for it.Next() {
-		node, ok := it.Node().(nodes.Object)
+		// Print the internal type
+		n := it.Node()
+		tp := uast.TypeOf(n)
+		fmt.Printf("Type: %s (%T)\n", tp, n)
+
+		node, ok := n.(nodes.Object)
 		if !ok {
 			continue
 		}
-
-		// Print the internal type
-		tp := uast.TypeOf(node)
-		fmt.Printf("Type: %s (%T)\n", tp, node)
 
 		// Print the positions
 		pos := uast.PositionsOf(node)
