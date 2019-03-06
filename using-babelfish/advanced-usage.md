@@ -53,5 +53,5 @@ docker run --rm -p 9432:9432 bblfsh/python-driver
 
 \(change `python-driver` for the driver that you want to run\).
 
-Then you can send requests using any of the clients.
+Then you can send requests using any of the [clients](clients.md)..
 
