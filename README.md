@@ -2,15 +2,15 @@
 
 ## Introduction
 
-**Babelfish is a self-hosted server for source code parsing.** The Babelfish service can parse any file, in any supported language, extracting an [Abstract Syntax Tree \(AST\)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) from it and converting it into a [**Universal Abstract Syntax Tree \(UAST\)**](uast/uast-specification.md). The UAST enables further analysis and transformations with either the included tools or your own tools by providing a standard open format. Jump to the [Getting Started](using-babelfish/getting-started.md) section to start using it!
+**Babelfish is a self-hosted server for source code parsing.** The Babelfish service can parse any file, in any supported language, extracting an [Abstract Syntax Tree \(AST\)][ast] from it and converting it into a [**Universal Abstract Syntax Tree \(UAST\)**](uast/uast-specification-v2.md). The UAST enables further analysis and transformations with either the included tools or your own tools by providing a standard open format. Jump to the [Getting Started](using-babelfish/getting-started.md) section to start using it!
 
 ### Motivation & Scope
 
 Babelfish was created as a solution for large scale code analysis. To analyze the source code from millions of repositories, at each revision.
 
-The current **scope is to enable parsing of single files in any popular programming language** and producing a [Universal Abstract Syntax Tree \(UAST\)](uast/uast-specification.md). 
+The current **scope is to enable parsing of single files in any popular programming language** and producing a [Universal Abstract Syntax Tree \(UAST\)](uast/uast-specification-v2.md).
 
-This current scope is expected to expand in the near future to full project analysis, where the source code can be analyzed with its full context, and not just per-file. 
+This current scope is expected to expand in the near future to full project analysis, where the source code can be analyzed with its full context, and not just per-file.
 
 For more information about how Babelfish compares to other similar systems,
 see [this page](alternatives.md).
@@ -43,3 +43,4 @@ See [v2 transition options](./using-babelfish/advanced-usage.md) for details.
 
 This repository contains the project documentation, which you can also see properly rendered at [https://docs.sourced.tech/babelfish](https://docs.sourced.tech/babelfish).
 
+[ast]: https://en.wikipedia.org/wiki/Abstract_syntax_tree

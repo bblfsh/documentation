@@ -19,11 +19,11 @@
 
 ## UAST
 
+* [UAST Specification](uast/uast-specification-v2.md)
+  - [UAST v1 Specification (deprecated)](uast/uast-specification-v1.md)
 * [Code to AST](uast/code-to-ast.md)
-* [UAST v2 Overview](uast/uast-v2.md)
 * [Semantic UAST](uast/semantic-uast.md)
 * [Node Representation](uast/representation-v2.md)
-* [UAST Specification](uast/uast-specification.md)
 * [Roles](uast/roles.md)
 
 ## Writing a Driver

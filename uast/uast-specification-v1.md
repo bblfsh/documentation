@@ -1,7 +1,8 @@
-# UAST Specification
+# UAST v1 Specification
 
-This page describes the legacy UASTv1 representation that will be deprecated.
-See [UASTv2](./uast-v2.md) for the new version.
+This page describes the legacy UAST v1 representation that is deprecated and is
+in the process of being replaced by [UAST v2](uast-specification-v2.md).
+New drivers and clients should use [the new version](uast-specification-v2.md).
 
 ## Overview
 
