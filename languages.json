@@ -33,7 +33,7 @@
 		"Name": "C++",
 		"Language": "cpp",
 		"Status": "beta",
-		"SDKVersion": "2.13.0",
+		"SDKVersion": "2.14.2",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -60,7 +60,7 @@
 		"Name": "C#",
 		"Language": "csharp",
 		"Status": "beta",
-		"SDKVersion": "2.13.3",
+		"SDKVersion": "2.14.1",
 		"Documentation": {},
 		"Runtime": {
 			"GoVersion": "1.10"
@@ -111,7 +111,7 @@
 		"Name": "Java",
 		"Language": "java",
 		"Status": "beta",
-		"SDKVersion": "2.13.0",
+		"SDKVersion": "2.14.2",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -138,7 +138,7 @@
 		"Name": "JavaScript",
 		"Language": "javascript",
 		"Status": "beta",
-		"SDKVersion": "2.13.2",
+		"SDKVersion": "2.14.2",
 		"Documentation": {
 			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -198,7 +198,7 @@
 		"Name": "Python",
 		"Language": "python",
 		"Status": "beta",
-		"SDKVersion": "2.13.4",
+		"SDKVersion": "2.14.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -225,7 +225,7 @@
 		"Name": "Ruby",
 		"Language": "ruby",
 		"Status": "beta",
-		"SDKVersion": "2.13.4",
+		"SDKVersion": "2.14.1",
 		"Documentation": {
 			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
