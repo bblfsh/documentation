@@ -8,7 +8,7 @@ Our main building block is the **language driver**, each language driver provide
 
 ## Language Drivers
 
-A language driver is a program, containerized with [Docker](https://www.docker.com/get-docker), that takes file parsing requests with source code and replies with a [UAST](uast/uast-specification.md) representation of the provided source code or an error message.
+A language driver is a program, containerized with [Docker](https://www.docker.com/get-docker), that takes file parsing requests with source code and replies with a [UAST](uast/uast-specification-v2.md) representation of the provided source code or an error message.
 
 Our implementations of language drivers are composed of two pieces: a _code parser_, that can be written in any language \(usually the source language\) and an _AST_ to _UAST_ normalizer written in Go. In the case of code parsers written in Go or other languages producing linkable object files or shared library, the code parser and UAST normalizer might be combined by dynamic or static linking without a separate runnable component.
 
