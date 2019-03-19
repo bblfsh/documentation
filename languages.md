@@ -3,23 +3,23 @@
 
 ## Supported languages
 
-| Language   | Key        | Status  | SDK  | AST\* | UAST\*\* | Annotations\*\*\* | Container | Maintainer |
-| :--------- | :--------- | :------ | :--- | :--- | :----- | :------------- | :-------- | :--------- |
-| [Bash](https://github.com/bblfsh/bash-driver) | bash | beta | 2.13.4 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/bash-driver/) | [juanjux](https://github.com/juanjux) |
-| [C++](https://github.com/bblfsh/cpp-driver) | cpp | beta | 2.14.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/cpp-driver/) | [juanjux](https://github.com/juanjux) |
-| [C#](https://github.com/bblfsh/csharp-driver) | csharp | beta | 2.14.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/csharp-driver/) | [dennwc](https://github.com/dennwc) |
-| [Go](https://github.com/bblfsh/go-driver) | go | beta | 2.9.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/go-driver/) | [dennwc](https://github.com/dennwc) |
-| [Java](https://github.com/bblfsh/java-driver) | java | beta | 2.14.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [dennwc](https://github.com/dennwc) |
-| [JavaScript](https://github.com/bblfsh/javascript-driver) | javascript | beta | 2.14.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/javascript-driver/) | [dennwc](https://github.com/dennwc) |
-| [PHP](https://github.com/bblfsh/php-driver) | php | beta | 2.13.4 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/php-driver/) | [juanjux](https://github.com/juanjux) |
-| [Python](https://github.com/bblfsh/python-driver) | python | beta | 2.14.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [juanjux](https://github.com/juanjux) |
-| [Ruby](https://github.com/bblfsh/ruby-driver) | ruby | beta | 2.14.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/) | [juanjux](https://github.com/juanjux) |
-| [TypeScript](https://github.com/bblfsh/typescript-driver) | typescript | alpha | 2.9.0 | ✓ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) | [dennwc](https://github.com/dennwc) |
+| Language   | Key        | Status  | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
+| :--------- | :--------- | :------ | :--- | :--- | :------------- | :----- | :-------- | :--------- |
+| [Bash](https://github.com/bblfsh/bash-driver) | bash | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/bash-driver/) | [juanjux](https://github.com/juanjux) |
+| [C++](https://github.com/bblfsh/cpp-driver) | cpp | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/cpp-driver/) | [juanjux](https://github.com/juanjux) |
+| [C#](https://github.com/bblfsh/csharp-driver) | csharp | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/csharp-driver/) | [dennwc](https://github.com/dennwc) |
+| [Go](https://github.com/bblfsh/go-driver) | go | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/go-driver/) | [dennwc](https://github.com/dennwc) |
+| [Java](https://github.com/bblfsh/java-driver) | java | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [dennwc](https://github.com/dennwc) |
+| [JavaScript](https://github.com/bblfsh/javascript-driver) | javascript | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/javascript-driver/) | [dennwc](https://github.com/dennwc) |
+| [PHP](https://github.com/bblfsh/php-driver) | php | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/php-driver/) | [juanjux](https://github.com/juanjux) |
+| [Python](https://github.com/bblfsh/python-driver) | python | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [juanjux](https://github.com/juanjux) |
+| [Ruby](https://github.com/bblfsh/ruby-driver) | ruby | beta | 2.15.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/) | [juanjux](https://github.com/juanjux) |
+| [TypeScript](https://github.com/bblfsh/typescript-driver) | typescript | alpha | 2.15.0 | ✓ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) | [dennwc](https://github.com/dennwc) |
 
 ## In development
 
-| Language   | Key        | Status  | SDK  | AST\* | UAST\*\* | Annotations\*\*\* | Container | Maintainer |
-| :--------- | :--------- | :------ | :--- | :--- | :----- | :------------- | :-------- | :--------- |
+| Language   | Key        | Status  | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
+| :--------- | :--------- | :------ | :--- | :--- | :------------- | :----- | :-------- | :--------- |
 | [ocaml](https://github.com/bblfsh/ocaml-driver) | ocaml | pre-alpha | 1 | ✗ | ✗ | ✗ | ✗ | - |
 | [rust](https://github.com/bblfsh/rust-driver) | rust | pre-alpha | 1 | ✗ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/rust-driver/) | - |
 | [clojure](https://github.com/bblfsh/clojure-driver) | clojure | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
@@ -28,7 +28,7 @@
 | [elixir](https://github.com/bblfsh/elixir-driver) | elixir | inactive | 1 | ✗ | ✗ | ✗ | ✗ | - |
 
 * \* The driver is able to return the native AST
-* \*\* The driver is able to return the UAST
-* \*\*\* The driver is able to return the UAST annotated
+* \*\* The driver is able to return the AST annotated
+* \*\*\* The driver is able to return the UAST
 
 **Don't see your favorite language? [Help us!](join-the-community.md)**
