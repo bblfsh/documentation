@@ -12,8 +12,7 @@ During the transition to Babelfish v2 protocol and Semantic UAST client may choo
    Thus, to query `uast:Identifier` the client should omit the namespace: `//Identifier`.
 
 3) Try the new UASTv2 representation by using Go client and the `ParseRequestV2`.
-   There is no XPath query support at the moment, so this option should only
-   be considered if you want to access the new UAST directly.
+   This is not yet supported by all the clients, so check [client's current status](](./using-babelfish/clients.md)) first.
 
 ## Adding all drivers
 

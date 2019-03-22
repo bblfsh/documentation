@@ -27,17 +27,33 @@ Some of the use cases that we aim to support with UAST are:
 
 ### Current status
 
-Currently, Babelfish is in the process of transition to v2 protocol, new
-node representation and Semantic UAST.
+#### Universal AST coverage
 
-All the beta+ drivers support these new features in the latest version
+Not all the constructs are converted in a language-independent way yet.
+As of 1Q2019, every language driver is expected to only support Identifiers,
+String (literals), Imports, Functions in the [Universal AST schema](uast/uast-specification-v2.md).
+
+That is almost everything that let's one to examine the symbols exported
+by the package, but not the control flow (yet).
+
+Meanwhile, in order to locate constracts that are not covered by UAST
+schema yet - one can look for a `@role` field.
+A [Role](https://godoc.org/gopkg.in/bblfsh/sdk.v2/uast/role#Role) is added
+to every native AST node and it contains a language-independent annotations.
+Underlying tree structure for a constract will be different between languages though.
+
+#### Protocol v2
+Currently, Babelfish is in the process of transition to [v2 protocol](uast/uast-specification-v2.md),
+new node representation and Semantic UAST.
+
+All the beta+ drivers support it in the latest version
 and requires bblfshd >= 2.6.1.
 
-Libuast was not yet updated to support the new node format, thus all
-the [clients](./using-babelfish/clients.md) still work in v1 compatibility mode
+Libuast was updated to support the new node format, but some of the
+the [clients](./using-babelfish/clients.md) may still work in v1 compatibility mode
 to be able to execute XPath queries.
 
-See [v2 transition options](./using-babelfish/advanced-usage.md) for details.
+See [v2 transition options](./using-babelfish/advanced-usage.md#protocol-v2-transition) for details.
 
 ### Further Reading
 
