@@ -2,7 +2,7 @@
 
 ## Chat
 
-If you need support, want to contribute or just want to say hi, join us at the [source{d} community Slack](https://join.slack.com/sourced-community/shared_invite/MTkwNTM0ODEyODIzLTE0OTYxMzc5NTMtODRhMDYyNzAyYQ). We hang out in the `#babelfish` channel.
+If you need support, want to contribute or just want to say hi, join us at the [source{d} community Slack](https://join.slack.com/t/sourced-community/shared_invite/enQtMjc4Njk5MzEyNzM2LTFjNzY4NjEwZGEwMzRiNTM4MzRlMzQ4MmIzZjkwZmZlM2NjODUxZmJjNDI1OTcxNDAyMmZlNmFjODZlNTg0YWM). We hang out in the `#babelfish` channel.
 
 ## Contributing
 
