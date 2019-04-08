@@ -10,9 +10,9 @@ There are clients for the following languages:
 
 | Language | Status | UAST.v2 / libuast.v3 | URL |
 | :--- | :--- | :--- | :--- |
-| Python |  Alpha | [WIP](https://github.com/bblfsh/client-python/pull/128) | [https://github.com/bblfsh/client-python](https://github.com/bblfsh/client-python) |
-| Go | Beta | ✓ | [https://github.com/bblfsh/client-go](https://github.com/bblfsh/client-go) |
-| Scala |  | [WIP](https://github.com/bblfsh/client-scala/pull/76)  | [https://github.com/bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
+| Python |  Beta | ✓ | [bblfsh/client-python](https://github.com/bblfsh/client-python) |
+| Go | Beta | ✓ | [bblfsh/go-client](https://github.com/bblfsh/go-client) |
+| Scala |  | [WIP](https://github.com/bblfsh/client-scala/pull/76)  | [bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
 
 ## Examples
 
@@ -20,7 +20,7 @@ The client API's differ to adapt to their language specific idioms, the followin
 
 ### Go example
 
-As a command, using [bblfsh-cli](https://github.com/bblfsh/client-go#cli):
+As a command, using [bblfsh-cli](https://github.com/bblfsh/go-client#cli):
 
 ```bash
 bblfsh-cli -q [XPath query] -m semantic [file.ext]
@@ -34,8 +34,8 @@ package main
 import (
 	"fmt"
 
-	"gopkg.in/bblfsh/client-go.v3"
-	"gopkg.in/bblfsh/client-go.v3/tools"
+	"github.com/bblfsh/go-client/v4"
+	"github.com/bblfsh/go-client/v4/tools"
 	"gopkg.in/bblfsh/sdk.v2/uast"
 	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
 )
