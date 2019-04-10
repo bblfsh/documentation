@@ -3,7 +3,7 @@
 		"Name": "Bash",
 		"Language": "bash",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Documentation": {
 			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -12,7 +12,7 @@
 			"NativeVersion": [
 				"8.131.11-r2"
 			],
-			"GoVersion": "1.9"
+			"GoVersion": "1.11"
 		},
 		"Features": [
 			"ast",
@@ -21,9 +21,9 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Juanjo Alvarez",
-				"Email": "juanjo@sourced.tech",
-				"Github": "juanjux"
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/bash-driver",
@@ -33,7 +33,7 @@
 		"Name": "C++",
 		"Language": "cpp",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -48,9 +48,14 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Juanjo Álvarez",
-				"Email": "juanjo@sourced.tech",
-				"Github": "juanjux"
+				"Name": "Denys Smirnov",
+				"Email": "denys@sourced.tech",
+				"Github": "dennwc"
+			},
+			{
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/cpp-driver",
@@ -60,7 +65,7 @@
 		"Name": "C#",
 		"Language": "csharp",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Documentation": {},
 		"Runtime": {
 			"GoVersion": "1.10"
@@ -84,7 +89,7 @@
 		"Name": "Go",
 		"Language": "go",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -111,7 +116,7 @@
 		"Name": "Java",
 		"Language": "java",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -126,9 +131,9 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Denys Smirnov",
-				"Email": "denys@sourced.tech",
-				"Github": "dennwc"
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/java-driver",
@@ -138,7 +143,7 @@
 		"Name": "JavaScript",
 		"Language": "javascript",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Documentation": {
 			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -156,9 +161,9 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Denys Smirnov",
-				"Email": "denys@sourced.tech",
-				"Github": "dennwc"
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/javascript-driver",
@@ -168,7 +173,7 @@
 		"Name": "PHP",
 		"Language": "php",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Documentation": {
 			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -186,9 +191,9 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Juanjo Álvarez",
-				"Email": "juanjo@sourced.tech",
-				"Github": "juanjux"
+				"Name": "Denys Smirnov",
+				"Email": "denys@sourced.tech",
+				"Github": "dennwc"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/php-driver",
@@ -198,7 +203,7 @@
 		"Name": "Python",
 		"Language": "python",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
@@ -213,9 +218,9 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Juanjo Álvarez",
-				"Email": "juanjo@sourced.tech",
-				"Github": "juanjux"
+				"Name": "Denys Smirnov",
+				"Email": "denys@sourced.tech",
+				"Github": "dennwc"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/python-driver",
@@ -225,7 +230,7 @@
 		"Name": "Ruby",
 		"Language": "ruby",
 		"Status": "beta",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Documentation": {
 			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -243,9 +248,9 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Juanjo Alvarez",
-				"Email": "juanjo@sourced.tech",
-				"Github": "juanjux"
+				"Name": "Denys Smirnov",
+				"Email": "denys@sourced.tech",
+				"Github": "dennwc"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/ruby-driver",
@@ -255,7 +260,7 @@
 		"Name": "TypeScript",
 		"Language": "typescript",
 		"Status": "alpha",
-		"SDKVersion": "2.16.0",
+		"SDKVersion": "2.16.4",
 		"Documentation": {
 			"Description": "typescript driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
@@ -271,9 +276,9 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Denys Smirnov",
-				"Email": "denys@sourced.tech",
-				"Github": "dennwc"
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/typescript-driver",
