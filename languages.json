@@ -3,7 +3,7 @@
 		"Name": "Bash",
 		"Language": "bash",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Documentation": {
 			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -12,7 +12,7 @@
 			"NativeVersion": [
 				"8.131.11-r2"
 			],
-			"GoVersion": "1.11"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -33,13 +33,13 @@
 		"Name": "C++",
 		"Language": "cpp",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"8.121.13-r0"
 			],
-			"GoVersion": "1.9"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -65,10 +65,10 @@
 		"Name": "C#",
 		"Language": "csharp",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Documentation": {},
 		"Runtime": {
-			"GoVersion": "1.10"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -89,13 +89,13 @@
 		"Name": "Go",
 		"Language": "go",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"1.10"
 			],
-			"GoVersion": "1.10"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -116,13 +116,13 @@
 		"Name": "Java",
 		"Language": "java",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"8.171.11-r0"
 			],
-			"GoVersion": "1.9"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -143,7 +143,7 @@
 		"Name": "JavaScript",
 		"Language": "javascript",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Documentation": {
 			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -152,7 +152,7 @@
 			"NativeVersion": [
 				"8.9.3-r1"
 			],
-			"GoVersion": "1.9"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -173,7 +173,7 @@
 		"Name": "PHP",
 		"Language": "php",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Documentation": {
 			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -182,7 +182,7 @@
 			"NativeVersion": [
 				"7.1.17-r0"
 			],
-			"GoVersion": "1.9"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -203,13 +203,13 @@
 		"Name": "Python",
 		"Language": "python",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Runtime": {
 			"OS": "alpine",
 			"NativeVersion": [
 				"3.6.2"
 			],
-			"GoVersion": "1.9"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -230,7 +230,7 @@
 		"Name": "Ruby",
 		"Language": "ruby",
 		"Status": "beta",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Documentation": {
 			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -239,7 +239,7 @@
 			"NativeVersion": [
 				"2.4.4-r0"
 			],
-			"GoVersion": "1.9"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast",
@@ -260,7 +260,7 @@
 		"Name": "TypeScript",
 		"Language": "typescript",
 		"Status": "alpha",
-		"SDKVersion": "2.16.4",
+		"SDKVersion": "3.0.0",
 		"Documentation": {
 			"Description": "typescript driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
@@ -269,7 +269,7 @@
 			"NativeVersion": [
 				"2.2.1"
 			],
-			"GoVersion": "1.10"
+			"GoVersion": "1.12"
 		},
 		"Features": [
 			"ast"
