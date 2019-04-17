@@ -10,9 +10,9 @@ import (
 	"path/filepath"
 	"sync"
 
+	"github.com/bblfsh/sdk/v3/driver/manifest"
+	"github.com/bblfsh/sdk/v3/driver/manifest/discovery"
 	"github.com/heroku/docker-registry-client/registry"
-	"gopkg.in/bblfsh/sdk.v2/driver/manifest"
-	"gopkg.in/bblfsh/sdk.v2/driver/manifest/discovery"
 )
 
 const (
@@ -140,9 +140,9 @@ type Driver struct {
 	DockerhubURL string `json:",omitempty"`
 }
 
-func (m Driver) Maintainer() discovery.Maintainer {
+func (m Driver) Maintainer() manifest.Maintainer {
 	if len(m.Maintainers) == 0 {
-		return discovery.Maintainer{Name: "-"}
+		return manifest.Maintainer{Name: "-"}
 	}
 	return m.Maintainers[0]
 }
