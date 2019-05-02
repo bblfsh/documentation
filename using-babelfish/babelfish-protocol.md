@@ -3,6 +3,10 @@
 The Babelfish client-server protocol uses [gRPC](http://www.grpc.io) for method selection \(with the [Protocol Buffers](https://developers.google.com/protocol-buffers/) format used for message serialization\).
 On the [next page](grpc-usage-example.md) we'll see a demo of how this comes together in practice with some code.
 
+## Protocol v2
+
+<!-- FIXME(dennwc): explain the v2 protocol, list relevant proto files and UAST decoding spec -->
+
 ## Protocol v1
 
 You can read [the server](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/protocol/generated.proto#L11) and [SDK](https://github.com/bblfsh/sdk/blob/94e3b212553e761677da180f321d9a7a60ebec5f/uast/generated.proto) `.proto` files to see the format description of the messages and types involved, but we'll provide here a simple definition in JSON-like format.

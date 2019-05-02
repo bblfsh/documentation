@@ -11,6 +11,8 @@ UAST is defined by two separate specifications:
 * [Node representation](./representation-v2.md) - defines a common transport
   format for the UAST.
 
+* [UAST binary encoding](./uast-encoding-v2.md) - defines UAST binary encoding.
+
 * [Semantic UAST](./semantic-uast.md) - defines UAST node types that are
   independent of the programming language.
 
