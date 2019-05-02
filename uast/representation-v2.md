@@ -72,3 +72,7 @@ Values are leaf nodes and can have one of the following type:
 
 The type system remind JSON, except the fact that the kind of a number is
 preserved.
+
+## Encoding
+
+For details about UAST binary encoding see [this page](./uast-encoding-v2.md).
