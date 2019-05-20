@@ -1,6 +1,6 @@
 # Getting Started
 
-## Using the online web client 
+## Using the online web client
 
 The easiest way to get started with Babelfish is to try the online [web client](http://dashboard.bblf.sh/) where you can write or paste your code and run the parser to see the generated UAST.
 
@@ -61,7 +61,7 @@ Exposing the port \(`9432`\) with `-p 9432:9432` makes it easier to connect to t
 If you are behind an HTTP or HTTPS proxy server, for example in corporate settings, you will need to add the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables in the docker run command to configure HTTP or HTTPS proxy behavior.
 
 ```bash
-$ docker run -d --name bblfshd --privileged -p 9432:9432 -e 
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -e
 HTTP_PROXY="http://proxy.example.com:80/" -v bblfshd-cache:/var/lib/bblfshd bblfsh/bblfshd
 ```
 
@@ -80,10 +80,16 @@ time="2017-10-10T08:59:20Z" level=info msg="control server listening in /var/run
 
 #### Installing the drivers
 
-Now we need to install the driver images into the daemon, you can install the official images with the following command:
+Now we need to install the driver images into the daemon. You can install the official images with the following command:
 
 ```bash
 $ docker exec -it bblfshd bblfshctl driver install --recommended
+```
+
+If you want to install a driver for a single language, you can do so by specifying the language and driver path to `bblfshctl`:
+
+```bash
+docker exec -it bblfshd bblfshctl driver install python docker://bblfsh/python-driver:latest
 ```
 
 You can check the installed versions executing:
