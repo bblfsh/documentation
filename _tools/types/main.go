@@ -3,6 +3,7 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"flag"
 	"fmt"
@@ -13,6 +14,7 @@ import (
 	"os/exec"
 	"path"
 	"reflect"
+	"regexp"
 	"strings"
 	"sync"
 
@@ -20,10 +22,15 @@ import (
 	"github.com/bblfsh/sdk/uast"
 )
 
-const repoRootPath = "./drivers/"
+const (
+	fixtureDir = "fixtures"
+	fixtureExt = ".sem.uast"
+)
 
 var (
-	pprof = flag.Bool("pprof", false, "start pprof profiler http endpoing")
+	reposRootPath = path.Join(".", "drivers")
+	pprof         = flag.Bool("pprof", false, "start pprof profiler http endpoing")
+	skipUpdate    = flag.Bool("skip", false, "skip git clone or pull")
 )
 
 func main() {
@@ -50,14 +57,18 @@ func run() error {
 		return fmt.Errorf("failed to list drivers: %s", err)
 	}
 
-	err = maybeCloneOrPullAll(drivers)
-	if err != nil {
-		return fmt.Errorf("failed to pull driver repos: %s", err)
+	if !*skipUpdate {
+		err = maybeCloneOrPullAll(drivers)
+		if err != nil {
+			return fmt.Errorf("failed to pull driver repos: %s", err)
+		}
 	}
 
-	uastTypes := findAllUastTypes()
+	uastTypes := findUastTypesInSdk()
 	for _, driver := range drivers {
-		analyzeFixtures(driver)
+		if err := analyzeFixtures(driver); err != nil {
+			return err
+		}
 		analyzeCode(driver, uastTypes)
 	}
 
@@ -69,12 +80,14 @@ type driverStats struct {
 	url          string
 	language     string
 	path         string
+	skip         bool
+	fixturesNum  int
 	fixturesUast map[string]int
 	codeUast     map[string]int
 }
 
 // listDrivers lists all available drivers.
-func listDrivers() ([]driverStats, error) {
+func listDrivers() ([]*driverStats, error) {
 	fmt.Fprintf(os.Stderr, "discovering all available drivers\n")
 	langs, err := discovery.OfficialDrivers(context.TODO(), &discovery.Options{
 		NoStatic: true,
@@ -82,9 +95,9 @@ func listDrivers() ([]driverStats, error) {
 	if err != nil {
 		return nil, err
 	}
-	drivers := make([]driverStats, 0, len(langs))
+	drivers := make([]*driverStats, 0, len(langs))
 	for _, l := range langs {
-		drivers = append(drivers, driverStats{
+		drivers = append(drivers, &driverStats{
 			language:     l.Language,
 			url:          l.RepositoryURL(),
 			path:         l.RepositoryURL()[strings.LastIndex(l.RepositoryURL(), "/"):],
@@ -92,26 +105,26 @@ func listDrivers() ([]driverStats, error) {
 			codeUast:     make(map[string]int),
 		})
 	}
-	fmt.Fprintf(os.Stderr, "%d drivers found, %v\n", len(langs), drivers)
+	fmt.Fprintf(os.Stderr, "%d drivers available on-line\n", len(langs))
 	return drivers, nil
 }
 
 // maybeCloneOrPullAll either clones repos to path in local FS or, if already preset,
 // pulls the latest master for each of them.
-func maybeCloneOrPullAll(drivers []driverStats) error {
-	fmt.Fprintf(os.Stderr, "cloning %d drivers to %s\n", len(drivers), repoRootPath)
-	err := os.MkdirAll(repoRootPath, os.ModePerm)
+func maybeCloneOrPullAll(drivers []*driverStats) error {
+	fmt.Fprintf(os.Stderr, "cloning %d drivers to %s\n", len(drivers), reposRootPath)
+	err := os.MkdirAll(reposRootPath, os.ModePerm)
 	if err != nil {
 		return err
 	}
 
 	var (
-		wg        sync.WaitGroup
-		concurent = make(chan int, 3)
+		cr = make(chan int, 3)
+		wg sync.WaitGroup
 	)
 	for i := range drivers {
 		wg.Add(1)
-		go maybeCloneOrPullAsync(&drivers[i], &wg, concurent)
+		go maybeCloneOrPullAsync(drivers[i], &wg, cr)
 	}
 	wg.Wait()
 	return nil
@@ -129,7 +142,7 @@ func maybeCloneOrPullAsync(d *driverStats, wg *sync.WaitGroup, concurent chan in
 }
 
 func maybeCloneOrPull(d *driverStats) error {
-	repoPath := path.Join(repoRootPath, d.path)
+	repoPath := path.Join(reposRootPath, d.path)
 	_, err := os.Stat(repoPath)
 	if err != nil && !os.IsNotExist(err) {
 		fmt.Fprintf(os.Stderr, "error: %s\n", err)
@@ -139,7 +152,7 @@ func maybeCloneOrPull(d *driverStats) error {
 	if os.IsNotExist(err) {
 		fmt.Fprintf(os.Stderr, "%s does not exist, cloning from %s\n", repoPath, d.url)
 		cmd := exec.Command("git", "clone", d.url+".git")
-		cmd.Dir = repoRootPath
+		cmd.Dir = reposRootPath
 		err = cmd.Run()
 		if err != nil {
 			return err
@@ -147,7 +160,7 @@ func maybeCloneOrPull(d *driverStats) error {
 		return nil
 	}
 
-	fmt.Fprintf(os.Stderr, "%q exists, will 'git pull' instead\n", repoPath)
+	fmt.Fprintf(os.Stderr, "%s dir exists, will git pull instead\n", repoPath)
 	cmd := exec.Command("git", "pull", "origin", "master")
 	cmd.Dir = repoPath
 	err = cmd.Run()
@@ -161,14 +174,19 @@ type uastType struct {
 	name string
 }
 
+// isUsedIn checks if current UAST type is used in the given package.
 func (u *uastType) isUsedIn() {
-
+	// TODO
 }
 
-// find all types that embed uast.GenNode
-func findAllUastTypes() []uastType {
-	var out []uastType // TODO: load package, iterate all structs and check
+// findUastTypesInSdk finds all types from SDK.
+func findUastTypesInSdk() []uastType {
+	var out []uastType
+	// TODO: load package, iterate all structs
 	types := []interface{}{
+		uast.Position{},
+		uast.Positions{},
+		// only embeding GenNode?
 		uast.Identifier{},
 		uast.String{},
 		uast.Bool{},
@@ -189,24 +207,68 @@ func findAllUastTypes() []uastType {
 	for _, typee := range types {
 		out = append(out, uastType{reflect.TypeOf(typee).String()})
 	}
-	fmt.Fprintf(os.Stderr, "%d uast:* types found\n", len(out))
+	fmt.Fprintf(os.Stderr, "%d uast:* types found in SDK\n", len(out))
 	return out
 }
 
 // analyzeFixtures goes though all fixtures, assuming the driver is cloned.
 // It updates given driverStats with results.
-func analyzeFixtures(driver driverStats) {
-	// TODO:
-	// Walk(./fixutres/*.sem.uast)
-	//   for every line
-	//      if line contains('uast:')
-	//        typee := uastName.match(line)
-	//        driver.fixturesUast[typee] += 1
+func analyzeFixtures(driver *driverStats) error {
+	fixDir := path.Join(reposRootPath, driver.path, fixtureDir)
+	fixtureFiles, err := lsDir(fixDir)
+	if err != nil && !os.IsNotExist(err) {
+		return err
+	}
+	if os.IsNotExist(err) {
+		driver.skip = true
+		return nil
+	}
+	driver.fixturesNum += len(fixtureFiles)
+
+	re := regexp.MustCompile("(uast:[^\"]*)")
+	for _, file := range fixtureFiles {
+		if strings.HasSuffix(file.Name(), fixtureExt) {
+			fFile, err := os.Open(path.Join(fixDir, file.Name()))
+			if err != nil {
+				log.Fatal(err)
+			}
+			defer fFile.Close()
+
+			scanner := bufio.NewScanner(fFile)
+			for scanner.Scan() {
+				line := scanner.Text()
+				if strings.Contains(line, "uast:") {
+					for _, uastType := range re.FindAllString(line, -1) {
+						driver.fixturesUast[strings.Replace(uastType, ":", ".", 1)]++
+					}
+				}
+			}
+
+			if err := scanner.Err(); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
+func lsDir(dir string) ([]os.FileInfo, error) {
+	fmt.Fprintf(os.Stderr, "reading %s/*%s files\n", dir, fixtureExt)
+	f, err := os.Open(dir)
+	if err != nil {
+		return nil, err
+	}
+	files, err := f.Readdir(-1)
+	f.Close()
+	if err != nil {
+		return nil, err
+	}
+	return files, nil
 }
 
 // analyzeCode checks if any of the types are used by
 // this driver's package, though analyzing it's AST.
-func analyzeCode(driver driverStats, uasts []uastType) {
+func analyzeCode(driver *driverStats, uasts []uastType) {
 	// TODO:
 	// load package
 	// for _, typee := range uasts {
@@ -217,24 +279,33 @@ func analyzeCode(driver driverStats, uasts []uastType) {
 	driver.codeUast["Identifier"]++
 }
 
-func formatMarkdownTable(drivers []driverStats, uastTypes []uastType) {
+func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
 	fmt.Print(header)
 	defer fmt.Print(footer)
 
-	formatMarkdownTableHeader(drivers)
+	allDrivers := len(drivers)
+	drs := drivers[:0] // filter drivers \wo fixtures
+	for _, x := range drivers {
+		if !x.skip {
+			drs = append(drs, x)
+		}
+	}
+	fmt.Fprintf(os.Stderr, "only %d drivers has fixtures, out of %d\n", len(drs), allDrivers)
+
+	formatMarkdownTableHeader(drs)
 	for _, typee := range uastTypes {
 		fmt.Printf("|%25s|", typee.name)
-		for _, dr := range drivers {
+		for _, dr := range drs {
 			fmt.Printf(" %d/%d |", dr.fixturesUast[typee.name], dr.codeUast[typee.name])
 		}
 		fmt.Println()
 	}
 }
 
-func formatMarkdownTableHeader(drivers []driverStats) {
+func formatMarkdownTableHeader(drivers []*driverStats) {
 	fmt.Printf("|%25s|", "")
 	for _, dr := range drivers {
-		fmt.Printf("%5s|", dr.language)
+		fmt.Printf("[%s](%s)|", dr.language, dr.url)
 	}
 	fmt.Print("\n| :---------------------- |")
 	for range drivers {
@@ -246,14 +317,14 @@ func formatMarkdownTableHeader(drivers []driverStats) {
 const header = `<!-- Code generated by 'make types' DO NOT EDIT. -->
 # UAST Types
 
-For every UAST type in every Driver 2 numbers are reported:
- - _fixtures usage_ number of times this type was used in driver _fixtures_ (*.sem.uast files)
- - _code usage_ number of times this type was usind in driver mapping DSL code (normalizer.go)
+For every UAST type in every driver, next 2 numbers are reported:
+ - _fixtures usage_  - number of times this type was used in driver _fixtures_ (_*.sem.uast_ files)
+ - _code usage_ - number of times this type was usind in the driver mapping DSL code (_normalizer.go_ file)
 
-in the format _<fixtures usage>/<code usage>_.
+The format is <_fixtures usage_>/<_code usage_>.
 
 `
 
 const footer = `
-**Don't see your favorite AST construct mapped? [Help us!](join-the-community.md)**
+**Don't see your favorite AST construct represented? [Help us!](join-the-community.md)**
 `
