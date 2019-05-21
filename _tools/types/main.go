@@ -25,6 +25,7 @@ import (
 const (
 	fixtureDir = "fixtures"
 	fixtureExt = ".sem.uast"
+	goDocUrl   = "https://godoc.org/github.com/bblfsh/sdk/uast#"
 )
 
 var (
@@ -294,7 +295,8 @@ func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
 
 	formatMarkdownTableHeader(drs)
 	for _, typee := range uastTypes {
-		fmt.Printf("|%25s|", typee.name)
+		// %25s produces nice ASCII result
+		fmt.Printf("|[%s](%s)|", typee.name, goDocUrl+typee.name[strings.IndexRune(typee.name, '.')+1:])
 		for _, dr := range drs {
 			fmt.Printf(" %d/%d |", dr.fixturesUast[typee.name], dr.codeUast[typee.name])
 		}
@@ -305,6 +307,7 @@ func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
 func formatMarkdownTableHeader(drivers []*driverStats) {
 	fmt.Printf("|%25s|", "")
 	for _, dr := range drivers {
+		// %5s produces nice ASCII result
 		fmt.Printf("[%s](%s)|", dr.language, dr.url)
 	}
 	fmt.Print("\n| :---------------------- |")
