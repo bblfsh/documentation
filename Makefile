@@ -23,6 +23,9 @@ roles:
 languages:
 	go run _tools/languages/main.go languages.md languages.json
 
+types:
+	go run _tools/types/main.go > uast/types.md
+
 clean:
 	rm -rf node_modules
 
