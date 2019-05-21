@@ -89,7 +89,7 @@ $ docker exec -it bblfshd bblfshctl driver install --recommended
 If you want to install a driver for a single language, you can do so by specifying the language and driver path to `bblfshctl`:
 
 ```bash
-docker exec -it bblfshd bblfshctl driver install python docker://bblfsh/python-driver:latest
+docker exec -it bblfshd bblfshctl driver install docker://bblfsh/python-driver:latest
 ```
 
 You can check the installed versions executing:
