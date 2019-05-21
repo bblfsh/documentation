@@ -4,13 +4,17 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"log"
+	"net/http"
+	_ "net/http/pprof"
 	"os"
 	"os/exec"
 	"path"
 	"reflect"
 	"strings"
+	"sync"
 
 	"github.com/bblfsh/sdk/driver/manifest/discovery"
 	"github.com/bblfsh/sdk/uast"
@@ -18,7 +22,23 @@ import (
 
 const repoRootPath = "./drivers/"
 
+var (
+	pprof = flag.Bool("pprof", false, "start pprof profiler http endpoing")
+)
+
 func main() {
+	flag.Parse()
+
+	if *pprof {
+		pprofAddr := "localhost:6060"
+		fmt.Fprintf(os.Stderr, "running pprof on %s\n", pprofAddr)
+		go func() {
+			if err := http.ListenAndServe(pprofAddr, nil); err != nil {
+				log.Fatal("cannot start pprof: %v", err)
+			}
+		}()
+	}
+
 	if err := run(); err != nil {
 		log.Fatal(err)
 	}
@@ -85,31 +105,54 @@ func maybeCloneOrPullAll(drivers []driverStats) error {
 		return err
 	}
 
-	for _, d := range drivers {
-		driverRepo, err := os.Stat(path.Join(repoRootPath, d.path))
-		if err != nil && !os.IsNotExist(err) {
-			fmt.Fprintf(os.Stderr, "error: %s\n", err)
-			return err
-		}
+	var (
+		wg        sync.WaitGroup
+		concurent = make(chan int, 3)
+	)
+	for i := range drivers {
+		wg.Add(1)
+		go maybeCloneOrPullAsync(&drivers[i], &wg, concurent)
+	}
+	wg.Wait()
+	return nil
+}
 
-		if os.IsNotExist(err) {
-			fmt.Fprintf(os.Stderr, "%s does not exist, cloning %s\n", d.path, d.url)
-			cmd := exec.Command("git", "clone", d.url+".git")
-			cmd.Dir = repoRootPath
-			err = cmd.Run()
-			if err != nil {
-				return err
-			}
-			continue
-		}
+func maybeCloneOrPullAsync(d *driverStats, wg *sync.WaitGroup, concurent chan int) error {
+	defer wg.Done()
 
-		fmt.Fprintf(os.Stderr, "%q exists, git pull from %q instead\n", d.path, driverRepo.Name())
-		cmd := exec.Command("git", "pull", "origin", "master")
-		cmd.Dir = path.Join(repoRootPath, d.path)
+	concurent <- 1
+	defer func() {
+		<-concurent
+	}()
+
+	return maybeCloneOrPull(d)
+}
+
+func maybeCloneOrPull(d *driverStats) error {
+	repoPath := path.Join(repoRootPath, d.path)
+	_, err := os.Stat(repoPath)
+	if err != nil && !os.IsNotExist(err) {
+		fmt.Fprintf(os.Stderr, "error: %s\n", err)
+		return err
+	}
+
+	if os.IsNotExist(err) {
+		fmt.Fprintf(os.Stderr, "%s does not exist, cloning from %s\n", repoPath, d.url)
+		cmd := exec.Command("git", "clone", d.url+".git")
+		cmd.Dir = repoRootPath
 		err = cmd.Run()
 		if err != nil {
 			return err
 		}
+		return nil
+	}
+
+	fmt.Fprintf(os.Stderr, "%q exists, will 'git pull' instead\n", repoPath)
+	cmd := exec.Command("git", "pull", "origin", "master")
+	cmd.Dir = repoPath
+	err = cmd.Run()
+	if err != nil {
+		return err
 	}
 	return nil
 }
