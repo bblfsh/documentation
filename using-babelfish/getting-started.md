@@ -86,7 +86,7 @@ Now we need to install the driver images into the daemon. You can install the of
 $ docker exec -it bblfshd bblfshctl driver install --recommended
 ```
 
-If you want to install a driver for a single language, you can do so by specifying the language and driver path to `bblfshctl`:
+If you want to install a driver for a single language, you can do so by specifying the driver URI to `bblfshctl`:
 
 ```bash
 docker exec -it bblfshd bblfshctl driver install docker://bblfsh/python-driver:latest
