@@ -3,15 +3,15 @@
 package main
 
 import (
-	"bufio"
 	"context"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"os/exec"
-	"path"
+	"path/filepath"
 	"reflect"
 	"regexp"
 	"strings"
@@ -30,7 +30,7 @@ const (
 )
 
 var (
-	reposRootPath = path.Join(".", "drivers")
+	reposRootPath = filepath.Join(".", "drivers")
 	uastNodeRe    = regexp.MustCompile("uast:[^\"]*")
 
 	pprof      = flag.Bool("pprof", false, "start pprof profiler http endpoing")
@@ -62,8 +62,7 @@ func run() error {
 	}
 
 	if !*skipUpdate {
-		err = maybeCloneOrPullAll(drivers)
-		if err != nil {
+		if err := maybeCloneOrPullAll(drivers); err != nil {
 			return fmt.Errorf("failed to pull driver repos: %s", err)
 		}
 	}
@@ -81,13 +80,13 @@ func run() error {
 }
 
 type driverStats struct {
-	url          string
-	language     string
-	path         string
-	skip         bool
-	fixturesNum  int
-	fixturesUast map[string]int
-	codeUast     map[string]int
+	url                 string
+	language            string
+	path                string         // path in local FS to the driver source code clone
+	skip                bool           // skip including the driver to the final report
+	fixtureCount        int            // number of fixture files for a driver
+	uastInFixturesCount map[string]int // number of times UAST type used in fixtures
+	uastInCodeCount     map[string]int // number of times UAST type used in code
 }
 
 // listDrivers lists all available drivers.
@@ -108,11 +107,11 @@ func listDrivers() ([]*driverStats, error) {
 			continue
 		}
 		drivers = append(drivers, &driverStats{
-			language:     l.Language,
-			url:          l.RepositoryURL(),
-			path:         l.RepositoryURL()[strings.LastIndex(l.RepositoryURL(), "/"):],
-			fixturesUast: make(map[string]int),
-			codeUast:     make(map[string]int),
+			language:            l.Language,
+			url:                 l.RepositoryURL(),
+			path:                l.RepositoryURL()[strings.LastIndex(l.RepositoryURL(), "/"):],
+			uastInFixturesCount: make(map[string]int),
+			uastInCodeCount:     make(map[string]int),
 		})
 	}
 	fmt.Fprintf(os.Stderr, "%d drivers available on-line\n", len(langs))
@@ -129,33 +128,24 @@ func maybeCloneOrPullAll(drivers []*driverStats) error {
 	}
 
 	var (
-		pf = make(chan int, 3) // fetches to run in parallel
-		wg sync.WaitGroup
+		throttle = make(chan int, 3) // fetches to run in parallel
+		wg       sync.WaitGroup
 	)
 	for i := range drivers {
+		driver := drivers[i]
 		wg.Add(1)
-		go func(driver *driverStats) {
-			defer wg.Done()
-			maybeCloneOrPullThrottled(driver, pf)
-		}(drivers[i])
+		go func() {
+			throttle <- 1
+			defer func() { <-throttle; wg.Done() }()
+			maybeCloneOrPull(driver)
+		}()
 	}
 	wg.Wait()
 	return nil
 }
 
-// maybeCloneOrPullThrottled is concurent-friendly verison of maybeCloneOrPull.
-// It "throttles" git operarions, based on given chanel capacity.
-func maybeCloneOrPullThrottled(d *driverStats, concurent chan int) error {
-	concurent <- 1
-	defer func() {
-		<-concurent
-	}()
-
-	return maybeCloneOrPull(d)
-}
-
-func maybeCloneOrPull(d *driverStats) error {
-	repoPath := path.Join(reposRootPath, d.path)
+func maybeCloneOrPull(d *driverStats) {
+	repoPath := filepath.Join(reposRootPath, d.path)
 	_, err := os.Stat(repoPath)
 	if os.IsNotExist(err) {
 		fmt.Fprintf(os.Stderr, "%s does not exist, cloning from %s\n", repoPath, d.url)
@@ -163,12 +153,10 @@ func maybeCloneOrPull(d *driverStats) error {
 		cmd.Dir = reposRootPath
 		err = cmd.Run()
 		if err != nil {
-			return err
+			fmt.Fprintf(os.Stderr, "failed to git clone %s\n", d.url)
 		}
-		return nil
 	} else if err != nil {
-		fmt.Fprintf(os.Stderr, "error: %s\n", err)
-		return err
+		fmt.Fprintf(os.Stderr, "failed to read %q: %s\n", repoPath, err)
 	}
 
 	fmt.Fprintf(os.Stderr, "%s dir exists, will git pull instead\n", repoPath)
@@ -176,18 +164,20 @@ func maybeCloneOrPull(d *driverStats) error {
 	cmd.Dir = repoPath
 	err = cmd.Run()
 	if err != nil {
-		return err
+		fmt.Fprintf(os.Stderr, "failed git pull %s\n", d.url)
 	}
-	return nil
 }
 
 type uastType struct {
 	name string
+	// TODO decide what else is needed for analyzeCode()
+	// or replace struct with string
 }
 
 // isUsedIn checks if current UAST type is used in the given package.
-func (u *uastType) isUsedIn() {
-	// TODO
+func (u *uastType) isUsedIn() bool {
+	// TODO implement for analyzeCode()
+	return false
 }
 
 // findUASTTypesInSDK finds all types from SDK.
@@ -225,7 +215,7 @@ func findUASTTypesInSDK() []uastType {
 // analyzeFixtures goes though all fixtures, assuming the driver is cloned.
 // It updates given driverStats with results.
 func analyzeFixtures(driver *driverStats) error {
-	fixDir := path.Join(reposRootPath, driver.path, fixtureDir)
+	fixDir := filepath.Join(reposRootPath, driver.path, fixtureDir)
 	fixtureFiles, err := lsDir(fixDir)
 	if os.IsNotExist(err) {
 		driver.skip = true
@@ -233,32 +223,25 @@ func analyzeFixtures(driver *driverStats) error {
 	} else if err != nil {
 		return err
 	}
-	driver.fixturesNum += len(fixtureFiles)
+	driver.fixtureCount += len(fixtureFiles)
 
 	for _, file := range fixtureFiles {
 		if !strings.HasSuffix(file.Name(), fixtureExt) {
 			continue
 		}
 
-		fFile, err := os.Open(path.Join(fixDir, file.Name()))
+		data, err := ioutil.ReadFile(filepath.Join(fixDir, file.Name()))
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "failed to read %s, skipping\n", path.Join(fixDir, file.Name()))
+			fmt.Fprintf(os.Stderr, "unable to read %q, skipping\n", file.Name())
+			continue
 		}
-
-		scanner := bufio.NewScanner(fFile)
-		for scanner.Scan() {
-			line := scanner.Text()
+		for _, line := range strings.Split(string(data), "\n") {
 			if !strings.Contains(line, "uast:") {
 				continue
 			}
 			for _, uastType := range uastNodeRe.FindAllString(line, -1) {
-				driver.fixturesUast[strings.Replace(uastType, ":", ".", 1)]++
+				driver.uastInFixturesCount[strings.Replace(uastType, ":", ".", 1)]++
 			}
-		}
-
-		fFile.Close()
-		if err := scanner.Err(); err != nil {
-			return err
 		}
 	}
 	return nil
@@ -290,7 +273,6 @@ func analyzeCode(driver *driverStats, uasts []uastType) {
 	//     driver.codeUast[typee]++
 	//   }
 	// }
-	driver.codeUast["Identifier"]++
 }
 
 func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
@@ -314,7 +296,10 @@ func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
 			goDocURL+typee.name[strings.IndexRune(typee.name, '.')+1:],
 		)
 		for _, dr := range drs {
-			fmt.Printf(" %d/%d |", dr.fixturesUast[typee.name], dr.codeUast[typee.name])
+			fmt.Printf(" %d/%d |",
+				dr.uastInFixturesCount[typee.name],
+				dr.uastInCodeCount[typee.name],
+			)
 		}
 		fmt.Println()
 	}
