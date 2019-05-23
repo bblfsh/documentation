@@ -17,8 +17,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/bblfsh/sdk/driver/manifest/discovery"
-	"github.com/bblfsh/sdk/uast"
+	"github.com/bblfsh/sdk/v3/driver/manifest/discovery"
+	"github.com/bblfsh/sdk/v3/uast"
 
 	_ "net/http/pprof"
 )
