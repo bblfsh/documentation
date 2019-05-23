@@ -27,13 +27,14 @@ const (
 	fixtureDir = "fixtures"
 	fixtureExt = ".sem.uast"
 	goDocURL   = "https://godoc.org/github.com/bblfsh/sdk/uast#"
+	pprofAddr  = "localhost:6060"
 )
 
 var (
 	reposRootPath = filepath.Join(".", "drivers")
 	uastNodeRe    = regexp.MustCompile("uast:[^\"]*")
 
-	pprof      = flag.Bool("pprof", false, "start pprof profiler http endpoing")
+	pprof      = flag.Bool("pprof", false, "Start a pprof profiler HTTP service at "+pprofAddr)
 	skipUpdate = flag.Bool("skip", false, "skip git clone or pull")
 )
 
@@ -41,11 +42,10 @@ func main() {
 	flag.Parse()
 
 	if *pprof {
-		pprofAddr := "localhost:6060"
 		fmt.Fprintf(os.Stderr, "running pprof on %s\n", pprofAddr)
 		go func() {
 			if err := http.ListenAndServe(pprofAddr, nil); err != nil {
-				log.Fatal("cannot start pprof: %v", err)
+				log.Fatalf("cannot start pprof: %v", err)
 			}
 		}()
 	}
