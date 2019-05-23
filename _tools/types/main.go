@@ -296,10 +296,14 @@ func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
 			goDocURL+typee.name[strings.IndexRune(typee.name, '.')+1:],
 		)
 		for _, dr := range drs {
-			fmt.Printf(" %d/%d |",
-				dr.uastInFixturesCount[typee.name],
-				dr.uastInCodeCount[typee.name],
-			)
+			if dr.uastInCodeCount[typee.name] > 0 {
+				fmt.Printf(" %d/%d |",
+					dr.uastInFixturesCount[typee.name],
+					dr.uastInCodeCount[typee.name],
+				)
+			} else {
+				fmt.Printf(" %d |", dr.uastInFixturesCount[typee.name])
+			}
 		}
 		fmt.Println()
 	}
@@ -325,7 +329,8 @@ For every UAST type in every driver the following two values are reported:
  - _fixtures usage_  - number of times this type was used in driver _fixtures_ (_*.sem.uast_ files)
  - _code usage_ - number of times this type was usind in the driver mapping DSL code (_normalizer.go_ file)
 
-The format is <_fixtures usage_>/<_code usage_>.
+The format is <_fixtures usage_>/<_code usage_> in case _code usage_ is not zero.
+Otherwise, only _fixture usage_ is report.
 
 `
 
