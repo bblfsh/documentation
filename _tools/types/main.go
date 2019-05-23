@@ -96,14 +96,17 @@ func listDrivers() ([]*driverStats, error) {
 	langs, err := discovery.OfficialDrivers(context.TODO(), &discovery.Options{
 		NoStatic:      true,
 		NoMaintainers: true,
-		NoSDKVersion:  true,
 		NoBuildInfo:   true,
 	})
 	if err != nil {
 		return nil, err
 	}
+
 	drivers := make([]*driverStats, 0, len(langs))
 	for _, l := range langs {
+		if !l.ForCurrentSDK() || l.InDevelopment() {
+			continue
+		}
 		drivers = append(drivers, &driverStats{
 			language:     l.Language,
 			url:          l.RepositoryURL(),
@@ -261,6 +264,8 @@ func analyzeFixtures(driver *driverStats) error {
 	return nil
 }
 
+// lsDir lists all files in the given dir.
+// It does not use ioutil.ReadDir as we do not care about files order.
 func lsDir(dir string) ([]os.FileInfo, error) {
 	fmt.Fprintf(os.Stderr, "reading %s/*%s files\n", dir, fixtureExt)
 	f, err := os.Open(dir)
@@ -304,7 +309,10 @@ func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
 	formatMarkdownTableHeader(drs)
 	for _, typee := range uastTypes {
 		// %25s produces nice ASCII result
-		fmt.Printf("|[%s](%s)|", typee.name, goDocURL+typee.name[strings.IndexRune(typee.name, '.')+1:])
+		fmt.Printf("|[%s](%s)|",
+			strings.Replace(typee.name, ".", ":", 1),
+			goDocURL+typee.name[strings.IndexRune(typee.name, '.')+1:],
+		)
 		for _, dr := range drs {
 			fmt.Printf(" %d/%d |", dr.fixturesUast[typee.name], dr.codeUast[typee.name])
 		}
