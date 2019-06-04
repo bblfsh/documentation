@@ -10,9 +10,9 @@ After playing with the web client, you will probably want to get Babelfish runni
 
 ### Prerequisites
 
-* Linux: [Docker](https://www.docker.com/community-edition) \(optional\)
-* macOS: [Docker for Mac](https://www.docker.com/docker-mac)
-* Windows: [Docker for Windows](https://www.docker.com/docker-windows)
+* Linux: [Docker](https://docs.docker.com/install/) \(optional\)
+* macOS: [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+* Windows: [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)
 
 ### Running with Docker \(recommended\)
 
