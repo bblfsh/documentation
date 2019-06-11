@@ -23,6 +23,7 @@
   - [UAST v1 Specification (deprecated)](uast/uast-specification-v1.md)
 * [Code to AST](uast/code-to-ast.md)
 * [Semantic UAST](uast/semantic-uast.md)
+* [Semantic types coverage](uast/types.md)
 * [Node Representation](uast/representation-v2.md)
 * [Roles](uast/roles.md)
 
