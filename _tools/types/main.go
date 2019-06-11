@@ -303,8 +303,10 @@ func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
 					dr.uastInFixturesCount[typee.name],
 					dr.uastInCodeCount[typee.name],
 				)
+			} else if v := dr.uastInFixturesCount[typee.name]; v > 0 {
+				fmt.Printf(" %d |", v)
 			} else {
-				fmt.Printf(" %d |", dr.uastInFixturesCount[typee.name])
+				fmt.Printf(" - |")
 			}
 		}
 		fmt.Println()
