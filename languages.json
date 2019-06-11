@@ -2,16 +2,16 @@
 	{
 		"Name": "Bash",
 		"Language": "bash",
+		"Aliases": [
+			"shell"
+		],
 		"Status": "beta",
-		"SDKVersion": "3.0.0",
+		"SDKVersion": "3.1.0",
 		"Documentation": {
 			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"8.131.11-r2"
-			],
+		"Runtimes": {
+			"NativeVersion": "8u181",
 			"GoVersion": "1.12"
 		},
 		"Features": [
@@ -27,18 +27,43 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/bash-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/bash-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/bash-driver/",
+		"Releases": [
+			"2.7.0",
+			"2.6.0",
+			"2.5.2",
+			"2.5.1",
+			"2.5.0",
+			"2.4.0",
+			"2.3.2",
+			"2.3.1",
+			"2.3.0",
+			"2.2.0",
+			"2.1.0",
+			"2.0.1",
+			"2.0.0",
+			"1.1.1",
+			"1.1.0",
+			"1.0.1",
+			"1.0.0",
+			"0.2.0",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "C++",
 		"Language": "cpp",
+		"Aliases": [
+			"C++",
+			"C",
+			"CUDA",
+			"OpenCL",
+			"Metal"
+		],
 		"Status": "beta",
-		"SDKVersion": "3.0.0",
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"8.121.13-r0"
-			],
+		"SDKVersion": "3.1.0",
+		"Runtimes": {
+			"NativeVersion": "8u181",
 			"GoVersion": "1.12"
 		},
 		"Features": [
@@ -59,15 +84,34 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/cpp-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/cpp-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/cpp-driver/",
+		"Releases": [
+			"1.4.0",
+			"1.3.0",
+			"1.2.4",
+			"1.2.3",
+			"1.2.2",
+			"1.2.1",
+			"1.2.0",
+			"1.1.0",
+			"1.0.1",
+			"1.0.0",
+			"1.0.0-rc.1",
+			"0.3.0",
+			"0.2.0",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "C#",
 		"Language": "csharp",
+		"Aliases": [
+			"C#"
+		],
 		"Status": "beta",
-		"SDKVersion": "3.0.0",
-		"Documentation": {},
-		"Runtime": {
+		"SDKVersion": "3.1.0",
+		"Runtimes": {
+			"NativeVersion": "2.1",
 			"GoVersion": "1.12"
 		},
 		"Features": [
@@ -83,18 +127,30 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/csharp-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/csharp-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/csharp-driver/",
+		"Releases": [
+			"1.6.0",
+			"1.5.0",
+			"1.4.3",
+			"1.4.2",
+			"1.4.1",
+			"1.4.0",
+			"1.3.0",
+			"1.2.0",
+			"1.1.0",
+			"1.0.0",
+			"0.2.0",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "Go",
 		"Language": "go",
+		"Aliases": null,
 		"Status": "beta",
-		"SDKVersion": "3.0.0",
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"1.10"
-			],
+		"SDKVersion": "3.1.0",
+		"Runtimes": {
+			"NativeVersion": "1.12",
 			"GoVersion": "1.12"
 		},
 		"Features": [
@@ -110,18 +166,36 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/go-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/go-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/go-driver/",
+		"Releases": [
+			"2.7.0",
+			"2.6.0",
+			"2.5.3",
+			"2.5.2",
+			"2.5.1",
+			"2.5.0",
+			"2.4.0",
+			"2.3.0",
+			"2.2.0",
+			"2.1.0",
+			"2.0.3",
+			"2.0.2",
+			"2.0.1",
+			"2.0.0",
+			"0.4.0",
+			"0.3.0",
+			"0.2.0",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "Java",
 		"Language": "java",
+		"Aliases": null,
 		"Status": "beta",
-		"SDKVersion": "3.0.0",
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"8.171.11-r0"
-			],
+		"SDKVersion": "3.1.0",
+		"Runtimes": {
+			"NativeVersion": "8u181",
 			"GoVersion": "1.12"
 		},
 		"Features": [
@@ -137,21 +211,58 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/java-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/java-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/java-driver/",
+		"Releases": [
+			"2.7.2",
+			"2.7.1",
+			"2.7.0",
+			"2.6.3",
+			"2.6.2",
+			"2.6.1",
+			"2.6.0",
+			"2.5.0",
+			"2.4.3",
+			"2.4.2",
+			"2.4.1",
+			"2.4.0",
+			"2.3.0",
+			"2.2.1",
+			"2.2.0",
+			"2.1.0",
+			"2.0.2",
+			"2.0.1",
+			"2.0.0",
+			"1.2.6",
+			"1.2.5",
+			"1.2.4",
+			"1.2.3",
+			"1.2.2",
+			"1.2.1",
+			"1.2.0",
+			"1.1.0",
+			"1.0.0",
+			"0.6.0",
+			"0.5.0",
+			"0.4.0",
+			"0.3.0",
+			"0.2.0",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "JavaScript",
 		"Language": "javascript",
+		"Aliases": [
+			"JS",
+			"JSX"
+		],
 		"Status": "beta",
-		"SDKVersion": "3.0.0",
+		"SDKVersion": "3.1.0",
 		"Documentation": {
 			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"8.9.3-r1"
-			],
+		"Runtimes": {
+			"NativeVersion": "8",
 			"GoVersion": "1.12"
 		},
 		"Features": [
@@ -167,22 +278,44 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/javascript-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/javascript-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/javascript-driver/",
+		"Releases": [
+			"2.9.0",
+			"2.8.0",
+			"2.7.3",
+			"2.7.2",
+			"2.7.1",
+			"2.7.0",
+			"2.6.0",
+			"2.5.0",
+			"2.4.1",
+			"2.4.0",
+			"2.3.0",
+			"2.2.0",
+			"2.1.1",
+			"2.1.0",
+			"2.0.2",
+			"2.0.1",
+			"2.0.0",
+			"1.3.0",
+			"1.2.1",
+			"1.2.0",
+			"1.1.0",
+			"1.0.0"
+		]
 	},
 	{
 		"Name": "PHP",
 		"Language": "php",
+		"Aliases": null,
 		"Status": "beta",
 		"SDKVersion": "3.0.0",
 		"Documentation": {
 			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"7.1.17-r0"
-			],
-			"GoVersion": "1.12"
+		"Runtimes": {
+			"NativeVersion": "7",
+			"GoVersion": "1.10"
 		},
 		"Features": [
 			"ast",
@@ -197,19 +330,41 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/php-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/php-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/php-driver/",
+		"Releases": [
+			"2.8.0",
+			"2.7.4",
+			"2.7.3",
+			"2.7.2",
+			"2.7.1",
+			"2.7.0",
+			"2.6.0",
+			"2.5.0",
+			"2.4.1",
+			"2.4.0",
+			"2.3.0",
+			"2.2.0",
+			"2.1.3",
+			"2.1.2",
+			"2.1.1",
+			"2.1.0",
+			"2.0.0",
+			"1.1.0",
+			"1.0.2",
+			"1.0.1",
+			"1.0.0",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "Python",
 		"Language": "python",
+		"Aliases": null,
 		"Status": "beta",
 		"SDKVersion": "3.0.0",
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"3.6.2"
-			],
-			"GoVersion": "1.12"
+		"Runtimes": {
+			"NativeVersion": "3.6",
+			"GoVersion": "1.10"
 		},
 		"Features": [
 			"ast",
@@ -224,22 +379,84 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/python-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/python-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/python-driver/",
+		"Releases": [
+			"2.10.0",
+			"2.9.0",
+			"2.8.3",
+			"2.8.2",
+			"2.8.1",
+			"2.8.0",
+			"2.7.1",
+			"2.7.0",
+			"2.6.0",
+			"2.5.0",
+			"2.4.1",
+			"2.4.0",
+			"2.3.0",
+			"2.2.2",
+			"2.2.1",
+			"2.2.0",
+			"2.1.2",
+			"2.1.1",
+			"2.1.0",
+			"2.0.0",
+			"1.3.3",
+			"1.3.2",
+			"1.3.1",
+			"1.3.0",
+			"1.2.8",
+			"1.2.7",
+			"1.2.6",
+			"1.2.5",
+			"1.2.4",
+			"1.2.3",
+			"1.2.2",
+			"1.2.1",
+			"1.2.0",
+			"1.1.5",
+			"1.1.4",
+			"1.1.3",
+			"1.1.2",
+			"1.1.1",
+			"1.1.0",
+			"1.0.3",
+			"1.0.2",
+			"1.0.1",
+			"1.0.0",
+			"0.8.2",
+			"0.8.1",
+			"0.8.0",
+			"0.7.2",
+			"0.7.1",
+			"0.7.0",
+			"0.6.2",
+			"0.6.1",
+			"0.6.0",
+			"0.5.0",
+			"0.4.5",
+			"0.4.4",
+			"0.4.3",
+			"0.4.2",
+			"0.4.1",
+			"0.4.0",
+			"0.3.0",
+			"0.2.0",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "Ruby",
 		"Language": "ruby",
+		"Aliases": null,
 		"Status": "beta",
 		"SDKVersion": "3.0.0",
 		"Documentation": {
 			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"2.4.4-r0"
-			],
-			"GoVersion": "1.12"
+		"Runtimes": {
+			"NativeVersion": "2.4",
+			"GoVersion": "1.10"
 		},
 		"Features": [
 			"ast",
@@ -254,22 +471,45 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/ruby-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/ruby-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/ruby-driver/",
+		"Releases": [
+			"2.9.4",
+			"2.9.3",
+			"2.9.2",
+			"2.9.1",
+			"2.9.0",
+			"2.8.0",
+			"2.7.0",
+			"2.6.0",
+			"2.5.0",
+			"2.4.1",
+			"2.4.0",
+			"2.3.0",
+			"2.2.0",
+			"2.1.2",
+			"2.1.1",
+			"2.1.0",
+			"2.0.0",
+			"1.1.1",
+			"1.1.0",
+			"1.0.1",
+			"1.0.0",
+			"0.1.1",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "TypeScript",
 		"Language": "typescript",
+		"Aliases": null,
 		"Status": "alpha",
 		"SDKVersion": "3.0.0",
 		"Documentation": {
 			"Description": "typescript driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"2.2.1"
-			],
-			"GoVersion": "1.12"
+		"Runtimes": {
+			"NativeVersion": "8",
+			"GoVersion": "1.10"
 		},
 		"Features": [
 			"ast"
@@ -282,97 +522,89 @@
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/typescript-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/typescript-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/typescript-driver/",
+		"Releases": [
+			"0.8.0",
+			"0.7.3",
+			"0.7.2",
+			"0.7.1",
+			"0.7.0",
+			"0.6.0",
+			"0.5.0",
+			"0.4.0",
+			"0.3.0",
+			"0.2.0",
+			"0.1.0"
+		]
 	},
 	{
 		"Name": "ocaml",
 		"Language": "ocaml",
+		"Aliases": null,
 		"Status": "pre-alpha",
 		"SDKVersion": "1",
 		"Documentation": {
 			"Description": "ocaml driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"4.04.1-r0"
-			],
-			"GoVersion": "1.8"
-		},
+		"Runtimes": {},
 		"GithubURL": "https://github.com/bblfsh/ocaml-driver"
 	},
 	{
 		"Name": "rust",
 		"Language": "rust",
+		"Aliases": null,
 		"Status": "pre-alpha",
 		"SDKVersion": "1",
-		"Runtime": {
-			"OS": "debian",
-			"NativeVersion": [
-				"nightly-2017-02-20"
-			],
-			"GoVersion": "1.8"
-		},
+		"Runtimes": {},
 		"GithubURL": "https://github.com/bblfsh/rust-driver",
-		"DockerhubURL": "https://hub.docker.com/r/bblfsh/rust-driver/"
+		"DockerhubURL": "https://hub.docker.com/r/bblfsh/rust-driver/",
+		"Releases": [
+			"0.0.1"
+		]
 	},
 	{
 		"Name": "clojure",
 		"Language": "clojure",
+		"Aliases": null,
 		"Status": "planning",
 		"SDKVersion": "1",
 		"Documentation": {
 			"Description": "clojure driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"1.8.0"
-			],
-			"GoVersion": "1.8"
-		},
+		"Runtimes": {},
 		"GithubURL": "https://github.com/bblfsh/clojure-driver"
 	},
 	{
 		"Name": "erlang",
 		"Language": "erlang",
+		"Aliases": null,
 		"Status": "planning",
 		"SDKVersion": "1",
 		"Documentation": {
 			"Description": "erlang driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"erts-8.3"
-			],
-			"GoVersion": "1.8"
-		},
+		"Runtimes": {},
 		"GithubURL": "https://github.com/bblfsh/erlang-driver"
 	},
 	{
 		"Name": "lua",
 		"Language": "lua",
+		"Aliases": null,
 		"Status": "planning",
 		"SDKVersion": "1",
 		"Documentation": {
 			"Description": "lua driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
-		"Runtime": {
-			"OS": "alpine",
-			"NativeVersion": [
-				"5.3"
-			],
-			"GoVersion": "1.8"
-		},
+		"Runtimes": {},
 		"GithubURL": "https://github.com/bblfsh/lua-driver"
 	},
 	{
 		"Name": "elixir",
 		"Language": "elixir",
+		"Aliases": null,
 		"Status": "inactive",
 		"SDKVersion": "1",
-		"Runtime": {},
+		"Runtimes": {},
 		"GithubURL": "https://github.com/bblfsh/elixir-driver"
 	}
 ]
