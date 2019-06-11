@@ -81,6 +81,7 @@ func run() error {
 
 type driverStats struct {
 	url                 string
+	name                string
 	language            string
 	path                string         // path in local FS to the driver source code clone
 	skip                bool           // skip including the driver to the final report
@@ -107,6 +108,7 @@ func listDrivers() ([]*driverStats, error) {
 			continue
 		}
 		drivers = append(drivers, &driverStats{
+			name:                l.Name,
 			language:            l.Language,
 			url:                 l.RepositoryURL(),
 			path:                l.RepositoryURL()[strings.LastIndex(l.RepositoryURL(), "/"):],
@@ -291,7 +293,7 @@ func formatMarkdownTable(drivers []*driverStats, uastTypes []uastType) {
 	formatMarkdownTableHeader(drs)
 	for _, typee := range uastTypes {
 		// %25s produces nice ASCII result
-		fmt.Printf("|[%s](%s)|",
+		fmt.Printf("| [%s](%s) |",
 			strings.Replace(typee.name, ".", ":", 1),
 			goDocURL+typee.name[strings.IndexRune(typee.name, '.')+1:],
 		)
@@ -313,7 +315,7 @@ func formatMarkdownTableHeader(drivers []*driverStats) {
 	fmt.Printf("|%25s|", "")
 	for _, dr := range drivers {
 		// %5s produces nice ASCII result
-		fmt.Printf("[%s](%s)|", dr.language, dr.url)
+		fmt.Printf(" [%s](%s) |", dr.name, dr.url)
 	}
 	fmt.Print("\n| :---------------------- |")
 	for range drivers {
