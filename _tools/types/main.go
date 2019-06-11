@@ -330,7 +330,7 @@ in every driver the following two values are reported:
  - _fixtures usage_  - number of times this type was used in driver _fixtures_ (_*.sem.uast_ files)
  - _code usage_ - number of times this type was usind in the driver mapping DSL code (_normalizer.go_ file)
 
-The format is <_fixtures usage_>/<_code usage_> in case _code usage_ is not zero.
+The format is _<fixtures usage>_/_<code usage>_ in case _code usage_ is not zero.
 Otherwise, only _fixture usage_ is report.
 
 `
