@@ -3,29 +3,29 @@
 
 ## Supported languages
 
-| Language   | Key        | Status  | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
-| :--------- | :--------- | :------ | :--- | :--- | :------------- | :----- | :-------- | :--------- |
-| [Bash](https://github.com/bblfsh/bash-driver) | bash | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/bash-driver/) | [bzz](https://github.com/bzz) |
-| [C++](https://github.com/bblfsh/cpp-driver) | cpp | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/cpp-driver/) | [dennwc](https://github.com/dennwc) |
-| [C#](https://github.com/bblfsh/csharp-driver) | csharp | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/csharp-driver/) | [dennwc](https://github.com/dennwc) |
-| [Go](https://github.com/bblfsh/go-driver) | go | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/go-driver/) | [dennwc](https://github.com/dennwc) |
-| [Java](https://github.com/bblfsh/java-driver) | java | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [bzz](https://github.com/bzz) |
-| [JavaScript](https://github.com/bblfsh/javascript-driver) | javascript | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/javascript-driver/) | [bzz](https://github.com/bzz) |
-| [PHP](https://github.com/bblfsh/php-driver) | php | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/php-driver/) | [dennwc](https://github.com/dennwc) |
-| [Python](https://github.com/bblfsh/python-driver) | python | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [dennwc](https://github.com/dennwc) |
-| [Ruby](https://github.com/bblfsh/ruby-driver) | ruby | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/) | [dennwc](https://github.com/dennwc) |
-| [TypeScript](https://github.com/bblfsh/typescript-driver) | typescript | alpha | 3.0.0 | ✓ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) | [bzz](https://github.com/bzz) |
+| Language   | Release | Status | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
+| :--------- | :------ | :----- | :--- | :--- | :------------- | :----- | :-------- | :--------- |
+| [Bash](https://github.com/bblfsh/bash-driver) | [2.7.0](https://github.com/bblfsh/bash-driver/releases/tag/v2.7.0) | beta | 3.1.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/bash-driver/) | [bzz](https://github.com/bzz) |
+| [C++](https://github.com/bblfsh/cpp-driver) | [1.4.0](https://github.com/bblfsh/cpp-driver/releases/tag/v1.4.0) | beta | 3.1.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/cpp-driver/) | [dennwc](https://github.com/dennwc) |
+| [C#](https://github.com/bblfsh/csharp-driver) | [1.6.0](https://github.com/bblfsh/csharp-driver/releases/tag/v1.6.0) | beta | 3.1.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/csharp-driver/) | [dennwc](https://github.com/dennwc) |
+| [Go](https://github.com/bblfsh/go-driver) | [2.7.0](https://github.com/bblfsh/go-driver/releases/tag/v2.7.0) | beta | 3.1.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/go-driver/) | [dennwc](https://github.com/dennwc) |
+| [Java](https://github.com/bblfsh/java-driver) | [2.7.2](https://github.com/bblfsh/java-driver/releases/tag/v2.7.2) | beta | 3.1.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [bzz](https://github.com/bzz) |
+| [JavaScript](https://github.com/bblfsh/javascript-driver) | [2.9.0](https://github.com/bblfsh/javascript-driver/releases/tag/v2.9.0) | beta | 3.1.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/javascript-driver/) | [bzz](https://github.com/bzz) |
+| [PHP](https://github.com/bblfsh/php-driver) | [2.8.0](https://github.com/bblfsh/php-driver/releases/tag/v2.8.0) | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/php-driver/) | [dennwc](https://github.com/dennwc) |
+| [Python](https://github.com/bblfsh/python-driver) | [2.10.0](https://github.com/bblfsh/python-driver/releases/tag/v2.10.0) | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [dennwc](https://github.com/dennwc) |
+| [Ruby](https://github.com/bblfsh/ruby-driver) | [2.9.4](https://github.com/bblfsh/ruby-driver/releases/tag/v2.9.4) | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/) | [dennwc](https://github.com/dennwc) |
+| [TypeScript](https://github.com/bblfsh/typescript-driver) | [0.8.0](https://github.com/bblfsh/typescript-driver/releases/tag/v0.8.0) | alpha | 3.0.0 | ✓ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) | [bzz](https://github.com/bzz) |
 
 ## In development
 
-| Language   | Key        | Status  | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
-| :--------- | :--------- | :------ | :--- | :--- | :------------- | :----- | :-------- | :--------- |
-| [ocaml](https://github.com/bblfsh/ocaml-driver) | ocaml | pre-alpha | 1 | ✗ | ✗ | ✗ | ✗ | - |
-| [rust](https://github.com/bblfsh/rust-driver) | rust | pre-alpha | 1 | ✗ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/rust-driver/) | - |
-| [clojure](https://github.com/bblfsh/clojure-driver) | clojure | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
-| [erlang](https://github.com/bblfsh/erlang-driver) | erlang | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
-| [lua](https://github.com/bblfsh/lua-driver) | lua | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
-| [elixir](https://github.com/bblfsh/elixir-driver) | elixir | inactive | 1 | ✗ | ✗ | ✗ | ✗ | - |
+| Language   | Release | Status | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
+| :--------- | :------ | :----- | :--- | :--- | :------------- | :----- | :-------- | :--------- |
+| [ocaml](https://github.com/bblfsh/ocaml-driver) | - | pre-alpha | 1 | ✗ | ✗ | ✗ | ✗ | - |
+| [rust](https://github.com/bblfsh/rust-driver) | [0.0.1](https://github.com/bblfsh/rust-driver/releases/tag/v0.0.1) | pre-alpha | 1 | ✗ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/rust-driver/) | - |
+| [clojure](https://github.com/bblfsh/clojure-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
+| [erlang](https://github.com/bblfsh/erlang-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
+| [lua](https://github.com/bblfsh/lua-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
+| [elixir](https://github.com/bblfsh/elixir-driver) | - | inactive | 1 | ✗ | ✗ | ✗ | ✗ | - |
 
 * \* The driver is able to return the native AST
 * \*\* The driver is able to return the AST annotated
