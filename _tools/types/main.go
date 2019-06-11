@@ -31,7 +31,7 @@ const (
 )
 
 var (
-	reposRootPath = filepath.Join(".", "drivers")
+	reposRootPath = filepath.Join(".", "_drivers")
 	uastNodeRe    = regexp.MustCompile("uast:[^\"]*")
 
 	pprof      = flag.Bool("pprof", false, "Start a pprof profiler HTTP service at "+pprofAddr)
