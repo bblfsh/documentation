@@ -4,6 +4,8 @@
 
 This is the index of Babelfish Improvement Proposals, known as BIPs.
 
+NOTE: The BIP process is currently frozen.
+
 ## All Proposals by Number
 
 | Number | Status | Title |
