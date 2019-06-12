@@ -17,11 +17,11 @@ The representation defines four high-level node kinds:
 
 * Null (Nil)
 
-* Objects
+* [Objects](#object)
 
-* Arrays
+* [Arrays](#array)
 
-* Values
+* [Values](#values)
 
 Null nodes are used to represent an existing property with an unspecified value.
 

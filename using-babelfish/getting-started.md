@@ -2,7 +2,7 @@
 
 ## Using the online web client
 
-The easiest way to get started with Babelfish is to try the online [web client](http://dashboard.bblf.sh/) where you can write or paste your code and run the parser to see the generated UAST.
+The easiest way to get started with Babelfish is to try the online [web client](http://play.bblf.sh/) where you can write or paste your code and run the parser to see the generated UAST.
 
 ## Installing bblfshd locally
 
@@ -16,14 +16,25 @@ After playing with the web client, you will probably want to get Babelfish runni
 
 ### Running with Docker \(recommended\)
 
-The easiest way to run the _bblfshd_ daemon is using Docker. You can do it in stateless mode, meaning that all installed drivers will be wiped out once you remove the container, or using a Docker volume to store part of the container internal filesystem and thus add persistence.
+The easiest way to run the _bblfshd_ daemon is using Docker. You can run it in one of those modes:
+- _Embedded drivers mode_, meaning that recommended drivers will be included in the Docker image. Installing more drivers is similar to stateless mode.
+- _Stateless mode_, meaning that all installed drivers will be wiped out once you remove the container.
+- _Stateful mode_, using a Docker volume to store part of the container internal filesystem and thus add persistence.
+
+#### Embedded drivers
+
+For embedded drivers mode, run the following command:
+
+```bash
+$ docker run -d --name bblfshd --privileged -p 9432:9432 bblfsh/bblfshd:latest-drivers
+```
 
 #### Stateless mode
 
 For stateless mode, run the following command:
 
 ```bash
-$ docker run -d --name bblfshd --privileged -p 9432:9432 bblfsh/bblfshd
+$ docker run -d --name bblfshd --privileged -p 9432:9432 bblfsh/bblfshd:latest
 ```
 
 #### Using a volume
@@ -41,7 +52,7 @@ $ docker volume create bblfshd-cache
 Then you can run the daemon with this command:
 
 ```bash
-$ docker run -d --name bblfshd --privileged -p 9432:9432 -v bblfshd-cache:/var/lib/bblfshd bblfsh/bblfshd
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -v bblfshd-cache:/var/lib/bblfshd bblfsh/bblfshd:latest
 ```
 
 #### Volume mapped to a local directory \(Linux only\)
@@ -49,7 +60,7 @@ $ docker run -d --name bblfshd --privileged -p 9432:9432 -v bblfshd-cache:/var/l
 In this case, just specify the local directory in the `-v` parameter when running the daemon:
 
 ```bash
-$ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd
+$ docker run -d --name bblfshd --privileged -p 9432:9432 -v /var/lib/bblfshd:/var/lib/bblfshd bblfsh/bblfshd:latest
 ```
 
 ### Notes on command line parameters to "docker run"
@@ -72,10 +83,10 @@ If your system uses SELinux \(like Fedora, Red Hat or CentOS among other Linux d
 If everything worked, `docker logs bblfshd` should output something like this:
 
 ```text
-time="2017-10-10T08:59:20Z" level=info msg="bblfshd version: v2.0.0 (build: 2017-10-09T21:18:54+0000)"
-time="2017-10-10T08:59:20Z" level=info msg="initializing runtime at /var/lib/bblfshd"
-time="2017-10-10T08:59:20Z" level=info msg="server listening in 0.0.0.0:9432 (tcp)"
-time="2017-10-10T08:59:20Z" level=info msg="control server listening in /var/run/bblfshctl.sock (unix)"
+[2019-05-01T17:58:29Z]  INFO bblfshd version: v2.12.1 (build: 2019-04-10T16:05:44+0000)
+[2019-05-01T17:58:29Z]  INFO initializing runtime at /var/lib/bblfshd
+[2019-05-01T17:58:29Z]  INFO server listening in 0.0.0.0:9432 (tcp)
+[2019-05-01T17:58:29Z]  INFO control server listening in /var/run/bblfshctl.sock (unix)
 ```
 
 #### Installing the drivers
@@ -98,14 +109,16 @@ You can check the installed versions executing:
 $ docker exec -it bblfshd bblfshctl driver list
 ```
 
-```bash
-+----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
-| LANGUAGE |             IMAGE             | VERSION | STATUS | CREATED |   OS   | GO  |   NATIVE    |
-+----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
-| python   | //bblfsh/python-driver:latest | v1.1.5  | beta   | 4 days  | alpine | 1.8 | 3.6.2       |
-| java     | //bblfsh/java-driver:latest   | v1.1.0  | alpha  | 6 days  | alpine | 1.8 | 8.131.11-r2 |
-+----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
+```text
++------------+------------------------------------------+---------+--------+----------+--------+-------------+----------------------+
+|  LANGUAGE  |                  IMAGE                   | VERSION | STATUS | CREATED  |   OS   |     GO      |        NATIVE        |
++------------+------------------------------------------+---------+--------+----------+--------+-------------+----------------------+
+| python     | docker://bblfsh/python-driver:latest     | v2.3.0  | beta   | 8 months | alpine | 1.10-alpine | python:3.6-alpine    |
+| java       | docker://bblfsh/java-driver:latest       | v2.2.0  | beta   | 8 months | alpine | 1.10-alpine | openjdk:8-jre-alpine |
++------------+------------------------------------------+---------+--------+----------+--------+-------------+----------------------+
 ```
+
+#### Testing the drivers
 
 To test the driver you can execute a parse request to the server with the `bblfshctl parse` command, and an example contained in the Docker image:
 
@@ -131,7 +144,7 @@ If you are using the Docker image then the command line tool is provided with th
 $ docker exec -it bblfshd bblfshctl --help
 ```
 
-```bash
+```text
 Usage:
   bblfshctl [OPTIONS] <command>
 
@@ -158,7 +171,7 @@ $ bblfshctl driver install --recommended
 Replacing an installed driver with a specific version:
 
 ```bash
-$ bblfshctl driver install python bblfsh/python-driver:v1.1.5 --update
+$ bblfshctl driver install python bblfsh/python-driver:v2.3.0 --update
 ```
 
 Listing all available drivers:
@@ -167,12 +180,12 @@ Listing all available drivers:
 $ bblfshctl driver list
 ```
 
-```bash
-+----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
-| LANGUAGE |             IMAGE             | VERSION | STATUS | CREATED |   OS   | GO  |   NATIVE    |
-+----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
-| python   | //bblfsh/python-driver:latest | v1.1.5  | beta   | 4 days  | alpine | 1.8 | 3.6.2       |
-| java     | //bblfsh/java-driver:latest   | v1.1.0  | alpha  | 6 days  | alpine | 1.8 | 8.131.11-r2 |
-+----------+-------------------------------+---------+--------+---------+--------+-----+-------------+
+```text
++------------+------------------------------------------+---------+--------+----------+--------+-------------+----------------------+
+|  LANGUAGE  |                  IMAGE                   | VERSION | STATUS | CREATED  |   OS   |     GO      |        NATIVE        |
++------------+------------------------------------------+---------+--------+----------+--------+-------------+----------------------+
+| python     | docker://bblfsh/python-driver:latest     | v2.3.0  | beta   | 8 months | alpine | 1.10-alpine | python:3.6-alpine    |
+| java       | docker://bblfsh/java-driver:latest       | v2.2.0  | beta   | 8 months | alpine | 1.10-alpine | openjdk:8-jre-alpine |
++------------+------------------------------------------+---------+--------+----------+--------+-------------+----------------------+
 ```
 
