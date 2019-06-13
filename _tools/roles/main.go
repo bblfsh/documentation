@@ -12,8 +12,8 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/bblfsh/sdk/v3/driver/manifest/discovery"
 	"golang.org/x/tools/go/loader"
-	"gopkg.in/bblfsh/sdk.v2/manifest/discovery"
 )
 
 const (
