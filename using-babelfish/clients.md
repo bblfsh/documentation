@@ -93,7 +93,7 @@ func main() {
 As a command:
 
 ```bash
-python -m bblfsh -q [XPath query] -f [file.ext]
+python3 -m bblfsh -q [XPath query] -f [file.ext]
 ```
 
 As a library:
@@ -101,19 +101,13 @@ As a library:
 ```python
 import bblfsh
 
-from bblfsh import filter as filter_uast
-
 if __name__ == "__main__":
     client = bblfsh.BblfshClient("0.0.0.0:9432")
-    response = client.parse("some_file.py")
+    ctx = client.parse("some_file.py")
 
-    if response.status != 0:
-        raise Exception('Some error happened: ' + str(response.errors))
-
-    query = "//*[@role='Identifier' and not(@role='Qualified')]"
-    nodes = filter_uast(response.uast, query)
-    for n in nodes:
-        print(n)
+    it = ctx.filter("//uast:Identifier")
+    for n in it:
+        print(n.get())
 ```
 
 ### Scala example
