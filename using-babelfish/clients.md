@@ -32,16 +32,20 @@ As a library:
 package main
 
 import (
+	"context"
 	"fmt"
+	"time"
 
-	"github.com/bblfsh/go-client/v4"
+	bblfsh "github.com/bblfsh/go-client/v4"
 	"github.com/bblfsh/go-client/v4/tools"
-	"gopkg.in/bblfsh/sdk.v2/uast"
-	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
+	"github.com/bblfsh/sdk/v3/uast"
+	"github.com/bblfsh/sdk/v3/uast/nodes"
 )
 
 func main() {
-	client, err := bblfsh.NewClient("localhost:9432")
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	client, err := bblfsh.NewClientContext(ctx, "localhost:9432")
+	cancel()
 	if err != nil {
 		panic(err)
 	}
@@ -51,13 +55,14 @@ func main() {
 		panic(err)
 	}
 
-	query := "//*[not(@token = '') and not(@role='Qualified')]"
-	it, _ := tools.Filter(res, query)
+	it, err := tools.Filter(res, "//*[not(@token = '') and not(@role='Qualified')]")
+	if err != nil {
+		panic(err)
+	}
 	for it.Next() {
 		// Print the internal type
 		n := it.Node()
-		tp := uast.TypeOf(n)
-		fmt.Printf("Type: %s (%T)\n", tp, n)
+		fmt.Printf("Type: %q (%T)\n", uast.TypeOf(n), n)
 
 		node, ok := n.(nodes.Object)
 		if !ok {
@@ -66,18 +71,17 @@ func main() {
 
 		// Print the positions
 		pos := uast.PositionsOf(node)
-		start := pos.Start()
-		end := pos.End()
-		fmt.Println("StartPos:", start, " EndPos:", end)
+		fmt.Println("StartPos:", pos.Start(), " EndPos:", pos.End())
 
 		// Print the token
-		token := uast.TokenOf(node)
-		fmt.Println("Token:", token)
+		fmt.Println("Token:", uast.TokenOf(node))
 	}
 
 	// Get the normalized identifiers
-	query = "//uast:Identifier"
-	it, _ = tools.Filter(res, query)
+	it, err = tools.Filter(res, "//uast:Identifier")
+	if err != nil {
+		panic(err)
+	}
 	for it.Next() {
 		node, ok := it.Node().(nodes.Object)
 		if !ok {
