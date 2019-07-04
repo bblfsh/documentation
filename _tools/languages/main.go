@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"log"
 	"path/filepath"
+	"strings"
 	"sync"
 
 	"github.com/bblfsh/sdk/v3/driver/manifest"
@@ -117,11 +118,25 @@ func writeFile(fname string, list []Driver) error {
 	buf.WriteString("\n## Supported languages\n")
 	buf.WriteString(tableHeader)
 
+	aliases := 0
 	for _, m := range list {
 		if !m.ForCurrentSDK() || m.InDevelopment() {
 			continue
 		}
+		aliases += len(m.Aliases)
 		buf.WriteString(m.String())
+	}
+
+	if aliases > 0 {
+		buf.WriteString("\n### Aliases for languages\n\n| Language | Aliases |\n| :--- | :--- |\n")
+		for _, m := range list {
+			if !m.ForCurrentSDK() || m.InDevelopment() || len(m.Aliases) == 0 {
+				continue
+			}
+			buf.WriteString(fmt.Sprintf("| %s | %s |\n",
+				strings.ToLower(m.Language), strings.ToLower(strings.Join(m.Aliases, ", ")),
+			))
+		}
 	}
 
 	written := false
