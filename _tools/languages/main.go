@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"log"
 	"path/filepath"
+	"strings"
 	"sync"
 
 	"github.com/bblfsh/sdk/v3/driver/manifest"
@@ -117,16 +118,30 @@ func writeFile(fname string, list []Driver) error {
 	buf.WriteString("\n## Supported languages\n")
 	buf.WriteString(tableHeader)
 
+	aliases := 0
 	for _, m := range list {
-		if !m.ForCurrentSDK() || m.InDevelopment() {
+		if !m.isSupported() {
 			continue
 		}
+		aliases += len(m.Aliases)
 		buf.WriteString(m.String())
+	}
+
+	if aliases > 0 {
+		buf.WriteString("\n### Aliases for languages\n\n| Language | Aliases |\n| :--- | :--- |\n")
+		for _, m := range list {
+			if !m.isSupported() || len(m.Aliases) == 0 {
+				continue
+			}
+			buf.WriteString(fmt.Sprintf("| %s | %s |\n",
+				strings.ToLower(m.Language), strings.ToLower(strings.Join(m.Aliases, ", ")),
+			))
+		}
 	}
 
 	written := false
 	for _, m := range list {
-		if m.ForCurrentSDK() && !m.InDevelopment() {
+		if m.isSupported() {
 			continue
 		}
 		if !written {
@@ -198,6 +213,12 @@ func (m Driver) String() string {
 		linkMark(m.DockerhubURL),
 		link(mnt.Name, mlink),
 	)
+}
+
+// isSupported reports whether driver is in the "supported" state, meaning it was built for
+// the current version of the SDK and is not tagged as a development release.
+func (m Driver) isSupported() bool {
+	return m.ForCurrentSDK() && !m.InDevelopment()
 }
 
 func (l *loader) checkDockerImage(name string) bool {
