@@ -16,6 +16,15 @@
 | [Ruby](https://github.com/bblfsh/ruby-driver) | [2.9.4](https://github.com/bblfsh/ruby-driver/releases/tag/v2.9.4) | beta | 3.0.0 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/) | [dennwc](https://github.com/dennwc) |
 | [TypeScript](https://github.com/bblfsh/typescript-driver) | [0.8.0](https://github.com/bblfsh/typescript-driver/releases/tag/v0.8.0) | alpha | 3.0.0 | ✓ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) | [bzz](https://github.com/bzz) |
 
+### Aliases for languages
+
+| Language | Aliases |
+| :--- | :--- |
+| bash | shell |
+| cpp | c++, c, cuda, opencl, metal |
+| csharp | c# |
+| javascript | js, jsx |
+
 ## In development
 
 | Language   | Release | Status | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
