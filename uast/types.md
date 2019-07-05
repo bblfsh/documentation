@@ -4,10 +4,10 @@
 For every [UAST type](semantic-uast.md#types)
 in every driver the following two values are reported:
  - _fixtures usage_  - number of times this type was used in driver _fixtures_ (_*.sem.uast_ files)
- - _code usage_ - number of times this type was usind in the driver mapping DSL code (_normalizer.go_ file)
+ - _code usage_ - number of times this type was used in in the driver mapping DSL code (_normalizer.go_ file)
 
 The format is _fixtures usage_ / _code usage_ in case _code usage_ is not zero.
-Otherwise, only _fixture usage_ is report.
+Otherwise, only _fixture usage_ is reported.
 
 |                         | [Bash](https://github.com/bblfsh/bash-driver) | [C++](https://github.com/bblfsh/cpp-driver) | [C#](https://github.com/bblfsh/csharp-driver) | [Go](https://github.com/bblfsh/go-driver) | [Java](https://github.com/bblfsh/java-driver) | [JavaScript](https://github.com/bblfsh/javascript-driver) | [PHP](https://github.com/bblfsh/php-driver) | [Python](https://github.com/bblfsh/python-driver) | [Ruby](https://github.com/bblfsh/ruby-driver) | [TypeScript](https://github.com/bblfsh/typescript-driver) |
 | :---------------------- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
