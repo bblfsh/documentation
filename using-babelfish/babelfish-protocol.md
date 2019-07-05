@@ -13,7 +13,7 @@ You can read [the server](https://github.com/bblfsh/sdk/blob/94e3b212553e761677d
 
 ### ParseRequest
 
-Issued by the client to request that a source code file must be parsed to an UAST tree. The client must provide the code in the `content` field, the programming language in the `language` field \(which must be one of the [languages currently supported](../languages.md)\) or empty to enable auto-detection\) and the `filename` field with the name of the file containing the source code.
+Issued by the client to request that a source code file must be parsed to an UAST tree. The client must provide the code in the `content` field, the programming language in the `language` field \(which must be one of the [languages currently supported](../languages.md) or empty to enable auto-detection\) and the `filename` field with the name of the file containing the source code.
 
 Example:
 
@@ -56,4 +56,3 @@ The status contains the return code of the Request. If it's != 0 \(which will be
     "roles": ["role1", "role2", ...]
 }
 ```
-
