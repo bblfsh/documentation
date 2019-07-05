@@ -59,7 +59,7 @@ Now that we've created a request, we need to send it \(previous code omitted\):
 
 The code in the previous section returned a `ParseResponse` object that will have the format of the [ParseResponse](babelfish-protocol.md#ParseResponse) as seen on the [server protocol](babelfish-protocol.md) page. You should check the `status` \(`Status` in the case of Go, since public members start with uppercase\); only a value of `protocol.Status.OK` will indicate success.
 
-The most important member of the `ParseResponse` object is undoubtly `uast` \(`UAST` in Go\). This will contain a `Node` object which the [structure detailed in the previous page](babelfish-protocol.md#Nodes). This first node returned would be the root node of the UAST, and you typically would iterate over the node children \(contained in the aptly named `children` field\) typically using [a visitor](https://en.wikipedia.org/wiki/Visitor_pattern) and reading the `token`s and `roles` in the tree to do your tool.
+The most important member of the `ParseResponse` object is undoubtedly `uast` \(`UAST` in Go\). This will contain a `Node` object with the [structure detailed in the previous page](babelfish-protocol.md#Nodes). This first node returned would be the root node of the UAST, and you typically would iterate over the children node \(contained in the aptly named `children` field\) typically using [a visitor](https://en.wikipedia.org/wiki/Visitor_pattern) and reading the `token`s and `role`s in the tree to do your tool.
 
 For demonstration purposes, we'll just write a simple function that iterates the tree in preorder and print the node tokens:
 
@@ -132,4 +132,3 @@ func printTokens(n *uast.Node) {
     }
 }
 ```
-

@@ -153,7 +153,7 @@ When using one of the clients that support libuast you can query the UAST result
 
 ## Iterators
 
-The client also allow you to instance an Iterator object and iterate over the tree on several predefined orders:
+The client also allows you to instance an Iterator object and iterate over the tree on several predefined orders:
 
 * [Pre-Order](https://en.wikipedia.org/wiki/Tree_traversal#Pre-order)
 * [Post-Order](https://en.wikipedia.org/wiki/Tree_traversal#Post-order)
