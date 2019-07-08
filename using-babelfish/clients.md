@@ -10,9 +10,9 @@ There are clients for the following languages:
 
 | Language | Status | UAST.v2 / libuast.v3 | URL |
 | :--- | :--- | :--- | :--- |
-| Python |  Beta | ✓ | [bblfsh/client-python](https://github.com/bblfsh/client-python) |
+| Python |  Beta | ✓ | [bblfsh/client-python](https://github.com/bblfsh/python-client) |
 | Go | Beta | ✓ | [bblfsh/go-client](https://github.com/bblfsh/go-client) |
-| Scala |  | [WIP](https://github.com/bblfsh/client-scala/pull/76)  | [bblfsh/client-scala](https://github.com/bblfsh/client-scala) |
+| Scala |  | [WIP](https://github.com/bblfsh/scala-client/issues/83)  | [bblfsh/client-scala](https://github.com/bblfsh/scala-client) |
 
 ## Examples
 
