@@ -2,7 +2,7 @@
 
 ## Using the online web client
 
-The easiest way to get started with Babelfish is to try the online [web client](http://play.bblf.sh/) where you can write or paste your code and run the parser to see the generated UAST.
+The easiest way to get started with Babelfish is to try the online [playground](http://play.bblf.sh/) where you can write or paste your code and run the parser to see the generated UAST.
 
 ## Installing bblfshd locally
 
