@@ -275,7 +275,7 @@ Incompatible changes to the Role set are proposed, in order to do that, the foll
 
 * Versioning should be added to the [SDK](https://github.com/bblfsh/sdk/), to allow existing server and drivers work with a previous version of the SDK.
 * Roles should be updated in the SDK.
-* Protobuf generated code should be updated for [server](https://github.com/bblfsh/server) and [Python](https://github.com/bblfsh/client-python) and [Go](https://github.com/bblfsh/go-client) clients.
+* Protobuf generated code should be updated for [server](https://github.com/bblfsh/server) and [Python](https://github.com/bblfsh/python-client) and [Go](https://github.com/bblfsh/go-client) clients.
 * Update [libuast](https://github.com/bblfsh/libuast)'s role generator and role set.
 * Existing drivers should be modified to support the new roles.
 
