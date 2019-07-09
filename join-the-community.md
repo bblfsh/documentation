@@ -12,7 +12,7 @@ You can start contributing in many ways
 * [Request a feature.](join-the-community.md#feature-requests)
 * Improve the [documentation](http://github.com/bblfsh/documentation).
 * Contribute code to the [bblfshd](http://github.com/bblfsh/bblfshd), [SDK](http://github.com/bblfsh/sdk).
-* Contribute to [libuast](http://github.com/bblfsh/libuast), any of the [Python](http://github.com/bblfsh/client-python), [Go](http://github.com/bblfsh/go-client) or [Scala](http://github.com/bblfsh/client-scala) clients, or create a new client for your preferred language.
+* Contribute to [libuast](http://github.com/bblfsh/libuast), any of the [Python](http://github.com/bblfsh/python-client), [Go](http://github.com/bblfsh/go-client) or [Scala](http://github.com/bblfsh/scala-client) clients, or create a new client for your preferred language.
 * Write a driver for a new language! If you plan to do this, we recommend you to talk to us first so we can coordinate efforts and assist you.
 
 ## Reporting bugs
