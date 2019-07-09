@@ -6,7 +6,7 @@ A Universal Abstract Syntax Tree \(UAST\) is a normalized form of [Abstract Synt
 By definition, the UAST representation does not depend on the language
 of the parser for source files.
 
-UAST is defined by two separate specifications:
+UAST is defined by three separate specifications:
 
 * [Node representation](./representation-v2.md) - defines a common transport
   format for the UAST.
