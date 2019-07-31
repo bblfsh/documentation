@@ -5,7 +5,31 @@ On the [next page](grpc-usage-example.md) we'll see a demo of how this comes tog
 
 ## Protocol v2
 
-<!-- FIXME(dennwc): explain the v2 protocol, list relevant proto files and UAST decoding spec -->
+Protocol v2 introduced a few changes in data structures and in methods' signatures.
+For instance `ProtocolService` was split into two services - [Driver](https://github.com/bblfsh/sdk/blob/v3.2.2/protocol/driver.proto#L55) which implements `Parse` method and [DriverHost](https://github.com/bblfsh/sdk/blob/v3.2.2/protocol/driver.proto#L103) which implements server related methods like `ServerVersion` and `SupportedLanguages`.
+`ParseRequest` was extended by `Mode` field, so clients may decide what transformations will be used (native, preprocessed, annotated, semantic).
+`ParseResponse` type was simplified. It contains the language, binary encoded uast and potential error message.
+
+Example request:
+```json
+{
+    "content": "unsigned long long fib(int n);\n\nint main() {\n    fib(12);\n    return 0;\n}\n\nunsigned long long fib(int n) {\n    return (n <= 1) ? 1ULL : fib(n-2) + fib(n-1);\n}",
+    "filename": "test.c"
+}
+```
+Example response:
+```json
+{
+    "uast": "\000bgr\001\000\000\000\005\010\244\003\020\001\020\...",
+    "language": "c"
+}
+```
+
+Also `SupportedLanguagesResponse` was simplified. The structure wraps list of language driver manifests. Every manifest contains all needed information plus optional fields like aliases (so far only for [certain languages](../languages.md))
+
+More examples you can find on the [next page](grpc-usage-example.md).
+
+For more details you can look at [protocol definition](https://github.com/bblfsh/sdk/blob/v3.2.2/protocol/driver.proto)
 
 ## Protocol v1
 

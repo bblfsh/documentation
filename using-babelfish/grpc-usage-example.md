@@ -132,3 +132,96 @@ func printTokens(n *uast.Node) {
     }
 }
 ```
+
+## Supported Languages
+
+Protocol v2 and higher include a `SupportedLanguages` method that permits the client to
+discover what languages the `bblfshd` currently supports. The [SupportedLanguagesResponse]( https://godoc.org/gopkg.in/bblfsh/sdk.v3/protocol#SupportedLanguagesResponse)
+returns a list of driver manifests, giving the names and aliases of the languages each driver
+understands, along with version, development status, and feature support tags
+(see the [Manifest](https://godoc.org/gopkg.in/bblfsh/sdk.v3/driver/manifest#Manifest) type).
+
+This method is supported by SDK versions ≥ 3.1.0.
+
+Example (json):
+```json
+[
+    {
+        "name": "C++",
+        "language": "cpp",
+        "aliases": [
+            "C++",
+            "C",
+            "CUDA",
+            "OpenCL",
+            "Metal"
+        ],
+        "version": {
+            "version": "v1.4.0",
+            "build": {
+                "seconds": 1559053620
+            }
+        },
+        "status": "DEV_BETA",
+        "features": [
+            "ast",
+            "uast",
+            "roles"
+        ]
+    },
+    {
+        "name": "Java",
+        "language": "java",
+        "version": {
+            "version": "v2.7.2",
+            "build": {
+                "seconds": 1559055732
+            }
+        },
+        "status": "DEV_BETA",
+        "features": [
+            "ast",
+            "uast",
+            "roles"
+        ]
+    },
+    {
+        "name": "JavaScript",
+        "language": "javascript",
+        "aliases": [
+            "JS",
+            "JSX"
+        ],
+        "version": {
+            "version": "v2.9.0",
+            "build": {
+                "seconds": 1559054418
+            }
+        },
+        "status": "DEV_BETA",
+        "features": [
+            "ast",
+            "uast",
+            "roles"
+        ]
+    }
+]
+```
+
+## Server Version
+
+`ServerVersion` method permits the client to discover what version of bblfsh server is running.
+The [VersionResponse](https://godoc.org/gopkg.in/bblfsh/sdk.v3/protocol#VersionResponse)
+returns the [Version](https://godoc.org/gopkg.in/bblfsh/sdk.v3/driver#Version) object.
+
+This method is supported by SDK versions ≥ 3.1.0.
+
+Example (json):
+```json
+{
+    "version": "v2.14.0",
+    "build": {
+        "seconds": 1559059237
+    }
+}
+```
