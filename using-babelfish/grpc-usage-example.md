@@ -132,3 +132,73 @@ func printTokens(n *uast.Node) {
     }
 }
 ```
+
+## Supported Languages API v2
+A new protocol v2 lets ask **bblfshd** what languages are currently supported.
+Sending the [SupportedLanguagesRequest](https://github.com/bblfsh/sdk/blob/v3.2.2/protocol/driver.proto#L96) we will get [SupportedLanguagesResponse](https://github.com/bblfsh/sdk/blob/v3.2.2/protocol/driver.proto#L98) which wraps list of driver manifests for each language supported by the server.
+```json
+[
+    {
+        "name": "C++",
+        "language": "cpp",
+        "aliases": [
+            "C++",
+            "C",
+            "CUDA",
+            "OpenCL",
+            "Metal"
+        ],
+        "version": {
+            "version": "v1.4.0",
+            "build": {
+                "seconds": 1559053620
+            }
+        },
+        "status": "DEV_BETA",
+        "features": [
+            "ast",
+            "uast",
+            "roles"
+        ]
+    },
+    {
+        "name": "Java",
+        "language": "java",
+        "version": {
+            "version": "v2.7.2",
+            "build": {
+                "seconds": 1559055732
+            }
+        },
+        "status": "DEV_BETA",
+        "features": [
+            "ast",
+            "uast",
+            "roles"
+        ]
+    },
+    {
+        "name": "JavaScript",
+        "language": "javascript",
+        "aliases": [
+            "JS",
+            "JSX"
+        ],
+        "version": {
+            "version": "v2.9.0",
+            "build": {
+                "seconds": 1559054418
+            }
+        },
+        "status": "DEV_BETA",
+        "features": [
+            "ast",
+            "uast",
+            "roles"
+        ]
+    }
+]
+```
+What is worth to notice is the fact that new API supports language aliases.
+
+If you want to benefit from the new API, you have to be sure that your client uses [sdk](https://github.com/bblfsh/sdk/releases) version at least `v3.1.X` (we recommend the latest stable version).
