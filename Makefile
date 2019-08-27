@@ -18,6 +18,9 @@ roles:
 languages:
 	go run _tools/languages/main.go languages.md languages.json
 
+update: languages
+	go run _tools/ci-updater/main.go
+
 types:
 	GO111MODULE=on go run _tools/types/main.go > uast/types.md
 
