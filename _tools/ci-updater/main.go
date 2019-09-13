@@ -21,6 +21,7 @@ const (
 	repoURL      = "https://github.com/" + org + "/" + repo
 	commitMsg    = "regular languages update"
 	branchPrefix = "auto-update-languages"
+	prTitle      = "Automated update"
 
 	gitUser           = "bblfsh-release-bot"
 	gitMail           = "<release-bot@bblf.sh>"
@@ -98,7 +99,7 @@ func preparePR(githubToken, branch, commitMsg string) error {
 
 	log.Infof("Preparing pr %v -> master", branch)
 	newPR := &github.NewPullRequest{
-		Title:               &branch,
+		Title:               strPtr(prTitle),
 		Head:                &branch,
 		Base:                strPtr("master"),
 		Body:                strPtr(commitMsg),
