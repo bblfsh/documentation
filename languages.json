@@ -163,6 +163,11 @@
 				"Name": "Denys Smirnov",
 				"Email": "denys@sourced.tech",
 				"Github": "dennwc"
+			},
+			{
+				"Name": "Michael Fromberger",
+				"Email": "michael@sourced.tech",
+				"Github": "creachadair"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/go-driver",
@@ -272,9 +277,14 @@
 		],
 		"Maintainers": [
 			{
-				"Name": "Alexander Bezzubov",
-				"Email": "alex@sourced.tech",
-				"Github": "bzz"
+				"Name": "Kuba Podgórski",
+				"Email": "kuba@sourced.tech",
+				"Github": "kuba--"
+			},
+			{
+				"Name": "Denys Smirnov",
+				"Email": "denys@sourced.tech",
+				"Github": "dennwc"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/javascript-driver",
@@ -323,6 +333,11 @@
 			"roles"
 		],
 		"Maintainers": [
+			{
+				"Name": "Kuba Podgórski",
+				"Email": "kuba@sourced.tech",
+				"Github": "kuba--"
+			},
 			{
 				"Name": "Denys Smirnov",
 				"Email": "denys@sourced.tech",
