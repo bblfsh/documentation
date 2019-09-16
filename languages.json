@@ -73,14 +73,19 @@
 		],
 		"Maintainers": [
 			{
+				"Name": "Nacho Cordón",
+				"Email": "nacho@sourced.tech",
+				"Github": "ncordon"
+			},
+			{
+				"Name": "Kuba Podgórski",
+				"Email": "kuba@sourced.tech",
+				"Github": "kuba--"
+			},
+			{
 				"Name": "Denys Smirnov",
 				"Email": "denys@sourced.tech",
 				"Github": "dennwc"
-			},
-			{
-				"Name": "Alexander Bezzubov",
-				"Email": "alex@sourced.tech",
-				"Github": "bzz"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/cpp-driver",
@@ -391,6 +396,11 @@
 				"Name": "Denys Smirnov",
 				"Email": "denys@sourced.tech",
 				"Github": "dennwc"
+			},
+			{
+				"Name": "Nacho Cordón",
+				"Email": "nacho@sourced.tech",
+				"Github": "ncordon"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/python-driver",
@@ -571,6 +581,18 @@
 		"Status": "pre-alpha",
 		"SDKVersion": "1",
 		"Runtimes": {},
+		"Maintainers": [
+			{
+				"Name": "Nacho Cordón",
+				"Email": "nacho@sourced.tech",
+				"Github": "ncordon"
+			},
+			{
+				"Name": "Michael Fromberger",
+				"Email": "michael@sourced.tech",
+				"Github": "creachadair"
+			}
+		],
 		"GithubURL": "https://github.com/bblfsh/rust-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/rust-driver/",
 		"Releases": [
@@ -587,6 +609,18 @@
 			"Description": "clojure driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
 		"Runtimes": {},
+		"Maintainers": [
+			{
+				"Name": "Michael Fromberger",
+				"Email": "michael@sourced.tech",
+				"Github": "creachadair"
+			},
+			{
+				"Name": "Nacho Cordón",
+				"Email": "nacho@sourced.tech",
+				"Github": "ncordon"
+			}
+		],
 		"GithubURL": "https://github.com/bblfsh/clojure-driver"
 	},
 	{
@@ -611,6 +645,18 @@
 			"Description": "lua driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
 		"Runtimes": {},
+		"Maintainers": [
+			{
+				"Name": "Michael Fromberger",
+				"Email": "michael@sourced.tech",
+				"Github": "creachadair"
+			},
+			{
+				"Name": "Kuba Podgórski",
+				"Email": "kuba@sourced.tech",
+				"Github": "kuba--"
+			}
+		],
 		"GithubURL": "https://github.com/bblfsh/lua-driver"
 	},
 	{
