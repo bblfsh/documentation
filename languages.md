@@ -6,7 +6,7 @@
 | Language   | Release | Status | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
 | :--------- | :------ | :----- | :--- | :--- | :------------- | :----- | :-------- | :--------- |
 | [Bash](https://github.com/bblfsh/bash-driver) | [2.7.0](https://github.com/bblfsh/bash-driver/releases/tag/v2.7.0) | beta | 3.2.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/bash-driver/) | [bzz](https://github.com/bzz) |
-| [C++](https://github.com/bblfsh/cpp-driver) | [1.4.0](https://github.com/bblfsh/cpp-driver/releases/tag/v1.4.0) | beta | 3.2.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/cpp-driver/) | [dennwc](https://github.com/dennwc) |
+| [C++](https://github.com/bblfsh/cpp-driver) | [1.4.0](https://github.com/bblfsh/cpp-driver/releases/tag/v1.4.0) | beta | 3.2.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/cpp-driver/) | [ncordon](https://github.com/ncordon) |
 | [C#](https://github.com/bblfsh/csharp-driver) | [1.6.0](https://github.com/bblfsh/csharp-driver/releases/tag/v1.6.0) | beta | 3.2.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/csharp-driver/) | [dennwc](https://github.com/dennwc) |
 | [Go](https://github.com/bblfsh/go-driver) | [2.7.0](https://github.com/bblfsh/go-driver/releases/tag/v2.7.0) | beta | 3.2.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/go-driver/) | [dennwc](https://github.com/dennwc) |
 | [Java](https://github.com/bblfsh/java-driver) | [2.7.2](https://github.com/bblfsh/java-driver/releases/tag/v2.7.2) | beta | 3.2.2 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [bzz](https://github.com/bzz) |
@@ -30,10 +30,10 @@
 | Language   | Release | Status | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
 | :--------- | :------ | :----- | :--- | :--- | :------------- | :----- | :-------- | :--------- |
 | [ocaml](https://github.com/bblfsh/ocaml-driver) | - | pre-alpha | 1 | ✗ | ✗ | ✗ | ✗ | - |
-| [rust](https://github.com/bblfsh/rust-driver) | [0.0.1](https://github.com/bblfsh/rust-driver/releases/tag/v0.0.1) | pre-alpha | 1 | ✗ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/rust-driver/) | - |
-| [clojure](https://github.com/bblfsh/clojure-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
+| [rust](https://github.com/bblfsh/rust-driver) | [0.0.1](https://github.com/bblfsh/rust-driver/releases/tag/v0.0.1) | pre-alpha | 1 | ✗ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/rust-driver/) | [ncordon](https://github.com/ncordon) |
+| [clojure](https://github.com/bblfsh/clojure-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | [creachadair](https://github.com/creachadair) |
 | [erlang](https://github.com/bblfsh/erlang-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
-| [lua](https://github.com/bblfsh/lua-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | - |
+| [lua](https://github.com/bblfsh/lua-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | [creachadair](https://github.com/creachadair) |
 | [elixir](https://github.com/bblfsh/elixir-driver) | - | inactive | 1 | ✗ | ✗ | ✗ | ✗ | - |
 
 * \* The driver is able to return the native AST
