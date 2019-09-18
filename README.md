@@ -59,3 +59,7 @@ See [v2 transition options](./using-babelfish/advanced-usage.md#protocol-v2-tran
 This repository contains the project documentation, which you can also see properly rendered at [https://docs.sourced.tech/babelfish](https://docs.sourced.tech/babelfish).
 
 [ast]: https://en.wikipedia.org/wiki/Abstract_syntax_tree
+
+### License
+
+This work is licensed under a Creative Commons — Attribution-ShareAlike 4.0 International License. See [LICENSE](./LICENSE.md).
