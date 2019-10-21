@@ -131,6 +131,11 @@
 				"Name": "Denys Smirnov",
 				"Email": "denys@sourced.tech",
 				"Github": "dennwc"
+			},
+			{
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/csharp-driver",
@@ -181,6 +186,7 @@
 		"GithubURL": "https://github.com/bblfsh/go-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/go-driver/",
 		"Releases": [
+			"2.7.2",
 			"2.7.1",
 			"2.7.0",
 			"2.6.0",
@@ -218,6 +224,11 @@
 			"roles"
 		],
 		"Maintainers": [
+			{
+				"Name": "Nacho Cordón",
+				"Email": "nacho@sourced.tech",
+				"Github": "ncordon"
+			},
 			{
 				"Name": "Alexander Bezzubov",
 				"Email": "alex@sourced.tech",
@@ -301,6 +312,7 @@
 		"GithubURL": "https://github.com/bblfsh/javascript-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/javascript-driver/",
 		"Releases": [
+			"2.10.1",
 			"2.10.0",
 			"2.9.0",
 			"2.8.0",
@@ -359,6 +371,7 @@
 		"GithubURL": "https://github.com/bblfsh/php-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/php-driver/",
 		"Releases": [
+			"2.8.2",
 			"2.8.1",
 			"2.8.0",
 			"2.7.4",
@@ -414,6 +427,7 @@
 		"GithubURL": "https://github.com/bblfsh/python-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/python-driver/",
 		"Releases": [
+			"2.10.2",
 			"2.10.1",
 			"2.10.0",
 			"2.9.0",
@@ -499,6 +513,11 @@
 		],
 		"Maintainers": [
 			{
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
+			},
+			{
 				"Name": "Denys Smirnov",
 				"Email": "denys@sourced.tech",
 				"Github": "dennwc"
@@ -550,6 +569,11 @@
 			"ast"
 		],
 		"Maintainers": [
+			{
+				"Name": "Kuba Podgórski",
+				"Email": "kuba@sourced.tech",
+				"Github": "kuba--"
+			},
 			{
 				"Name": "Alexander Bezzubov",
 				"Email": "alex@sourced.tech",
@@ -644,6 +668,18 @@
 			"Description": "erlang driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
 		"Runtimes": {},
+		"Maintainers": [
+			{
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
+			},
+			{
+				"Name": "Nacho Cordón",
+				"Email": "nacho@sourced.tech",
+				"Github": "ncordon"
+			}
+		],
 		"GithubURL": "https://github.com/bblfsh/erlang-driver"
 	},
 	{
@@ -677,6 +713,18 @@
 		"Status": "inactive",
 		"SDKVersion": "1",
 		"Runtimes": {},
+		"Maintainers": [
+			{
+				"Name": "Kuba Podgórski",
+				"Email": "kuba@sourced.tech",
+				"Github": "kuba--"
+			},
+			{
+				"Name": "Denys Smirnov",
+				"Email": "denys@sourced.tech",
+				"Github": "dennwc"
+			}
+		],
 		"GithubURL": "https://github.com/bblfsh/elixir-driver"
 	}
 ]
