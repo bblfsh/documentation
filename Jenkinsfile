@@ -55,4 +55,12 @@ spec:
       }
     }
   }
+  post {
+    success {
+      slackSend (color: '#2eb886', message: "SUCCESS: `${env.JOB_NAME}` <${env.BUILD_URL}|build #${env.BUILD_NUMBER}>")
+    }
+    failure {
+      slackSend (color: '#b82e60', message: "FAILED: `${env.JOB_NAME}` <${env.BUILD_URL}|build #${env.BUILD_NUMBER}>")
+    }
+  }
 }
