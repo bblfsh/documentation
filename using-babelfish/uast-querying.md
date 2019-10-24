@@ -39,8 +39,7 @@ The query language also allows some more complex queries:
 * All the simple identifiers: `//*[@role='Identifier' and not(@role='Qualified')]` or, if you're getting the semantic UAST (which is the default): `//Identifier[not(@role='Qualified')]`.
 * All the simple identifiers that don't have any positioning: `//*[@role='Identifier' and not(@role='Qualified') and not(@startOffset) and not(@endOffset)]`
 * All the arguments in function calls: `//*[@role='Call' and @role='Argument']`
-* The parent node of a call argument: `//*@[role='Call' and @role='Argument']/parent::*` (you can also specify the type of the parent node instead of an `*` or use `ancestor::type` to get the first ancestor of a specified type).
+* The parent node of a call argument: `//*[@role='Call' and @role='Argument']/parent::*` (you can also specify the type of the parent node instead of an `*` or use `ancestor::type` to get the first ancestor of a specified type).
 * All the numeric literals in binary arithmetic operators: `//*[@role='Binary' and @role='Operator' and @role='Arithmetic']//*[@role='Number' and @role='Literal']`
 
 [XPath 1.0 functions](https://developer.mozilla.org/en-US/docs/Web/XPath/Functions) can also be used in the queries, but if the query returns a type different than the default node list you must use one of the specific typed functions: `filter_bool` \(or `filterBool` in some clients\), `filter_number` or `filter_string`. If you use the wrong type the error will tell you what is the type returned by the expression.
-
