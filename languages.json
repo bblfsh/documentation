@@ -6,7 +6,7 @@
 			"shell"
 		],
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Documentation": {
 			"Description": "bash driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -62,7 +62,7 @@
 			"Metal"
 		],
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Runtimes": {
 			"NativeVersion": "8u181",
 			"GoVersion": "1.12"
@@ -116,7 +116,7 @@
 			"C#"
 		],
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Runtimes": {
 			"NativeVersion": "2.1",
 			"GoVersion": "1.12"
@@ -161,10 +161,10 @@
 		"Language": "go",
 		"Aliases": null,
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Runtimes": {
-			"NativeVersion": "1.12",
-			"GoVersion": "1.12"
+			"NativeVersion": "1.13",
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -213,7 +213,7 @@
 		"Language": "java",
 		"Aliases": null,
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Runtimes": {
 			"NativeVersion": "8u181",
 			"GoVersion": "1.12"
@@ -284,7 +284,7 @@
 			"JSX"
 		],
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Documentation": {
 			"Description": "JavaScript driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -343,7 +343,7 @@
 		"Language": "php",
 		"Aliases": null,
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Documentation": {
 			"Description": "php driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -402,7 +402,7 @@
 		"Language": "python",
 		"Aliases": null,
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Runtimes": {
 			"NativeVersion": "3.6",
 			"GoVersion": "1.12"
@@ -498,7 +498,7 @@
 		"Language": "ruby",
 		"Aliases": null,
 		"Status": "beta",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Documentation": {
 			"Description": "ruby driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
@@ -557,7 +557,7 @@
 		"Language": "typescript",
 		"Aliases": null,
 		"Status": "alpha",
-		"SDKVersion": "3.2.4",
+		"SDKVersion": "3.3.1",
 		"Documentation": {
 			"Description": "typescript driver for [babelfish](https://github.com/bblfsh/server).\n"
 		},
