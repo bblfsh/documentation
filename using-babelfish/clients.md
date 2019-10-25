@@ -12,7 +12,7 @@ There are clients for the following languages:
 | :--- | :--- | :--- | :--- |
 | Python |  Beta | ✓ | [bblfsh/python-client](https://github.com/bblfsh/python-client) |
 | Go | Beta | ✓ | [bblfsh/go-client](https://github.com/bblfsh/go-client) |
-| Scala |  | [WIP](https://github.com/bblfsh/scala-client/issues/83)  | [bblfsh/client-scala](https://github.com/bblfsh/scala-client) |
+| Scala | Beta | ✓ | [bblfsh/scala-client](https://github.com/bblfsh/scala-client) |
 
 ## Examples
 

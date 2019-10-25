@@ -5,7 +5,6 @@
 * [Languages](languages.md)
 * [Alternatives](alternatives.md)
 * [Join the Community](join-the-community.md)
-* [Babelfish Improvement Proposals](babelfish-improvement-proposals.md)
 
 ## Using Babelfish
 
@@ -15,7 +14,7 @@
 * [UAST Querying](using-babelfish/uast-querying.md)
 * [Babelfish Protocol](using-babelfish/babelfish-protocol.md)
 * [gRPC usage example](using-babelfish/grpc-usage-example.md)
-* [Babelfish web client](http://play.bblf.sh)
+* [Babelfish playground](http://play.bblf.sh)
 
 ## UAST
 
@@ -42,4 +41,3 @@
 * [BIP3: Agglutinative Roles language](bip-index/bip3-agglutinative-roles-language.md)
 * [BIP4: Schema-less internal representation for AST](bip-index/bip4-schema-less-internal-representation-for-ast.md)
 * [BIP5: Shape-based AST transformations](bip-index/bip5-shape-based-ast-transformations.md)
-

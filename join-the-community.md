@@ -27,4 +27,4 @@ Bugs should be reported through GitHub Issues. When you find a bug, report it to
 
 If you want to request a new feature, feel free to open it as an issue at the relevant GitHub repository.
 
-For design changes we use the [Babelfish Improvement Proposals](bip-index/babelfish-improvement-proposals.md). If the feature you want to request is quite complex and could benefit from some deeper discussion, consider initiating a BIP procedure, as described in [BIP1](bip-index/bip1-purpose-and-guidelines.md).
+For design changes we currently use [design documents](https://doc.bblf.sh/bip-index/babelfish-improvement-proposals.html#design-documents). Before we used [BIPs](https://doc.bblf.sh/bip-index/babelfish-improvement-proposals.html). If the feature you want to request is quite complex and could benefit from some deeper discussion, consider initiating a design document using [this template](https://docs.google.com/document/d/1UBK9G9Bbe0aGl_OG9aMtV2dsBlVNG5LAKRQB6Fcz0cM/edit#heading=h.qhzm4nnshexd).

@@ -114,8 +114,7 @@ Babelfish provides access to the native language AST though [client libraries](h
 From the [project documentation](http://tree-sitter.github.io/tree-sitter/):
 > Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited. This makes it suitable for use in text-editing programs.
 
-Although tree-sitter, being a parser generator, produces a Concrete Syntax Tree, the shape of the tree is designed to closely mirror the structure of the AST and thus can be used directly for code analysis. Other differences include: tree-sitter's syntax nodes currently just contain an ordered list of children, the syntax nodes don't have a name for each child such as a predicate, a body, etc.
-
+Although tree-sitter, being a parser generator, produces a Concrete Syntax Tree, the shape of the tree is designed to closely mirror the structure of the AST and thus can be used directly for code analysis.
 That project also focuses on performance and incremental parsing since both are essential
 for text editors.
 
