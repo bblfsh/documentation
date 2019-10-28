@@ -12,7 +12,7 @@
 		},
 		"Runtimes": {
 			"NativeVersion": "8u181",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -24,11 +24,17 @@
 				"Name": "Alexander Bezzubov",
 				"Email": "alex@sourced.tech",
 				"Github": "bzz"
+			},
+			{
+				"Name": "Michael Fromberger",
+				"Email": "michael@sourced.tech",
+				"Github": "creachadair"
 			}
 		],
 		"GithubURL": "https://github.com/bblfsh/bash-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/bash-driver/",
 		"Releases": [
+			"2.7.2",
 			"2.7.1",
 			"2.7.0",
 			"2.6.0",
@@ -65,7 +71,7 @@
 		"SDKVersion": "3.3.1",
 		"Runtimes": {
 			"NativeVersion": "8u181",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -119,7 +125,7 @@
 		"SDKVersion": "3.3.1",
 		"Runtimes": {
 			"NativeVersion": "2.1",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -141,6 +147,7 @@
 		"GithubURL": "https://github.com/bblfsh/csharp-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/csharp-driver/",
 		"Releases": [
+			"1.7.1",
 			"1.7.0",
 			"1.6.0",
 			"1.5.0",
@@ -186,6 +193,7 @@
 		"GithubURL": "https://github.com/bblfsh/go-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/go-driver/",
 		"Releases": [
+			"2.7.3",
 			"2.7.2",
 			"2.7.1",
 			"2.7.0",
@@ -216,7 +224,7 @@
 		"SDKVersion": "3.3.1",
 		"Runtimes": {
 			"NativeVersion": "8u181",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -238,6 +246,7 @@
 		"GithubURL": "https://github.com/bblfsh/java-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/java-driver/",
 		"Releases": [
+			"2.7.5",
 			"2.7.4",
 			"2.7.3",
 			"2.7.2",
@@ -290,7 +299,7 @@
 		},
 		"Runtimes": {
 			"NativeVersion": "8",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -312,6 +321,7 @@
 		"GithubURL": "https://github.com/bblfsh/javascript-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/javascript-driver/",
 		"Releases": [
+			"2.10.2",
 			"2.10.1",
 			"2.10.0",
 			"2.9.0",
@@ -349,7 +359,7 @@
 		},
 		"Runtimes": {
 			"NativeVersion": "7",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -371,6 +381,7 @@
 		"GithubURL": "https://github.com/bblfsh/php-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/php-driver/",
 		"Releases": [
+			"2.8.3",
 			"2.8.2",
 			"2.8.1",
 			"2.8.0",
@@ -405,7 +416,7 @@
 		"SDKVersion": "3.3.1",
 		"Runtimes": {
 			"NativeVersion": "3.6",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -427,6 +438,7 @@
 		"GithubURL": "https://github.com/bblfsh/python-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/python-driver/",
 		"Releases": [
+			"2.10.3",
 			"2.10.2",
 			"2.10.1",
 			"2.10.0",
@@ -504,7 +516,7 @@
 		},
 		"Runtimes": {
 			"NativeVersion": "2.5",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast",
@@ -526,6 +538,7 @@
 		"GithubURL": "https://github.com/bblfsh/ruby-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/ruby-driver/",
 		"Releases": [
+			"2.9.6",
 			"2.9.5",
 			"2.9.4",
 			"2.9.3",
@@ -563,7 +576,7 @@
 		},
 		"Runtimes": {
 			"NativeVersion": "8",
-			"GoVersion": "1.12"
+			"GoVersion": "1.13"
 		},
 		"Features": [
 			"ast"
@@ -583,6 +596,7 @@
 		"GithubURL": "https://github.com/bblfsh/typescript-driver",
 		"DockerhubURL": "https://hub.docker.com/r/bblfsh/typescript-driver/",
 		"Releases": [
+			"0.8.2",
 			"0.8.1",
 			"0.8.0",
 			"0.7.3",
@@ -607,6 +621,18 @@
 			"Description": "ocaml driver for [babelfish](https://github.com/bblfsh/bblfshd).\n"
 		},
 		"Runtimes": {},
+		"Maintainers": [
+			{
+				"Name": "Michael Fromberger",
+				"Email": "michael@sourced.tech",
+				"Github": "creachadair"
+			},
+			{
+				"Name": "Alexander Bezzubov",
+				"Email": "alex@sourced.tech",
+				"Github": "bzz"
+			}
+		],
 		"GithubURL": "https://github.com/bblfsh/ocaml-driver"
 	},
 	{

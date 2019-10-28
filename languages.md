@@ -5,16 +5,16 @@
 
 | Language   | Release | Status | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
 | :--------- | :------ | :----- | :--- | :--- | :------------- | :----- | :-------- | :--------- |
-| [Bash](https://github.com/bblfsh/bash-driver) | [2.7.1](https://github.com/bblfsh/bash-driver/releases/tag/v2.7.1) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/bash-driver/) | [bzz](https://github.com/bzz) |
+| [Bash](https://github.com/bblfsh/bash-driver) | [2.7.2](https://github.com/bblfsh/bash-driver/releases/tag/v2.7.2) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/bash-driver/) | [bzz](https://github.com/bzz) |
 | [C++](https://github.com/bblfsh/cpp-driver) | [1.5.0](https://github.com/bblfsh/cpp-driver/releases/tag/v1.5.0) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/cpp-driver/) | [ncordon](https://github.com/ncordon) |
-| [C#](https://github.com/bblfsh/csharp-driver) | [1.7.0](https://github.com/bblfsh/csharp-driver/releases/tag/v1.7.0) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/csharp-driver/) | [dennwc](https://github.com/dennwc) |
-| [Go](https://github.com/bblfsh/go-driver) | [2.7.2](https://github.com/bblfsh/go-driver/releases/tag/v2.7.2) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/go-driver/) | [dennwc](https://github.com/dennwc) |
-| [Java](https://github.com/bblfsh/java-driver) | [2.7.4](https://github.com/bblfsh/java-driver/releases/tag/v2.7.4) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [ncordon](https://github.com/ncordon) |
-| [JavaScript](https://github.com/bblfsh/javascript-driver) | [2.10.1](https://github.com/bblfsh/javascript-driver/releases/tag/v2.10.1) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/javascript-driver/) | [kuba--](https://github.com/kuba--) |
-| [PHP](https://github.com/bblfsh/php-driver) | [2.8.2](https://github.com/bblfsh/php-driver/releases/tag/v2.8.2) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/php-driver/) | [kuba--](https://github.com/kuba--) |
-| [Python](https://github.com/bblfsh/python-driver) | [2.10.2](https://github.com/bblfsh/python-driver/releases/tag/v2.10.2) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [dennwc](https://github.com/dennwc) |
-| [Ruby](https://github.com/bblfsh/ruby-driver) | [2.9.5](https://github.com/bblfsh/ruby-driver/releases/tag/v2.9.5) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/) | [bzz](https://github.com/bzz) |
-| [TypeScript](https://github.com/bblfsh/typescript-driver) | [0.8.1](https://github.com/bblfsh/typescript-driver/releases/tag/v0.8.1) | alpha | 3.3.1 | ✓ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) | [kuba--](https://github.com/kuba--) |
+| [C#](https://github.com/bblfsh/csharp-driver) | [1.7.1](https://github.com/bblfsh/csharp-driver/releases/tag/v1.7.1) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/csharp-driver/) | [dennwc](https://github.com/dennwc) |
+| [Go](https://github.com/bblfsh/go-driver) | [2.7.3](https://github.com/bblfsh/go-driver/releases/tag/v2.7.3) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/go-driver/) | [dennwc](https://github.com/dennwc) |
+| [Java](https://github.com/bblfsh/java-driver) | [2.7.5](https://github.com/bblfsh/java-driver/releases/tag/v2.7.5) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/java-driver/) | [ncordon](https://github.com/ncordon) |
+| [JavaScript](https://github.com/bblfsh/javascript-driver) | [2.10.2](https://github.com/bblfsh/javascript-driver/releases/tag/v2.10.2) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/javascript-driver/) | [kuba--](https://github.com/kuba--) |
+| [PHP](https://github.com/bblfsh/php-driver) | [2.8.3](https://github.com/bblfsh/php-driver/releases/tag/v2.8.3) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/php-driver/) | [kuba--](https://github.com/kuba--) |
+| [Python](https://github.com/bblfsh/python-driver) | [2.10.3](https://github.com/bblfsh/python-driver/releases/tag/v2.10.3) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/python-driver/) | [dennwc](https://github.com/dennwc) |
+| [Ruby](https://github.com/bblfsh/ruby-driver) | [2.9.6](https://github.com/bblfsh/ruby-driver/releases/tag/v2.9.6) | beta | 3.3.1 | ✓ | ✓ | ✓ | [✓](https://hub.docker.com/r/bblfsh/ruby-driver/) | [bzz](https://github.com/bzz) |
+| [TypeScript](https://github.com/bblfsh/typescript-driver) | [0.8.2](https://github.com/bblfsh/typescript-driver/releases/tag/v0.8.2) | alpha | 3.3.1 | ✓ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/typescript-driver/) | [kuba--](https://github.com/kuba--) |
 
 ### Aliases for languages
 
@@ -29,7 +29,7 @@
 
 | Language   | Release | Status | SDK  | AST\* | Annotations\*\* | UAST\*\*\* | Container | Maintainer |
 | :--------- | :------ | :----- | :--- | :--- | :------------- | :----- | :-------- | :--------- |
-| [ocaml](https://github.com/bblfsh/ocaml-driver) | - | pre-alpha | 1 | ✗ | ✗ | ✗ | ✗ | - |
+| [ocaml](https://github.com/bblfsh/ocaml-driver) | - | pre-alpha | 1 | ✗ | ✗ | ✗ | ✗ | [creachadair](https://github.com/creachadair) |
 | [rust](https://github.com/bblfsh/rust-driver) | [0.0.1](https://github.com/bblfsh/rust-driver/releases/tag/v0.0.1) | pre-alpha | 1 | ✗ | ✗ | ✗ | [✓](https://hub.docker.com/r/bblfsh/rust-driver/) | [ncordon](https://github.com/ncordon) |
 | [clojure](https://github.com/bblfsh/clojure-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | [creachadair](https://github.com/creachadair) |
 | [erlang](https://github.com/bblfsh/erlang-driver) | - | planning | 1 | ✗ | ✗ | ✗ | ✗ | [bzz](https://github.com/bzz) |
