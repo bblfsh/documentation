@@ -12,7 +12,7 @@ There are clients for the following languages:
 | :--- | :--- | :--- | :--- |
 | Python |  Beta | ✓ | [bblfsh/python-client](https://github.com/bblfsh/python-client) |
 | Go | Beta | ✓ | [bblfsh/go-client](https://github.com/bblfsh/go-client) |
-| Scala |  | [WIP](https://github.com/bblfsh/scala-client/issues/83)  | [bblfsh/client-scala](https://github.com/bblfsh/scala-client) |
+| Scala | Beta | ✓ | [bblfsh/scala-client](https://github.com/bblfsh/scala-client) |
 
 ## Examples
 
@@ -93,12 +93,6 @@ func main() {
 
 ### Python example
 
-As a command:
-
-```bash
-python3 -m bblfsh -q [XPath query] -f [file.ext]
-```
-
 As a library:
 
 ```python
@@ -114,12 +108,6 @@ if __name__ == "__main__":
 ```
 
 ### Scala example
-
-As a command:
-
-```bash
-java -jar bblfsh-client-assembly-1.0.1.jar -q [XPath query] -f file.py
-```
 
 As a library:
 
@@ -170,4 +158,3 @@ root = client.parse("/path/to/myfile.py")
 for node in bblfsh.iterator(root, bblfsh.TreeOrder.PRE_ORDER):
     #... do stuff with the node
 ```
-
